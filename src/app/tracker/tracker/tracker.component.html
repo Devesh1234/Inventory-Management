@@ -1,0 +1,276 @@
+<div class="main-wrapper">
+
+    <app-header></app-header>
+    <app-sidebar></app-sidebar>
+
+
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="dash-widget">
+                        <div class="dash-widgetimg">
+                            <span><img src="assets/img/icons/dash1.svg" alt="img"></span>
+                        </div>
+                        <div class="dash-widgetcontent">
+                            <h5><span class="counters" data-count="307144.00">110</span></h5>
+                            <h6>Total Orders</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="dash-widget dash1">
+                        <div class="dash-widgetimg">
+                            <span><img src="assets/img/icons/dash2.svg" alt="img"></span>
+                        </div>
+                        <div class="dash-widgetcontent">
+                            <h5><span class="counters" data-count="4385.00">4385</span></h5>
+                            <h6>Total No. of Dues</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="dash-widget dash2">
+                        <div class="dash-widgetimg">
+                            <span><img src="assets/img/icons/dash3.svg" alt="img"></span>
+                        </div>
+                        <div class="dash-widgetcontent">
+                            <h5>&#8377;<span class="counters" data-count="385656.50">30000</span></h5>
+                            <h6>Total Revenue</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="dash-widget dash3">
+                        <div class="dash-widgetimg">
+                            <span><img src="assets/img/icons/dash4.svg" alt="img"></span>
+                        </div>
+                        <div class="dash-widgetcontent">
+                            <h5>&#8377;<span class="counters" data-count="40000.00">3000</span></h5>
+                            <h6>Wemesy Wallet</h6>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-7 col-sm-12 col-12 d-flex">
+                    <div class="card flex-fill">
+                        <div class="card-header pb-0 d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0">Purchase & Sales</h5>
+                            <div class="graph-sets">
+                                <ul>
+                                    <li>
+                                        <span>Sales</span>
+                                    </li>
+                                    <li>
+                                        <span>Purchase</span>
+                                    </li>
+                                </ul>
+                                <div class="dropdown">
+                                    <button class="btn btn-white btn-sm dropdown-toggle" type="button"
+                                        id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        2022 <img src="assets/img/icons/dropdown.svg" alt="img" class="ms-2">
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li>aaaaaaaaaaa
+                                            <a href="javascript:void(0);" class="dropdown-item">2022</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" class="dropdown-item">2021</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" class="dropdown-item">2020</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <!-- <div id="sales_charts"></div> -->
+
+                            <canvas baseChart class="chart" [data]="barChartData" [options]="barChartOptions"
+                                [type]="barChartType" (chartHover)="chartHovered($event)"></canvas>
+                        </div>
+
+
+
+
+
+                        <!-- 
+                        <canvas baseChart [type]="'pie'" [datasets]="pieChartDatasets" [labels]="pieChartLabels"
+                            [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+                        </canvas> -->
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+                <div class="col-lg-5 col-sm-12 col-12 d-flex">
+                    <div class="card flex-fill">
+                        <div class="card-header pb-0 d-flex justify-content-between align-items-center">
+                            <h4 class="card-title mb-0">Recently Added Products</h4>
+                        </div>
+                        <div class="card-body">
+                            <canvas baseChart class="chart" [data]="pieChartData" [type]="pieChartType"
+                                [options]="pieChartOptions">
+                            </canvas>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-0">
+                <div class="card-body">
+                    <div class="d-flex flex-wrap justify-content-between">
+                        <h4 class="card-title">Out/ In Stock</h4>
+                        <div class="">
+
+                            <form class="form-inline my-2 my-lg-0 gap-2">
+                                <input class="form-control" type="search" placeholder="Search" name="search"
+                                    aria-label="Search" [(ngModel)]="searchText">
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button type="button" class="btn btn-primary">Requests</button>
+                                    <button type="button" class="btn btn-primary">Active</button>
+                                </div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button type="button" class="btn btn-primary">Checkout</button>
+                                    <button type="button" class="btn btn-primary">History</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div class="table-responsive table-striped ">
+                        <table id="inOutTable" class="table datatable " data-page-length='5'
+                            data-paging-type="simple_numbers" data-info="false" data-ordering="false"
+                            data-searching="true">
+                            <thead>
+                                <tr>
+                                    <th>SNo</th>
+                                    <th>Item</th>
+                                    <th>Category</th>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let object of inOutStockArray | searchFilter:searchText; let i=index;">
+                                    <td>{{i+1}}</td>
+                                    <td><a>{{object.item}}</a></td>
+                                    <td>
+                                        <a>{{object.category}}</a>
+                                    </td>
+                                    <td>{{object.name}}</td>
+                                    <td>{{object.status}}</td>
+                                    <td class="d-flex gap-2">
+                                        <img src="assets/img/icons/check.png" alt="" width="25" height="25"
+                                            style="cursor: pointer;">
+                                        <img src="assets/img/icons/remove.png" alt="" width="25" height="25"
+                                            style="cursor: pointer;" data-toggle="modal"
+                                            data-target="#confirmationModal" (click)="openConfirmationPopup(i)">
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                            <tfoot>
+
+                            </tfoot>
+                        </table>
+
+                    </div>
+
+
+
+
+
+
+                    <div class="table-responsive table-striped ">
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                            <!--- Note that these columns can be defined in any order.
+                                  The actual rendered columns are set as a property on the row definition" -->
+                          
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="position">
+                              <th mat-header-cell *matHeaderCellDef> No. </th>
+                              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                            </ng-container>
+                          
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="name">
+                              <th mat-header-cell *matHeaderCellDef> Name </th>
+                              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                            </ng-container>
+                          
+                            <!-- Weight Column -->
+                            <ng-container matColumnDef="weight">
+                              <th mat-header-cell *matHeaderCellDef> Weight </th>
+                              <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                            </ng-container>
+                          
+                            <!-- Symbol Column -->
+                            <ng-container matColumnDef="symbol">
+                              <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                              <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                            </ng-container>
+                          
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                          </table>
+                          
+                          
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Confirmation Popup -->
+
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Are You Sure To Delete ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <!-- <span aria-hidden="true">&times;</span> -->
+                </button>
+            </div>
+            <div class="modal-body">
+                This Process is irreversible.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" (click)="deletedItem()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

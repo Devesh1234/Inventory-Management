@@ -1,11 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SigninComponent } from './signin/signin.component';
-import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
-  {path:'signin',component:SigninComponent},
-  {path:'signup',component:SignupComponent}
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+  {
+    path:'inventory',
+    loadChildren:()=>import('./inventory/inventory.module').then(m=>m.InventoryModule)
+  },
+  {
+    path:'tracker',
+    loadChildren:()=>import('./tracker/tracker.module').then(m=>m.TrackerModule)
+  }
+
 ];
 
 @NgModule({

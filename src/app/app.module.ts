@@ -1,20 +1,48 @@
-import { NgModule } from '@angular/core';
+import {  NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SigninComponent } from './signin/signin.component';
-import { SignupComponent } from './signup/signup.component';
+// import { MatSliderModule } from '@angular/material/slider';
+
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthModule } from './auth/auth.module';
+import { CommonModule } from '@angular/common';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatCardModule } from '@angular/material/card';
+import { AppCommonModule } from './app-common/app-common.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { NgChartsModule } from 'ng2-charts';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { InventoryModule } from './inventory/inventory.module';
+import { SearchFilterPipe } from './core/pipes/search-filter.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// import { TabViewModule } from "primeng/tabview";
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    SigninComponent,
-    SignupComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AuthModule,
+    CommonModule,
+    MatSliderModule,
+    MatCardModule,
+    BrowserAnimationsModule,
+    // FormsModule,
+    // ReactiveFormsModule,
+    AppCommonModule,
+    DashboardModule,
+    InventoryModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

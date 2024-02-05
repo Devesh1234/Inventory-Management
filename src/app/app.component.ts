@@ -12,7 +12,12 @@ export class AppComponent {
 
   ngOnInit()
   {
-      this.router.navigate(['signin']);
+      // this.router.navigate(['/auth/signup']);
+      // this.router.navigate(['/auth/signin']);
+      // this.router.navigate(['/dashboard/Dashboard']);
+      // this.router.navigate(['/inventory/Inventory']);
+      this.router.navigate(['/tracker/Tracker']);
+      
   }
 
   
