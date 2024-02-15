@@ -2,43 +2,52 @@
     <div class="sidebar-inner slimscroll w-100">
         <div id="sidebar-menu" class="sidebar-menu ">
             <ul>
-                <li class="active">
+                <li [ngClass]="activeTile=='Tracker'?'submenu active':'submenu' " (click)="selectTile('Tracker')">
                     <a><img src="assets/img/icons/dashboard.svg" alt="img"><span>
                             Tracker</span> </a>
                 </li>
+
+
+
                 <li class="submenu">
-                    <a><img src="assets/img/icons/product.svg" alt="img"><span>
-                            Dashboard</span> <span class="menu-arrow"></span></a>
-                    <ul>
-                        <li><a >Product List</a></li>
-                        <li><a >Add Product</a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a><img src="assets/img/icons/sales1.svg" alt="img"><span>
+                    <a [ngClass]="activeTile=='Inventory'?'submenu active':'submenu' "><img
+                            src="assets/img/icons/sales1.svg" alt="img"><span>
                             Inventory</span> <span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a >Overview</a></li>
-                        <li><a >Input</a></li>
-                        <li><a >Offer</a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a><img src="assets/img/icons/purchase1.svg" alt="img"><span>
-                            Social</span></a>
-                    <!-- <ul>
-                        <li><a>Purchase List</a></li>
-                        <li><a>Add Purchase</a></li>
-                    </ul> -->
-                </li>
-                <li class="submenu">
-                    <a><img src="assets/img/icons/expense1.svg" alt="img"><span>Profile</span> <span class="menu-arrow"></span></a>
-                    <ul>
-                        <li (click)="onButtonClick()"><a>Add Expense</a></li>
-                        <li (click)="onButtonClick()"><a>Expense Category</a></li>
+                        <li><a [ngClass]="activeSubTile=='Overview'?'submenu active':'submenu' "
+                                (click)="selectTile('Overview')">Overview</a></li>
+                        <li><a [ngClass]="activeSubTile=='Input'?'submenu active':'submenu' "
+                                (click)="selectTile('Input')">Input</a></li>
+                        <li><a [ngClass]="activeSubTile=='Offer'?'submenu active':'submenu' "
+                                (click)="selectTile('Offer')">Offer</a></li>
                     </ul>
                 </li>
 
+
+                <li class="submenu">
+                    <a><img src="assets/img/icons/expense1.svg" alt="img"><span>Profile</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a>Add Expense</a></li>
+                        <li><a>Expense Category</a></li>
+                    </ul>
+                </li>
+
+
+
+
+                <li [ngClass]="activeTile=='Dashboard'?'submenu active':'submenu' " (click)="selectTile('Dashboard')">
+                    <a><img src="assets/img/icons/product.svg" alt="img"><span>
+                            Dashboard</span></a>
+
+                </li>
+
+                <li class="submenu">
+                    <a><img src="assets/img/icons/purchase1.svg" alt="img"><span>
+                            Social</span></a>
+
+                </li>
+              
 
 
 

@@ -18,6 +18,8 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { InventoryModule } from './inventory/inventory.module';
 import { SearchFilterPipe } from './core/pipes/search-filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TrackerModule } from './tracker/tracker.module';
+import { LoaderComponent } from './app-common/loader/loader.component';
 
 // import { TabViewModule } from "primeng/tabview";
 
@@ -27,7 +29,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -37,11 +38,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSliderModule,
     MatCardModule,
     BrowserAnimationsModule,
-    // FormsModule,
-    // ReactiveFormsModule,
     AppCommonModule,
     DashboardModule,
-    InventoryModule
+    InventoryModule,
+    TrackerModule
 
   ],
   providers: [],

@@ -5,6 +5,7 @@ import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,8 +18,10 @@ const routes: Routes = [
   declarations: [SigninComponent, SignupComponent
   ],
   imports: [RouterModule.forChild(routes),
-    MatSliderModule,
-  MatCardModule],
+    CommonModule,
+    FormsModule,
+  ReactiveFormsModule,
+  ],
   exports: []
 })
 export class AuthModule { }

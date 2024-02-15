@@ -3,9 +3,10 @@
     <app-header></app-header>
     <app-sidebar></app-sidebar>
 
-
     <div class="page-wrapper">
         <div class="content">
+
+
             <div class="row">
                 <div class="col-lg-3 col-sm-6 col-12">
                     <div class="dash-widget">
@@ -55,79 +56,10 @@
 
             </div>
 
-            <div class="row">
-                <div class="col-lg-7 col-sm-12 col-12 d-flex">
-                    <div class="card flex-fill">
-                        <div class="card-header pb-0 d-flex justify-content-between align-items-center">
-                            <h5 class="card-title mb-0">Purchase & Sales</h5>
-                            <div class="graph-sets">
-                                <ul>
-                                    <li>
-                                        <span>Sales</span>
-                                    </li>
-                                    <li>
-                                        <span>Purchase</span>
-                                    </li>
-                                </ul>
-                                <div class="dropdown">
-                                    <button class="btn btn-white btn-sm dropdown-toggle" type="button"
-                                        id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                        2022 <img src="assets/img/icons/dropdown.svg" alt="img" class="ms-2">
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li>aaaaaaaaaaa
-                                            <a href="javascript:void(0);" class="dropdown-item">2022</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);" class="dropdown-item">2021</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);" class="dropdown-item">2020</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <!-- <div id="sales_charts"></div> -->
-
-                            <canvas baseChart class="chart" [data]="barChartData" [options]="barChartOptions"
-                                [type]="barChartType" (chartHover)="chartHovered($event)"></canvas>
-                        </div>
 
 
 
 
-
-                        <!-- 
-                        <canvas baseChart [type]="'pie'" [datasets]="pieChartDatasets" [labels]="pieChartLabels"
-                            [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
-                        </canvas> -->
-
-
-
-
-
-
-
-
-
-                    </div>
-                </div>
-                <div class="col-lg-5 col-sm-12 col-12 d-flex">
-                    <div class="card flex-fill">
-                        <div class="card-header pb-0 d-flex justify-content-between align-items-center">
-                            <h4 class="card-title mb-0">Recently Added Products</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas baseChart class="chart" [data]="pieChartData" [type]="pieChartType"
-                                [options]="pieChartOptions">
-                            </canvas>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="card">
                 <div class="card-body">
                     <div class="table-top">
@@ -137,29 +69,12 @@
                                 <a class="btn btn-searchset"><img src="assets/img/icons/search-white.svg" alt="img"></a>
                             </div>
                         </div>
-                        <div class="wordset">
-                            <ul>
-                                <li>
-                                    <button class="btn btn-primary">Requests</button>
-                                </li>
-                                <li>
-                                    <button class="btn btn-primary">Active</button>
 
-                                </li>
-                                <li>
-                                    <button class="btn btn-primary">Checkout</button>
-                                </li>
-                                <li>
-                                    <button class="btn btn-primary">History</button>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
 
-                 
 
                     <div class="table-responsive">
-                        <table class="table datanew" data-ordering="false"  data-page-length="10">
+                        <table class="table datanew" data-ordering="false" data-page-length="20">
                             <thead>
                                 <tr>
                                     <th>
@@ -522,39 +437,6 @@
                 </div>
             </div>
 
-        </div>
-
-    </div>
-
-
-
-
-</div>
-
-
-
-
-
-
-
-<!-- Confirmation Popup -->
-
-<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Are You Sure To Delete ?</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <!-- <span aria-hidden="true">&times;</span> -->
-                </button>
-            </div>
-            <div class="modal-body">
-                This Process is irreversible.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" (click)="deletedItem()">Delete</button>
-            </div>
         </div>
     </div>
 </div>

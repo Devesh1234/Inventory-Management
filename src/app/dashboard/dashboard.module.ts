@@ -26,7 +26,8 @@ const routes:Routes=[
     NgChartsModule,
     MatPaginatorModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppCommonModule
   ],
 
 })

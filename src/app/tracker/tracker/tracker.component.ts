@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartOptions, ChartType } from 'chart.js';
 import { ChartEvent } from 'chart.js/dist/core/core.plugins';
 import { BaseChartDirective } from 'ng2-charts';
+import { SharedService } from 'src/app/shared.service';
 // import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 
 
@@ -15,14 +16,12 @@ export class TrackerComponent implements OnInit {
   myModal = document.getElementById('exampleModalCenter');
 
 
-  constructor() {
-
+  constructor(private sharedService: SharedService) {
 
 
   }
 
   ngOnInit(): void {
-
 
 
   }
@@ -158,7 +157,7 @@ export class TrackerComponent implements OnInit {
     event: ChartEvent;
     active: object[];
   }): void {
-    console.log(event, active);
+    // console.log(event, active);
   }
 
   changeLabels(): void {
@@ -266,58 +265,18 @@ export class TrackerComponent implements OnInit {
 
 
 
-  inOutStockHeaderArray = ['Sno', 'Username(ID)', 'Username', 'Invoice No', 'No of people', 'Date', 'Time of Arrival', 'Order Status']
-
-  inOutStockArray2 = [{ 'UserId': '8291', 'UserName': '', 'No': '435353242', }];
-
-  inOutStockArray: any = [{ '': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcoholl', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcoholl', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcoholl', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcoholl', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcoholl', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcoholl', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcoholl', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcoholl', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
-  { 'item': 'Drink', 'category': 'Alcoholl', 'name': 'Beer', 'status': 'Out', 'quantity': '1' }
-]
+  //   inOutStockHeaderArray = ['Sno', 'Username(ID)', 'Username', 'Invoice No', 'No of people', 'Date', 'Time of Arrival', 'Order Status']
 
 
+  //   inOutStockArray: any = [{ '': 'Drink', 'category': 'Alcohol', 'name': 'Beer', 'status': 'Out', 'quantity': '1' },
+  // ]
+
+
+  // inOutStockHeaderArray:any=['Sno','First Name','Last Name']
+  inOutStockHeaderArray: any = ['Sno', 'Last Name', 'Full Name']
+
+  // inOutStockArray:any=[{'sno':'1','first_name':"Devesh",'last_name':"Bhatia"}];
+  inOutStockArray: any = [{ 'sno': '1', 'last_name': "Bhatia", 'full_name': "Devesh_Bhatia" }];
 
 
 
@@ -327,7 +286,7 @@ export class TrackerComponent implements OnInit {
   // @ViewChild('exampleModalCenter') exampleModalCenter !:ElementRef
 
 
-  searchText:string='';
+  searchText: string = '';
 
   deleteditem: number = 0;
 
@@ -344,15 +303,15 @@ export class TrackerComponent implements OnInit {
 
 
   deletedItem() {
-    console.log('deleted item is',this.deleteditem);
+    console.log('deleted item is', this.deleteditem);
 
   }
 
 
 
 
-  dataSource:any=[]
+  dataSource: any = []
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','names','symbols','weights'];
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'names', 'symbols', 'weights'];
 
 }
