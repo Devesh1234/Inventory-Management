@@ -8,15 +8,29 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class SnackbarComponent implements OnInit {
 
-  snackStatus: boolean = false;
+  snackMessage: string = '';
+  snackAction: string = '';
   constructor(private sharedService: SharedService) { }
 
   ngOnInit(): void {
 
     this.sharedService.getSnackBarStatus().subscribe((res: any) => {
-      this.snackStatus = true;
+      this.snackMessage = res.message;
+      this.snackAction = res.action;
+      let snackBar = document.getElementById('snackbar');
+      if (this.snackMessage != '' && this.snackAction != '' && snackBar != null) {
+        console.log('this.snackMessage', this.snackMessage)
+        if (this.snackAction == 'success')
+          snackBar.className = "snackbar success";
+        if (this.snackAction == 'error')
+          snackBar.className = "snackbar error";
+
+      }
       setTimeout(() => {
-        this.snackStatus = false;
+        this.snackMessage = '';
+        this.snackAction = '';
+        if (snackBar != null)
+          snackBar.className = 'snackbar'
       }, 2700)
     })
   }

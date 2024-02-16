@@ -14,11 +14,31 @@
   }
 
   /* Show the snackbar when it's active */
-  .snackbar.show {
+  .snackbar.success {
     visibility: visible;
+    background-color: green;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s; /* Fade in and out */
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
   }
+
+  .snackbar.error {
+    visibility: visible;
+    background-color: red;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s; /* Fade in and out */
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+
+  
+
+
+.snackbar.show.success{
+background-color: green;
+}
+
+.snackbar.show.error{
+  background-color: red;
+  }
+  
 
   /* Fade in animation */
   @-webkit-keyframes fadein {
