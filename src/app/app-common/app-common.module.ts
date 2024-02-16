@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoaderComponent } from './loader/loader.component';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 
 
 
@@ -10,7 +11,8 @@ import { LoaderComponent } from './loader/loader.component';
   declarations: [
     HeaderComponent,
     SidebarComponent,
-    LoaderComponent
+    LoaderComponent,
+    SnackbarComponent
   ],
   imports: [
     CommonModule
@@ -18,7 +20,8 @@ import { LoaderComponent } from './loader/loader.component';
   exports:[
     HeaderComponent,
     SidebarComponent,
-    LoaderComponent
+    LoaderComponent,
+    SnackbarComponent
   ]
 })
 export class AppCommonModule { }

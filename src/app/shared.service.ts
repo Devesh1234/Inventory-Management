@@ -8,6 +8,7 @@ export class SharedService {
 
 
   loaderStatus = new BehaviorSubject<any>(false);
+  snackBarStatus = new BehaviorSubject<any>(false);
 
   activeTile = new BehaviorSubject<string>('Tracker');
   activeSubTile = new BehaviorSubject<string>('');
@@ -52,6 +53,19 @@ export class SharedService {
   public getLoaderStatus()
   {
       return this.loaderStatus.asObservable();
+  }
+
+
+
+
+  public showSnackBar()
+  {
+    this.snackBarStatus.next(true);
+  }
+
+  public getSnackBarStatus()
+  {
+    return this.snackBarStatus.asObservable();
   }
 
 
