@@ -14,11 +14,11 @@
                         <div class="form-login">
                             <label>Full Name</label>
                             <div class="form-addons">
-                                <input type="text" placeholder="Enter your full name" formControlName="fullName">
+                                <input type="text" placeholder="Enter your Business name" formControlName="fullName">
                                 <img src="assets/img/icons/users1.svg" alt="img">
                             </div>
                             <p *ngIf="signupForm.controls.fullName?.errors?.required==true" class="text-danger">Please
-                                Enter Your Full Name
+                                Enter Your Business Name
                             </p>
                         </div>
                         <div class="form-login">
@@ -32,6 +32,22 @@
                             <p *ngIf="signupForm.controls.email?.errors?.email==true" class="text-danger">Please Enter
                                 Valid Email Id</p>
                         </div>
+
+
+                        <div class="form-login">
+                            <label>Mobile</label>
+                            <div class="pass-group">
+                                <input type="text" class="pass-input" placeholder="Enter Mobile Number" maxlength="10"
+                                    formControlName="mobile">
+                                <span class="fas toggle-password fa-mobile" aria-hidden="true"></span>
+                            </div>
+                            <p *ngIf="signupForm.controls.mobile?.errors?.required==true" class="text-danger">Please
+                                Enter Your Mobile No</p>
+                            <p *ngIf="signupForm.controls.mobile?.errors?.pattern || signupForm.controls.mobile?.errors?.minlength"
+                                class="text-danger">Please Enter
+                                Valid No</p>
+                        </div>
+                        
                         <div class="form-login">
                             <label>Password</label>
                             <div class="pass-group">
@@ -43,20 +59,9 @@
                                 enter Your
                                 Password</p>
                         </div>
+
                         <div class="form-login">
-                            <label>Mobile</label>
-                            <div class="pass-group">
-                                <input type="text" class="pass-input" placeholder="Enter Mobile Number" maxlength="10"
-                                    formControlName="mobile">
-                                <span class="fas toggle-password fa-mobile" aria-hidden="true"></span>
-                            </div>
-                            <p *ngIf="signupForm.controls.mobile?.errors?.required==true" class="text-danger">Please
-                                Enter Your Mobile No</p>
-                            <p *ngIf="signupForm.controls.mobile?.errors?.pattern || signupForm.controls.mobile?.errors?.minlength" class="text-danger">Please Enter
-                                Valid No</p>
-                        </div>
-                        <div class="form-login">
-                            <button class="btn btn-login" (click)="userSignUp()" [disabled]="signupForm.invalid" >Sign
+                            <button class="btn btn-login" (click)="userSignUp()" [disabled]="signupForm.invalid">Sign
                                 Up</button>
                         </div>
                     </form>

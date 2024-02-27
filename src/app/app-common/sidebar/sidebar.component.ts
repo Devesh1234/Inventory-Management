@@ -33,6 +33,13 @@ export class SidebarComponent implements OnInit {
         this.sharedService.setActiveTile('Dashboard');
 
         break;
+
+      case 'Social':
+        this.router.navigate(['/social/Social']);
+        this.sharedService.setActiveTile('Social');
+
+        break;
+
       case 'Tracker':
         this.router.navigate(['/tracker/Tracker']);
         this.sharedService.setActiveTile('Tracker');

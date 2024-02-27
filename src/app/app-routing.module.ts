@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path:'tracker',
     loadChildren:()=>import('./tracker/tracker.module').then(m=>m.TrackerModule)
+  },
+  {
+    path:'social',
+    loadChildren:()=>import('./social/social.module').then(m=>m.SocialModule)
   }
 
 ];

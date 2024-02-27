@@ -8,6 +8,8 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class InputComponent implements OnInit {
 
+  uploadedFile:File|null=null;
+  
   constructor(private sharedService: SharedService) { }
 
   ngOnInit(): void {
@@ -15,6 +17,11 @@ export class InputComponent implements OnInit {
     this.sharedService.loadScripts();
   }
 
+
+  onFileSelected(event: any) {
+    console.log('event---', event.target.files[0]);
+    this.uploadedFile=event.target.files[0]
+  }
 
 
 }

@@ -32,5 +32,10 @@ export class SigninComponent implements OnInit {
   navigateToSignup() {
     this.router.navigate(['/auth/signup'])
   }
+  navigateToForgotPass()
+  {
+    this.router.navigate(['/auth/forgot-password'])
+
+  }
 
 }
