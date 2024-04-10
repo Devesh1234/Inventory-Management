@@ -16,7 +16,7 @@
                             <div class="form-addons">
                                 <input type="text" placeholder="Enter your email address" formControlName="email">
                                 <img src="assets/img/icons/mail.svg" alt="img">
-                            </div>
+                            </div>z
                             <p *ngIf="signinForm.controls.email?.errors?.required==true" class="text-danger">Please Enter Email Id</p>
                             <p *ngIf="signinForm.controls.email?.errors?.email==true" class="text-danger">Please Enter
                                 Valid Email Id</p>
@@ -43,25 +43,7 @@
                             <h4>Don’t have an account? <a (click)="navigateToSignup()" class="hover-a">Sign Up</a></h4>
                         </div>
                     </form>
-                    <div class="form-setlogin">
-                        <h4>Or sign up with</h4>
-                    </div>
-                    <div class="form-sociallink">
-                        <ul>
-                            <li>
-                                <a>
-                                    <img src="assets/img/icons/google.png" class="me-2" alt="google">
-                                    Sign Up using Google
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <img src="assets/img/icons/facebook.png" class="me-2" alt="google">
-                                    Sign Up using Facebook
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                  
                 </div>
             </div>
             <div class="login-img">

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,10 +10,13 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   signupForm:any;
-
-  constructor(private router:Router) { }
+  constructor(private router:Router) {}
 
   ngOnInit(): void {
+
+
+
+
     this.signupForm=new FormGroup({
       fullName:new FormControl('',Validators.required),
       email:new FormControl('',[Validators.required,Validators.email]),
@@ -22,6 +25,7 @@ export class SignupComponent implements OnInit {
       Validators.minLength(10), Validators.maxLength(10)])
 
     })
+    
   }
 
  

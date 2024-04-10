@@ -20,8 +20,17 @@ export class InputComponent implements OnInit {
 
   onFileSelected(event: any) {
     console.log('event---', event.target.files[0]);
+    
     this.uploadedFile=event.target.files[0]
   }
 
+  onFileCancel(){
+    this.uploadedFile=null
+  }
+
+  excelDownload()
+  {
+    this.sharedService.showSnackBar('File Downloaded Successfully','success')
+  }
 
 }

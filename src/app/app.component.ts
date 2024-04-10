@@ -19,8 +19,8 @@ export class AppComponent {
       // this.router.navigate(['/inventory/Overview']);
       // this.router.navigate(['/inventory/Input']);
       // this.router.navigate(['/inventory/Inventory']);
-      this.router.navigate(['/social/Social']);
-      // this.router.navigate(['/tracker/Tracker']);
+      // this.router.navigate(['/social/Social']);
+      this.router.navigate(['/tracker/Tracker']);        
       
   }
 
