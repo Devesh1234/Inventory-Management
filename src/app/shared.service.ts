@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 
@@ -14,7 +15,7 @@ export class SharedService {
   activeSubTile = new BehaviorSubject<string>('');
 
   private renderer: Renderer2;
-  constructor(private rendererFactory: RendererFactory2) {
+  constructor(private rendererFactory: RendererFactory2, private httpClient: HttpClient) {
     this.renderer = rendererFactory.createRenderer(null, null);
 
   }
@@ -50,21 +51,17 @@ export class SharedService {
     this.loaderStatus.next(false);
   }
 
-  public getLoaderStatus()
-  {
-      return this.loaderStatus.asObservable();
+  public getLoaderStatus() {
+    return this.loaderStatus.asObservable();
   }
 
 
 
-
-  public showSnackBar(message:string,action:string)
-  {
-    this.snackBarStatus.next({'message':message,'action':action});
+  public showSnackBar(message: string, action: string) {
+    this.snackBarStatus.next({ 'message': message, 'action': action });
   }
 
-  public getSnackBarStatus()
-  {
+  public getSnackBarStatus() {
     return this.snackBarStatus.asObservable();
   }
 
@@ -88,5 +85,67 @@ export class SharedService {
   }
 
 
+
+  getCountriesList()
+  {
+
+    let apiUrl='https://countriesnow.space/api/v0.1/countries/positions';
+    return this.httpClient.get(apiUrl);
+
+  }
+  getStatesList()
+  {
+
+  }
+  getCitiesList()
+  {
+
+  }
+
+
+  // {
+  //   "username": "example@gmail.com",
+  //   "password": "ASDF@123"
+  // }
+
+  signInApi(credentials: any) {
+    let apiUrl = 'http://localhost:8000/api/signin/';
+    return this.httpClient.post<any>(apiUrl,credentials
+    )
+  };
+
+  signUpApi() {
+    let apiUrl = 'http://127.0.0.1:8000/api/signup/';
+  }
+
+
+  forgotPasswordApi()
+  {
+    
+  }
+
+
+
+
+  getInventoryMenuDataApi() {
+    let apiUrl = 'http://127.0.0.1:8000/api/inventory/view-all/';
+    return this.httpClient.get(apiUrl);
+
+  }
+
+  insertInventoryMenuSingleEntryApi(data: any) {
+    let apiUrl = 'http://127.0.0.1:8000/api/inventory/create/';
+    return this.httpClient.post(apiUrl, { data })
+  }
+
+  insertInventoryMenuExcelEntryApi(file: File) {
+    console.log('file------', file);
+    let formData = new FormData();
+    formData.append("excel_file",file)
+    console.log('formData: ', formData);
+
+    let apiUrl = 'http://127.0.0.1:8000/api/inventory/import/?excel_file';
+    return this.httpClient.post<any>(apiUrl, formData);
+  }
 
 }

@@ -8,42 +8,48 @@
                     </div>
                     <div class="login-userheading">
                         <h3>Create an Account</h3>
-                        <h4>Continue where you left off</h4>
+                        <!-- <h4>Continue where you left off</h4> -->
                     </div>
                     <form [formGroup]="signupForm">
                         <div class="form-login">
-                            <label>Full Name</label>
+                            <label>Business Name</label>
                             <div class="form-addons">
-                                <input type="text" placeholder="Enter your Business name" formControlName="fullName">
+                                <input type="text" placeholder="Enter your Business name"
+                                    formControlName="business_name">
                                 <img src="assets/img/icons/users1.svg" alt="img">
                             </div>
-                            <p *ngIf="signupForm.controls.fullName?.errors?.required==true" class="text-danger">Please
+                            <p *ngIf="signupForm.controls.business_name?.errors?.required==true" class="text-danger">
+                                Please
                                 Enter Your Business Name
                             </p>
                         </div>
                         <div class="form-login">
                             <label>Email</label>
                             <div class="form-addons">
-                                <input type="text" placeholder="Enter your email address" formControlName="email">
+                                <input type="text" placeholder="Enter your email address"
+                                    formControlName="registered_email">
                                 <img src="assets/img/icons/mail.svg" alt="img">
                             </div>
-                            <p *ngIf="signupForm.controls.email?.errors?.required==true" class="text-danger">Please
+                            <p *ngIf="signupForm.controls.registered_email?.errors?.required==true" class="text-danger">
+                                Please
                                 Enter Email Id</p>
-                            <p *ngIf="signupForm.controls.email?.errors?.email==true" class="text-danger">Please Enter
+                            <p *ngIf="signupForm.controls.registered_email?.errors?.email==true" class="text-danger">
+                                Please Enter
                                 Valid Email Id</p>
                         </div>
 
 
                         <div class="form-login">
                             <label>Mobile</label>
-                            <div class="pass-group">
-                                <input type="text" class="pass-input" placeholder="Enter Mobile Number" maxlength="10"
-                                    formControlName="mobile">
+                            <div class="form-addons">
+                                <input type="text" placeholder="Enter Mobile Number" maxlength="10"
+                                    formControlName="registered_mobile_no">
                                 <span class="fas toggle-password fa-mobile" aria-hidden="true"></span>
                             </div>
-                            <p *ngIf="signupForm.controls.mobile?.errors?.required==true" class="text-danger">Please
+                            <p *ngIf="signupForm.controls.registered_mobile_no?.errors?.required==true"
+                                class="text-danger">Please
                                 Enter Your Mobile No</p>
-                            <p *ngIf="signupForm.controls.mobile?.errors?.pattern || signupForm.controls.mobile?.errors?.minlength"
+                            <p *ngIf="signupForm.controls.registered_mobile_no?.errors?.pattern || signupForm.controls.registered_mobile_no?.errors?.minlength"
                                 class="text-danger">Please Enter
                                 Valid No</p>
                         </div>
@@ -60,10 +66,102 @@
                                 Password</p>
                         </div>
 
+
+
+
+                        <div class="form-login">
+                            <label>Business Type</label>
+                            <div class="form-addons">
+                                <input type="text" placeholder="Enter your password" formControlName="business_type">
+                                <span class="fas toggle-password fa-eye-slash"></span>
+                            </div>
+                            <p *ngIf="signupForm.controls.business_type?.errors?.required==true" class="text-danger">
+                                Please Enter Business Name</p>
+                        </div>
+
+
+
+
+                        <div class="form-login">
+                            <label>Business Structure</label>
+                            <div class="form-addons">
+                                <input type="text" placeholder="Enter your password"
+                                    formControlName="business_structure">
+                                <span class="fas toggle-password fa-eye-slash"></span>
+                            </div>
+                            <p *ngIf="signupForm.controls.business_structure?.errors?.required==true"
+                                class="text-danger">Please Enter Business Structure</p>
+                        </div>
+
+
+
+
+
+                        <div class="form-login">
+                            <!-- <div class="form-addons">
+                                <input type="text"  placeholder="Enter your password"
+                                    formControlName="country">
+                                <span class="fas toggle-password fa-eye-slash"></span>
+                            </div> -->
+
+                            <div class="form-login">
+                                <label>Country</label>
+                                <select class="select2" formControlName="country">
+                                    <option disabled selected>Select</option>
+                                    <option *ngFor="let item of countries_list.data">{{item.name}}</option>
+                                </select>
+                            </div>
+
+
+                            <p *ngIf="signupForm.controls.country?.errors?.required==true" class="text-danger">Please
+                                enter Country</p>
+                        </div>
+
+
+
+
+
+
+                        <div class="form-login">
+                            <div>
+                                <label>State</label>
+                                <select [disabled]="true" class="select" formControlName="state"   >
+                                    <option disabled selected>Select</option>
+                                    <option *ngFor="let item of countries_list.data">{{item.name}}</option>
+                                </select>
+                            </div>
+                            <p *ngIf="signupForm.controls.state?.errors?.required==true" class="text-danger">Please
+                                Enter State</p>
+                        </div>
+
+
+
+                        <div class="form-login">
+                            <label>City</label>
+                            <div class="form-addons">
+                                <input type="text" placeholder="Enter your password" formControlName="city">
+                                <span class="fas toggle-password fa-eye-slash"></span>
+                            </div>
+                            <p *ngIf="signupForm.controls.password?.errors?.required==true" class="text-danger">Please
+                                enter City</p>
+                        </div>
+
+
+
+
+
+
+
+
                         <div class="form-login">
                             <button class="btn btn-login" (click)="userSignUp()" [disabled]="signupForm.invalid">Sign
                                 Up</button>
                         </div>
+
+
+
+
+
                     </form>
                     <div class="signinform text-center">
                         <h4>Already a user? <a class="hover-a" (click)="navigateToSignin()">Sign In</a></h4>

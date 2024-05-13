@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-signin',
@@ -10,13 +11,13 @@ import { Router } from '@angular/router';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router , private sharedService:SharedService) { }
 
   signinForm:any;
 
   ngOnInit(): void {
     this.signinForm=new FormGroup({
-      'email':new FormControl('',[Validators.required,Validators.email]),
+      'username':new FormControl('',[Validators.required]),
       'password':new FormControl('',[Validators.required])
     })
   }
@@ -25,7 +26,17 @@ export class SigninComponent implements OnInit {
 
 
   onSignIn() {
-    this.router.navigate(['/inventory/Input']);
+    // this.router.navigate(['/inventory/Input']);
+    console.log('Form---',this.signinForm.value)
+    this.sharedService.signInApi(this.signinForm.value).subscribe({
+      next:(res:any)=>{
+        console.log('res----',res)
+      },
+      error:(err:any)=>{
+        console.log('res----',err)
+
+      },
+    })
   }
 
 

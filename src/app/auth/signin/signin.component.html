@@ -14,12 +14,11 @@
                         <div class="form-login">
                             <label>Email</label>
                             <div class="form-addons">
-                                <input type="text" placeholder="Enter your email address" formControlName="email">
+                                <input type="text" placeholder="Enter your email address" formControlName="username">
                                 <img src="assets/img/icons/mail.svg" alt="img">
-                            </div>z
-                            <p *ngIf="signinForm.controls.email?.errors?.required==true" class="text-danger">Please Enter Email Id</p>
-                            <p *ngIf="signinForm.controls.email?.errors?.email==true" class="text-danger">Please Enter
-                                Valid Email Id</p>
+                            </div>
+                            <p *ngIf="signinForm.controls.username?.errors?.required==true" class="text-danger">Please
+                                Enter Email Id</p>
                         </div>
                         <div class="form-login">
                             <label>Password</label>
@@ -37,13 +36,14 @@
                             </div>
                         </div>
                         <div class="form-login">
-                            <a class="btn btn-login" (click)="onSignIn()">Sign In</a>
+                            <button class="btn btn-login" (click)="onSignIn()" [disabled]="signinForm.invalid">Sign
+                                In</button>
                         </div>
                         <div class="signinform text-center">
                             <h4>Don’t have an account? <a (click)="navigateToSignup()" class="hover-a">Sign Up</a></h4>
                         </div>
                     </form>
-                  
+
                 </div>
             </div>
             <div class="login-img">

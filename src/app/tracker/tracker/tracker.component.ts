@@ -18,11 +18,12 @@ export class TrackerComponent implements OnInit {
 
   constructor(private sharedService: SharedService) {
 
+    
 
   }
 
   ngOnInit(): void {
-
+    
 
   }
 

@@ -20,6 +20,7 @@ import { SearchFilterPipe } from './core/pipes/search-filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TrackerModule } from './tracker/tracker.module';
 import { LoaderComponent } from './app-common/loader/loader.component';
+import {HttpClientModule} from '@angular/common/http'
 
 // import { TabViewModule } from "primeng/tabview";
 
@@ -41,7 +42,8 @@ import { LoaderComponent } from './app-common/loader/loader.component';
     AppCommonModule,
     DashboardModule,
     InventoryModule,
-    TrackerModule
+    TrackerModule,
+    HttpClientModule
 
   ],
   providers: [],

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-signup',
@@ -10,19 +11,31 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   signupForm:any;
-  constructor(private router:Router) {}
+  countries_list:any;
+  constructor(private router:Router , private sharedService:SharedService) {}
 
   ngOnInit(): void {
 
 
+    this.sharedService.getCountriesList().subscribe((res:any)=>{
+      console.log('res----',res);
+      this.countries_list=res;
+    })
 
 
     this.signupForm=new FormGroup({
-      fullName:new FormControl('',Validators.required),
-      email:new FormControl('',[Validators.required,Validators.email]),
+      business_name:new FormControl('',Validators.required),
+      registered_email:new FormControl('',[Validators.required,Validators.email]),
       password:new FormControl('',Validators.required),
-      mobile:new FormControl('',[Validators.required, Validators.pattern("^[0-9]*$"),
-      Validators.minLength(10), Validators.maxLength(10)])
+      registered_mobile_no:new FormControl('',[Validators.required, Validators.pattern("^[0-9]*$"),
+      Validators.minLength(10), Validators.maxLength(10)]),
+      business_type: new FormControl('',[Validators.required]),
+      business_structure: new FormControl('',[Validators.required]),
+      country: new FormControl('',[Validators.required]),
+      state: new FormControl('',[Validators.required]),
+      city: new FormControl('',[Validators.required]),
+      registered_address:new FormControl('',[])
+
 
     })
     

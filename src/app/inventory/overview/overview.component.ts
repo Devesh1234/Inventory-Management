@@ -8,14 +8,29 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class OverviewComponent implements OnInit {
 
-  constructor(private sharedService:SharedService) { }
+  inventoryMenuData: any;
+
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit(): void {
-  this.sharedService.loadScripts();
+    // this.sharedService.loadScripts();
+
+
+    this.sharedService.getInventoryMenuDataApi().subscribe((res: any) => {
+      this.inventoryMenuData = res
+      console.log('Get Inventory Menu Data ', this.inventoryMenuData);
+    })
+
+    
+
   }
 
 
 
-  
+
+
+
+
+
 
 }
