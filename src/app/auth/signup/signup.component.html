@@ -98,53 +98,46 @@
 
 
                         <div class="form-login">
-                            <!-- <div class="form-addons">
-                                <input type="text"  placeholder="Enter your password"
-                                    formControlName="country">
-                                <span class="fas toggle-password fa-eye-slash"></span>
-                            </div> -->
-
-                            <div class="form-login">
-                                <label>Country</label>
-                                <select class="select2" formControlName="country">
-                                    <option disabled selected>Select</option>
-                                    <option *ngFor="let item of countries_list.data">{{item.name}}</option>
-                                </select>
-                            </div>
-
-
-                            <p *ngIf="signupForm.controls.country?.errors?.required==true" class="text-danger">Please
-                                enter Country</p>
-                        </div>
-
-
-
-
-
-
-                        <div class="form-login">
-                            <div>
-                                <label>State</label>
-                                <select [disabled]="true" class="select" formControlName="state"   >
-                                    <option disabled selected>Select</option>
-                                    <option *ngFor="let item of countries_list.data">{{item.name}}</option>
-                                </select>
-                            </div>
-                            <p *ngIf="signupForm.controls.state?.errors?.required==true" class="text-danger">Please
-                                Enter State</p>
-                        </div>
-
-
-
-                        <div class="form-login">
-                            <label>City</label>
                             <div class="form-addons">
-                                <input type="text" placeholder="Enter your password" formControlName="city">
-                                <span class="fas toggle-password fa-eye-slash"></span>
+                                <label>Country</label>
+                                <select #countryselect class="select" formControlName="country" >
+                                    <!-- <option disabled selected>Select</option> -->
+                                    <option selected >India</option>
+                                </select>
                             </div>
-                            <p *ngIf="signupForm.controls.password?.errors?.required==true" class="text-danger">Please
-                                enter City</p>
                         </div>
+
+
+
+                        <div class="form-login">
+                            <div class="form-addons">
+                                <label>State</label>
+                                <select #stateselect class="select" formControlName="state" >
+                                    <!-- <option disabled selected>Select</option> -->
+                                    <option selected >Haryana</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-login">
+                            <div class="form-addons">
+                                <label>City</label>
+                                <select #cityselect class="select" formControlName="city" >
+                                    <!-- <option disabled selected>Select</option> -->
+                                    <option selected >Gurugram</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
 
 
 

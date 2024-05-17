@@ -86,27 +86,7 @@ export class SharedService {
 
 
 
-  getCountriesList()
-  {
 
-    let apiUrl='https://countriesnow.space/api/v0.1/countries/positions';
-    return this.httpClient.get(apiUrl);
-
-  }
-  getStatesList()
-  {
-
-  }
-  getCitiesList()
-  {
-
-  }
-
-
-  // {
-  //   "username": "example@gmail.com",
-  //   "password": "ASDF@123"
-  // }
 
   signInApi(credentials: any) {
     let apiUrl = 'http://localhost:8000/api/signin/';

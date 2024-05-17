@@ -14,6 +14,14 @@ export class InputComponent implements OnInit {
 
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
+  // Viewchild for selects
+  @ViewChild('categoryselect') categoryselect!: ElementRef<HTMLInputElement>;
+  @ViewChild('subcategoryselect') subcategoryselect!: ElementRef<HTMLInputElement>;
+  @ViewChild('subsubcategoryselect') subsubcategoryselect!: ElementRef<HTMLInputElement>;
+  @ViewChild('itemtypeselect') itemtypeselect!: ElementRef<HTMLInputElement>;
+  @ViewChild('sizetypeselect') sizetypeselect!: ElementRef<HTMLInputElement>;
+  @ViewChild('instockselect') instockselect!: ElementRef<HTMLInputElement>;
+
 
   constructor(private sharedService: SharedService, private fb: FormBuilder) { }
 
@@ -77,9 +85,37 @@ export class InputComponent implements OnInit {
 
   }
 
+  patchSelectedValuesToForm()
+  {
+
+    this.addItemform.patchValue({
+      'category':this.categoryselect.nativeElement.value,
+      'sub_category':this.subcategoryselect.nativeElement.value,
+      'sub_sub_category':this.subsubcategoryselect.nativeElement.value,
+      'item_type':this.itemtypeselect.nativeElement.value,
+      'size_type':this.sizetypeselect.nativeElement.value,
+      'in_stock':this.instockselect.nativeElement.value
+
+    })
+
+    // this.categoryselect.nativeElement.value;
+  }
+
 
   addItem() {
-    console.log(this.addItemform.value);
+    this.patchSelectedValuesToForm();
+
+    if(this.addItemform.valid)
+      {
+    console.log(this.addItemform);
+      }
+
+
+
+
+
+
+
     // this.sharedService.insertInventoryMenuSingleEntryApi(this.addItemform.value).subscribe({
     //   next: (res: any) => {
     //     console.log('Res----', res);
@@ -89,14 +125,15 @@ export class InputComponent implements OnInit {
     //   }
     // });
 
+    else
+    {
+      this.sharedService.showSnackBar('Please Fill All Details','error');
+    }
+
 
   }
 
 
-  onSelectionChange(event:any)
-  {
-    console.log('event----',event);
-  }
 
   
 }

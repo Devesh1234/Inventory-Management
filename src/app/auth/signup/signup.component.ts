@@ -16,12 +16,9 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.sharedService.loadScripts();
 
-    this.sharedService.getCountriesList().subscribe((res:any)=>{
-      console.log('res----',res);
-      this.countries_list=res;
-    })
-
+   
 
     this.signupForm=new FormGroup({
       business_name:new FormControl('',Validators.required),
@@ -31,9 +28,9 @@ export class SignupComponent implements OnInit {
       Validators.minLength(10), Validators.maxLength(10)]),
       business_type: new FormControl('',[Validators.required]),
       business_structure: new FormControl('',[Validators.required]),
-      country: new FormControl('',[Validators.required]),
-      state: new FormControl('',[Validators.required]),
-      city: new FormControl('',[Validators.required]),
+      country: new FormControl('India',[Validators.required]),
+      state: new FormControl('Haryana',[Validators.required]),
+      city: new FormControl('Gurugram',[Validators.required]),
       registered_address:new FormControl('',[])
 
 
