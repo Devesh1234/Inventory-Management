@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
+import * as CryptoJS from 'crypto-js';
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +23,70 @@ export class SharedService {
   }
 
 
-  public loadScripts() {
+  public loadScripts() :void {
     this.loadScriptUrl('assets/js/script.js');
 
   }
+
+
+
+  // code for localstorage
+
+  getLocalStorage(key:string) : string | null
+  {
+    const encryptedData = sessionStorage.getItem(key);
+    if (encryptedData) {
+      return this.decryptData(encryptedData);
+    }
+    return null;
+  }
+
+  setLocalStorage(key:string, data:string):void{
+    const encryptedData = this.encryptData(data);
+    sessionStorage.setItem(key, encryptedData);
+
+
+
+  }
+
+  private secretKey = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; // Replace with your actual secret key
+
+  // Method to encrypt data
+  encryptData(data: string): string {
+    return CryptoJS.AES.encrypt(data, this.secretKey).toString();
+  }
+
+  // Method to decrypt data
+  decryptData(encryptedData: string): string {
+    const bytes = CryptoJS.AES.decrypt(encryptedData, this.secretKey);
+    return bytes.toString(CryptoJS.enc.Utf8);
+  }
+
+
+
+
+
+
+
+
+
+
+  // Example method to check if the user is logged in
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('userToken');
+  }
+
+  // Example method to login the user (for demonstration purposes)
+  login(token: string): void {
+    localStorage.setItem('userToken', token);
+  }
+
+  // Example method to logout the user (for demonstration purposes)
+  logout(): void {
+    localStorage.removeItem('userToken');
+  }
+
+
 
 
 
