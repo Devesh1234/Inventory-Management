@@ -8,10 +8,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppCommonModule } from '../app-common/app-common.module';
 import {MatTableModule} from '@angular/material/table';
+import { AuthGuard } from '../auth.guard';
 
 
 const routes:Routes=[
-  {path:'Tracker',component:TrackerComponent}
+  {path:'Tracker',component:TrackerComponent , canActivate:[AuthGuard]}
 ]
 
 @NgModule({

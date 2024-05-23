@@ -35,6 +35,7 @@ export class SharedService {
   getLocalStorage(key:string) : string | null
   {
     const encryptedData = sessionStorage.getItem(key);
+
     if (encryptedData) {
       return this.decryptData(encryptedData);
     }
@@ -44,9 +45,12 @@ export class SharedService {
   setLocalStorage(key:string, data:string):void{
     const encryptedData = this.encryptData(data);
     sessionStorage.setItem(key, encryptedData);
+  }
 
 
-
+  removeLocalStorage(key:string)
+  {
+    sessionStorage.removeItem(key);
   }
 
   private secretKey = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; // Replace with your actual secret key
@@ -73,17 +77,21 @@ export class SharedService {
 
   // Example method to check if the user is logged in
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('userToken');
+    if(this.getLocalStorage("user_login")!=null && this.getLocalStorage("user_login")!=undefined   )
+      return true;
+    return false
   }
 
   // Example method to login the user (for demonstration purposes)
-  login(token: string): void {
-    localStorage.setItem('userToken', token);
+  login(username:string): void {
+    console.log("username",username);
+    this.setLocalStorage("user_login",username);
   }
 
   // Example method to logout the user (for demonstration purposes)
   logout(): void {
-    localStorage.removeItem('userToken');
+    this.removeLocalStorage("user_login");
+
   }
 
 

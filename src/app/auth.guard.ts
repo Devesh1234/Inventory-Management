@@ -14,9 +14,10 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.sharedService.isLoggedIn()) {
+      console.log('Devesh')
       return true;
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/auth/signin']);
       return false;
     }
   }
