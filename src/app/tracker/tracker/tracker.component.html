@@ -76,13 +76,13 @@
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <li>
-                                            <a  class="dropdown-item">2022</a>
+                                            <a class="dropdown-item">2022</a>
                                         </li>
                                         <li>
-                                            <a  class="dropdown-item">2021</a>
+                                            <a class="dropdown-item">2021</a>
                                         </li>
                                         <li>
-                                            <a  class="dropdown-item">2020</a>
+                                            <a class="dropdown-item">2020</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -140,17 +140,24 @@
                         <div class="wordset">
                             <ul>
                                 <li>
-                                    <button class="btn btn-primary">Requests</button>
+                                    <button class="btn"
+                                        [ngClass]="activeButton=='requested'?'btn-secondary':'btn-primary'"
+                                        (click)="onBtnClick('requested')">Requests</button>
                                 </li>
                                 <li>
-                                    <button class="btn btn-primary">Active</button>
+                                    <button class="btn" [ngClass]="activeButton=='active'?'btn-secondary':'btn-primary'"
+                                        (click)="onBtnClick('active')">Active</button>
 
                                 </li>
                                 <li>
-                                    <button class="btn btn-primary">Checkout</button>
+                                    <button class="btn"
+                                        [ngClass]="activeButton=='checkout'?'btn-secondary':'btn-primary'"
+                                        (click)="onBtnClick('checkout')">Checkout</button>
                                 </li>
                                 <li>
-                                    <button class="btn btn-primary">History</button>
+                                    <button class="btn"
+                                        [ngClass]="activeButton=='history'?'btn-secondary':'btn-primary'"
+                                        (click)="onBtnClick('history')">History</button>
                                 </li>
                             </ul>
                         </div>
@@ -168,43 +175,36 @@
                                             <span class="checkmarks"></span>
                                         </label>
                                     </th>
-                                    <th>Supplier Name</th>
-                                    <th>Reference</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                    <th>Grand Total</th>
-                                    <th>Paid</th>
-                                    <th>Due</th>
-                                    <th>Payment Status</th>
-                                    <th>Action</th>
+                                    <th>User Name</th>
+                                    <th>No of People</th>
+                                    <th>Visit type</th>
+                                    <th>Accept/Reject</th>
+
                                 </tr>
                             </thead>
 
 
                             <tbody>
-                                <tr>
+                                <tr *ngFor="let item of requestedOrdersData">
                                     <td>
                                         <label class="checkboxs">
                                             <input type="checkbox">
                                             <span class="checkmarks"></span>
                                         </label>
                                     </td>
-                                    <td class="text-bolds">Apex Computers</td>
-                                    <td>PT001</td>
-                                    <td>19 Nov 2022</td>
-                                    <td><span class="badges bg-lightgreen">Received</span></td>
-                                    <td>550</td>
-                                    <td>120</td>
-                                    <td>550</td>
-                                    <td><span class="badges bg-lightgreen">Paid</span></td>
+                                    <td class="text-bolds">{{item.username}}</td>
+                                    <td>{{item.no_of_people}}</td>
+                                    <td>{{item.visit_type}}</td>
                                     <td>
-                                        <a class="me-3" href="editpurchase.html">
-                                            <img src="assets/img/icons/edit.svg" alt="img">
+                                        <a (click)="acceptOrNot(true,item.id)">
+                                            <img src="assets/img/icons/check.png" alt="" width="25">
                                         </a>
-                                        <a class="me-3 confirm-text" href="javascript:void(0);">
-                                            <img src="assets/img/icons/delete.svg" alt="img">
+                                        <a (click)="acceptOrNot(false,item.id)">
+                                            <img src="assets/img/icons/remove.png" alt="" width="25">
                                         </a>
+
                                     </td>
+
                                 </tr>
                             </tbody>
                         </table>

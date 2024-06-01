@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import * as CryptoJS from 'crypto-js';
 
 
@@ -15,6 +15,8 @@ export class SharedService {
 
   activeTile = new BehaviorSubject<string>('Tracker');
   activeSubTile = new BehaviorSubject<string>('');
+
+
 
   private renderer: Renderer2;
   constructor(private rendererFactory: RendererFactory2, private httpClient: HttpClient) {
@@ -158,6 +160,12 @@ export class SharedService {
 
 
 
+
+
+
+
+
+
   signInApi(credentials: any) {
     let apiUrl = 'http://localhost:8000/api/signin/';
     return this.httpClient.post<any>(apiUrl,credentials
@@ -173,6 +181,7 @@ export class SharedService {
   {
     
   }
+
 
 
 

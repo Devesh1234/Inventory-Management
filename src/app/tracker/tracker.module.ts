@@ -12,7 +12,8 @@ import { AuthGuard } from '../auth.guard';
 
 
 const routes:Routes=[
-  {path:'Tracker',component:TrackerComponent , canActivate:[AuthGuard]}
+  // canActivate:[AuthGuard]
+  {path:'Tracker',component:TrackerComponent }
 ]
 
 @NgModule({

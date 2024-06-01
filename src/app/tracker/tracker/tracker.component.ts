@@ -3,6 +3,7 @@ import { ChartConfiguration, ChartData, ChartOptions, ChartType } from 'chart.js
 import { ChartEvent } from 'chart.js/dist/core/core.plugins';
 import { BaseChartDirective } from 'ng2-charts';
 import { SharedService } from 'src/app/shared.service';
+import { TrackerService } from '../tracker.service';
 // import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 
 
@@ -15,16 +16,85 @@ export class TrackerComponent implements OnInit {
 
   myModal = document.getElementById('exampleModalCenter');
 
+  activeButton: any;
+  requestedOrdersData: any;
 
-  constructor(private sharedService: SharedService) {
 
-    
+  constructor(private trackerService: TrackerService) {
+
+
 
   }
 
   ngOnInit(): void {
-    
 
+    this.trackerService.getActiveTrackerButton().subscribe((res: any) => {
+      console.log('Áctive Btn', res);
+      this.activeButton = res;
+    })
+
+
+    this.getRequestedOrdersData();
+
+
+  }
+
+
+  getRequestedOrdersData() {
+    this.trackerService.getRequestedOrders('29').subscribe({
+      next: (res: any) => {
+        console.log('Devesh', res);
+        if (res && res.response)
+          this.requestedOrdersData = res.response;
+      },
+      error: (res: any) => {
+
+      }
+    });
+
+  }
+  getActiveOrdersData() {
+
+  }
+
+  getCheckoutOrdersData() {
+
+  }
+
+  getHistoryOrdersData() {
+
+  }
+
+  onBtnClick(btnType: string) {
+    // if(btnType!=this.activeButton)
+    this.trackerService.setActiveTrackerButton(btnType);
+    if (btnType == 'requested') {
+      this.getRequestedOrdersData();
+    }
+    else if (btnType == 'active') {
+      this.getActiveOrdersData();
+    }
+
+    else if (btnType == 'checkout') {
+      this.getCheckoutOrdersData();
+    }
+    else if (btnType == 'history') {
+      this.getHistoryOrdersData();
+    }
+
+
+  }
+
+  acceptOrNot(status: boolean, id: any) {
+    let obj = { 'notification_id': id, 'accepted': status }
+    this.trackerService.vendorAcceptOrReject(obj).subscribe({
+      next: (res: any) => {
+        console.log('Status', res)
+      },
+      error: (res: any) => {
+
+      }
+    })
   }
 
 
