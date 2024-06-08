@@ -166,7 +166,7 @@
 
 
                     <div class="table-responsive">
-                        <table class="table datanew" data-ordering="false" data-page-length="10">
+                        <table class="table datanew" data-ordering="false" data-page-length="10"  *ngIf="activeButton=='requested'">
                             <thead>
                                 <tr>
                                     <th>
@@ -185,7 +185,7 @@
 
 
                             <tbody>
-                                <tr *ngFor="let item of requestedOrdersData">
+                                <tr *ngFor="let item of requestedOrdersDataList">
                                     <td>
                                         <label class="checkboxs">
                                             <input type="checkbox">
@@ -206,11 +206,191 @@
                                     </td>
 
                                 </tr>
+
+                                <tr>
+                                    <td colspan="5">Accepted Data</td>
+                                    <!-- <td>Accepted Data</td> -->
+                                    <!-- <td>Accepted Data</td> -->
+                                    <!-- <td>Accepted Data</td> -->
+                                    <!-- <td>Accepted Data</td> -->
+                                </tr>
+
+                             
+                                <tr *ngFor="let item of acceptedOrdersDataList">
+                                    <td>
+                                        <label class="checkboxs">
+                                            <input type="checkbox">
+                                            <span class="checkmarks"></span>
+                                        </label>
+                                    </td>
+                                    <td class="text-bolds">{{item.username}}</td>
+                                    <td>{{item.no_of_people}}</td>
+                                    <td>{{item.visit_type}}</td>
+                                    <td>
+                                        <a (click)="acceptOrNot(true,item.id)">
+                                            <img src="assets/img/icons/check.png" alt="" width="25">
+                                        </a>
+                                        <a (click)="acceptOrNot(false,item.id)">
+                                            <img src="assets/img/icons/remove.png" alt="" width="25">
+                                        </a>
+
+                                    </td>
+
+                                </tr>
+
+
+
+                               
                             </tbody>
+
+
+
+
+
                         </table>
+
+                        <table class="table datanew" data-ordering="false" data-page-length="10"  *ngIf="activeButton=='active'">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <label class="checkboxs">
+                                            <input type="checkbox" id="select-all">
+                                            <span class="checkmarks"></span>
+                                        </label>
+                                    </th>
+                                    <th>User Name</th>
+                                    <th>No of People</th>
+                                    <th>Visit type</th>
+                                    <th>Accept/Reject</th>
+
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                <tr *ngFor="let item of activeOrdersDataList">
+                                    <td>
+                                        <label class="checkboxs">
+                                            <input type="checkbox">
+                                            <span class="checkmarks"></span>
+                                        </label>
+                                    </td>
+                                    <td class="text-bolds">{{item.username}}</td>
+                                    <td>{{item.no_of_people}}</td>
+                                    <td>{{item.visit_type}}</td>
+                                   
+
+                                </tr>
+                            </tbody>
+
+
+
+
+
+                        </table>
+
+
+                        <table class="table datanew" data-ordering="false" data-page-length="10"  *ngIf="activeButton=='checkout'">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <label class="checkboxs">
+                                            <input type="checkbox" id="select-all">
+                                            <span class="checkmarks"></span>
+                                        </label>
+                                    </th>
+                                    <th>User Name</th>
+                                    <th>No of People</th>
+                                    <th>Visit type</th>
+                                    <th>Accept/Reject</th>
+
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                <tr *ngFor="let item of checkoutOrdersDataList">
+                                    <td>
+                                        <label class="checkboxs">
+                                            <input type="checkbox">
+                                            <span class="checkmarks"></span>
+                                        </label>
+                                    </td>
+                                    <td class="text-bolds">{{item.username}}</td>
+                                    <td>{{item.no_of_people}}</td>
+                                    <td>{{item.visit_type}}</td>
+                                    <td>
+                                        <a (click)="paymentAccept(true,item.id)">
+                                            <img src="assets/img/icons/check.png" alt="" width="25">
+                                        </a>
+                                        <a (click)="paymentAccept(false,item.id)">
+                                            <img src="assets/img/icons/remove.png" alt="" width="25">
+                                        </a>
+
+                                    </td>
+
+                                </tr>
+                            </tbody>
+
+
+
+
+
+                        </table>
+
+
+                        <table class="table datanew" data-ordering="false" data-page-length="10"  *ngIf="activeButton=='history'">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <label class="checkboxs">
+                                            <input type="checkbox" id="select-all">
+                                            <span class="checkmarks"></span>
+                                        </label>
+                                    </th>
+                                    <th>User Name</th>
+                                    <th>No of People</th>
+                                    <th>Visit type</th>
+                                    <th>Accept/Reject</th>
+
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                <tr *ngFor="let item of historyOrdersDataList">
+                                    <td>
+                                        <label class="checkboxs">
+                                            <input type="checkbox">
+                                            <span class="checkmarks"></span>
+                                        </label>
+                                    </td>
+                                    <td class="text-bolds">{{item.username}}</td>
+                                    <td>{{item.no_of_people}}</td>
+                                    <td>{{item.visit_type}}</td>
+                                </tr>
+                            </tbody>
+
+
+
+
+
+                        </table>
+
+
+
+
                     </div>
                 </div>
             </div>
+            <ng-template #noDataFound>
+                <!-- <tbody> -->
+                <!-- <tr> -->
+                <p>No Data Found</p>
+                <!-- <td>No Data Found</td> -->
+                <!-- </tr> -->
+                <!-- </tbody> -->
+            </ng-template>
 
         </div>
 
@@ -224,6 +404,18 @@
 
 
 
+
+
+
+
+<ng-template #noDataFound>
+    <!-- <tbody> -->
+    <!-- <tr> -->
+    <p>No Data Found</p>
+    <!-- <td>No Data Found</td> -->
+    <!-- </tr> -->
+    <!-- </tbody> -->
+</ng-template>
 
 
 

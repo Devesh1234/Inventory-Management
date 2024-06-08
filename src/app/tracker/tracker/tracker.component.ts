@@ -11,13 +11,18 @@ import { TrackerService } from '../tracker.service';
   selector: 'app-tracker',
   templateUrl: './tracker.component.html',
   styleUrls: ['./tracker.component.scss']
+
 })
 export class TrackerComponent implements OnInit {
 
   myModal = document.getElementById('exampleModalCenter');
 
   activeButton: any;
-  requestedOrdersData: any;
+  requestedOrdersDataList: any;
+  acceptedOrdersDataList: any;
+  activeOrdersDataList: any;
+  checkoutOrdersDataList: any;
+  historyOrdersDataList: any;
 
 
   constructor(private trackerService: TrackerService) {
@@ -41,11 +46,22 @@ export class TrackerComponent implements OnInit {
 
 
   getRequestedOrdersData() {
-    this.trackerService.getRequestedOrders('29').subscribe({
+    this.trackerService.getRequestedOrders().subscribe({
       next: (res: any) => {
-        console.log('Devesh', res);
-        if (res && res.response)
-          this.requestedOrdersData = res.response;
+        console.log('response--',res)
+        if (res && res.response) {
+          this.requestedOrdersDataList=res.response.filter((item:any)=>{
+              return (item.order_status=="requested")
+          })
+
+          this.acceptedOrdersDataList=res.response.filter((item:any)=>{
+            return (item.order_status=="accepted")
+        })
+
+          console.log('this.requestedOrdersDataList: ', this.requestedOrdersDataList);
+          console.log('this.cceptedorderlist: ', this.acceptedOrdersDataList);
+
+        }
       },
       error: (res: any) => {
 
@@ -53,15 +69,48 @@ export class TrackerComponent implements OnInit {
     });
 
   }
+ 
   getActiveOrdersData() {
 
+
+    this.trackerService.getActiveOrders().subscribe({
+      next:(res:any)=>{
+        this.activeOrdersDataList=res.response;
+        console.log('this.activeOrdersDataList: ', this.activeOrdersDataList);
+      },
+      error:(err:any)=>{
+
+      }
+    })
   }
 
   getCheckoutOrdersData() {
+    
+    this.trackerService.getCheckoutOrders().subscribe({
+      next:(res:any)=>{
+        this.checkoutOrdersDataList=res.response;
+        console.log('this.checkoutOrdersDataList: ', this.checkoutOrdersDataList);
+      },
+      error:(err:any)=>{
+
+      }
+    })
+
 
   }
 
   getHistoryOrdersData() {
+    
+
+    this.trackerService.getHistoryOrders().subscribe({
+      next:(res:any)=>{
+        this.historyOrdersDataList=res.response;
+        console.log('this.historyOrdersDataList: ', this.historyOrdersDataList);
+      },
+      error:(err:any)=>{
+
+      }
+    })
 
   }
 
@@ -87,9 +136,11 @@ export class TrackerComponent implements OnInit {
 
   acceptOrNot(status: boolean, id: any) {
     let obj = { 'notification_id': id, 'accepted': status }
-    this.trackerService.vendorAcceptOrReject(obj).subscribe({
+    this.trackerService.postvendorAcceptOrReject(obj).subscribe({
       next: (res: any) => {
         console.log('Status', res)
+        this.getRequestedOrdersData();
+
       },
       error: (res: any) => {
 
@@ -97,6 +148,21 @@ export class TrackerComponent implements OnInit {
     })
   }
 
+
+
+
+  paymentAccept(status: boolean, id: any) {
+    let obj = { 'checkout_id': id, 'payment_received': status }
+    this.trackerService.postPaymentApproval(obj).subscribe({
+      next: (res: any) => {
+        console.log('Status', res)
+
+      },
+      error: (res: any) => {
+
+      }
+    })
+  }
 
 
 

@@ -11,18 +11,16 @@ export class TrackerService {
 
 
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
 
 
-  
 
-  getActiveTrackerButton() :Observable<any>
-  {
+
+  getActiveTrackerButton(): Observable<any> {
     return this.activeTrackerButton.asObservable();
   }
-  setActiveTrackerButton(activeBtn:string)
-  {
+  setActiveTrackerButton(activeBtn: string) {
     this.activeTrackerButton.next(activeBtn);
   }
 
@@ -31,37 +29,45 @@ export class TrackerService {
 
 
 
+  vendor_id: any = '23';
 
 
 
-  
-  getRequestedOrders(vendor_id:any)
-  {
-    let apiUrl = 'http://127.0.0.1:8000/api/vendor/requests/'+vendor_id+'/request';
+  getRequestedOrders() {
+    let apiUrl = 'http://127.0.0.1:8000/api/vendor/requests/' + this.vendor_id + '/request';
     return this.httpClient.get(apiUrl);
 
   }
 
-  vendorAcceptOrReject(statusObj:any)
-  {
+  postvendorAcceptOrReject(statusObj: any) {
     let apiUrl = 'http://127.0.0.1:8000/api/reservation/vendor/notify_vendor_response/';
-    return this.httpClient.post(apiUrl,statusObj);
+    return this.httpClient.post(apiUrl, statusObj);
 
   }
 
 
-  getActiveOrders()
-  {
-    let apiUrl = 'http://127.0.0.1:8000/api/vendor/requests/29/active';
+
+
+  getActiveOrders() {
+    let apiUrl = 'http://127.0.0.1:8000/api/vendor/requests/' + this.vendor_id + '/active';
     return this.httpClient.get(apiUrl);
   }
-  getCheckoutOrders()
-  {
+
+
+  getCheckoutOrders() {
+
+    let apiUrl = 'http://127.0.0.1:8000/api/vendor/requests/' + this.vendor_id + '/checkout';
+    return this.httpClient.get(apiUrl);
 
   }
-  getHistoryOrders()
-  {
-    
+  postPaymentApproval(obj:any) {
+
+    let apiUrl="http://127.0.0.1:8000/api/vendor/approve_payment/"
+    return this.httpClient.post(apiUrl,obj)
+  }
+  getHistoryOrders() {
+    let apiUrl = 'http://127.0.0.1:8000/api/vendor/requests/' + this.vendor_id + '/history';
+    return this.httpClient.get(apiUrl);
   }
 
 }
