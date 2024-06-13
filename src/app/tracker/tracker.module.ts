@@ -4,10 +4,10 @@ import { TrackerComponent } from './tracker/tracker.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { SearchFilterPipe } from '../core/pipes/search-filter.pipe';
 import { NgChartsModule } from 'ng2-charts';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatLegacyPaginatorModule as MatPaginatorModule } from '@angular/material/legacy-paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppCommonModule } from '../app-common/app-common.module';
-import {MatTableModule} from '@angular/material/table';
+import {MatLegacyTableModule as MatTableModule} from '@angular/material/legacy-table';
 import { AuthGuard } from '../auth.guard';
 
 
