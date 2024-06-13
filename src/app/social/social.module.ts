@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SocialComponent } from './social/social.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { NgChartsModule } from 'ng2-charts';
-import { MatLegacyPaginatorModule as MatPaginatorModule } from '@angular/material/legacy-paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppCommonModule } from '../app-common/app-common.module';
 
