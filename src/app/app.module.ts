@@ -21,6 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TrackerModule } from './tracker/tracker.module';
 import { LoaderComponent } from './app-common/loader/loader.component';
 import {HttpClientModule} from '@angular/common/http'
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 // import { TabViewModule } from "primeng/tabview";
 
@@ -43,6 +45,7 @@ import {HttpClientModule} from '@angular/common/http'
     DashboardModule,
     InventoryModule,
     TrackerModule,
+    MatDialogModule,
     HttpClientModule
 
   ],

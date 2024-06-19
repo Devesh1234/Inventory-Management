@@ -4,6 +4,7 @@ import { ChartEvent } from 'chart.js/dist/core/core.plugins';
 import { BaseChartDirective } from 'ng2-charts';
 import { SharedService } from 'src/app/shared.service';
 import { TrackerService } from '../tracker.service';
+import { MatDialog } from '@angular/material/dialog';
 // import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 
 
@@ -15,7 +16,7 @@ import { TrackerService } from '../tracker.service';
 })
 export class TrackerComponent implements OnInit {
 
-  myModal = document.getElementById('exampleModalCenter');
+  // myModal = document.getElementById('exampleModalCenter');
 
   activeButton: any;
   requestedOrdersDataList: any;
@@ -24,18 +25,38 @@ export class TrackerComponent implements OnInit {
   checkoutOrdersDataList: any;
   historyOrdersDataList: any;
 
+  trackingSearchValue: string = "";
 
-  constructor(private trackerService: TrackerService) {
+
+  trackingSelectedValue: string = "requested";
+
+
+
+  options = [
+    { label: 'Requested', value: 'requested' },
+    { label: 'Active', value: 'active' },
+    { label: 'Checkout', value: 'checkout' },
+    { label: 'History', value: 'history' }
+  ];
+
+
+  constructor(private trackerService: TrackerService, private sharedService: SharedService) {
 
 
 
   }
 
+
+
+
   ngOnInit(): void {
+
+    // this.sharedService.loadScripts();
 
     this.trackerService.getActiveTrackerButton().subscribe((res: any) => {
       console.log('Áctive Btn', res);
       this.activeButton = res;
+
     })
 
 
@@ -48,15 +69,15 @@ export class TrackerComponent implements OnInit {
   getRequestedOrdersData() {
     this.trackerService.getRequestedOrders().subscribe({
       next: (res: any) => {
-        console.log('response--',res)
+        console.log('response--', res)
         if (res && res.response) {
-          this.requestedOrdersDataList=res.response.filter((item:any)=>{
-              return (item.order_status=="requested")
+          this.requestedOrdersDataList = res.response.filter((item: any) => {
+            return (item.order_status == "requested")
           })
 
-          this.acceptedOrdersDataList=res.response.filter((item:any)=>{
-            return (item.order_status=="accepted")
-        })
+          this.acceptedOrdersDataList = res.response.filter((item: any) => {
+            return (item.order_status == "accepted")
+          })
 
           console.log('this.requestedOrdersDataList: ', this.requestedOrdersDataList);
           console.log('this.cceptedorderlist: ', this.acceptedOrdersDataList);
@@ -69,29 +90,29 @@ export class TrackerComponent implements OnInit {
     });
 
   }
- 
+
   getActiveOrdersData() {
 
 
     this.trackerService.getActiveOrders().subscribe({
-      next:(res:any)=>{
-        this.activeOrdersDataList=res.response;
+      next: (res: any) => {
+        this.activeOrdersDataList = res.response;
         console.log('this.activeOrdersDataList: ', this.activeOrdersDataList);
       },
-      error:(err:any)=>{
+      error: (err: any) => {
 
       }
     })
   }
 
   getCheckoutOrdersData() {
-    
+
     this.trackerService.getCheckoutOrders().subscribe({
-      next:(res:any)=>{
-        this.checkoutOrdersDataList=res.response;
+      next: (res: any) => {
+        this.checkoutOrdersDataList = res.response;
         console.log('this.checkoutOrdersDataList: ', this.checkoutOrdersDataList);
       },
-      error:(err:any)=>{
+      error: (err: any) => {
 
       }
     })
@@ -100,14 +121,14 @@ export class TrackerComponent implements OnInit {
   }
 
   getHistoryOrdersData() {
-    
+
 
     this.trackerService.getHistoryOrders().subscribe({
-      next:(res:any)=>{
-        this.historyOrdersDataList=res.response;
+      next: (res: any) => {
+        this.historyOrdersDataList = res.response;
         console.log('this.historyOrdersDataList: ', this.historyOrdersDataList);
       },
-      error:(err:any)=>{
+      error: (err: any) => {
 
       }
     })
@@ -135,6 +156,7 @@ export class TrackerComponent implements OnInit {
   }
 
   acceptOrNot(status: boolean, id: any) {
+
     let obj = { 'notification_id': id, 'accepted': status }
     this.trackerService.postvendorAcceptOrReject(obj).subscribe({
       next: (res: any) => {
@@ -420,29 +442,15 @@ export class TrackerComponent implements OnInit {
 
 
 
-  // @ViewChild('exampleModalCenter') exampleModalCenter !:ElementRef
 
 
-  searchText: string = '';
+
 
   deleteditem: number = 0;
 
 
 
-  openConfirmationPopup(i: any) {
 
-
-
-    this.deleteditem = i;
-
-  }
-
-
-
-  deletedItem() {
-    console.log('deleted item is', this.deleteditem);
-
-  }
 
 
 
@@ -451,4 +459,32 @@ export class TrackerComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'names', 'symbols', 'weights'];
 
+
+
+
+  // onInputChange(event: any) {
+  //   console.log(event);
+  // }
+
+
+  onInputCross() {
+    this.trackingSearchValue = "";
+  }
+
+
+
+  getDeletedItem(id: any) {
+    this.deleteditem=id;
+    console.log('deleted item', id);
+  }
+  deleteItem() {
+    this.acceptOrNot(false,this.deleteditem)
+  }
+
+
+
+
+
 }
+
+

@@ -3450,20 +3450,24 @@
 }
 
 /* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
+/* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
 .mdi-format-list-bulleted:before {
   content: "\F279";
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
 /* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
 .mdi-format-list-bulleted-type:before {
   content: "\F27A";
 }
 
 /* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
+/* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
 .mdi-format-list-checks:before {
   content: "\F755";
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
 /* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
 .mdi-format-list-numbers:before {
   content: "\F27B";
@@ -9350,9 +9354,11 @@
   content: '\f246'; }
 
 /* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
+/* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
 .zmdi-format-list-bulleted:before {
   content: '\f247'; }
 
+/* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
 /* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
 .zmdi-format-list-numbered:before {
   content: '\f248'; }
@@ -11684,9 +11690,11 @@
   content: '\f246'; }
 
 /* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
+/* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
 .zmdi-format-list-bulleted:before {
   content: '\f247'; }
 
+/* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
 /* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
 .zmdi-format-list-numbered:before {
   content: '\f248'; }
