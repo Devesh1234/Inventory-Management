@@ -64,6 +64,14 @@ export class SidebarComponent implements OnInit {
         this.sharedService.setActiveSubTile('Offer');
         break;
 
+      case 'addCategory ':
+        // this.router.navigate(['/inventory/Offer']);
+        this.sharedService.setActiveTile('Inventory');
+        this.sharedService.setActiveSubTile('addCategory');
+        break;
+
+
+
 
 
 

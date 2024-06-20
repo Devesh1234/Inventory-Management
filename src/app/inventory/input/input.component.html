@@ -69,7 +69,7 @@
 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Menu Item</label>
+                                <label>Menu Item <span class="manitory">*</span></label>
                                 <input type="text" formControlName='menu_item'>
                             </div>
                         </div>
@@ -77,19 +77,19 @@
 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Category </label>
-                                <select #categoryselect class="select" formControlName="category" >
+                                <label>Category <span class="manitory">*</span></label>
+                                <select #categoryselect class="select" formControlName="category">
                                     <option disabled selected>Select</option>
-                                    <option >Category 1</option>
-                                    <option >Category 2</option>
-                                    <option >Category 3</option>
+                                    <option>Category 1</option>
+                                    <option>Category 2</option>
+                                    <option>Category 3</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Sub Category </label>
+                                <label>Sub Category <span class="manitory">*</span> </label>
                                 <select #subcategoryselect class="select" formControlName="sub_category">
                                     <option disabled selected>Select</option>
                                     <option>Sub Category 1</option>
@@ -103,7 +103,7 @@
 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Sub Sub Category </label>
+                                <label>Sub Sub Category<span class="manitory">*</span> </label>
                                 <select #subsubcategoryselect class="select" formControlName="sub_sub_category">
                                     <option disabled selected>Select</option>
                                     <option>Sub Sub Category 1</option>
@@ -115,7 +115,7 @@
 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Item Type </label>
+                                <label>Item Type <span class="manitory">*</span></label>
                                 <select #itemtypeselect class="select" formControlName="item_type">
                                     <option disabled selected>Select</option>
                                     <option>Vegetarian</option>
@@ -129,21 +129,21 @@
 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Ingredients</label>
+                                <label>Ingredients<span class="manitory">*</span></label>
                                 <input type="text" formControlName="ingredients">
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Price</label>
+                                <label>Price<span class="manitory">*</span></label>
                                 <input type="text" formControlName="price">
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Size Type </label>
+                                <label>Size Type <span class="manitory">*</span></label>
                                 <select #sizetypeselect class="select" formControlName="size_type">
                                     <option disabled selected>Select</option>
                                     <option>Small</option>
@@ -155,7 +155,7 @@
 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Estimate Time</label>
+                                <label>Estimate Time<span class="manitory">*</span></label>
                                 <input type="text" formControlName="estimate_time">
                             </div>
                         </div>
@@ -163,14 +163,14 @@
 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Stock</label>
+                                <label>Stock<span class="manitory">*</span></label>
                                 <input type="text" formControlName="stock">
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Calories</label>
+                                <label>Calories <span class="manitory">*</span></label>
                                 <input type="text" formControlName="calories">
                             </div>
                         </div>
@@ -178,7 +178,7 @@
 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>In Stock </label>
+                                <label>In Stock<span class="manitory">*</span> </label>
                                 <select #instockselect class="select" formControlName="in_stock">
                                     <option disabled selected>Select</option>
                                     <option value="yes">Yes</option>
@@ -190,14 +190,13 @@
 
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Description</label>
+                                <label>Description<span class="manitory">*</span></label>
                                 <textarea class="form-control" formControlName="description"></textarea>
                             </div>
                         </div>
                         <div class="d-flex justify-content-end">
                             <div class="page-btn">
-                                <button class="btn btn-primary me-2" 
-                                    (click)="addItem()">Add</button>
+                                <button class="btn btn-primary me-2" (click)="addItem()">Add</button>
                                 <button class="btn btn-secondary">Cancel</button>
                             </div>
                         </div>
