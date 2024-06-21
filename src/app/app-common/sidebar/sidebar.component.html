@@ -18,10 +18,16 @@
                                 (click)="selectTile('Overview')">Overview</a></li>
                         <li><a [ngClass]="activeSubTile=='Input'?'submenu active':'submenu' "
                                 (click)="selectTile('Input')">Input</a></li>
-                        <li><a [ngClass]="activeSubTile=='Offer'?'submenu active':'submenu' "
-                                (click)="selectTile('Offer')">Offer</a></li>
+
+
                         <li><a [ngClass]="activeSubTile=='addCategory'?'submenu active':'submenu' "
                                 (click)="selectTile('addCategory')">Add Category</a></li>
+                        <li><a [ngClass]="activeSubTile=='addSubCategory'?'submenu active':'submenu' "
+                                (click)="selectTile('addSubCategory')">Add Sub Category</a></li>
+
+                        <li><a [ngClass]="activeSubTile=='Offer'?'submenu active':'submenu' "
+                                (click)="selectTile('Offer')">Offer</a></li>
+
 
                     </ul>
                 </li>
