@@ -21,13 +21,25 @@
 
 
                         <li><a [ngClass]="activeSubTile=='addCategory'?'submenu active':'submenu' "
-                                (click)="selectTile('addCategory')">Add Category</a></li>
+                                (click)="selectTile('addCategory')" data-toggle="modal"
+                                data-target="#exampleModalCenter">Add Category</a></li>
                         <li><a [ngClass]="activeSubTile=='addSubCategory'?'submenu active':'submenu' "
                                 (click)="selectTile('addSubCategory')">Add Sub Category</a></li>
 
                         <li><a [ngClass]="activeSubTile=='Offer'?'submenu active':'submenu' "
                                 (click)="selectTile('Offer')">Offer</a></li>
 
+                        
+                        <li class="submenu">
+                            <a><span>
+                                    Inventory</span> <span class="menu-arrow">--</span></a>
+
+                            <ul>
+                                <li><a style="margin-left: 10px;"
+                                        [ngClass]="activeSubTile=='Offer'?'submenu active':'submenu' "
+                                        (click)="selectTile('Offer')">dsadas</a></li>
+                            </ul>
+                        </li>
 
                     </ul>
                 </li>
@@ -58,6 +70,62 @@
 
 
             </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add Category</h5>
+                <!-- 
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+
+            </div>
+            <div class="modal-body">
+
+
+                <!-- <div class="card"> -->
+                <!-- <div class="card-body"> -->
+                <div class="row">
+                    <div class="col-lg-12 ">
+                        <div class="form-group">
+                            <label>Category Name <span class="manitory">*</span></label>
+                            <input type="text">
+                            <p class="mt-2">Please Note : Item Falls in Food, Bevarges Category</p>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-12 text-end">
+                        <a class="btn  btn-sm me-2">Submit</a>
+                        <a class="btn btn-cancel btn-sm">Cancel</a>
+                        <button type="button" class="btn btn-primary btn-sm">Primary</button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- </div> -->
+                <!-- </div> -->
+            </div>
+
         </div>
     </div>
 </div>
