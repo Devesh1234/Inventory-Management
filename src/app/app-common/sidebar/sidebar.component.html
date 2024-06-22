@@ -13,33 +13,34 @@
                     <a [ngClass]="activeTile=='Inventory'?'submenu active':'submenu' "><img
                             src="assets/img/icons/sales1.svg" alt="img"><span>
                             Inventory</span> <span class="menu-arrow"></span></a>
-                    <ul>
-                        <li><a [ngClass]="activeSubTile=='Overview'?'submenu active':'submenu' "
-                                (click)="selectTile('Overview')">Overview</a></li>
-                        <li><a [ngClass]="activeSubTile=='Input'?'submenu active':'submenu' "
-                                (click)="selectTile('Input')">Input</a></li>
-
-
-                        <li><a [ngClass]="activeSubTile=='addCategory'?'submenu active':'submenu' "
-                                (click)="selectTile('addCategory')" data-toggle="modal"
-                                data-target="#exampleModalCenter">Add Category</a></li>
-                        <li><a [ngClass]="activeSubTile=='addSubCategory'?'submenu active':'submenu' "
-                                (click)="selectTile('addSubCategory')">Add Sub Category</a></li>
-
-                        <li><a [ngClass]="activeSubTile=='Offer'?'submenu active':'submenu' "
-                                (click)="selectTile('Offer')">Offer</a></li>
-
-                        
-                        <li class="submenu">
-                            <a><span>
-                                    Inventory</span> <span class="menu-arrow">--</span></a>
-
-                            <ul>
-                                <li><a style="margin-left: 10px;"
-                                        [ngClass]="activeSubTile=='Offer'?'submenu active':'submenu' "
-                                        (click)="selectTile('Offer')">dsadas</a></li>
+                    <ul class="ms-3">
+                        <li class="subsubmenu">
+                            <a [ngClass]="activeTile=='items'?'submenu active':'submenu' " >
+                                <span class="subsubmenuheading">Items</span>
+                            </a>
+                            <ul class="ms-3">
+                                <li>
+                                    <a [ngClass]="activeSubTile=='itemsOverview'?'submenu active':'submenu' "
+                                    (click)="selectTile('itemsOverview')">Overview</a>
+                                </li>
+                                <li>
+                                    <a [ngClass]="activeSubTile=='addInput'?'submenu active':'submenu' "
+                                    (click)="selectTile('addInput')">Add Input</a>
+                                </li>
                             </ul>
                         </li>
+
+                        <li><a [ngClass]="activeSubTile=='category'?'submenu active':'submenu' "
+                                (click)="selectTile('category')"> Category</a></li>
+                        <li><a [ngClass]="activeSubTile=='subCategory'?'submenu active':'submenu' "
+                                (click)="selectTile('subCategory')">Sub Category</a></li>
+                        <li><a [ngClass]="activeSubTile=='subSubCategory'?'submenu active':'submenu' "
+                                (click)="selectTile('subSubCategory')">Sub Sub Category</a></li>
+
+                        <li><a [ngClass]="activeSubTile=='Offer'?'submenu active':'submenu' "
+                                (click)="selectTile('Offer')">Preview</a></li>
+
+
 
                     </ul>
                 </li>
@@ -48,7 +49,7 @@
                 <li class="submenu">
                     <a><img src="assets/img/icons/expense1.svg" alt="img"><span>Profile</span> <span
                             class="menu-arrow"></span></a>
-                    <ul>
+                    <ul class="ms-3">
                         <li><a>Add Expense</a></li>
                         <li><a>Expense Category</a></li>
                     </ul>
@@ -70,62 +71,6 @@
 
 
             </ul>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Add Category</h5>
-                <!-- 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button> -->
-
-            </div>
-            <div class="modal-body">
-
-
-                <!-- <div class="card"> -->
-                <!-- <div class="card-body"> -->
-                <div class="row">
-                    <div class="col-lg-12 ">
-                        <div class="form-group">
-                            <label>Category Name <span class="manitory">*</span></label>
-                            <input type="text">
-                            <p class="mt-2">Please Note : Item Falls in Food, Bevarges Category</p>
-
-                        </div>
-                    </div>
-
-
-                    <div class="col-lg-12 text-end">
-                        <a class="btn  btn-sm me-2">Submit</a>
-                        <a class="btn btn-cancel btn-sm">Cancel</a>
-                        <button type="button" class="btn btn-primary btn-sm">Primary</button>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- </div> -->
-                <!-- </div> -->
-            </div>
-
         </div>
     </div>
 </div>

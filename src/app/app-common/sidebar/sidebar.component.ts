@@ -45,35 +45,38 @@ export class SidebarComponent implements OnInit {
         this.sharedService.setActiveTile('Tracker');
 
         break;
-      case 'Overview':
+
+      case 'itemsOverview':
         this.router.navigate(['/inventory/Overview']);
-        this.sharedService.setActiveTile('Inventory');
-        this.sharedService.setActiveSubTile('Overview');
+        this.sharedService.setActiveTile('items');
+        this.sharedService.setActiveSubTile('itemsOverview');
         break;
 
-      case 'Input':
+
+      case 'addInput':
         this.router.navigate(['/inventory/Input']);
+        this.sharedService.setActiveTile('items');
+        this.sharedService.setActiveSubTile('addInput');
+        break;
+      case 'category':
+        this.router.navigate(['/inventory/category']);
         this.sharedService.setActiveTile('Inventory');
-        this.sharedService.setActiveSubTile('Input');
+        this.sharedService.setActiveSubTile('category');
         break;
 
-      case 'addCategory':
-        // this.router.navigate(['/inventory/Offer']);
+      case 'subCategory':
+        this.router.navigate(['/inventory/subcategory']);
         this.sharedService.setActiveTile('Inventory');
-        this.sharedService.setActiveSubTile('addCategory');
+        this.sharedService.setActiveSubTile('subCategory');
         break;
 
-      case 'addSubCategory':
-        // this.router.navigate(['/inventory/Offer']);
+      case 'subSubCategory':
+        this.router.navigate(['/inventory/subsubcategory']);
         this.sharedService.setActiveTile('Inventory');
-        this.sharedService.setActiveSubTile('addSubCategory');
+        this.sharedService.setActiveSubTile('subSubCategory');
         break;
 
-      case 'Offer':
-        // this.router.navigate(['/inventory/Offer']);
-        this.sharedService.setActiveTile('Inventory');
-        this.sharedService.setActiveSubTile('Offer');
-        break;
+
 
 
 
@@ -87,4 +90,30 @@ export class SidebarComponent implements OnInit {
 
   }
 
+
+
+  openSubSubMenu() {
+
+    let elem = document.getElementsByClassName("subsubmenuheading");
+
+    if (elem[0].className.includes('active')) {
+      // elem[0].classList.remove('active')
+    }
+    else {
+      // elem[0].classList.add('active')
+    }
+    // console.log('elem: ',);
+
+    let elem2 = document.getElementsByClassName("subsubmenu");
+    console.log('elem2: ', elem2);
+    // elem2[0].childNodes[0]('subdrop')
+    // let x = elem2[0].childNodes[0].classList.remove();
+
+
+  }
+
 }
+
+
+
+

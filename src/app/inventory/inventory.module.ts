@@ -7,13 +7,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverviewComponent } from './overview/overview.component';
 import { InputComponent } from './input/input.component';
 import { OffersComponent } from './offers/offers.component';
+import { CategoryComponent } from './category/category.component';
+import { SubcategoryComponent } from './subcategory/subcategory.component';
+import { SubsubcategoryComponent } from './subsubcategory/subsubcategory.component';
 
 
 const routes:Routes=[
   {path:'Inventory',component:InventoryComponent},
   {path:'Overview',component:OverviewComponent},
   {path:'Input',component:InputComponent},
-  {path:'Offers',component:OffersComponent}
+  {path:'Offers',component:OffersComponent},
+  {path:'category',component:CategoryComponent},
+  {path:'subcategory',component:SubcategoryComponent},
+  {path:'subsubcategory',component:SubsubcategoryComponent}
 ]
 
 @NgModule({
@@ -21,7 +27,7 @@ const routes:Routes=[
     InventoryComponent,
     OverviewComponent,
     InputComponent,
-    OffersComponent
+    OffersComponent,
   ],
   imports: [
     RouterModule.forChild(routes),

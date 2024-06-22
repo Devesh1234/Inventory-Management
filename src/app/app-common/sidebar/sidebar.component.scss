@@ -1,0 +1,27 @@
+.subsubmenu {
+
+    a {
+        // span {
+        //     background-color: red;
+        // }
+
+        .subsubmenuheading::after {
+
+            content: "\f105" !important;
+            font-weight: 900 !important;
+            font-family: "font awesome 5 free" !important;
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            transform:rotate(90deg);
+            transition: transform 0.3s ;
+            margin-left: 110px  !important;
+
+        }
+
+        .subsubmenuheading.active::after
+        {
+            transform:rotate(90deg);
+        }
+    }
+}

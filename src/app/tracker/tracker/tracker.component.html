@@ -128,65 +128,101 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="card">
-                <div class="card-body">
-                    <!-- <h4 class="tracking_heading">Order Tracking</h4> -->
-                    <h5 class="card-title mb-0">Order Tracking</h5>
+                <div class="card-header pb-0">
+                    <h5 class="card-title">Order Tracking</h5>
+
+
+                    <div class="table-top my-4 gap-3 align-items-start">
+
+                        <div class="order_tracking_header">
+                            <div class="tracking_search">
+                                <img src="assets/img/icons/search-white.svg" alt="img" class="me-2">
+
+                                <input type="search" class="traking_search_input" placeholder="Search here"
+                                    [(ngModel)]="trackingSearchValue">
+                                <h5 (click)="onInputCross()">&times;</h5>
+
+                            </div>
+
+                        </div>
 
 
 
-                    <div class="table-responsive">
-                        <table class="table datanew" data-ordering="false" data-paging="false"  data-searching="false" data-info="false"
-                            *ngIf="activeButton=='requested'">
+                        <div class="radio-buttons">
+
+
+                            <label *ngFor="let option of options">
+                                <input type="radio" name="options" [value]="option.value"
+                                    [(ngModel)]="trackingSelectedValue" (change)="onBtnClick(option.value)" />
+                                <p [ngClass]="trackingSelectedValue==option.value?'active_radio':''">{{
+                                    option.label }}</p>
+                            </label>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="card-body pt-0">
+                    <div class="table-responsive" *ngIf="activeButton=='requested'">
+                        <table class="table table-nowrap mb-0">
                             <thead>
                                 <tr>
-                                  
                                     <th>User Name</th>
                                     <th>No of People</th>
                                     <th>Visit type</th>
-                                    <th>Order Status</th>
+                                    <th>Action&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </th>
                                     <th>Date of Birth</th>
                                     <th>Arrival Time</th>
                                     <th>Message</th>
-
-
                                 </tr>
                             </thead>
 
-
-                            <tbody *ngIf="requestedOrdersDataList; else noDataFound" >
+                            <tbody *ngIf="requestedOrdersDataList">
                                 <tr *ngFor="let item of requestedOrdersDataList | searchFilter:trackingSearchValue">
-                                    
+
                                     <td class="text-bolds">{{item.username}}</td>
                                     <td>{{item.no_of_people}}</td>
                                     <td>{{item.visit_type}}</td>
+
                                     <td>
-                                        <a (click)="acceptOrNot(true,item.id)">
-                                            <img src="assets/img/icons/check.png" alt="" width="25">
-                                        </a>
-                                        <a (click)="getDeletedItem(item.id)" data-toggle="modal" data-target="#exampleModalCenter">
-                                            <img src="assets/img/icons/remove.png" alt="" width="25">
-                                        </a>
+                                        <span class="badges bg-lightgreen me-1"
+                                            (click)="acceptOrNot(true,item.id)">Requested</span>
+
+                                        <img src="assets/img/icons/delete.svg" alt="img" class="align-middle"
+                                            (click)="getDeletedItem(item.id)" data-toggle="modal"
+                                            data-target="#exampleModalCenter">
+
 
                                     </td>
+                                    <!-- 
+                                    <td>
+                                        <a class="me-3" >
+                                                </a>
+                                        <a class="me-3" >
+                                        </a>
+                                    </td> -->
+
+
+
                                     <td>{{item.dob}}</td>
                                     <td>{{item.time_of_arrival}}</td>
                                     <td>{{item.message}}</td>
 
 
                                 </tr>
-
                                 <tr>
-                                    <td colspan="5">Accepted Data</td>
+                                    <td colspan="6">Accepted Data</td>
                                     <!-- <td>Accepted Data</td> -->
                                     <!-- <td>Accepted Data</td> -->
                                     <!-- <td>Accepted Data</td> -->
                                     <!-- <td>Accepted Data</td> -->
                                 </tr>
-
-
                                 <tr *ngFor="let item of acceptedOrdersDataList">
-                                    
+
                                     <td class="text-bolds">{{item.username}}</td>
                                     <td>{{item.no_of_people}}</td>
                                     <td>{{item.visit_type}}</td>
@@ -194,30 +230,25 @@
                                         <a (click)="acceptOrNot(true,item.id)">
                                             <img src="assets/img/icons/check.png" alt="" width="25">
                                         </a>
-                                        <a (click)="getDeletedItem(item.id)" data-toggle="modal" data-target="#exampleModalCenter" >
+                                        <a (click)="getDeletedItem(item.id)" data-toggle="modal"
+                                            data-target="#exampleModalCenter">
                                             <img src="assets/img/icons/remove.png" alt="" width="25">
                                         </a>
 
                                     </td>
 
                                 </tr>
-
-
-
-
                             </tbody>
-
-
-
-
-
                         </table>
+                    </div>
 
-                        <table class="table datanew" data-ordering="false" data-page-length="10"
-                            *ngIf="activeButton=='active'">
+
+
+                    <div class="table-responsive" *ngIf="activeButton=='active'">
+                        <table class="table table-nowrap mb-0">
                             <thead>
                                 <tr>
-                                   
+
                                     <th>User Name</th>
                                     <th>No of People</th>
                                     <th>Visit type</th>
@@ -225,11 +256,9 @@
 
                                 </tr>
                             </thead>
-
-
-                            <tbody>
+                            <tbody *ngIf="activeOrdersDataList">
                                 <tr *ngFor="let item of activeOrdersDataList">
-                                   
+
                                     <td class="text-bolds">{{item.username}}</td>
                                     <td>{{item.no_of_people}}</td>
                                     <td>{{item.visit_type}}</td>
@@ -238,18 +267,17 @@
                                 </tr>
                             </tbody>
 
-
-
-
-
                         </table>
+                    </div>
 
 
-                        <table class="table datanew" data-ordering="false" data-page-length="10"
-                            *ngIf="activeButton=='checkout'">
+
+
+                    <div class="table-responsive" *ngIf="activeButton=='checkout'">
+                        <table class="table table-nowrap mb-0">
                             <thead>
                                 <tr>
-                                    
+
                                     <th>User Name</th>
                                     <th>No of People</th>
                                     <th>Visit type</th>
@@ -258,10 +286,9 @@
                                 </tr>
                             </thead>
 
-
-                            <tbody>
+                            <tbody *ngIf="checkoutOrdersDataList">
                                 <tr *ngFor="let item of checkoutOrdersDataList">
-                                    
+
                                     <td class="text-bolds">{{item.username}}</td>
                                     <td>{{item.no_of_people}}</td>
                                     <td>{{item.visit_type}}</td>
@@ -280,16 +307,17 @@
 
 
 
-
-
                         </table>
+                    </div>
 
 
-                        <table class="table datanew" data-ordering="false" data-page-length="10"
-                            *ngIf="activeButton=='history'">
+
+
+                    <div class="table-responsive" *ngIf="activeButton=='history'">
+                        <table class="table table-nowrap mb-0">
                             <thead>
                                 <tr>
-                                    
+
                                     <th>User Name</th>
                                     <th>No of People</th>
                                     <th>Visit type</th>
@@ -299,9 +327,9 @@
                             </thead>
 
 
-                            <tbody>
+                            <tbody *ngIf="historyOrdersDataList">
                                 <tr *ngFor="let item of historyOrdersDataList">
-                                   
+
                                     <td class="text-bolds">{{item.username}}</td>
                                     <td>{{item.no_of_people}}</td>
                                     <td>{{item.visit_type}}</td>
@@ -310,177 +338,12 @@
 
 
 
-
-
                         </table>
-
-
-
-
                     </div>
 
 
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title">Order Tracking</h5>
-                           
-                            
-                    <div class="table-top my-4 gap-3 align-items-start">
 
-                        <div class="order_tracking_header">
-                            <div class="tracking_search">
-                                <img src="assets/img/icons/search-white.svg" alt="img" class="me-2">
-
-                                <input type="search" class="traking_search_input" placeholder="Search here"
-                                    [(ngModel)]="trackingSearchValue" >
-                                <h5 (click)="onInputCross()">&times;</h5>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <div class="radio-buttons">
-
-                        
-                            <label *ngFor="let option of options">
-                                <input type="radio" name="options" [value]="option.value" [(ngModel)]="trackingSelectedValue"
-                                    (change)="onBtnClick(option.value)"    />
-                                <p [ngClass]="trackingSelectedValue==option.value?'active_radio':''">{{ option.label }}</p>
-                            </label>
-                        </div>
-
-
-
-
-
-                        <!-- <div class="wordset"> -->
-
-
-                        <!-- <ul>
-
-                                <li></li>
-
-                                <li>
-                                    <button class="btn"
-                                        [ngClass]="activeButton=='requested'?'btn-secondary':'btn-primary'"
-                                        (click)="onBtnClick('requested')">Requests</button>
-                                </li>
-                                
-                                <li>
-                                    <button class="btn" [ngClass]="activeButton=='active'?'btn-secondary':'btn-primary'"
-                                        (click)="onBtnClick('active')">Active</button>
-
-                                </li>
-                                <li>
-                                    <button class="btn"
-                                        [ngClass]="activeButton=='checkout'?'btn-secondary':'btn-primary'"
-                                        (click)="onBtnClick('checkout')">Checkout</button>
-                                </li>
-                                <li>
-                                    <button class="btn"
-                                        [ngClass]="activeButton=='history'?'btn-secondary':'btn-primary'"
-                                        (click)="onBtnClick('history')">History</button>
-                                </li>
-                            </ul> -->
-                        <!-- </div> -->
-                    </div>
-
-
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-nowrap mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Firstname</th>
-                                            <th>Lastname</th>
-                                            <th>Age</th>
-                                            <th>City</th>
-                                            <th>Country</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Anna</td>
-                                            <td>Pitt</td>
-                                            <td>35</td>
-                                            <td>New York</td>
-                                            <td>USA</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Anna</td>
-                                            <td>Pitt</td>
-                                            <td>35</td>
-                                            <td>New York</td>
-                                            <td>USA</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Anna</td>
-                                            <td>Pitt</td>
-                                            <td>35</td>
-                                            <td>New York</td>
-                                            <td>USA</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Anna</td>
-                                            <td>Pitt</td>
-                                            <td>35</td>
-                                            <td>New York</td>
-                                            <td>USA</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Anna</td>
-                                            <td>Pitt</td>
-                                            <td>35</td>
-                                            <td>New York</td>
-                                            <td>USA</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Anna</td>
-                                            <td>Pitt</td>
-                                            <td>35</td>
-                                            <td>New York</td>
-                                            <td>USA</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Anna</td>
-                                            <td>Pitt</td>
-                                            <td>35</td>
-                                            <td>New York</td>
-                                            <td>USA</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Anna</td>
-                                            <td>Pitt</td>
-                                            <td>35</td>
-                                            <td>New York</td>
-                                            <td>USA</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Anna</td>
-                                            <td>Pitt</td>
-                                            <td>35</td>
-                                            <td>New York</td>
-                                            <td>USA</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -500,7 +363,7 @@
 
 
 
-   
+
 
 </div>
 
@@ -526,7 +389,7 @@
 
 
 <ng-template #confirmationDialog>
-<div>sadsa</div>
+    <div>sadsa</div>
 </ng-template>
 
 
@@ -537,20 +400,26 @@
 
 
 
-<div class="modal show bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header justify-content-center">
-                <h5 class="modal-title" id="exampleModalLongTitle">Are You Sure ??</h5>
 
+
+
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Are Your Sure to Delete ?</h5>
+               
             </div>
-            <div class="modal-body px-5 py-4">
-              <h3>This is irreversible process</h3>
+            <div class="modal-body">
+
+                <h6>This process is irreversible</h6>
             </div>
-            <div class="modal-footer justify-content-evenly">
+            <div class="modal-footer justify-content-end">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="deleteItem()">Delete Item</button>
+                <button type="button" class="btn btn-primary" (click)="deleteItem()">Delete</button>
             </div>
         </div>
     </div>

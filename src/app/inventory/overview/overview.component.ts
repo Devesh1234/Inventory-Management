@@ -13,7 +13,7 @@ export class OverviewComponent implements OnInit {
   constructor(private sharedService: SharedService) { }
 
   ngOnInit(): void {
-    // this.sharedService.loadScripts();
+    this.sharedService.loadScripts();
 
 
     this.sharedService.getInventoryMenuDataApi().subscribe((res: any) => {
