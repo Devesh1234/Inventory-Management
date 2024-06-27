@@ -1,34 +1,48 @@
-
-$font-primary: 'Poppins',Arial, sans-serif;
+$font-primary: 'Poppins', Arial, sans-serif;
 $primary: #3e64ff;
 
-body{
+body {
 	font-family: $font-primary;
 	font-size: 14px;
 	line-height: 1.8;
 	font-weight: normal;
 	background: #fafafa;
-	color: lighten(black,50%);
+	color: lighten(black, 50%);
 }
+
 a {
 	transition: .3s all ease;
 	color: $primary;
-	&:hover, &:focus {
+
+	&:hover,
+	&:focus {
 		text-decoration: none !important;
 		outline: none !important;
 		box-shadow: none;
 	}
 }
+
 button {
 	transition: .3s all ease;
-	&:hover, &:focus {
+
+	&:hover,
+	&:focus {
 		text-decoration: none !important;
 		outline: none !important;
 		box-shadow: none !important;
 	}
 }
-h1, h2, h3, h4, h5,
-.h1, .h2, .h3, .h4, .h5 {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
 	line-height: 1.5;
 	font-weight: 400;
 	font-family: $font-primary;
@@ -38,47 +52,50 @@ h1, h2, h3, h4, h5,
 
 
 //COVER BG
-.img{
+.img {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
 }
 
 .dropdown-toggle::after {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	transform: translateY(-50%);
 }
 
 .custom-select-btn {
 	padding: 9px 15px;
-    width: 100%;
+	width: 100%;
 	cursor: pointer;
 	border: 1px solid rgba(145, 158, 171, 0.32);
-    color: #637381;
+	color: #637381;
 	border-radius: 5px;
 	font-size: 14px;
 	font-weight: 400;
-    background-color: white;
+	background-color: white;
 	// -webkit-box-shadow: 0px 10px 20px -6px rgba(0,0,0,0.12);
 	// -moz-box-shadow: 0px 10px 20px -6px rgba(0,0,0,0.12);
 	// box-shadow: 0px 10px 20px -6px rgba(0,0,0,0.12);
 	position: relative;
+
 	// @include transition(.3s);
-	i{
+	i {
 		font-size: 22px;
 		line-height: 1;
 	}
-	&:active, &:focus {
+
+	&:active,
+	&:focus {
 		outline: none !important;
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0px;
-                
-        border-left: solid 1px black;
-        border-right: solid 1px black;
-        border-top: solid 1px black;
-        
+		border-bottom-left-radius: 0px;
+		border-bottom-right-radius: 0px;
+
+		border-left: solid 1px black;
+		border-right: solid 1px black;
+		border-top: solid 1px black;
+
 
 	}
 
@@ -91,31 +108,32 @@ $color-3: #4d80e4;
 $color-4: #ff8080;
 
 
-.btn-group{
+.btn-group {
 	// min-width: 18rem;
-    width: 100%;
-	.dropdown-menu{
+	width: 100%;
+
+	.dropdown-menu {
 		border: none;
 		background: white;
-		-webkit-box-shadow: 0px 10px 34px -20px rgba(0,0,0,0.41);
-		-moz-box-shadow: 0px 10px 34px -20px rgba(0,0,0,0.41);
-		box-shadow: 0px 10px 34px -20px rgba(0,0,0,0.41);
+		-webkit-box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
+		-moz-box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
+		box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
 		padding: 0;
 		// min-width: 18rem;
-        width: 100%;
+		width: 100%;
 		// margin-top: 15px;
 
-        border-top-left-radius: 0px;
-        border-top-right-radius: 0px;
-        
-        border-left: solid 1px black;
-        border-right: solid 1px black;
-        border-bottom: solid 1px black;
-        top: 40px !important;
-        left: 0px !important    ;
-        transform: none !important;
-        max-height: 250px;
-        overflow-y: scroll;
+		border-top-left-radius: 0px;
+		border-top-right-radius: 0px;
+
+		border-left: solid 1px black;
+		border-right: solid 1px black;
+		border-bottom: solid 1px black;
+		top: 40px !important;
+		left: 0px !important;
+		transform: none !important;
+		max-height: 250px;
+		overflow-y: auto;
 
 
 
@@ -135,76 +153,78 @@ $color-4: #ff8080;
 		// 	top: -.6em;
 		//   border-bottom-color: rgba(0,0,0,.03);
 		// }
-        
-		.dropdown-item{
-		// 	font-size: 16px;
-		// 	color: rgba(0,0,0,.7);
-		// 	font-weight: 400;
-		// 	padding: 15px 30px;
-		// 	position: relative;
-		// 	border-bottom: 1px solid rgba(0,0,0,.05);
-		// 	no-wrap: normal;
-			&:hover{
+
+		.dropdown-item {
+
+			// 	font-size: 16px;
+			// 	color: rgba(0,0,0,.7);
+			// 	font-weight: 400;
+			// 	padding: 15px 30px;
+			// 	position: relative;
+			// 	border-bottom: 1px solid rgba(0,0,0,.05);
+			// 	no-wrap: normal;
+			&:hover {
 				border: none;
 				background-color: red;
 			}
-		// 	&:after{
-		// 		position: absolute;
-		// 		top: 0;
-		// 		bottom: 0;
-		// 		left: 0;
-		// 		content: '';
-		// 		width: 4px;
-		// 		// @include transition(.3s);
-		// 		opacity: 0;
-		// 	}
-		// 	span{
-		// 		font-size: 20px;
-		// 	}
-		// 	&.color-1{
-		// 		span{
-		// 			color: $color-1;
-		// 		}
-		// 		&:hover{
-		// 			&:after{
-		// 				opacity: 1;
-		// 				background: $color-1;
-		// 			}
-		// 		}
-		// 	}
-		// 	&.color-2{
-		// 		span{
-		// 			color: $color-2;
-		// 		}
-		// 		&:hover{
-		// 			&:after{
-		// 				opacity: 1;
-		// 				background: $color-2;
-		// 			}
-		// 		}
-		// 	}
-		// 	&.color-3{
-		// 		span{
-		// 			color: $color-3;
-		// 		}
-		// 		&:hover{
-		// 			&:after{
-		// 				opacity: 1;
-		// 				background: $color-3;
-		// 			}
-		// 		}
-		// 	}
-		// 	&.color-4{
-		// 		span{
-		// 			color: $color-4;
-		// 		}
-		// 		&:hover{
-		// 			&:after{
-		// 				opacity: 1;
-		// 				background: $color-4;
-		// 			}
-		// 		}
-		// 	}
+
+			// 	&:after{
+			// 		position: absolute;
+			// 		top: 0;
+			// 		bottom: 0;
+			// 		left: 0;
+			// 		content: '';
+			// 		width: 4px;
+			// 		// @include transition(.3s);
+			// 		opacity: 0;
+			// 	}
+			// 	span{
+			// 		font-size: 20px;
+			// 	}
+			// 	&.color-1{
+			// 		span{
+			// 			color: $color-1;
+			// 		}
+			// 		&:hover{
+			// 			&:after{
+			// 				opacity: 1;
+			// 				background: $color-1;
+			// 			}
+			// 		}
+			// 	}
+			// 	&.color-2{
+			// 		span{
+			// 			color: $color-2;
+			// 		}
+			// 		&:hover{
+			// 			&:after{
+			// 				opacity: 1;
+			// 				background: $color-2;
+			// 			}
+			// 		}
+			// 	}
+			// 	&.color-3{
+			// 		span{
+			// 			color: $color-3;
+			// 		}
+			// 		&:hover{
+			// 			&:after{
+			// 				opacity: 1;
+			// 				background: $color-3;
+			// 			}
+			// 		}
+			// 	}
+			// 	&.color-4{
+			// 		span{
+			// 			color: $color-4;
+			// 		}
+			// 		&:hover{
+			// 			&:after{
+			// 				opacity: 1;
+			// 				background: $color-4;
+			// 			}
+			// 		}
+			// 	}
 		}
 	}
 }

@@ -34,7 +34,7 @@
 
                         <div class="col-lg-6 col-sm-6 col-12">
                             <div class="form-group">
-                                <label ><span class="manitory">*</span>Category</label>
+                                <label>Category<span class="manitory">*</span></label>
                                 <div class="btn-group">
                                     <button type="button" class="custom-select-btn dropdown-toggle text-left"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -42,68 +42,16 @@
                                         {{selectedCategoryValue}}
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item "  *ngFor="let item of categoryList" (click)="selectCatgeory(item)">
-                                            {{item}}
+                                        <a class="dropdown-item " *ngFor="let item of categoryList"
+                                            (click)="selectCatgeory(item)">
+                                            {{item?.name}}
                                         </a>
-                                       
+
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-
-
-
-
-                        <div class="col-lg-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label>Category <span class="manitory">*</span></label>
-                                <select #categoryselect class="select">
-                                    <option disabled selected>Select</option>
-                                    <option>Category 1</option>
-                                    <option>Category 2</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                </select>
-                            </div>
-
-                        </div>
 
 
 
@@ -117,15 +65,15 @@
 
                             <div class="form-group">
                                 <label>Menu Item <span class="manitory">*</span></label>
-                                <input type="text">
+                                <input type="text"  (input)="onInputChange($event)" [value]="subCategoryValue">
                             </div>
                         </div>
 
 
 
                         <div class="col-lg-12 text-end">
-                            <a class="btn btn-submit me-2">Submit</a>
-                            <a class="btn btn-cancel">Cancel</a>
+                            <button class="btn btn-submit me-2" (click)="onSubmit()" [disabled]="subCategoryValue=='' || selectedCategoryValue=='Select'">Submit</button>
+                            <button class="btn btn-cancel" (click)="onCancel()">Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -155,46 +103,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Category 1</td>
+                                <tr *ngFor="let item of subCategoriesList; let i=index;">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.name}}</td>
                                     <td>
-                                        <!-- <a class="me-3" href="editexpense.html">
-                                            <img src="assets/img/icons/edit.svg" alt="img">
-                                        </a> -->
-                                        <a class="me-3 confirm-text" href="javascript:void(0);">
+                                        <a class="me-3 confirm-text">
                                             <img src="assets/img/icons/delete.svg" alt="img">
                                         </a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Category 2</td>
-
-                                    <td>
-                                        <!-- <a class="me-3" href="editexpense.html">
-                                            <img src="assets/img/icons/edit.svg" alt="img">
-                                        </a> -->
-                                        <a class="me-3 confirm-text" href="javascript:void(0);">
-                                            <img src="assets/img/icons/delete.svg" alt="img">
-                                        </a>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Category 3</td>
-
-                                    <td>
-                                        <!-- <a class="me-3" href="editexpense.html">
-                                            <img src="assets/img/icons/edit.svg" alt="img">
-                                        </a> -->
-                                        <a class="me-3 confirm-text" href="javascript:void(0);">
-                                            <img src="assets/img/icons/delete.svg" alt="img">
-                                        </a>
-                                    </td>
-
-                                </tr>
+                               
                             </tbody>
                         </table>
                     </div>

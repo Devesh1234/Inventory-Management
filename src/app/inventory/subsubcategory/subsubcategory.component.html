@@ -20,82 +20,77 @@
 
                         <div class="col-lg-6 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Category <span class="manitory">*</span></label>
-                                <select #categoryselect class="select">
-                                    <option disabled selected>Select</option>
-                                    <option>Category 1</option>
-                                    <option>Category 2</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                    <option>Category 3</option>
-                                </select>
-                            </div>
+                                <label>Category<span class="manitory">*</span></label>
+                                <div class="btn-group">
+                                    <button type="button" class="custom-select-btn dropdown-toggle text-left"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <!-- <i class="ion-ios-sunny mr-4"></i> -->
+                                        {{selectedCategoryValue}}
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item " *ngFor="let item of categoryList"
+                                            (click)="selectCatgeory(item)">
+                                            {{item?.name}}
+                                        </a>
 
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+
 
 
                         <div class="col-lg-6 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Category <span class="manitory">*</span></label>
-                                <select #categoryselect class="select">
-                                    <option disabled selected>Select</option>
-                                    <option>Category 1</option>
-                                    <option>Category 2</option>
-                                    <option>Category 3</option>
-                                </select>
-                            </div>
+                                <label>SubCategory<span class="manitory">*</span></label>
+                                <div class="btn-group">
+                                    <button type="button" class="custom-select-btn dropdown-toggle text-left"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <!-- <i class="ion-ios-sunny mr-4"></i> -->
+                                        {{selectedSubCategoryValue}}
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <div *ngIf="filteredSubCategoriesList">
+                                            <a class="dropdown-item" *ngFor="let item of filteredSubCategoriesList">
+                                                {{item?.name}}
+                                            </a>
+                                        </div>
+                                        <div *ngIf="!filteredSubCategoriesList || filteredSubCategoriesList.length==0">
 
+                                            <a class="dropdown-item dropdown-item-disabled">
+                                                No data Foundddddddd
+                                            </a>
+
+                                        </div>
+
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
                         </div>
+
+
+
+
 
 
                         <div class="col-lg-6 col-sm-6 col-12">
 
                             <div class="form-group">
                                 <label>Menu Item <span class="manitory">*</span></label>
-                                <input type="text">
+                                <input type="text" (input)="onInputChange($event)" [value]="subSubCategoryValue">
                             </div>
                         </div>
 
 
 
                         <div class="col-lg-12 text-end">
-                            <a class="btn btn-submit me-2">Submit</a>
-                            <a class="btn btn-cancel">Cancel</a>
+                            <button class="btn btn-submit me-2" (click)="onSubmit()">Submit</button>
+                            <button class="btn btn-cancel" (click)="onCancel()">Cancel</button>
                         </div>
                     </div>
                 </div>

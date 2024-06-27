@@ -18,15 +18,16 @@
                         <div class="col-lg-12 ">
                             <div class="form-group">
                                 <label>Category Name <span class="manitory">*</span></label>
-                                <input type="text">
+                                <input type="text" (input)="onInputChange($event)" [value]="categoryValue" placeholder="Enter Category Name">
                                 <p class="mt-2">Please Note : Item Falls in Food, Bevarges Category</p>
 
                             </div>
                         </div>
 
+                        
                         <div class="col-lg-12 text-end">
-                            <a class="btn btn-submit me-2">Submit</a>
-                            <a class="btn btn-cancel">Cancel</a>
+                            <button class="btn btn-submit me-2" (click)="onSubmit()" [disabled]="categoryValue==''">Submit</button>
+                            <button class="btn btn-cancel" (click)="onCancel()" [disabled]="categoryValue==''">Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -55,46 +56,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Category 1</td>
+                                <tr *ngFor="let item of categoryList; let i=index;">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.name}}</td>
                                     <td>
-                                        <!-- <a class="me-3" href="editexpense.html">
-                                            <img src="assets/img/icons/edit.svg" alt="img">
-                                        </a> -->
-                                        <a class="me-3 confirm-text" href="javascript:void(0);">
+                                        <a class="me-3 confirm-text">
                                             <img src="assets/img/icons/delete.svg" alt="img">
                                         </a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Category 2</td>
 
-                                    <td>
-                                        <!-- <a class="me-3" href="editexpense.html">
-                                            <img src="assets/img/icons/edit.svg" alt="img">
-                                        </a> -->
-                                        <a class="me-3 confirm-text" href="javascript:void(0);">
-                                            <img src="assets/img/icons/delete.svg" alt="img">
-                                        </a>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Category 3</td>
-
-                                    <td>
-                                        <!-- <a class="me-3" href="editexpense.html">
-                                            <img src="assets/img/icons/edit.svg" alt="img">
-                                        </a> -->
-                                        <a class="me-3 confirm-text" href="javascript:void(0);">
-                                            <img src="assets/img/icons/delete.svg" alt="img">
-                                        </a>
-                                    </td>
-
-                                </tr>
                             </tbody>
                         </table>
                     </div>

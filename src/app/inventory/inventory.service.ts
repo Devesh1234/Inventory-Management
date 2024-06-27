@@ -6,27 +6,41 @@ import { Injectable } from '@angular/core';
 })
 export class InventoryService {
 
-  constructor(private httpClient:HttpClient) { }
+
+  vendor_id: any = '24';
+
+
+
+  constructor(private httpClient: HttpClient) { }
 
   getCategories() {
 
+    let apiUrl = 'http://127.0.0.1:8000/api/categories/' + this.vendor_id + '/';
+    return this.httpClient.get(apiUrl);
+
   }
-  setCategories() {
+  setCategory(obj:any) {
+
+    let apiUrl = 'http://127.0.0.1:8000/api/categories/' + this.vendor_id + '/';
+    return this.httpClient.post(apiUrl,obj);
 
   }
   getSubCategories() {
 
+    let apiUrl = 'http://127.0.0.1:8000/api/subcategories/' + this.vendor_id + '/';
+    return this.httpClient.get(apiUrl);
   }
 
-  setSubCategories() {
-
+  setSubCategory(obj:any) {
+    let apiUrl = 'http://127.0.0.1:8000/api/subcategories/' + this.vendor_id + '/';
+    return this.httpClient.post(apiUrl,obj);
   }
 
   getSubSubCategories() {
 
   }
 
-  setSubSubCategories() {
+  setSubSubCategory() {
 
   }
 
