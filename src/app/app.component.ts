@@ -20,10 +20,10 @@ export class AppComponent {
     // this.router.navigate(['/inventory/Input']);
     // this.router.navigate(['/inventory/category']);
     // this.router.navigate(['/inventory/subcategory']);
-    this.router.navigate(['/inventory/subsubcategory']);
-    // this.router.navigate(['/inventory/Inventory']);
+    // this.router.navigate(['/inventory/subsubcategory']);
+    // this.router.navigate(['/inventory/Inventory']);  
     // this.router.navigate(['/social/Social']);
-    // this.router.navigate(['/tracker/Tracker']);        
+    this.router.navigate(['/tracker/Tracker']);        
     
     // this.sharedService.loadScripts();
 

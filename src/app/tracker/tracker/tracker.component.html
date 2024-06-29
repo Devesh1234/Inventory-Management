@@ -173,11 +173,12 @@
                                     <th>User Name</th>
                                     <th>No of People</th>
                                     <th>Visit type</th>
-                                    <th>Action&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    </th>
+                                    
                                     <th>Date of Birth</th>
                                     <th>Arrival Time</th>
                                     <th>Message</th>
+                                    <th>Action&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </th>
                                 </tr>
                             </thead>
 
@@ -188,16 +189,7 @@
                                     <td>{{item.no_of_people}}</td>
                                     <td>{{item.visit_type}}</td>
 
-                                    <td>
-                                        <span class="badges bg-lightgreen me-1"
-                                            (click)="acceptOrNot(true,item.id)">Requested</span>
-
-                                        <img src="assets/img/icons/delete.svg" alt="img" class="align-middle"
-                                            (click)="getDeletedItem(item.id)" data-toggle="modal"
-                                            data-target="#exampleModalCenter">
-
-
-                                    </td>
+                                   
                                     <!-- 
                                     <td>
                                         <a class="me-3" >
@@ -211,6 +203,16 @@
                                     <td>{{item.dob}}</td>
                                     <td>{{item.time_of_arrival}}</td>
                                     <td>{{item.message}}</td>
+                                    <td>
+                                        <span class="badges bg-lightgreen me-1"
+                                            (click)="acceptOrNot(true,item.id)">Requested</span>
+
+                                        <img src="assets/img/icons/delete.svg" alt="img" class="align-middle"
+                                            (click)="getDeletedItem(item.id)" data-toggle="modal"
+                                            data-target="#exampleModalCenter">
+
+
+                                    </td>
 
 
                                 </tr>

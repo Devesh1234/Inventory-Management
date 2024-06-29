@@ -76,3 +76,56 @@
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+tr>th:last-child{
+  position: sticky;
+  right: 0;
+  background-color: #fafbfe;
+}
+
+
+
+tr>td:last-child {
+  position: sticky;
+  right: 0;
+  background-color: white;
+}
+
+// tr:nth-child(odd) td {
+//    background: white;
+// }
+
+// tr:nth-child(even) td {
+//    background: gray;
+// }

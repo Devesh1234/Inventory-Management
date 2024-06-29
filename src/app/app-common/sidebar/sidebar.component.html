@@ -15,17 +15,17 @@
                             Inventory</span> <span class="menu-arrow"></span></a>
                     <ul class="ms-3">
                         <li class="subsubmenu">
-                            <a [ngClass]="activeTile=='items'?'submenu active':'submenu' " >
+                            <a [ngClass]="activeTile=='items'?'submenu active':'submenu' ">
                                 <span class="subsubmenuheading">Items</span>
                             </a>
                             <ul class="ms-3">
                                 <li>
                                     <a [ngClass]="activeSubTile=='itemsOverview'?'submenu active':'submenu' "
-                                    (click)="selectTile('itemsOverview')">Overview</a>
+                                        (click)="selectTile('itemsOverview')">Overview</a>
                                 </li>
                                 <li>
                                     <a [ngClass]="activeSubTile=='addInput'?'submenu active':'submenu' "
-                                    (click)="selectTile('addInput')">Add Input</a>
+                                        (click)="selectTile('addInput')">Add Input</a>
                                 </li>
                             </ul>
                         </li>
@@ -46,12 +46,47 @@
                 </li>
 
 
+
+
+
                 <li class="submenu">
                     <a><img src="assets/img/icons/expense1.svg" alt="img"><span>Profile</span> <span
                             class="menu-arrow"></span></a>
                     <ul class="ms-3">
-                        <li><a>Add Expense</a></li>
-                        <li><a>Expense Category</a></li>
+                        <li class="subsubmenu">
+                            <a [ngClass]="activeTile=='items'?'submenu active':'submenu' ">
+                                <span class="subsubmenuheading">Registration</span>
+                            </a>
+                            <ul class="ms-3">
+                                <li>
+                                    <a [ngClass]="activeSubTile=='itemsOverview'?'submenu active':'submenu' "
+                                        (click)="selectTile('itemsOverview')">Overview</a>
+                                </li>
+                                <li>
+                                    <a [ngClass]="activeSubTile=='addInput'?'submenu active':'submenu' "
+                                        (click)="selectTile('addInput')">Add Input</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="subsubmenu">
+                            <a [ngClass]="activeTile=='items'?'submenu active':'submenu' ">
+                                <span class="subsubmenuheading">Employees</span>
+                            </a>
+                            <ul class="ms-3">
+                                <li>
+                                    <a [ngClass]="activeSubTile=='itemsOverview'?'submenu active':'submenu' "
+                                        (click)="selectTile('itemsOverview')">Overview</a>
+                                </li>
+                                <li>
+                                    <a [ngClass]="activeSubTile=='addInput'?'submenu active':'submenu' "
+                                        (click)="selectTile('addInput')">Input</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
                     </ul>
                 </li>
 
