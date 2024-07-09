@@ -14,10 +14,10 @@
                         <div class="form-login">
                             <label>Email</label>
                             <div class="form-addons">
-                                <input type="text" placeholder="Enter your email address" formControlName="username">
+                                <input type="text" placeholder="Enter your email address" formControlName="registered_email">
                                 <img src="assets/img/icons/mail.svg" alt="img">
                             </div>
-                            <p *ngIf="signinForm.controls.username?.errors?.required==true" class="text-danger">Please
+                            <p *ngIf="signinForm.controls.registered_email?.errors?.required==true" class="text-danger">Please
                                 Enter Email Id</p>
                         </div>
                         <div class="form-login">

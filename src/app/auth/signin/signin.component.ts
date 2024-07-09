@@ -18,7 +18,7 @@ export class SigninComponent implements OnInit {
 
   ngOnInit(): void {
     this.signinForm = new FormGroup({
-      'username': new FormControl('', [Validators.required]),
+      'registered_email': new FormControl('', [Validators.required]),
       'password': new FormControl('', [Validators.required])
     })
   }
@@ -36,7 +36,7 @@ export class SigninComponent implements OnInit {
     this.authService.signInApi(this.signinForm.value).subscribe({
       next: (res: any) => {
         console.log('res----', res)
-        this.authService.login(this.signinForm.value.username);
+        this.authService.login(this.signinForm.value.registered_email);
         
       },
       error: (err: any) => {

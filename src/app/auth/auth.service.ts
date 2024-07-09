@@ -38,13 +38,13 @@ export class AuthService {
 
   
   signInApi(credentials: any) {
-    let apiUrl = 'http://localhost:8000/api/signin/';
+    let apiUrl = 'http://127.0.0.1:8000/api/login/vendor/';
     return this.httpClient.post<any>(apiUrl,credentials
     )
   };
 
   signUpApi() {
-    let apiUrl = 'http://127.0.0.1:8000/api/signup/';
+    let apiUrl = 'http://127.0.0.1:8000/api/register/vendor/';
   }
 
 
