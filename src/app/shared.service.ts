@@ -77,24 +77,6 @@ export class SharedService {
 
 
 
-  // Example method to check if the user is logged in
-  isLoggedIn(): boolean {
-    if(this.getLocalStorage("user_login")!=null && this.getLocalStorage("user_login")!=undefined   )
-      return true;
-    return false
-  }
-
-  // Example method to login the user (for demonstration purposes)
-  login(username:string): void {
-    console.log("username",username);
-    this.setLocalStorage("user_login",username);
-  }
-
-  // Example method to logout the user (for demonstration purposes)
-  logout(): void {
-    this.removeLocalStorage("user_login");
-
-  }
 
 
 
@@ -165,22 +147,6 @@ export class SharedService {
 
 
 
-
-  signInApi(credentials: any) {
-    let apiUrl = 'http://localhost:8000/api/signin/';
-    return this.httpClient.post<any>(apiUrl,credentials
-    )
-  };
-
-  signUpApi() {
-    let apiUrl = 'http://127.0.0.1:8000/api/signup/';
-  }
-
-
-  forgotPasswordApi()
-  {
-    
-  }
 
 
 

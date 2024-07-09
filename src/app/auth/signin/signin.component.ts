@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/shared.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -11,7 +12,7 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private router: Router, private sharedService: SharedService) { }
+  constructor(private router: Router, private sharedService: SharedService, private authService: AuthService) { }
 
   signinForm: any;
 
@@ -32,10 +33,10 @@ export class SigninComponent implements OnInit {
   onSignIn() {
     // this.router.navigate(['/inventory/Input']);
     console.log('Form---', this.signinForm.value)
-    this.sharedService.signInApi(this.signinForm.value).subscribe({
+    this.authService.signInApi(this.signinForm.value).subscribe({
       next: (res: any) => {
         console.log('res----', res)
-        this.sharedService.login(this.signinForm.value.username);
+        this.authService.login(this.signinForm.value.username);
         
       },
       error: (err: any) => {
