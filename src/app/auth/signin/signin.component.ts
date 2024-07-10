@@ -30,14 +30,30 @@ export class SigninComponent implements OnInit {
   //     "password": "ASDF@123"
   // }
 
+
+
+
+  //   {
+  //     "registered_email": "newtest@gmail.com",
+  //     "password": "newtest@123"
+  // }
+
   onSignIn() {
     // this.router.navigate(['/inventory/Input']);
-    console.log('Form---', this.signinForm.value)
-    this.authService.signInApi(this.signinForm.value).subscribe({
+    // console.log('Form---', this.signinForm.value)
+    // this.signinForm.value;
+
+    this.authService.signInApi({
+      "registered_email": "newtest@gmail.com", "password": "newtest@123"
+    }).subscribe({
       next: (res: any) => {
         console.log('res----', res)
+        localStorage.setItem('access_token', res.access_token)
+        localStorage.setItem('refresh_token', res.refresh_token)
+        this.router.navigate(['/inventory/category']);
+
         this.authService.login(this.signinForm.value.registered_email);
-        
+
       },
       error: (err: any) => {
         console.log('res----', err)

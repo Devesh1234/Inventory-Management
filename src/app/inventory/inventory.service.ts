@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +12,29 @@ export class InventoryService {
 
 
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,private authService:AuthService) { }
 
   getCategories() {
 
+    let access_token;
+    let refresh_token;
+
+    this.authService.getNewTokens().subscribe((res:any)=>{
+      console.log('Devesh',res);
+      
+    })
+
+    let headers = new HttpHeaders().set("Authorization", `Bearer ${refresh_token}`);
+    console.log('headers: ', headers);
+
     let apiUrl = 'http://127.0.0.1:8000/api/categories/' + this.vendor_id + '/';
-    return this.httpClient.get(apiUrl);
+    return this.httpClient.get(apiUrl, { headers });
 
   }
-  setCategory(obj:any) {
+  setCategory(obj: any) {
 
     let apiUrl = 'http://127.0.0.1:8000/api/categories/' + this.vendor_id + '/';
-    return this.httpClient.post(apiUrl,obj);
+    return this.httpClient.post(apiUrl, obj);
 
   }
   getSubCategories() {
@@ -31,9 +43,9 @@ export class InventoryService {
     return this.httpClient.get(apiUrl);
   }
 
-  setSubCategory(obj:any) {
+  setSubCategory(obj: any) {
     let apiUrl = 'http://127.0.0.1:8000/api/subcategories/' + this.vendor_id + '/';
-    return this.httpClient.post(apiUrl,obj);
+    return this.httpClient.post(apiUrl, obj);
   }
 
   getSubSubCategories() {
