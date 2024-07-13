@@ -20,8 +20,9 @@ import { SearchFilterPipe } from './core/pipes/search-filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TrackerModule } from './tracker/tracker.module';
 import { LoaderComponent } from './app-common/loader/loader.component';
-import {HttpClientModule} from '@angular/common/http'
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
 import {MatDialogModule} from '@angular/material/dialog';
+import { customInterceptor } from './auth/custom.interceptor';
 
 
 // import { TabViewModule } from "primeng/tabview";
@@ -49,7 +50,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     HttpClientModule
 
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,useClass:customInterceptor,multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

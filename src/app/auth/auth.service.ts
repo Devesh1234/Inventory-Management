@@ -47,7 +47,7 @@ export class AuthService {
 
     let apiUrl='http://127.0.0.1:8000/api/token/refresh/';
     return this.httpClient.post(apiUrl,{
-      "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyMDE5ODEyNSwiaWF0IjoxNzE3NjA2MTI1LCJqdGkiOiI1N2JjMTI1MGYwODk0NTMyYmZkYThmMmIyZGQzMzhmOCIsInVzZXJfaWQiOjI0fQ.QA6NrNtJTYLywBMP2f844idMg0m_Tchu-pLf0XkPR_E"
+      "refresh_token": refresh_token
   });
   }
 

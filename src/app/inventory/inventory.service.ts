@@ -22,13 +22,16 @@ export class InventoryService {
     this.authService.getNewTokens().subscribe((res:any)=>{
       console.log('Devesh',res);
       
-    })
+    },
+  (err:any)=>{
+    console.log('Error--',err);
+  })
 
-    let headers = new HttpHeaders().set("Authorization", `Bearer ${refresh_token}`);
-    console.log('headers: ', headers);
+    // let headers = new HttpHeaders().set("Authorization", `Bearer ${refresh_token}`);
+    // console.log('headers: ', headers);
 
     let apiUrl = 'http://127.0.0.1:8000/api/categories/' + this.vendor_id + '/';
-    return this.httpClient.get(apiUrl, { headers });
+    return this.httpClient.get(apiUrl)
 
   }
   setCategory(obj: any) {
