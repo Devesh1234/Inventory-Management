@@ -39,7 +39,6 @@ export class CategoryComponent implements OnInit {
     this.inventoryService.getCategories().subscribe({
       next: (res: any) => {
         console.log('Category res--: ', res);
-        
         if (res && res.response) {
           this.categoryList = res.response;
           console.log(res);

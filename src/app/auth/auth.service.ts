@@ -38,8 +38,8 @@ export class AuthService {
 
 
     
-    let access_token = localStorage.getItem('access_token');
-    console.log('access_token: ', access_token);
+    // let access_token = localStorage.getItem('access_token');
+    // console.log('access_token: ', access_token);
     let refresh_token = localStorage.getItem('refresh_token');
     console.log('refresh_token: ', refresh_token);
 
@@ -48,6 +48,9 @@ export class AuthService {
     let apiUrl='http://127.0.0.1:8000/api/token/refresh/';
     return this.httpClient.post(apiUrl,{
       "refresh_token": refresh_token
+  }).subscribe((res:any)=>{
+    localStorage.setItem('access_token', res.access_token)
+    localStorage.setItem('refresh_token', res.refresh_token)
   });
   }
 

@@ -47,7 +47,7 @@ export class SigninComponent implements OnInit {
       "registered_email": "newtest@gmail.com", "password": "newtest@123"
     }).subscribe({
       next: (res: any) => {
-        console.log('res----', res)
+        console.log('res11----', res)
         localStorage.setItem('access_token', res.access_token)
         localStorage.setItem('refresh_token', res.refresh_token)
         this.router.navigate(['/inventory/category']);

@@ -12,20 +12,14 @@ export class InventoryService {
 
 
 
-  constructor(private httpClient: HttpClient,private authService:AuthService) { }
+  constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
   getCategories() {
 
-    let access_token;
-    let refresh_token;
+    // let access_token;
+    // let refresh_token;
 
-    this.authService.getNewTokens().subscribe((res:any)=>{
-      console.log('Devesh',res);
-      
-    },
-  (err:any)=>{
-    console.log('Error--',err);
-  })
+    this.authService.getNewTokens();
 
     // let headers = new HttpHeaders().set("Authorization", `Bearer ${refresh_token}`);
     // console.log('headers: ', headers);
@@ -35,6 +29,8 @@ export class InventoryService {
 
   }
   setCategory(obj: any) {
+
+    this.authService.getNewTokens();
 
     let apiUrl = 'http://127.0.0.1:8000/api/categories/' + this.vendor_id + '/';
     return this.httpClient.post(apiUrl, obj);
