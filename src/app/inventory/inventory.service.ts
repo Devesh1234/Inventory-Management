@@ -38,20 +38,68 @@ export class InventoryService {
   }
   getSubCategories() {
 
+    this.authService.getNewTokens();
+
     let apiUrl = 'http://127.0.0.1:8000/api/subcategories/' + this.vendor_id + '/';
     return this.httpClient.get(apiUrl);
   }
 
   setSubCategory(obj: any) {
+    this.authService.getNewTokens();
+
     let apiUrl = 'http://127.0.0.1:8000/api/subcategories/' + this.vendor_id + '/';
     return this.httpClient.post(apiUrl, obj);
   }
 
   getSubSubCategories() {
 
+    this.authService.getNewTokens();
+
+    let apiUrl = 'http://127.0.0.1:8000/api/subsubcategories/' + this.vendor_id + '/';
+    return this.httpClient.get(apiUrl);
+
   }
 
-  setSubSubCategory() {
+  setSubSubCategory(obj: any) {
+    console.log('obj----- ', obj);
+    this.authService.getNewTokens();
+
+    let apiUrl = 'http://127.0.0.1:8000/api/subsubcategories/' + this.vendor_id + '/';
+    return this.httpClient.post(apiUrl, obj);
+  }
+
+
+
+
+
+
+  deleteCategory() {
+    this.authService.getNewTokens();
+
+
+    let apiUrl = 'http://127.0.0.1:8000/api/categories_delete/' + this.vendor_id + '/';
+    return this.httpClient.post(apiUrl, {});
+
+
+  }
+
+
+  deleteSubCategory() {
+    this.authService.getNewTokens();
+
+    let apiUrl = 'http://127.0.0.1:8000/api/subcategories_delete/' + this.vendor_id + '/';
+    return this.httpClient.post(apiUrl, {});
+
+  }
+
+
+  deleteSubSubCategory() {
+
+    this.authService.getNewTokens();
+
+    let apiUrl = 'http://127.0.0.1:8000/api/subsubcategories_delete/' + this.vendor_id + '/';
+    return this.httpClient.post(apiUrl, {});
+
 
   }
 

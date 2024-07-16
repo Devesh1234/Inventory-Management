@@ -21,6 +21,7 @@ export class SubsubcategoryComponent implements OnInit {
   categoryList: any;
   subCategoriesList: any;
   filteredSubCategoriesList: any;
+  subSubSubCategoriesList:any;
 
 
 
@@ -32,6 +33,7 @@ export class SubsubcategoryComponent implements OnInit {
     this.sharedService.loadScripts();
     this.getCategoriesList();
     this.getSubCategoriesList();
+    this.getSubSubCategoriesList();
   }
 
 
@@ -86,11 +88,44 @@ export class SubsubcategoryComponent implements OnInit {
     })
   }
 
+
+
+
+
+
+
+
+  getSubSubCategoriesList() {
+
+    this.inventoryService.getSubSubCategories().subscribe({
+      next: (res: any) => {
+        if (res && res.response) {
+          this.subSubSubCategoriesList = res.response;
+          console.log('subsubcategories',res);
+
+        }
+        else {
+
+        }
+      },
+      error: (err: any) => {
+
+      }
+    })
+  }
+
+
+
+
+
+  
+
  
   selectCatgeory(item: any) {
     this.selectedCategoryValue = item.name;
     this.selectedCategoryValueId = item.id;
     this.filterSubCategoriesList();
+    this.selectedSubCategoryValue='Select'
   }
 
 
@@ -105,10 +140,19 @@ export class SubsubcategoryComponent implements OnInit {
     console.log('this.filteredSubCategoriesList: ', this.filteredSubCategoriesList);
 
   }
+
+
+  selectSubCatgeory(item:any)
+  {
+    console.log('item: ', item);
+    this.selectedSubCategoryValue=item.name;
+    this.selectedSubCategoryValueId=item.id
+  }
+
   
   onSubmit() {
-    let obj = { "name": this.subSubCategoryValue, "subcategory": this.selectedCategoryValueId }
-    this.inventoryService.setSubCategory(obj).subscribe({
+    let obj = { "name": this.subSubCategoryValue, "subcategory": this.selectedSubCategoryValueId }
+    this.inventoryService.setSubSubCategory(obj).subscribe({
       next: (res: any) => {
         console.log(res);
         if(res && res.status=='success')
@@ -117,7 +161,10 @@ export class SubsubcategoryComponent implements OnInit {
 
             this.ngOnInit();
             this.selectedCategoryValue='Select';
+            this.selectedSubCategoryValue='Select';
+            this.subSubCategoryValue='';
             // this.subCategoryValue='';
+
             
           }
       },

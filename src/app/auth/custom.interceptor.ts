@@ -16,7 +16,7 @@ export class customInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const access_token = localStorage.getItem('access_token');
-    console.log('access_token----: ', access_token);
+    // console.log('access_token----: ', access_token);
     const loginUrl = 'http://127.0.0.1:8000/api/login/vendor/';
 
     if (req.url !== loginUrl) {

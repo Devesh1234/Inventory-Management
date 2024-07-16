@@ -41,7 +41,7 @@ export class AuthService {
     // let access_token = localStorage.getItem('access_token');
     // console.log('access_token: ', access_token);
     let refresh_token = localStorage.getItem('refresh_token');
-    console.log('refresh_token: ', refresh_token);
+    // console.log('refresh_token: ', refresh_token);
 
 
 
