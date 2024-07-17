@@ -15,11 +15,12 @@ export class customInterceptor implements HttpInterceptor {
 
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const access_token = localStorage.getItem('access_token');
-    // console.log('access_token----: ', access_token);
     const loginUrl = 'http://127.0.0.1:8000/api/login/vendor/';
-
-    if (req.url !== loginUrl) {
+    const refreshUrl = 'http://127.0.0.1:8000/api/token/refresh/'
+    // console.log('Devesh');
+    if (req.url !== loginUrl && req.url != refreshUrl) {
+      const access_token = localStorage.getItem('access_token');
+      console.log('access_token----: ', access_token);
       req = req.clone({
         headers: req.headers.set('Authorization', 'Bearer ' + access_token)
       })

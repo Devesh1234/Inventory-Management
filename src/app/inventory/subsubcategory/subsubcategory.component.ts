@@ -7,13 +7,13 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-subsubcategory',
   standalone: true,
-  imports: [AppCommonModule,CommonModule],
+  imports: [AppCommonModule, CommonModule],
   templateUrl: './subsubcategory.component.html',
   styleUrl: './subsubcategory.component.scss'
 })
 export class SubsubcategoryComponent implements OnInit {
 
-  subSubCategoryValue:string='';
+  subSubCategoryValue: string = '';
   selectedCategoryValue: string = 'Select';
   selectedCategoryValueId: string = '';
   selectedSubCategoryValue: string = 'Select';
@@ -21,7 +21,9 @@ export class SubsubcategoryComponent implements OnInit {
   categoryList: any;
   subCategoriesList: any;
   filteredSubCategoriesList: any;
-  subSubSubCategoriesList:any;
+  subSubSubCategoriesList: any;
+
+  deletedSubSubCategoryValueId: any;
 
 
 
@@ -38,7 +40,7 @@ export class SubsubcategoryComponent implements OnInit {
 
 
 
-  
+
   onInputChange(e: any) {
     console.log("devesh", e.target.value);
     this.subSubCategoryValue = e.target.value;
@@ -47,7 +49,7 @@ export class SubsubcategoryComponent implements OnInit {
 
 
 
-  
+
 
   getCategoriesList() {
 
@@ -63,7 +65,7 @@ export class SubsubcategoryComponent implements OnInit {
         }
       },
       error: (err: any) => {
-
+        console.log(err);
       }
     })
   }
@@ -75,7 +77,7 @@ export class SubsubcategoryComponent implements OnInit {
       next: (res: any) => {
         if (res && res.response) {
           this.subCategoriesList = res.response;
-          console.log('subcategories',res);
+          console.log('subcategories', res);
 
         }
         else {
@@ -101,7 +103,7 @@ export class SubsubcategoryComponent implements OnInit {
       next: (res: any) => {
         if (res && res.response) {
           this.subSubSubCategoriesList = res.response;
-          console.log('subsubcategories',res);
+          console.log('subsubcategories', res);
 
         }
         else {
@@ -118,22 +120,21 @@ export class SubsubcategoryComponent implements OnInit {
 
 
 
-  
 
- 
+
+
   selectCatgeory(item: any) {
     this.selectedCategoryValue = item.name;
     this.selectedCategoryValueId = item.id;
     this.filterSubCategoriesList();
-    this.selectedSubCategoryValue='Select'
+    this.selectedSubCategoryValue = 'Select'
   }
 
 
-  filterSubCategoriesList()
-  {
-    this.filteredSubCategoriesList=this.subCategoriesList.filter((elem:any)=>{
+  filterSubCategoriesList() {
+    this.filteredSubCategoriesList = this.subCategoriesList.filter((elem: any) => {
       console.log('elem: ', elem);
-      return elem.category==this.selectedCategoryValueId;
+      return elem.category == this.selectedCategoryValueId;
 
     });
 
@@ -142,31 +143,29 @@ export class SubsubcategoryComponent implements OnInit {
   }
 
 
-  selectSubCatgeory(item:any)
-  {
+  selectSubCatgeory(item: any) {
     console.log('item: ', item);
-    this.selectedSubCategoryValue=item.name;
-    this.selectedSubCategoryValueId=item.id
+    this.selectedSubCategoryValue = item.name;
+    this.selectedSubCategoryValueId = item.id
   }
 
-  
+
   onSubmit() {
     let obj = { "name": this.subSubCategoryValue, "subcategory": this.selectedSubCategoryValueId }
     this.inventoryService.setSubSubCategory(obj).subscribe({
       next: (res: any) => {
         console.log(res);
-        if(res && res.status=='success')
-          {
-            this.sharedService.showSnackBar('SubCategory Added Succesful','success');
+        if (res && res.status == 'success') {
+          this.sharedService.showSnackBar('SubCategory Added Succesful', 'success');
 
-            this.ngOnInit();
-            this.selectedCategoryValue='Select';
-            this.selectedSubCategoryValue='Select';
-            this.subSubCategoryValue='';
-            // this.subCategoryValue='';
+          this.ngOnInit();
+          this.selectedCategoryValue = 'Select';
+          this.selectedSubCategoryValue = 'Select';
+          this.subSubCategoryValue = '';
+          // this.subCategoryValue='';
 
-            
-          }
+
+        }
       },
       error: (res: any) => {
 
@@ -174,11 +173,31 @@ export class SubsubcategoryComponent implements OnInit {
     })
   }
 
-  
-  onCancel()
-  {
-    this.selectedCategoryValue='Select';
+
+  onCancel() {
+    this.selectedCategoryValue = 'Select';
     // this.subCategoryValue='';
+  }
+
+
+
+
+  getDeletedSubSubCategory(id: any) {
+    this.deletedSubSubCategoryValueId = id;
+    console.log('deleted item', id);
+  }
+
+  deleteSubSubCategory() {
+    let obj={"subsubcategories":[this.deletedSubSubCategoryValueId]}
+    this.inventoryService.deleteSubSubCategory(obj).subscribe((res:any)=>{
+      console.log(res);
+      this.sharedService.showSnackBar('SubSubCategory Deleted','success');
+      this.ngOnInit();
+    },
+  (err:any)=>{
+
+  })
+    console.log('Deleted Succesfuly');
   }
 
 

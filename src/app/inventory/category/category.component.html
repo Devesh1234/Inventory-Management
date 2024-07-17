@@ -18,16 +18,19 @@
                         <div class="col-lg-12 ">
                             <div class="form-group">
                                 <label>Category Name <span class="manitory">*</span></label>
-                                <input type="text" (input)="onInputChange($event)" [value]="categoryValue" placeholder="Enter Category Name">
+                                <input type="text" (input)="onInputChange($event)" [value]="categoryValue"
+                                    placeholder="Enter Category Name">
                                 <p class="mt-2">Please Note : Item Falls in Food, Bevarges Category</p>
 
                             </div>
                         </div>
 
-                        
+
                         <div class="col-lg-12 text-end">
-                            <button class="btn btn-submit me-2" (click)="onSubmit()" [disabled]="categoryValue==''">Submit</button>
-                            <button class="btn btn-cancel" (click)="onCancel()" [disabled]="categoryValue==''">Cancel</button>
+                            <button class="btn btn-submit me-2" (click)="onSubmit()"
+                                [disabled]="categoryValue==''">Submit</button>
+                            <button class="btn btn-cancel" (click)="onCancel()"
+                                [disabled]="categoryValue==''">Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -60,7 +63,8 @@
                                     <td>{{i+1}}</td>
                                     <td>{{item.name}}</td>
                                     <td>
-                                        <a class="me-3 confirm-text">
+                                        <a class="me-3 confirm-text" (click)="getDeletedCategory(item.id)"
+                                            data-toggle="modal" data-target="#exampleModalCenter">
                                             <img src="assets/img/icons/delete.svg" alt="img">
                                         </a>
                                     </td>
@@ -72,6 +76,36 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Are Your Sure to Delete ?</h5>
+
+            </div>
+            <div class="modal-body">
+
+                <h6>This process is irreversible</h6>
+            </div>
+            <div class="modal-footer justify-content-end">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="deleteCategory()"
+                    data-dismiss="modal">Delete</button>
+            </div>
         </div>
     </div>
 </div>

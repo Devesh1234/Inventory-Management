@@ -8,13 +8,14 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-category',
   standalone: true,
-  imports: [AppCommonModule,CommonModule],
+  imports: [AppCommonModule, CommonModule],
   templateUrl: './category.component.html',
   styleUrl: './category.component.scss'
 })
 export class CategoryComponent implements OnInit {
   categoryList: any;
-  categoryValue:string='';
+  categoryValue: string = '';
+  deletedCategoryValueId: any;
 
   constructor(private sharedService: SharedService, private inventoryService: InventoryService) {
 
@@ -26,7 +27,7 @@ export class CategoryComponent implements OnInit {
   }
 
 
-  
+
   onInputChange(e: any) {
     console.log("devesh", e.target.value);
     this.categoryValue = e.target.value;
@@ -55,20 +56,19 @@ export class CategoryComponent implements OnInit {
     })
   }
 
-  
+
   onSubmit() {
-    let obj = { "name": this.categoryValue}
+    let obj = { "name": this.categoryValue }
     this.inventoryService.setCategory(obj).subscribe({
       next: (res: any) => {
         console.log(res);
-        if(res && res.status=='success')
-          {
-            this.sharedService.showSnackBar('Category Added Succesful','success');
+        if (res && res.status == 'success') {
+          this.sharedService.showSnackBar('Category Added Succesful', 'success');
 
-            this.ngOnInit();
-            this.categoryValue='';
-            
-          }
+          this.ngOnInit();
+          this.categoryValue = '';
+
+        }
       },
       error: (res: any) => {
 
@@ -76,11 +76,32 @@ export class CategoryComponent implements OnInit {
     })
   }
 
-  onCancel()
-  {
-    this.categoryValue='';
+  onCancel() {
+    this.categoryValue = '';
   }
 
+
+
+
+
+
+  getDeletedCategory(id: any) {
+    this.deletedCategoryValueId = id;
+    console.log('deleted item', id);
+  }
+
+  deleteCategory() {
+    let obj = { "categories": [this.deletedCategoryValueId] }
+    this.inventoryService.deleteCategory(obj).subscribe((res: any) => {
+      console.log(res);
+      this.sharedService.showSnackBar('Category Deleted', 'success');
+      this.ngOnInit();
+    },
+      (err: any) => {
+
+      })
+    console.log('Deleted Succesfuly');
+  }
 
 
 }

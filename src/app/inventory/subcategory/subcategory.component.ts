@@ -17,6 +17,7 @@ export class SubcategoryComponent implements OnInit {
   subCategoryValue: string = '';
   categoryList: any;
   subCategoriesList: any;
+  deletedSubCategoryValueId:any;
 
   constructor(private sharedService: SharedService, private inventoryService: InventoryService) {
 
@@ -79,7 +80,7 @@ export class SubcategoryComponent implements OnInit {
     })
   }
 
-  
+
   selectCatgeory(item: any) {
 
     this.selectedCategoryValue = item.name;
@@ -93,15 +94,14 @@ export class SubcategoryComponent implements OnInit {
     this.inventoryService.setSubCategory(obj).subscribe({
       next: (res: any) => {
         console.log(res);
-        if(res && res.status=='success')
-          {
-            this.sharedService.showSnackBar('SubCategory Added Succesful','success');
+        if (res && res.status == 'success') {
+          this.sharedService.showSnackBar('SubCategory Added Succesful', 'success');
 
-            this.ngOnInit();
-            this.selectedCategoryValue='Select';
-            this.subCategoryValue='';
-            
-          }
+          this.ngOnInit();
+          this.selectedCategoryValue = 'Select';
+          this.subCategoryValue = '';
+
+        }
       },
       error: (res: any) => {
 
@@ -109,10 +109,31 @@ export class SubcategoryComponent implements OnInit {
     })
   }
 
-  
-  onCancel()
-  {
-    this.selectedCategoryValue='Select';
-    this.subCategoryValue='';
+
+  onCancel() {
+    this.selectedCategoryValue = 'Select';
+    this.subCategoryValue = '';
   }
+
+
+
+
+  getDeletedSubCategory(id: any) {
+    this.deletedSubCategoryValueId = id;
+    console.log('deleted item', id);
+  }
+
+  deleteSubCategory() {
+    let obj={"subcategories":[this.deletedSubCategoryValueId]}
+    this.inventoryService.deleteSubCategory(obj).subscribe((res:any)=>{
+      console.log(res);
+      this.sharedService.showSnackBar('SubCategory Deleted','success');
+      this.ngOnInit();
+    },
+  (err:any)=>{
+
+  })
+    console.log('Deleted Succesfuly');
+  }
+
 }
