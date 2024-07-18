@@ -10,6 +10,7 @@ import { OffersComponent } from './offers/offers.component';
 import { CategoryComponent } from './category/category.component';
 import { SubcategoryComponent } from './subcategory/subcategory.component';
 import { SubsubcategoryComponent } from './subsubcategory/subsubcategory.component';
+import { InventoryPreviewComponent } from './inventory-preview/inventory-preview.component';
 
 
 const routes:Routes=[
@@ -19,7 +20,8 @@ const routes:Routes=[
   {path:'Offers',component:OffersComponent},
   {path:'category',component:CategoryComponent},
   {path:'subcategory',component:SubcategoryComponent},
-  {path:'subsubcategory',component:SubsubcategoryComponent}
+  {path:'subsubcategory',component:SubsubcategoryComponent},
+  {path:'inventoryPreview',component:InventoryPreviewComponent}
 ]
 
 @NgModule({

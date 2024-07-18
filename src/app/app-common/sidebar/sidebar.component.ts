@@ -31,12 +31,15 @@ export class SidebarComponent implements OnInit {
       case 'Dashboard':
         this.router.navigate(['/dashboard/Dashboard']);
         this.sharedService.setActiveTile('Dashboard');
+        this.sharedService.setActiveSubTile('');
 
         break;
 
       case 'Social':
         this.router.navigate(['/social/Social']);
         this.sharedService.setActiveTile('Social');
+        this.sharedService.setActiveSubTile('');
+
 
         break;
 
@@ -75,6 +78,16 @@ export class SidebarComponent implements OnInit {
         this.sharedService.setActiveTile('Inventory');
         this.sharedService.setActiveSubTile('subSubCategory');
         break;
+
+
+      case 'inventoryPreview':
+        this.router.navigate(['/inventory/inventoryPreview']);
+        this.sharedService.setActiveTile('Inventory');
+        this.sharedService.setActiveSubTile('inventoryPreview');
+        break;
+
+
+
 
 
 

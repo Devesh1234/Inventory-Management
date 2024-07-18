@@ -37,8 +37,8 @@
                         <li><a [ngClass]="activeSubTile=='subSubCategory'?'submenu active':'submenu' "
                                 (click)="selectTile('subSubCategory')">Sub Sub Category</a></li>
 
-                        <li><a [ngClass]="activeSubTile=='Offer'?'submenu active':'submenu' "
-                                (click)="selectTile('Offer')">Preview</a></li>
+                        <li><a [ngClass]="activeSubTile=='inventoryPreview'?'submenu active':'submenu' "
+                                (click)="selectTile('inventoryPreview')">Preview</a></li>
 
 
 
@@ -51,7 +51,8 @@
 
                 <li class="submenu">
                     <a><img src="assets/img/icons/expense1.svg" alt="img"><span>Profile</span> <span
-                            class="menu-arrow"></span></a>
+                            class="menu-
+                            arrow"></span></a>
                     <ul class="ms-3">
                         <li class="subsubmenu">
                             <a [ngClass]="activeTile=='items'?'submenu active':'submenu' ">
