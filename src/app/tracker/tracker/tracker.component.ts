@@ -18,6 +18,9 @@ export class TrackerComponent implements OnInit {
 
   // myModal = document.getElementById('exampleModalCenter');
 
+
+  dailyStatsData: any;
+
   activeButton: any;
   requestedOrdersDataList: any;
   acceptedOrdersDataList: any;
@@ -52,6 +55,17 @@ export class TrackerComponent implements OnInit {
   ngOnInit(): void {
 
     // this.sharedService.loadScripts();
+
+
+
+    this.trackerService.getDailyStats().subscribe((res: any) => {
+      this.dailyStatsData=res;
+      console.log('this.dailyStatsData: ', this.dailyStatsData);
+    }, (err: any) => {
+      console.log(err);
+    })
+
+
 
     this.trackerService.getActiveTrackerButton().subscribe((res: any) => {
       console.log('Áctive Btn', res);
@@ -474,11 +488,11 @@ export class TrackerComponent implements OnInit {
 
 
   getDeletedItem(id: any) {
-    this.deleteditem=id;
+    this.deleteditem = id;
     console.log('deleted item', id);
   }
   deleteItem() {
-    this.acceptOrNot(false,this.deleteditem)
+    this.acceptOrNot(false, this.deleteditem)
   }
 
 

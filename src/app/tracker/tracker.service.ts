@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { SharedService } from '../shared.service';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class TrackerService {
 
 
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private authService:AuthService) { }
 
 
 
@@ -29,7 +31,7 @@ export class TrackerService {
 
 
 
-  vendor_id: any = '29';
+  vendor_id: any = '46';
 
 
 
@@ -67,6 +69,18 @@ export class TrackerService {
   }
   getHistoryOrders() {
     let apiUrl = 'http://127.0.0.1:8000/api/vendor/requests/' + this.vendor_id + '/history';
+    return this.httpClient.get(apiUrl);
+  }
+
+
+
+
+
+  getDailyStats(){
+
+    this.authService.getNewTokens();
+
+    let apiUrl = 'http://127.0.0.1:8000/api/vendor-daily-stats/' + this.vendor_id ;
     return this.httpClient.get(apiUrl);
   }
 
