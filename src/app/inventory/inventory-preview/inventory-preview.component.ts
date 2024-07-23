@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AppCommonModule } from 'src/app/app-common/app-common.module';
+import { InventoryService } from '../inventory.service';
 
 @Component({
   selector: 'app-inventory-preview',
@@ -245,28 +246,34 @@ export class InventoryPreviewComponent implements OnInit {
     },
 
   ];
+  categoriesList: any;
+  subcategoriesList: any;
+  subSubcategoriesList: any;
 
 
-  constructor() {
+  constructor(private inventoryService: InventoryService) {
 
   }
 
-  new_obj:any;
+  new_obj: any;
   ngOnInit(): void {
-    console.log('Devesh',this.obj);
-    this.obj.forEach((element:any) => {
+    this.getCategroiesList();
+    this.getSubCategoriesList();
+    this.getSubSubCategoriesList();
+    console.log('Devesh', this.obj);
+    this.obj.forEach((element: any) => {
       // if(element.category)
-        console.log(element.category.id);
+      console.log(element.category.id);
     });
 
 
 
 
-    const groupedItems = this.obj.reduce((acc:any, item:any) => {
+    const groupedItems = this.obj.reduce((acc: any, item: any) => {
       const categoryName = item.category.id;
       const subCategoryName = item.sub_category.id;
       const subSubCategoryName = item.sub_sub_category.id;
-    
+
       if (!acc[categoryName]) {
         acc[categoryName] = {};
       }
@@ -279,11 +286,15 @@ export class InventoryPreviewComponent implements OnInit {
       acc[categoryName][subCategoryName][subSubCategoryName].push(item);
       return acc;
     }, {});
-    
+
     console.log(groupedItems);
-    console.log('Bhatia',groupedItems);
+    this.new_obj = groupedItems
+    console.log('Bhatia', groupedItems);
 
 
+
+    // let myData = this.transformMenuData(this.new_obj);
+    // console.log('myData: ', myData);
 
 
 
@@ -292,5 +303,70 @@ export class InventoryPreviewComponent implements OnInit {
   }
 
 
+  getCategroiesList() {
+    this.inventoryService.getCategories().subscribe((res: any) => {
+      console.log('this.categoriesList: ', res);
+
+
+      this.categoriesList = res.response;
+    })
+
+  }
+
+  getSubCategoriesList() {
+    this.inventoryService.getSubCategories().subscribe((res: any) => {
+      this.subcategoriesList = res.response;
+
+    })
+  }
+
+  getSubSubCategoriesList() {
+    this.inventoryService.getSubSubCategories().subscribe((res: any) => {
+      this.subSubcategoriesList = res.response;
+
+    })
+  }
+
+
+  getCategoryName(item: any) {
+   
+
+  }
+
+  getSubCategoryName() {
+
+  }
+
+
+
+  getSubSubCategoryName() {
+
+  }
+
+
+
+  transformMenuData(data: any): any[] {
+    const result = [];
+    for (const catKey in data) {
+      if (data.hasOwnProperty(catKey)) {
+        for (const subCatKey in data[catKey]) {
+          if (data[catKey].hasOwnProperty(subCatKey)) {
+            for (const subSubCatKey in data[catKey][subCatKey]) {
+              if (data[catKey][subCatKey].hasOwnProperty(subSubCatKey)) {
+                result.push({
+                  category: catKey,
+                  subCategory: subCatKey,
+                  subSubCategory: subSubCatKey,
+                  items: data[catKey][subCatKey][subSubCatKey]
+                });
+              }
+            }
+          }
+        }
+      }
+    }
+    return result;
+  }
+
+
 }
- 
