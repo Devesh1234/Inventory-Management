@@ -76,8 +76,12 @@ export class AuthService {
     let apiUrl = 'http://127.0.0.1:8000/api/register/vendor/';
   }
 
+  vendor_id:any=68
 
-  forgotPasswordApi() {
+  forgotPasswordApi(email:any) {
+    let obj={'email':email, 'vendor_id':this.vendor_id}
+    let apiUrl = 'http://127.0.0.1:8000/api/vendor/request-password-reset/';
+    return this.httpClient.post(apiUrl,obj)
 
   }
 

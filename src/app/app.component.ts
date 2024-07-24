@@ -14,6 +14,7 @@ export class AppComponent {
   ngOnInit() {
     // this.router.navigate(['/auth/signup']);
     // this.router.navigate(['/auth/forgot-password']);
+    // this.router.navigate(['/auth/new-password']);
     // this.router.navigate(['/auth/signin']);
     // this.router.navigate(['/dashboard/Dashboard']);
     // this.router.navigate(['/inventory/Overview']);
