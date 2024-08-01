@@ -24,7 +24,7 @@ export class InventoryService {
     // let headers = new HttpHeaders().set("Authorization", `Bearer ${refresh_token}`);
     // console.log('headers: ', headers);
 
-    let apiUrl = 'http://127.0.0.1:8000/api/categories/' + this.vendor_id + '/';
+    let apiUrl = 'http://62.72.30.98:8000/api/categories/' + this.vendor_id + '/';
     return this.httpClient.get(apiUrl)
 
   }
@@ -32,7 +32,7 @@ export class InventoryService {
 
     this.authService.getNewTokens();
 
-    let apiUrl = 'http://127.0.0.1:8000/api/categories/' + this.vendor_id + '/';
+    let apiUrl = 'http://62.72.30.98:8000/api/categories/' + this.vendor_id + '/';
     return this.httpClient.post(apiUrl, obj);
 
   }
@@ -40,14 +40,14 @@ export class InventoryService {
 
     this.authService.getNewTokens();
 
-    let apiUrl = 'http://127.0.0.1:8000/api/subcategories/' + this.vendor_id + '/';
+    let apiUrl = 'http://62.72.30.98:8000/api/subcategories/' + this.vendor_id + '/';
     return this.httpClient.get(apiUrl);
   }
 
   setSubCategory(obj: any) {
     this.authService.getNewTokens();
 
-    let apiUrl = 'http://127.0.0.1:8000/api/subcategories/' + this.vendor_id + '/';
+    let apiUrl = 'http://62.72.30.98:8000/api/subcategories/' + this.vendor_id + '/';
     return this.httpClient.post(apiUrl, obj);
   }
 
@@ -55,7 +55,7 @@ export class InventoryService {
 
     this.authService.getNewTokens();
 
-    let apiUrl = 'http://127.0.0.1:8000/api/subsubcategories/' + this.vendor_id + '/';
+    let apiUrl = 'http://62.72.30.98:8000/api/subsubcategories/' + this.vendor_id + '/';
     return this.httpClient.get(apiUrl);
 
   }
@@ -64,7 +64,7 @@ export class InventoryService {
     console.log('obj----- ', obj);
     this.authService.getNewTokens();
 
-    let apiUrl = 'http://127.0.0.1:8000/api/subsubcategories/' + this.vendor_id + '/';
+    let apiUrl = 'http://62.72.30.98:8000/api/subsubcategories/' + this.vendor_id + '/';
     return this.httpClient.post(apiUrl, obj);
   }
 
@@ -77,7 +77,7 @@ export class InventoryService {
     this.authService.getNewTokens();
 
 
-    let apiUrl = 'http://127.0.0.1:8000/api/categories_delete/' + this.vendor_id + '/';
+    let apiUrl = 'http://62.72.30.98:8000/api/categories_delete/' + this.vendor_id + '/';
     return this.httpClient.post(apiUrl, obj);
 
 
@@ -87,7 +87,7 @@ export class InventoryService {
   deleteSubCategory(obj:any) {
     this.authService.getNewTokens();
 
-    let apiUrl = 'http://127.0.0.1:8000/api/subcategories_delete/' + this.vendor_id + '/';
+    let apiUrl = 'http://62.72.30.98:8000/api/subcategories_delete/' + this.vendor_id + '/';
     return this.httpClient.post(apiUrl, obj);
 
   }
@@ -97,7 +97,7 @@ export class InventoryService {
 
     this.authService.getNewTokens();
 
-    let apiUrl = 'http://127.0.0.1:8000/api/subsubcategories_delete/' + this.vendor_id + '/';
+    let apiUrl = 'http://62.72.30.98:8000/api/subsubcategories_delete/' + this.vendor_id + '/';
     return this.httpClient.post(apiUrl, obj);
 
 

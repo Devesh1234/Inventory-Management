@@ -15,7 +15,7 @@ export class customInterceptor implements HttpInterceptor {
 
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const loginUrl = 'http://127.0.0.1:8000/api/login/vendor/';
+    const loginUrl = 'http://62.72.30.98:8000/api/login/vendor/';
     const refreshUrl = 'http://127.0.0.1:8000/api/token/refresh/'
     // console.log('Devesh');
     if (req.url !== loginUrl && req.url != refreshUrl) {
