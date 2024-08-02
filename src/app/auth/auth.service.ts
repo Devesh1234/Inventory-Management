@@ -53,7 +53,7 @@ export class AuthService {
 
 
 
-    let apiUrl = 'http://127.0.0.1:8000/api/token/refresh/';
+    let apiUrl = 'http://62.72.30.98:8000/api/token/refresh/';
     return this.httpClient.post(apiUrl, {
       "refresh_token": refresh_token
     }).subscribe((res: any) => {

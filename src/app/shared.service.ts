@@ -149,17 +149,18 @@ export class SharedService {
 
 
 
+  vendor_id:any='24';
 
 
 
-  getInventoryMenuDataApi() {
-    let apiUrl = 'http://127.0.0.1:8000/api/inventory/view-all/';
+  getInventoryItemsData() {
+    let apiUrl = 'http://62.72.30.98:8000/api/inventory/single_vendors/' + this.vendor_id+'/';
     return this.httpClient.get(apiUrl);
 
   }
 
   insertInventoryMenuSingleEntryApi(data: any) {
-    let apiUrl = 'http://127.0.0.1:8000/api/inventory/create/';
+    let apiUrl = 'http://62.72.30.98:8000/api/inventory/create/' + this.vendor_id+'/';
     return this.httpClient.post(apiUrl, { data })
   }
 

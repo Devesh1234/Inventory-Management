@@ -8,7 +8,7 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class OverviewComponent implements OnInit {
 
-  inventoryMenuData: any;
+  inventoryItemsData: any;
 
   constructor(private sharedService: SharedService) { }
 
@@ -16,9 +16,9 @@ export class OverviewComponent implements OnInit {
     this.sharedService.loadScripts();
 
 
-    this.sharedService.getInventoryMenuDataApi().subscribe((res: any) => {
-      this.inventoryMenuData = res
-      console.log('Get Inventory Menu Data ', this.inventoryMenuData);
+    this.sharedService.getInventoryItemsData().subscribe((res: any) => {
+      this.inventoryItemsData = res
+      console.log('======', this.inventoryItemsData);
     })
 
     

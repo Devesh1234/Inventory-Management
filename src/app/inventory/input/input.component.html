@@ -80,12 +80,171 @@
                                 <label>Category <span class="manitory">*</span></label>
                                 <select #categoryselect class="select" formControlName="category">
                                     <option disabled selected>Select</option>
-                                    <option>Category 1</option>
-                                    <option>Category 2</option>
-                                    <option>Category 3</option>
+                                    <option *ngFor="let item of categoriesList">{{item.name}}</option>
                                 </select>
                             </div>
                         </div>
+
+
+                        <div class="col-lg-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Category<span class="manitory">*</span></label>
+                                <div class="btn-group">
+                                    <button type="button" class="custom-select-btn dropdown-toggle text-left"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <!-- <i class="ion-ios-sunny mr-4"></i> -->
+                                        {{selectedCategoryValue}}
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item " *ngFor="let item of categoriesList"
+                                            (click)="selectCatgeory(item)">
+                                            {{item?.name}}
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-lg-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Sub Category<span class="manitory">*</span></label>
+                                <div class="btn-group">
+                                    <button type="button" class="custom-select-btn dropdown-toggle text-left"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <!-- <i class="ion-ios-sunny mr-4"></i> -->
+                                        {{selectedSubCategoryValue}}
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item " *ngFor="let item of filteredSubCategoriesList"
+                                            (click)="selectSubCatgeory(item)">
+                                            {{item?.name}}
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-lg-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Sub Sub Category<span class="manitory">*</span></label>
+                                <div class="btn-group">
+                                    <button type="button" class="custom-select-btn dropdown-toggle text-left"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <!-- <i class="ion-ios-sunny mr-4"></i> -->
+                                        {{selectedSubSubCategoryValue}}
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item " *ngFor="let item of filteredSubSubCategoriesList"
+                                            (click)="selectSubSubCatgeory(item)">
+                                            {{item?.name}}
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-lg-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Size Type<span class="manitory">*</span></label>
+                                <div class="btn-group">
+                                    <button type="button" class="custom-select-btn dropdown-toggle text-left"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <!-- <i class="ion-ios-sunny mr-4"></i> -->
+                                        {{selectedSizeType}}
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item " *ngFor="let item of sizeTypeList"
+                                            (click)="selectSizeType(item)">
+                                            {{item}}
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-lg-3 col-sm-6 col-12" *ngIf="selectedSizeType=='Available'">
+                            <div class="form-group">
+                                <label>Small Price<span class="manitory">*</span></label>
+                                <input type="text" formControlName="s_price">
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+                        <div class="col-lg-3 col-sm-6 col-12" *ngIf="selectedSizeType=='Available'">
+                            <div class="form-group">
+                                <label>Medium Price<span class="manitory">*</span></label>
+                                <input type="text" formControlName="m_price">
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="col-lg-3 col-sm-6 col-12" *ngIf="selectedSizeType=='Available'">
+                            <div class="form-group">
+                                <label>Large Price<span class="manitory">*</span></label>
+                                <input type="text" formControlName="l_price">
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Ingredients<span class="manitory">*</span></label>
+
+                                <div>
+                                    <ul class="tags-input">
+                                        <input type="text" formControlName="ingredients"
+                                            (keypress)="onKeypress($event)">
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
@@ -123,6 +282,31 @@
                                 </select>
                             </div>
                         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -194,13 +378,14 @@
                                 <textarea class="form-control" formControlName="description"></textarea>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-end">
-                            <div class="page-btn">
-                                <button class="btn btn-primary me-2" (click)="addItem()">Add</button>
-                                <button class="btn btn-secondary">Cancel</button>
-                            </div>
-                        </div>
+
                     </form>
+                    <div class="d-flex justify-content-end">
+                        <div class="page-btn">
+                            <button class="btn btn-primary me-2" (click)="addItem()">Add</button>
+                            <button class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 

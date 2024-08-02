@@ -18,11 +18,11 @@ export class AppComponent {
     // this.router.navigate(['/auth/signin']);
     // this.router.navigate(['/dashboard/Dashboard']);
     // this.router.navigate(['/inventory/Overview']);
-    // this.router.navigate(['/inventory/Input']);
+    this.router.navigate(['/inventory/Input']);
     // this.router.navigate(['/inventory/category']);
     // this.router.navigate(['/inventory/subcategory']);
     // this.router.navigate(['/inventory/subsubcategory']);
-    this.router.navigate(['/inventory/inventoryPreview']);
+    // this.router.navigate(['/inventory/inventoryPreview']);
 
     // this.router.navigate(['/inventory/Inventory']);  
     // this.router.navigate(['/social/Social']);
