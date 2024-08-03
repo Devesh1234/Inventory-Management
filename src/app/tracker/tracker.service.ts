@@ -11,9 +11,11 @@ export class TrackerService {
 
   activeTrackerButton = new BehaviorSubject<string>('requested');
 
+  serverUrl: any = "http://62.72.30.98:8000/api/"
 
 
-  constructor(private httpClient: HttpClient, private authService:AuthService) { }
+
+  constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
 
 
@@ -36,13 +38,13 @@ export class TrackerService {
 
 
   getRequestedOrders() {
-    let apiUrl = 'http://127.0.0.1:8000/api/vendor/requests/' + this.vendor_id + '/request';
+    let apiUrl = this.serverUrl + 'vendor/requests/' + this.vendor_id + '/request';
     return this.httpClient.get(apiUrl);
 
   }
 
   postvendorAcceptOrReject(statusObj: any) {
-    let apiUrl = 'http://127.0.0.1:8000/api/reservation/vendor/notify_vendor_response/';
+    let apiUrl = this.serverUrl+'reservation/vendor/notify_vendor_response/';
     return this.httpClient.post(apiUrl, statusObj);
 
   }
@@ -51,24 +53,24 @@ export class TrackerService {
 
 
   getActiveOrders() {
-    let apiUrl = 'http://127.0.0.1:8000/api/vendor/requests/' + this.vendor_id + '/active';
+    let apiUrl = this.serverUrl+'vendor/requests/' + this.vendor_id + '/active';
     return this.httpClient.get(apiUrl);
   }
 
 
   getCheckoutOrders() {
 
-    let apiUrl = 'http://127.0.0.1:8000/api/vendor/requests/' + this.vendor_id + '/checkout';
+    let apiUrl = this.serverUrl+'vendor/requests/' + this.vendor_id + '/checkout';
     return this.httpClient.get(apiUrl);
 
   }
-  postPaymentApproval(obj:any) {
+  postPaymentApproval(obj: any) {
 
-    let apiUrl="http://127.0.0.1:8000/api/vendor/approve_payment/"
-    return this.httpClient.post(apiUrl,obj)
+    let apiUrl = this.serverUrl+"vendor/approve_payment/"
+    return this.httpClient.post(apiUrl, obj)
   }
   getHistoryOrders() {
-    let apiUrl = 'http://127.0.0.1:8000/api/vendor/requests/' + this.vendor_id + '/history';
+    let apiUrl = this.serverUrl+'vendor/requests/' + this.vendor_id + '/history';
     return this.httpClient.get(apiUrl);
   }
 
@@ -76,11 +78,11 @@ export class TrackerService {
 
 
 
-  getDailyStats(){
+  getDailyStats() {
 
     this.authService.getNewTokens();
 
-    let apiUrl = 'http://127.0.0.1:8000/api/vendor-daily-stats/' + this.vendor_id ;
+    let apiUrl = this.serverUrl+'vendor-daily-stats/' + this.vendor_id;
     return this.httpClient.get(apiUrl);
   }
 

@@ -11,6 +11,7 @@ import { CategoryComponent } from './category/category.component';
 import { SubcategoryComponent } from './subcategory/subcategory.component';
 import { SubsubcategoryComponent } from './subsubcategory/subsubcategory.component';
 import { InventoryPreviewComponent } from './inventory-preview/inventory-preview.component';
+import { NumbersOnlyDirective } from '../core/directives/numbers-only.directive';
 
 
 const routes:Routes=[
@@ -30,6 +31,7 @@ const routes:Routes=[
     OverviewComponent,
     InputComponent,
     OffersComponent,
+    NumbersOnlyDirective
   ],
   imports: [
     RouterModule.forChild(routes),

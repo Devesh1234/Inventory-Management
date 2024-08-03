@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
+import { InventoryService } from '../inventory.service';
 
 @Component({
   selector: 'app-overview',
@@ -10,13 +11,12 @@ export class OverviewComponent implements OnInit {
 
   inventoryItemsData: any;
 
-  constructor(private sharedService: SharedService) { }
+  constructor(private inventoryService: InventoryService) { }
 
   ngOnInit(): void {
-    this.sharedService.loadScripts();
 
 
-    this.sharedService.getInventoryItemsData().subscribe((res: any) => {
+    this.inventoryService.getInventoryItemsData().subscribe((res: any) => {
       this.inventoryItemsData = res
       console.log('======', this.inventoryItemsData);
     })

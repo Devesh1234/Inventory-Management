@@ -16,7 +16,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { NgChartsModule } from 'ng2-charts';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { InventoryModule } from './inventory/inventory.module';
-import { SearchFilterPipe } from './core/pipes/search-filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TrackerModule } from './tracker/tracker.module';
 import { LoaderComponent } from './app-common/loader/loader.component';

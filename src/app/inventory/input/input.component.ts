@@ -14,16 +14,17 @@ export class InputComponent implements OnInit {
 
 
 
-  tags: any = ['HTML', 'CSS', 'Javascript']
 
 
   uploadedFile: File | null = null;
   addItemform: any;
+
+
   categoriesList: any;
   subCategoriesList: any;
   subSubCategoriesList: any;
 
-  selectedCategoryValue: any = 'Selected';
+  selectedCategoryValue: any = 'Select';
   selectedCategoryValueId: string = '';
   selectedSubCategoryValue: string = 'Select';
   selectedSubCategoryValueId: string = '';
@@ -37,19 +38,26 @@ export class InputComponent implements OnInit {
   sizeTypeList: any = ['NA', 'Available'];
   selectedSizeType: any = 'Select'
 
+  itemTypeList: any = ['Vegetarian', 'Non-Vegetarian'];
+  selectedItemType: any = 'Select'
 
 
-
+  stockStatusList: any = ['Yes', 'No'];
+  selectedStockStatus: any = 'Select'
 
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
-  // Viewchild for selects
-  @ViewChild('categoryselect') categoryselect!: ElementRef<HTMLInputElement>;
-  @ViewChild('subcategoryselect') subcategoryselect!: ElementRef<HTMLInputElement>;
-  @ViewChild('subsubcategoryselect') subsubcategoryselect!: ElementRef<HTMLInputElement>;
-  @ViewChild('itemtypeselect') itemtypeselect!: ElementRef<HTMLInputElement>;
-  @ViewChild('sizetypeselect') sizetypeselect!: ElementRef<HTMLInputElement>;
-  @ViewChild('instockselect') instockselect!: ElementRef<HTMLInputElement>;
+
+
+
+
+  // // Viewchild for selects
+  // @ViewChild('categoryselect') categoryselect!: ElementRef<HTMLInputElement>;
+  // @ViewChild('subcategoryselect') subcategoryselect!: ElementRef<HTMLInputElement>;
+  // @ViewChild('subsubcategoryselect') subsubcategoryselect!: ElementRef<HTMLInputElement>;
+  // @ViewChild('itemtypeselect') itemtypeselect!: ElementRef<HTMLInputElement>;
+  // @ViewChild('sizetypeselect') sizetypeselect!: ElementRef<HTMLInputElement>;
+  // @ViewChild('instockselect') instockselect!: ElementRef<HTMLInputElement>;
 
 
   constructor(private sharedService: SharedService, private fb: FormBuilder, private inventoryService: InventoryService) { }
@@ -68,19 +76,26 @@ export class InputComponent implements OnInit {
       'menu_item': ['', Validators.required],
       'category': ['', Validators.required],
       'sub_category': ['', Validators.required],
-      'sub_sub_category': ['', Validators.required],
+      'sub_sub_category': [''],
       'item_type': ['', Validators.required],
-      'ingredients': ['', Validators.required],
-      'price': ['', Validators.required],
+      'ingredients': [[], Validators.required],
       'size_type': ['', Validators.required],
+      'price': ['', Validators.required],
       's_price': ['', Validators.required],
       'm_price': ['', Validators.required],
       'l_price': ['', Validators.required],
+      'xl_price': ['', Validators.required],
       'estimate_time': ['', Validators.required],
-      'calories': ['', Validators.required],
-      'stock': ['', Validators.required],
+      'calories': [''],
+      'stock': [0],
       'in_stock': ['', Validators.required],
-      'description': ['', Validators.required]
+      'description': [''],
+      'spiciness': ['Medium'],
+      'chef_special': [false],
+      "upcoming": [false],
+      "rating": [4.5]
+
+
     })
   }
 
@@ -171,40 +186,50 @@ export class InputComponent implements OnInit {
   }
 
 
+  selectItemType(item: any) {
+    this.selectedItemType = item;
+  }
 
-  ul:any = document.querySelector('.tags-input ul');
-  input = document.querySelector('.tags-input input');
-  deleteAll = document.querySelector('.removeAll button');
+  selectStockStatus(status: any) {
+    this.selectedStockStatus = status;
+
+  }
 
 
-  onKeypress($event: any) {
-    console.log('event---', $event);
-    let value = $event.target.value;
-    if ($event.key == 'Enter') {
-      if (!this.tags.includes(value)) {
 
-        this.tags.push(value);
 
-        this.showTags();
-      }
+
+
+
+
+
+  tags: any = [];
+  inputValue: string = '';
+
+
+
+
+  removeTagItem(index: number) {
+    this.tags.splice(index, 1);
+  }
+
+
+
+
+  addTag(event: any) {
+    this.inputValue = event.target.value
+    console.log('Devesh', event.target.value);
+    if (this.inputValue && !this.tags.includes(this.inputValue)) {
+      this.tags.push(this.inputValue);
+      this.inputValue = '';
+      event.target.value = "";
     }
   }
 
-  showTags() {
-    this.tags.forEach((value: any, key: any) => {
-      let newLi = document.createElement('li');
-      newLi.innerText = value;
-      let newRemove = document.createElement('div');
-      newRemove.classList.add('remove');
-      newRemove.setAttribute('onclick', `this.removeItem(key)`);
-      newLi.appendChild(newRemove);
-      this.ul.appendChild(newLi)
-    });
-  }
-  removeItem(key: any) {
-    delete this.tags[key];
-    this.showTags();
-  }
+
+
+
+
 
 
   onFileSelected(event: any) {
@@ -248,12 +273,13 @@ export class InputComponent implements OnInit {
   patchSelectedValuesToForm() {
 
     this.addItemform.patchValue({
-      'category': this.categoryselect.nativeElement.value,
-      'sub_category': this.subcategoryselect.nativeElement.value,
-      'sub_sub_category': this.subsubcategoryselect.nativeElement.value,
-      'item_type': this.itemtypeselect.nativeElement.value,
-      'size_type': this.sizetypeselect.nativeElement.value,
-      'in_stock': this.instockselect.nativeElement.value
+      'category': this.selectedCategoryValueId,
+      'sub_category': this.selectedSubCategoryValueId,
+      'sub_sub_category': this.selectedSubSubCategoryValueId,
+      'item_type': this.selectedItemType,
+      'size_type': this.selectedSizeType,
+      'in_stock': this.selectedStockStatus=='Yes',
+      'ingredients': this.tags
 
     })
 
@@ -262,11 +288,29 @@ export class InputComponent implements OnInit {
 
 
   addItem() {
-    debugger;
+
     this.patchSelectedValuesToForm();
 
-    if (this.addItemform.valid) {
-      console.log(this.addItemform);
+
+
+
+    let formValue = this.addItemform.value;
+
+    console.log('====', formValue);
+
+    
+
+    if (formValue.category == 'Select' || formValue.sub_category == 'Select' || formValue.item_type == 'Select' || formValue.in_stock == 'Select' || formValue.size_type == 'Select' || (formValue.size_type == 'Available' && (formValue.s_price == '' || formValue.m_price == '' || formValue.l_price == '')) || (formValue.size_type == 'NA' && formValue.price == '') || formValue.estimate_time == '' || formValue.ingredients.length == 0 || formValue.menu_item == '' || (formValue.in_stock == 'Yes' && formValue.stock == 0)) {
+
+      this.sharedService.showSnackBar('Please Fill All Details', 'error');
+
+    }
+    else{
+
+    this.inventoryService.insertSingleItem(formValue).subscribe((res: any) => {
+
+      console.log('res----', res);
+    })
     }
 
 
@@ -287,12 +331,18 @@ export class InputComponent implements OnInit {
     //   }
     // });
 
-    else {
-      this.sharedService.showSnackBar('Please Fill All Details', 'error');
-    }
+    // else {
+    //   this.sharedService.showSnackBar('Please Fill All Details', 'error');
+    // }
 
 
   }
+
+
+
+
+
+
 
 
 

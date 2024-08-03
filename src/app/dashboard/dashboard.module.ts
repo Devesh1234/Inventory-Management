@@ -5,7 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppCommonModule } from '../app-common/app-common.module';
 import { NgChartsModule } from 'ng2-charts';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { SearchFilterPipe } from '../core/pipes/search-filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 

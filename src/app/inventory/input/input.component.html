@@ -67,7 +67,7 @@
                 <div class="card-body">
                     <form class="row" [formGroup]="addItemform">
 
-                        <div class="col-lg-3 col-sm-6 col-12">
+                        <div class=" col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Menu Item <span class="manitory">*</span></label>
                                 <input type="text" formControlName='menu_item'>
@@ -75,18 +75,8 @@
                         </div>
 
 
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label>Category <span class="manitory">*</span></label>
-                                <select #categoryselect class="select" formControlName="category">
-                                    <option disabled selected>Select</option>
-                                    <option *ngFor="let item of categoriesList">{{item.name}}</option>
-                                </select>
-                            </div>
-                        </div>
 
-
-                        <div class="col-lg-6 col-sm-6 col-12">
+                        <div class=" col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Category<span class="manitory">*</span></label>
                                 <div class="btn-group">
@@ -109,7 +99,7 @@
 
 
 
-                        <div class="col-lg-6 col-sm-6 col-12">
+                        <div class=" col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Sub Category<span class="manitory">*</span></label>
                                 <div class="btn-group">
@@ -131,7 +121,7 @@
 
 
 
-                        <div class="col-lg-6 col-sm-6 col-12">
+                        <div class=" col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Sub Sub Category<span class="manitory">*</span></label>
                                 <div class="btn-group">
@@ -154,7 +144,7 @@
 
 
 
-                        <div class="col-lg-6 col-sm-6 col-12">
+                        <div class=" col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Size Type<span class="manitory">*</span></label>
                                 <div class="btn-group">
@@ -174,170 +164,165 @@
                             </div>
                         </div>
 
-
-
-
-                        <div class="col-lg-3 col-sm-6 col-12" *ngIf="selectedSizeType=='Available'">
-                            <div class="form-group">
-                                <label>Small Price<span class="manitory">*</span></label>
-                                <input type="text" formControlName="s_price">
-                            </div>
-                        </div>
-
-
-
-
-
-
-
-                        <div class="col-lg-3 col-sm-6 col-12" *ngIf="selectedSizeType=='Available'">
-                            <div class="form-group">
-                                <label>Medium Price<span class="manitory">*</span></label>
-                                <input type="text" formControlName="m_price">
-                            </div>
-                        </div>
-
-
-
-
-
-
-                        <div class="col-lg-3 col-sm-6 col-12" *ngIf="selectedSizeType=='Available'">
-                            <div class="form-group">
-                                <label>Large Price<span class="manitory">*</span></label>
-                                <input type="text" formControlName="l_price">
-                            </div>
-                        </div>
-
-
-
-
-
-
-
-
-
-
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label>Ingredients<span class="manitory">*</span></label>
-
-                                <div>
-                                    <ul class="tags-input">
-                                        <input type="text" formControlName="ingredients"
-                                            (keypress)="onKeypress($event)">
-                                    </ul>
-                                </div>
-                            </div>
-
-
-                        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label>Sub Category <span class="manitory">*</span> </label>
-                                <select #subcategoryselect class="select" formControlName="sub_category">
-                                    <option disabled selected>Select</option>
-                                    <option>Sub Category 1</option>
-                                    <option>Sub Category 2</option>
-                                    <option>Sub Category 3</option>
-                                </select>
-                            </div>
-                        </div>
-
-
-
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label>Sub Sub Category<span class="manitory">*</span> </label>
-                                <select #subsubcategoryselect class="select" formControlName="sub_sub_category">
-                                    <option disabled selected>Select</option>
-                                    <option>Sub Sub Category 1</option>
-                                    <option>Sub Sub Category 2</option>
-                                    <option>Sub Sub Category 3</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label>Item Type <span class="manitory">*</span></label>
-                                <select #itemtypeselect class="select" formControlName="item_type">
-                                    <option disabled selected>Select</option>
-                                    <option>Vegetarian</option>
-                                    <option>Non-Vegetarian</option>
-                                </select>
-                            </div>
-                        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label>Ingredients<span class="manitory">*</span></label>
-                                <input type="text" formControlName="ingredients">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-sm-6 col-12">
+                        
+                        <div class=" col-sm-4 col-12"  *ngIf="selectedSizeType!='Available'">
                             <div class="form-group">
                                 <label>Price<span class="manitory">*</span></label>
-                                <input type="text" formControlName="price">
+                                <input type="text" formControlName="price" appNumbersOnly>
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-sm-6 col-12">
+
+
+
+                        <div class=" col-sm-4 col-12" *ngIf="selectedSizeType=='Available'">
                             <div class="form-group">
-                                <label>Size Type <span class="manitory">*</span></label>
-                                <select #sizetypeselect class="select" formControlName="size_type">
-                                    <option disabled selected>Select</option>
-                                    <option>Small</option>
-                                    <option>Medium</option>
-                                    <option>Large</option>
-                                </select>
+                                <label>Small Price<span class="manitory">*</span></label>
+                                <input type="text" formControlName="s_price" appNumbersOnly>
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-sm-6 col-12">
+
+
+
+
+
+
+                        <div class=" col-sm-4 col-12" *ngIf="selectedSizeType=='Available'">
+                            <div class="form-group">
+                                <label>Medium Price<span class="manitory">*</span></label>
+                                <input type="text" formControlName="m_price" appNumbersOnly>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class=" col-sm-4 col-12" *ngIf="selectedSizeType=='Available'">
+                            <div class="form-group">
+                                <label>Large Price<span class="manitory">*</span></label>
+                                <input type="text" formControlName="l_price" appNumbersOnly>
+                            </div>
+                        </div>
+
+
+
+                        
+
+                        <div class=" col-sm-4 col-12" *ngIf="selectedSizeType=='Available'">
+                            <div class="form-group">
+                                <label>Extra Large Price<span class="manitory">*</span></label>
+                                <input type="text" formControlName="xl_price">
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class=" col-12">
+                            <div class="form-group mb-3">
+                                <label>Ingredients<span class="manitory">*</span></label>
+                                <input type="text" (keyup.enter)="addTag($event)" placeholder="Add a tag">
+                            </div>
+                            <ul class="ingredients_list" *ngIf="tags.length!=0">
+                                <li *ngFor="let tag of tags; let i = index">
+                                   <p>{{tag}}</p> 
+                                   <h3 class="remove" (click)="removeTagItem(i)">&times;</h3>
+                                </li>
+                            </ul>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      
+
+
+
+                        <div class=" col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Item Type<span class="manitory">*</span></label>
+                                <div class="btn-group">
+                                    <button type="button" class="custom-select-btn dropdown-toggle text-left"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{selectedItemType}}
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item " *ngFor="let item of itemTypeList"
+                                            (click)="selectItemType(item)">
+                                            {{item}}
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class=" col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Estimate Time<span class="manitory">*</span></label>
                                 <input type="text" formControlName="estimate_time">
@@ -345,36 +330,54 @@
                         </div>
 
 
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label>Stock<span class="manitory">*</span></label>
-                                <input type="text" formControlName="stock">
-                            </div>
-                        </div>
 
-                        <div class="col-lg-3 col-sm-6 col-12">
+                        <div class=" col-sm-4 col-12">
                             <div class="form-group">
-                                <label>Calories <span class="manitory">*</span></label>
-                                <input type="text" formControlName="calories">
+                                <label>Calories</label>
+                                <input type="text" formControlName="calories" appNumbersOnly>
                             </div>
                         </div>
 
 
-                        <div class="col-lg-3 col-sm-6 col-12">
+
+
+                        <div class=" col-sm-4 col-12">
                             <div class="form-group">
-                                <label>In Stock<span class="manitory">*</span> </label>
-                                <select #instockselect class="select" formControlName="in_stock">
-                                    <option disabled selected>Select</option>
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
-                                </select>
+                                <label>Stock Status<span class="manitory">*</span></label>
+                                <div class="btn-group">
+                                    <button type="button" class="custom-select-btn dropdown-toggle text-left"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{selectedStockStatus}}
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item " *ngFor="let item of stockStatusList"
+                                            (click)="selectStockStatus(item)">
+                                            {{item}}
+                                        </a>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+
+
+
+                        <div class=" col-sm-6 col-12" *ngIf="selectedStockStatus=='Yes'" >
+                            <div class="form-group">
+                                <label>Stock (Quantity)<span class="manitory">*</span></label>
+                                <input type="text" formControlName="stock" appNumbersOnly >
+                            </div>
+                        </div>
+
+                     
+                       
+                     
 
 
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Description<span class="manitory">*</span></label>
+                                <label>Description</label>
                                 <textarea class="form-control" formControlName="description"></textarea>
                             </div>
                         </div>

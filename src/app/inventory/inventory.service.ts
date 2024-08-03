@@ -73,7 +73,7 @@ export class InventoryService {
 
 
 
-  deleteCategory(obj:any) {
+  deleteCategory(obj: any) {
     this.authService.getNewTokens();
 
 
@@ -84,7 +84,7 @@ export class InventoryService {
   }
 
 
-  deleteSubCategory(obj:any) {
+  deleteSubCategory(obj: any) {
     this.authService.getNewTokens();
 
     let apiUrl = 'http://62.72.30.98:8000/api/subcategories_delete/' + this.vendor_id + '/';
@@ -93,7 +93,7 @@ export class InventoryService {
   }
 
 
-  deleteSubSubCategory(obj:any) {
+  deleteSubSubCategory(obj: any) {
 
     this.authService.getNewTokens();
 
@@ -103,6 +103,21 @@ export class InventoryService {
 
   }
 
+
+
+  getInventoryItemsData() {
+    let apiUrl = 'http://62.72.30.98:8000/api/inventory/single_vendors/' + this.vendor_id+'/';
+    return this.httpClient.get(apiUrl);
+
+  }
+
+  insertSingleItem(data: any) {
+    let apiUrl = 'http://62.72.30.98:8000/api/inventory/create/' + this.vendor_id + '/';
+    return this.httpClient.post(apiUrl, data)
+  }
+
+
+  
 
 
 }

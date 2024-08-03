@@ -153,16 +153,6 @@ export class SharedService {
 
 
 
-  getInventoryItemsData() {
-    let apiUrl = 'http://62.72.30.98:8000/api/inventory/single_vendors/' + this.vendor_id+'/';
-    return this.httpClient.get(apiUrl);
-
-  }
-
-  insertInventoryMenuSingleEntryApi(data: any) {
-    let apiUrl = 'http://62.72.30.98:8000/api/inventory/create/' + this.vendor_id+'/';
-    return this.httpClient.post(apiUrl, { data })
-  }
 
   insertInventoryMenuExcelEntryApi(file: File) {
     console.log('file------', file);
