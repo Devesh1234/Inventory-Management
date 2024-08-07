@@ -417,22 +417,7 @@
 
 
 
-<!-- Confirmation Popup -->
-
-
-<ng-template #confirmationDialog>
-    <div>sadsa</div>
-</ng-template>
-
-
-
-
-
-
-
-
-
-
+<!-- Delete Confirmation Popup -->
 
 
 
@@ -451,7 +436,7 @@
             </div>
             <div class="modal-footer justify-content-end">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="deleteItem()">Delete</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteItem()">Delete</button>
             </div>
         </div>
     </div>
