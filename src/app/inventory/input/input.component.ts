@@ -240,7 +240,7 @@ export class InputComponent implements OnInit {
 
   saveUploadFile() {
     if (this.uploadedFile != null) {
-      this.sharedService.insertInventoryMenuExcelEntryApi(this.uploadedFile).subscribe({
+      this.inventoryService.insertExcelData(this.uploadedFile).subscribe({
         next: (res: any) => {
           console.log('Inventory Menun Excel Entry', res);
 

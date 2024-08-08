@@ -106,18 +106,35 @@ export class InventoryService {
 
 
   getInventoryItemsData() {
-    let apiUrl = 'http://62.72.30.98:8000/api/inventory/single_vendors/' + this.vendor_id+'/';
+    this.authService.getNewTokens();
+
+    let apiUrl = 'http://62.72.30.98:8000/api/inventory/single_vendors/' + this.vendor_id + '/';
     return this.httpClient.get(apiUrl);
 
   }
 
   insertSingleItem(data: any) {
+    this.authService.getNewTokens();
+
     let apiUrl = 'http://62.72.30.98:8000/api/inventory/create/' + this.vendor_id + '/';
     return this.httpClient.post(apiUrl, data)
   }
 
+  insertExcelData(file: any) {
+    this.authService.getNewTokens();
 
-  
+    console.log('file------', file);
+    let formData = new FormData();
+    formData.append("file", file)
+    console.log('formData------: ', formData);
+
+    let apiUrl = 'http://62.72.30.98:8000/api/inventory/import/?excel_file';
+    let obj = { 'excel_file': formData, 'vendor': this.vendor_id }
+    console.log('obj: ', obj);
+    return this.httpClient.post(apiUrl, obj)
+  }
+
+
 
 
 }
