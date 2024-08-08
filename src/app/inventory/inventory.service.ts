@@ -114,6 +114,7 @@ export class InventoryService {
   }
 
   insertSingleItem(data: any) {
+    console.log('data: ', data);
     this.authService.getNewTokens();
 
     let apiUrl = 'http://62.72.30.98:8000/api/inventory/create/' + this.vendor_id + '/';
@@ -122,18 +123,36 @@ export class InventoryService {
 
   insertExcelData(file: any) {
     this.authService.getNewTokens();
+    const formData = new FormData();
 
-    console.log('file------', file);
-    let formData = new FormData();
-    formData.append("file", file)
-    console.log('formData------: ', formData);
+    formData.append('excel_file', file, file.name);
+    formData.append('vendor', this.vendor_id);
+    console.log('formData: ', formData);
 
     let apiUrl = 'http://62.72.30.98:8000/api/inventory/import/?excel_file';
-    let obj = { 'excel_file': formData, 'vendor': this.vendor_id }
-    console.log('obj: ', obj);
+
+    return this.httpClient.post(apiUrl, formData, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json'
+      })
+    });
+  }
+
+
+  editMenuItem(obj: any) {
+    this.authService.getNewTokens();
+
+    let apiUrl = 'http://62.72.30.98:8000/api/vendors/' + this.vendor_id + '/menu-items/edit/'
+
     return this.httpClient.post(apiUrl, obj)
   }
 
+  deleteMenuItem(obj: any) {
+    this.authService.getNewTokens();
+
+    let apiUrl = 'http://62.72.30.98:8000/api/vendors/' + this.vendor_id + '/menu-items/delete/'
+    return this.httpClient.post(apiUrl, obj)
+  }
 
 
 

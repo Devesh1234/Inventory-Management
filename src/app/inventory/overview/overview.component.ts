@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { InventoryService } from '../inventory.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-overview',
@@ -10,25 +11,30 @@ import { InventoryService } from '../inventory.service';
 export class OverviewComponent implements OnInit {
 
   inventoryItemsData: any;
-  categoriesList:any;
-  subCategoriesList:any;
-  subSubCategoriesList:any;
+  categoriesList: any;
+  subCategoriesList: any;
+  subSubCategoriesList: any;
+  deleteditem: any;
 
-  constructor(private inventoryService: InventoryService) { }
+  constructor(private inventoryService: InventoryService, private sharedService: SharedService , private router:Router) { }
 
   ngOnInit(): void {
 
 
+    this.getInventoryItemsData();
+
+
+
+  }
+
+  getInventoryItemsData() {
     this.inventoryService.getInventoryItemsData().subscribe((res: any) => {
       this.inventoryItemsData = res
       console.log('======', this.inventoryItemsData);
-    this.getCategroiesList();
-    this.getSubCategoriesList();
-    this.getSubSubCategoriesList();
+      this.getCategroiesList();
+      this.getSubCategoriesList();
+      this.getSubSubCategoriesList();
     })
-
-    
-
   }
 
 
@@ -61,47 +67,64 @@ export class OverviewComponent implements OnInit {
 
 
 
-  editItem(id:any){
-    console.log('id----',id);
+  editItem(item:any) {
+    console.log('id----', item);
+    // let obj={};
+    // this.inventoryService.editMenuItem(obj).subscribe((res:any)=>{
+    //   console.log();
+    // })
+    this.router.navigate(['/inventory/Input'],{state:{data:item}})
+
+    
   }
-  
+
 
   getDeletedItem(id: any) {
-    // this.deleteditem = id;
-    // console.log('deleted item', id);
-  }
-  deleteItem() {
-    // this.acceptOrNot(false, this.deleteditem)
+    this.deleteditem = id;
+    console.log('deleted item', id);
   }
 
-  getCategoryName(id:any){
-    if(this.categoriesList)
-    for(let item of this.categoriesList){
-      if(item.id==id)
-        return item.name;
+  deleteItem() {
+    let obj = {
+      'menu_item_ids': [this.deleteditem]
     }
+    this.inventoryService.deleteMenuItem(obj).subscribe((res: any) => {
+      this.sharedService.showSnackBar('Item Delete Succesfully', 'success')
+      this.getInventoryItemsData()
+    },
+      (err: any) => {
+        this.sharedService.showSnackBar('Something Went Wrong', 'Error')
+      })
+  }
+
+  getCategoryName(id: any) {
+    if (this.categoriesList)
+      for (let item of this.categoriesList) {
+        if (item.id == id)
+          return item.name;
+      }
     return 'NA';
 
   }
-  getSubCategoryName(id:any){
+  getSubCategoryName(id: any) {
 
-    if(this.subCategoriesList)
-      for(let item of this.subCategoriesList){
-        if(item.id==id)
+    if (this.subCategoriesList)
+      for (let item of this.subCategoriesList) {
+        if (item.id == id)
           return item.name;
       }
-      return 'NA';
+    return 'NA';
 
   }
-  getSubSubCategoryName(id:any){
+  getSubSubCategoryName(id: any) {
 
 
-    if(this.subSubCategoriesList)
-      for(let item of this.subSubCategoriesList){
-        if(item.id==id)
+    if (this.subSubCategoriesList)
+      for (let item of this.subSubCategoriesList) {
+        if (item.id == id)
           return item.name;
       }
-      return 'NA';
+    return 'NA';
 
 
   }

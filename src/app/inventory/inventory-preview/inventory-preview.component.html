@@ -43,23 +43,6 @@
 
 
 
-            <div *ngFor="let item of {'name':{'subname':{'subsubname':[{'id':1},{'id':2},{'id':3}]}}}  | keyvalue ">
-                <div >
-                    <div *ngFor="let subitem of item.value | keyvalue">
-                        <!-- {{subitem | json}} -->
-                        <div *ngFor="let subsubitem of subitem.value | keyvalue">
-                            <!-- {{subsubitem | json}} -->
-                                <div *ngFor="let elem of subsubitem.value">
-                                            {{elem.id}}
-                                </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-
-
 
 
 
@@ -75,11 +58,11 @@
             <div class="accordion-item" *ngFor="let item of new_obj | keyvalue ; let i=index">
                 <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        [attr.data-bs-target]="'#collapse' + i" aria-expanded="true"   [attr.aria-controls]="'collapse' + i">
                         {{getCategoryName(item.key)}}
                     </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                <div [attr.id]="'collapse' + i" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
 
@@ -111,7 +94,8 @@
                                                 <div id="sub-collapseOne" class="accordion-collapse collapse show"
                                                     aria-labelledby="sub-headingOne"
                                                     data-bs-parent="#sub-accordionExample" *ngIf="subsubitem.value">
-                                                    <div class="accordion-body" *ngFor="let elem of subsubitem.value | keyvalue">
+                                                    <div class="accordion-body"
+                                                        *ngFor="let elem of subsubitem.value | keyvalue">
                                                         {{elem.value['menu_item'] | json }}
                                                     </div>
                                                 </div>

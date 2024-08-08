@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from 'src/app/shared.service';
 import { InventoryComponent } from '../inventory/inventory.component';
 import { InventoryService } from '../inventory.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-input',
@@ -45,6 +46,8 @@ export class InputComponent implements OnInit {
   stockStatusList: any = ['Yes', 'No'];
   selectedStockStatus: any = 'Select'
 
+  editedData: any;
+
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
 
@@ -60,7 +63,12 @@ export class InputComponent implements OnInit {
   // @ViewChild('instockselect') instockselect!: ElementRef<HTMLInputElement>;
 
 
-  constructor(private sharedService: SharedService, private fb: FormBuilder, private inventoryService: InventoryService) { }
+  constructor(private sharedService: SharedService, private fb: FormBuilder, private inventoryService: InventoryService, private router: Router) {
+
+    this.editedData = this.router.getCurrentNavigation()?.extras.state?.['data'];
+    console.log('this.editedData: ', this.editedData);
+
+  }
 
   ngOnInit(): void {
 
@@ -235,6 +243,8 @@ export class InputComponent implements OnInit {
   onFileSelected(event: any) {
     console.log('event---', event.target.files);
     this.uploadedFile = event.target.files[0];
+    console.log('this.uploadedFile: ', this.uploadedFile);
+
 
   }
 
@@ -243,9 +253,12 @@ export class InputComponent implements OnInit {
       this.inventoryService.insertExcelData(this.uploadedFile).subscribe({
         next: (res: any) => {
           console.log('Inventory Menun Excel Entry', res);
+          this.sharedService.showSnackBar('Excel Uploaded Sucessfully','success')
+          this.onFileCancel();
 
         },
         error: (err: any) => {
+          this.sharedService.showSnackBar('Something went wrong','error')
 
         }
       });
@@ -278,7 +291,7 @@ export class InputComponent implements OnInit {
       'sub_sub_category': this.selectedSubSubCategoryValueId,
       'item_type': this.selectedItemType,
       'size_type': this.selectedSizeType,
-      'in_stock': this.selectedStockStatus=='Yes',
+      'in_stock': this.selectedStockStatus == 'Yes',
       'ingredients': this.tags
 
     })
@@ -288,29 +301,21 @@ export class InputComponent implements OnInit {
 
 
   addItem() {
-
     this.patchSelectedValuesToForm();
-
-
-
-
     let formValue = this.addItemform.value;
-
     console.log('====', formValue);
-
-    
-
     if (formValue.category == 'Select' || formValue.sub_category == 'Select' || formValue.item_type == 'Select' || formValue.in_stock == 'Select' || formValue.size_type == 'Select' || (formValue.size_type == 'Available' && (formValue.s_price == '' || formValue.m_price == '' || formValue.l_price == '')) || (formValue.size_type == 'NA' && formValue.price == '') || formValue.estimate_time == '' || formValue.ingredients.length == 0 || formValue.menu_item == '' || (formValue.in_stock == 'Yes' && formValue.stock == 0)) {
-
       this.sharedService.showSnackBar('Please Fill All Details', 'error');
-
     }
-    else{
-
-    this.inventoryService.insertSingleItem(formValue).subscribe((res: any) => {
-
-      console.log('res----', res);
-    })
+    else {
+      console.log('devesh---');
+      this.inventoryService.insertSingleItem(formValue).subscribe((res: any) => {
+        console.log('res----', res);
+      this.sharedService.showSnackBar('Items Add Succesfully', 'success');
+      },
+        (err: any) => {
+          console.log('err----', err);
+        })
     }
 
 

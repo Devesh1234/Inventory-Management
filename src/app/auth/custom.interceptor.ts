@@ -20,7 +20,7 @@ export class customInterceptor implements HttpInterceptor {
     // console.log('Devesh');
     if (req.url !== loginUrl && req.url != refreshUrl) {
       const access_token = localStorage.getItem('access_token');
-      console.log('access_token----: ', access_token);
+      // console.log('access_token----: ', access_token);
       req = req.clone({
         headers: req.headers.set('Authorization', 'Bearer ' + access_token)
       })
