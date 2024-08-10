@@ -111,6 +111,7 @@ export class InputComponent implements OnInit {
   getCategoriesList() {
     this.inventoryService.getCategories().subscribe((res: any) => {
       this.categoriesList = res.response;
+      console.log('this.categoriesList: ', this.categoriesList);
     })
 
   }
@@ -127,6 +128,7 @@ export class InputComponent implements OnInit {
   getSubCategoriesList() {
     this.inventoryService.getSubCategories().subscribe((res: any) => {
       this.subCategoriesList = res.response;
+      console.log('this.subCategoriesList: ', this.subCategoriesList);
     })
 
   }

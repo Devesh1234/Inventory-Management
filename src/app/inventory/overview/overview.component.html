@@ -61,18 +61,99 @@
 
 
             <div class="card box-shadow-cstm">
-                <div class="card-body">
-                    <div class="table-top">
-                        <div class="search-set">
 
-                            <div class="search-input">
-                                <a class="btn btn-searchset"><img src="assets/img/icons/search-white.svg" alt="img"></a>
-                            </div>
+                <div class="card-header pb-0">
+                    <h5 class="card-title">Items Data</h5>
+
+
+
+                    <div class="menu_items_header">
+                        <div class="items_search">
+                            <img src="assets/img/icons/search-white.svg" alt="img" class="me-2">
+
+                            <input type="search" class="traking_search_input" placeholder="Search here">
+                            <h5>&times;</h5>
+
+                        </div>
+
+                        <div class="items_filter" (click)="filterItems()">
+                            <img [src]='filterActive ? "assets/img/icons/closes.svg":"assets/img/icons/filter.svg"' alt="" >
                         </div>
 
                     </div>
 
 
+                    <div class="filter_fields d-flex flex-wrap mt-4">
+
+                        <div class=" col-sm-4 col-12 ps-0">
+                            <div class="form-group">
+                                <label>Category<span class="manitory">*</span></label>
+                                <div class="btn-group">
+                                    <button type="button" class="custom-select-btn dropdown-toggle text-left"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <!-- <i class="ion-ios-sunny mr-4"></i> -->
+                                        <!-- {{selectedSizeType}} -->
+                                        11
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item " *ngFor="let item of categoriesList">
+                                            {{item.name}}
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class=" col-sm-4 col-12 ps-0">
+                            <div class="form-group">
+                                <label>Sub Category<span class="manitory">*</span></label>
+                                <div class="btn-group">
+                                    <button type="button" class="custom-select-btn dropdown-toggle text-left"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <!-- <i class="ion-ios-sunny mr-4"></i> -->
+                                        <!-- {{selectedSizeType}} -->
+                                        11
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item " *ngFor="let item of subCategoriesList">
+                                            {{item.name}}
+
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class=" col-sm-4 col-12 ps-0">
+                            <div class="form-group">
+                                <label>Sub Sub Category<span class="manitory">*</span></label>
+                                <div class="btn-group">
+                                    <button type="button" class="custom-select-btn dropdown-toggle text-left"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <!-- <i class="ion-ios-sunny mr-4"></i> -->
+                                        <!-- {{selectedSizeType}} -->
+                                        11
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item " *ngFor="let item of subSubCategoriesList">
+                                            {{item.name}}
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+                <div class="card-body">
                     <div class="table-responsive">
                         <table class="table  table-nowrap mb-0">
                             <thead>
@@ -108,8 +189,9 @@
                                     <td>
                                         <span class="badges bg-lightgreen me-1" (click)="editItem(item)">Edit</span>
 
-                                        <img src="assets/img/icons/delete.svg" alt="img" class="align-middle" (click)="getDeletedItem(item.id)"
-                                            data-toggle="modal" data-target="#exampleModalCenter">
+                                        <img src="assets/img/icons/delete.svg" alt="img" class="align-middle"
+                                            (click)="getDeletedItem(item.id)" data-toggle="modal"
+                                            data-target="#exampleModalCenter">
 
 
                                     </td>
@@ -158,7 +240,8 @@
             </div>
             <div class="modal-footer justify-content-end">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteItem()">Delete</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    (click)="deleteItem()">Delete</button>
             </div>
         </div>
     </div>

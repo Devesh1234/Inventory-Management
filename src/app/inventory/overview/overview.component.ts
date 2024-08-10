@@ -16,6 +16,10 @@ export class OverviewComponent implements OnInit {
   subSubCategoriesList: any;
   deleteditem: any;
 
+  filterActive:boolean=false;
+
+  
+
   constructor(private inventoryService: InventoryService, private sharedService: SharedService , private router:Router) { }
 
   ngOnInit(): void {
@@ -126,6 +130,14 @@ export class OverviewComponent implements OnInit {
       }
     return 'NA';
 
+
+  }
+
+
+
+  filterItems(){
+
+    this.filterActive=!this.filterActive;
 
   }
 

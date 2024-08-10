@@ -46,35 +46,91 @@
 
 
 
-
+        <!-- Level 1 starts -->
         <div class="accordion" id="accordionExample">
-                <!-- Level 1 starts -->
-            <div class="accordion-item" >
-                <div *ngIf="!   false">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Accordion Item #1
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            Devesh
+            <div class="accordion-item" *ngFor="let item of new_obj | keyvalue ; let i=index;">
+                <h2 class="accordion-header" [attr.id]="'heading' + i">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        [attr.data-bs-target]="'#collapse' + i" aria-expanded="true"
+                        [attr.aria-controls]="'collapse' + i">
+                        {{getCategoryName(item.key)}}
+                    </button>
+                </h2>
+                <div [attr.id]="'collapse' + i" class="accordion-collapse collapse"
+                    [attr.aria-labelledby]="'heading' + i" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+
+                        <!-- Level 2 starts -->
+
+                        <div class="accordion" id="sub-accordionExample" *ngIf="item.value">
+
+                            <div class="accordion-item" *ngFor="let subitem of item.value | keyvalue ; let j=index;">
+                                <h2 class="accordion-header" [attr.id]="'heading' +i+'-'+ j">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        [attr.data-bs-target]="'#collapse' + i+'-'+ j" aria-expanded="true"
+                                        [attr.aria-controls]="'collapse' +i+'-'+ j">
+                                        {{getSubCategoryName(subitem.key)}}
+                                    </button>
+                                </h2>
+
+                                <div [attr.id]="'collapse' + i+'-'+j" class="accordion-collapse collapse"
+                                    [attr.aria-labelledby]="'heading' + i+'-'+j" data-bs-parent="#sub-accordionExample">
+                                    <div class="accordian-body" *ngIf="subitem.value">
+
+                                        <!-- Level 3 Starts -->
+                                        {{subitem.value | json}}
+
+
+                                        <div class="accordion" id="sub-sub-accordionExample" *ngIf="subitem.value &&hasKey(subitem.value)">
+                                            <div class="accordion-item"
+                                                *ngFor="let subsubitem of subitem.value | keyvalue ; let k=index;">
+                                                <h2 class="accordion-header" [attr.id]="'heading' +i+'-'+ j+ '-' + k">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse"
+                                                        [attr.data-bs-target]="'#collapse' + i+'-'+ j+ '-' + k"
+                                                        aria-expanded="true"
+                                                        [attr.aria-controls]="'collapse' +i+'-'+ j+ '-' + k">
+                                                        {{getSubSubCategoryName(subsubitem.key)}}
+
+                                                    </button>
+                                                </h2>
+                                                <div [attr.id]="'collapse' + i+'-'+j+ '-' + k"
+                                                    class="accordion-collapse collapse"
+                                                    [attr.aria-labelledby]="'heading' + i+'-'+j+ '-' + k"
+                                                    data-bs-parent="#sub-sub-accordionExample">
+                                                    <div class="accordian-body"  *ngIf="subsubitem.value">
+                                                        <h5 *ngFor="let elem of subsubitem.value | keyvalue">
+                                                            {{elem.value | json}}
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            Devesh
+                                        </div>
+
+
+
+
+
+
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
                         </div>
+
                     </div>
+
+
+
+
                 </div>
-                <div *ngIf="true">
-                    <div class="accordian-body">
-                        Devesh
-                    </div>
-                </div>
-            </div>
-
-
-
-            
-        </div>
 
 
 
@@ -82,7 +138,7 @@
 
 
 
-        <!-- 
+                <!-- 
         <div class="accordion" id="accordionExample" *ngIf="new_obj">
             <div class="accordion-item" *ngFor="let item of new_obj | keyvalue ; let i=index">
                 <h2 class="accordion-header" id="headingOne">
@@ -147,4 +203,10 @@
 
 
         </div> -->
-    </div>
+
+
+
+
+
+
+            </div>

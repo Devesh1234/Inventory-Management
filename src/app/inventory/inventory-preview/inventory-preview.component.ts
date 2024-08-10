@@ -277,7 +277,7 @@ export class InventoryPreviewComponent implements OnInit {
           return elem.name
 
       }
-    return 'Bhatias'
+    return 'Sub Sub Category Name Not Found'
   }
 
 
@@ -305,6 +305,11 @@ export class InventoryPreviewComponent implements OnInit {
     return result;
   }
 
+  hasKey(obj: any): boolean {
+    // console.log('-----',obj);
+    // if()
+    return true
+  }
 
 
 
