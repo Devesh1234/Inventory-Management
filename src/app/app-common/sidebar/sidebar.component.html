@@ -72,13 +72,13 @@
 
 
                         <li class="subsubmenu">
-                            <a [ngClass]="activeTile=='items'?'submenu active':'submenu' ">
+                            <a [ngClass]="activeTile=='Profile'?'submenu active':'submenu' ">
                                 <span class="subsubmenuheading">Employees</span>
                             </a>
                             <ul class="ms-3">
                                 <li>
-                                    <a [ngClass]="activeSubTile=='itemsOverview'?'submenu active':'submenu' "
-                                        (click)="selectTile('itemsOverview')">Overview</a>
+                                    <a [ngClass]="activeSubTile=='employeesOverview'?'submenu active':'submenu' "
+                                        (click)="selectTile('employeesOverview')">Overview</a>
                                 </li>
                                 <li>
                                     <a [ngClass]="activeSubTile=='addInput'?'submenu active':'submenu' "

@@ -164,8 +164,8 @@
                             </div>
                         </div>
 
-                        
-                        <div class=" col-sm-4 col-12"  *ngIf="selectedSizeType!='Available'">
+
+                        <div class=" col-sm-4 col-12" *ngIf="selectedSizeType!='Available'">
                             <div class="form-group">
                                 <label>Price<span class="manitory">*</span></label>
                                 <input type="text" formControlName="price" appNumbersOnly>
@@ -209,7 +209,7 @@
 
 
 
-                        
+
 
                         <div class=" col-sm-4 col-12" *ngIf="selectedSizeType=='Available'">
                             <div class="form-group">
@@ -241,8 +241,8 @@
                             </div>
                             <ul class="ingredients_list" *ngIf="tags.length!=0">
                                 <li *ngFor="let tag of tags; let i = index">
-                                   <p>{{tag}}</p> 
-                                   <h3 class="remove" (click)="removeTagItem(i)">&times;</h3>
+                                    <p>{{tag}}</p>
+                                    <h3 class="remove" (click)="removeTagItem(i)">&times;</h3>
                                 </li>
                             </ul>
                         </div>
@@ -270,7 +270,7 @@
 
 
 
-                      
+
 
 
 
@@ -363,16 +363,16 @@
 
 
 
-                        <div class=" col-sm-6 col-12" *ngIf="selectedStockStatus=='Yes'" >
+                        <div class=" col-sm-6 col-12" *ngIf="selectedStockStatus=='Yes'">
                             <div class="form-group">
                                 <label>Stock (Quantity)<span class="manitory">*</span></label>
-                                <input type="text" formControlName="stock" appNumbersOnly >
+                                <input type="text" formControlName="stock" appNumbersOnly>
                             </div>
                         </div>
 
-                     
-                       
-                     
+
+
+
 
 
                         <div class="col-lg-12">
@@ -432,18 +432,21 @@
             </div>
             <div class="modal-body px-5 py-4">
                 <ul style="list-style: initial;">
-                    <li>hsladfhsldk shdflksdhfl shdflksdh hnsadklfhsdlkhf hklsdflkhsdakf klsdhflksdhf hsdfklhsdkfhsd
-                        sdhfsdlkhf</li>
-                    <li>hsladfhsldk shdflksdhfl shdflksdh hnsadklfhsdlkhf hklsdflkhsdakf klsdhflksdhf hsdfklhsdkfhsd
-                        sdhfsdlkhf</li>
-                    <li>hsladfhsldk shdflksdhfl shdflksdh hnsadklfhsdlkhf hklsdflkhsdakf klsdhflksdhf hsdfklhsdkfhsd
-                        sdhfsdlkhf</li>
-                    <li>hsladfhsldk shdflksdhfl shdflksdh hnsadklfhsdlkhf hklsdflkhsdakf klsdhflksdhf hsdfklhsdkfhsd
-                        sdhfsdlkhf</li>
-                    <li>hsladfhsldk shdflksdhfl shdflksdh hnsadklfhsdlkhf hklsdflkhsdakf klsdhflksdhf hsdfklhsdkfhsd
-                        sdhfsdlkhf</li>
-                    <li>hsladfhsldk shdflksdhfl shdflksdh hnsadklfhsdlkhf hklsdflkhsdakf klsdhflksdhf hsdfklhsdkfhsd
-                        sdhfsdlkhf</li>
+                    <li><strong>Menu Item:</strong> Enter the name of the item.</li>
+                    <li><strong>Category/Sub Category/Sub Sub Category:</strong> Specify each as applicable.</li>
+                    <li><strong>Item Type:</strong> Mark as "Vegetarian" or "Non-Vegetarian."</li>
+                    <li><strong>Description:</strong> Provide a brief overview.</li>
+                    <li><strong>Ingredients:</strong> List key ingredients.</li>
+                    <li><strong>Item Category:</strong> Specify the category.</li>
+                    <li><strong>Size Type:</strong> Enter "NA" (base price only) or "AVAILABLE" (provide prices for
+                        Small, Medium, Large, Extra Large).</li>
+                    <li><strong>Estimate Time:</strong> Enter the preparation time.</li>
+                    <li><strong>Spiciness Level:</strong> Indicate the spice level.</li>
+                    <li><strong>Calorie Count:</strong> Record the calories.</li>
+                    <li><strong>Stock Quantity:</strong> Specify the quantity in stock.</li>
+                    <li><strong>In Stock:</strong> Mark if the item is in stock.</li>
+                    <li><strong>Chef's Special:</strong> Indicate if it's a special item.</li>
+                    <li><strong>Upcoming:</strong> Mark if it's an upcoming item.</li>
                 </ul>
             </div>
             <div class="modal-footer justify-content-evenly">

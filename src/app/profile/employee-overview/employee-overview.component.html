@@ -1,0 +1,157 @@
+<div class="main-wrapper">
+
+    <app-header></app-header>
+    <app-sidebar></app-sidebar>
+
+    <div class="page-wrapper">
+        <div class="content">
+
+
+            <div class="row  flex-nowrap  overflow-scroll" style="overflow-y: hidden !important;">
+                <div class="col-lg-4 col-sm-4 col-7">
+                    <div class="dash-widget box-shadow-cstm">
+                        <div class="dash-widgetimg">
+                            <span><img src="assets/img/icons/dash1.svg" alt="img"></span>
+                        </div>
+                        <div class="dash-widgetcontent">
+                            <h5><span class="counters" data-count="307144.00">110</span></h5>
+                            <h6>Total Orders</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-4 col-7">
+                    <div class="dash-widget dash1  box-shadow-cstm">
+                        <div class="dash-widgetimg">
+                            <span><img src="assets/img/icons/dash2.svg" alt="img"></span>
+                        </div>
+                        <div class="dash-widgetcontent">
+                            <h5><span class="counters" data-count="4385.00">4385</span></h5>
+                            <h6>Total No. of Dues</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-4 col-7">
+                    <div class="dash-widget dash2 box-shadow-cstm">
+                        <div class="dash-widgetimg">
+                            <span><img src="assets/img/icons/dash3.svg" alt="img"></span>
+                        </div>
+                        <div class="dash-widgetcontent">
+                            <h5>&#8377;<span class="counters" data-count="385656.50">30000</span></h5>
+                            <h6>Total Revenue</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-4 col-7">
+                    <div class="dash-widget dash3 box-shadow-cstm">
+                        <div class="dash-widgetimg">
+                            <span><img src="assets/img/icons/dash4.svg" alt="img"></span>
+                        </div>
+                        <div class="dash-widgetcontent">
+                            <h5>&#8377;<span class="counters" data-count="40000.00">3000</span></h5>
+                            <h6>Wemesy Wallet</h6>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="card box-shadow-cstm">
+
+                <div class="card-header pb-0">
+                    <h5 class="card-title">Employees Data</h5>
+
+
+
+                    <div class="employee_items_header">
+                        <div class="employee_search">
+                            <img src="assets/img/icons/search-white.svg" alt="img" class="me-2">
+
+                            <input type="search" class="employee_search_input" placeholder="Search here" [(ngModel)]="employeeSearchValue" (input)="onInputChange($event)">
+                            <h5 (click)="onInputCross()">&times;</h5>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table  table-nowrap mb-0">
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Middle Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Email</th>
+                                    <th>Designation</th>
+                                    <th>City</th>
+                                    <th>Country</th>
+                                    <th>Landmark</th>
+                                    <th>Gender</th>
+                                    <th>PAN</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngIf="employeesList">
+                                <tr *ngFor="let item of employeesList; let i=index;">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.first_name}}</td>
+                                    <td>{{item.last_name}}</td>
+                                    <td>{{item.middle_name}}</td>
+                                    <td>{{item.phone_number}}</td>
+                                    <td>{{item.email}}</td>
+                                    <td>{{item.designation}}</td>
+                                    <td>{{item.city}}</td>
+                                    <td>{{item.country}}</td>
+                                    <td>{{item.landmark}}</td>
+                                    <td>{{item.gender}}</td>
+                                    <td>{{item.pan}}</td>
+
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Delete Confirmation Popup -->
+
+
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Are Your Sure to Delete ?</h5>
+
+            </div>
+            <div class="modal-body">
+
+                <h6>This process is irreversible</h6>
+            </div>
+            <div class="modal-footer justify-content-end">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

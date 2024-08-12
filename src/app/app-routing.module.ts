@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren:()=>import('./tracker/tracker.module').then(m=>m.TrackerModule)
   },
   {
+    path:'profile',
+    loadChildren:()=>import('./profile/profile.module').then(m=>m.ProfileModule)
+  },
+  {
     path:'social',
     loadChildren:()=>import('./social/social.module').then(m=>m.SocialModule)
   }

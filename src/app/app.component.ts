@@ -9,7 +9,7 @@ import { SharedService } from './shared.service';
 })
 export class AppComponent {
 
-  constructor(private router: Router , private sharedService:SharedService) { }
+  constructor(private router: Router, private sharedService: SharedService) { }
 
   ngOnInit() {
     // this.router.navigate(['/auth/signup']);
@@ -22,12 +22,13 @@ export class AppComponent {
     // this.router.navigate(['/inventory/category']);
     // this.router.navigate(['/inventory/subcategory']);
     // this.router.navigate(['/inventory/subsubcategory']);
-    this.router.navigate(['/inventory/inventoryPreview']);
+    // this.router.navigate(['/inventory/inventoryPreview']);
+    this.router.navigate(['/profile/employee-input']);
 
     // this.router.navigate(['/inventory/Inventory']);  
     // this.router.navigate(['/social/Social']);
     // this.router.navigate(['/tracker/Tracker']);        
-    
+
     // this.sharedService.loadScripts();
 
   }
