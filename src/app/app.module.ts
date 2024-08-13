@@ -23,6 +23,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
 import {MatDialogModule} from '@angular/material/dialog';
 import { customInterceptor } from './auth/custom.interceptor';
 
+import { LightgalleryModule } from 'lightgallery/angular';
+
+
 
 // import { TabViewModule } from "primeng/tabview";
 
@@ -46,7 +49,8 @@ import { customInterceptor } from './auth/custom.interceptor';
     InventoryModule,
     TrackerModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    LightgalleryModule
 
   ],
   providers: [{

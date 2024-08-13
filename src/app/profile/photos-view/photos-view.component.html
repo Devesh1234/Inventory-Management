@@ -22,23 +22,57 @@
 
 
 
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Single Image Lightbox</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-4 mb-2 mb-md-0">
-                                <a href="assets/img/img-01.jpg" class="image-popup">
-                                    <img src="assets/img/img-01.jpg" class="img-fluid" alt="image">
-                                </a>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Images</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <lightgallery [settings]="settings">
+                                    <a class="col-md-4 mb-2 mb-md-0 " data-lg-size="480-475-480, 800-791-800, 1406-1390"
+                                        class="gallery-item"
+                                        data-src="https://images.unsplash.com/photo-1581894158358-5ecd2c518883?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1406&q=80"
+                                        data-responsive="https://images.unsplash.com/photo-1581894158358-5ecd2c518883?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=480&q=80 480, https://images.unsplash.com/photo-1581894158358-5ecd2c518883?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80 800"
+                                        data-sub-html="<p>Image Description</p>">
+                                        <img class="img-responsive me-4"
+                                            src="https://images.unsplash.com/photo-1581894158358-5ecd2c518883?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=240&q=80" />
+                                    </a>
+
+                                    <a class="col-md-4 mb-2 mb-md-0 " data-lg-size="480-475-480, 800-791-800, 1406-1390"
+                                        class="gallery-item"
+                                        data-src="https://images.unsplash.com/photo-1581894158358-5ecd2c518883?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1406&q=80"
+                                        data-responsive="https://images.unsplash.com/photo-1581894158358-5ecd2c518883?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=480&q=80 480, https://images.unsplash.com/photo-1581894158358-5ecd2c518883?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80 800"
+                                        data-sub-html="<p>Image Description</p>">
+                                        <img class="img-responsive me-4"
+                                            src="https://images.unsplash.com/photo-1581894158358-5ecd2c518883?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=240&q=80" />
+                                    </a>
+
+                                </lightgallery>
+
+
                             </div>
-                        
                         </div>
                     </div>
                 </div>
+
+
+
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </div>
     </div>
