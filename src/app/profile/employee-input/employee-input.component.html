@@ -64,7 +64,259 @@
             <div class="card">
                 <div class="card-body">
                     <form class="row" [formGroup]="addEmployeeForm">
+
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Employee ID <span class="manitory">*</span></label>
+                                <input type="text" formControlName="employee_id" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Vendor Name <span class="manitory">*</span></label>
+                                <input type="text" formControlName="vendor_name" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Business Branch <span class="manitory">*</span></label>
+                                <input type="text" formControlName="business_branch" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>First Name <span class="manitory">*</span></label>
+                                <input type="text" formControlName="first_name" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Middle Name</label>
+                                <input type="text" formControlName="middle_name" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Last Name <span class="manitory">*</span></label>
+                                <input type="text" formControlName="last_name" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Date of Birth <span class="manitory">*</span></label>
+                                <input type="date" formControlName="date_of_birth" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Email <span class="manitory">*</span></label>
+                                <input type="email" formControlName="email" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Phone Number <span class="manitory">*</span></label>
+                                <input type="text" formControlName="phone_number" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Emergency Contact <span class="manitory">*</span></label>
+                                <input type="text" formControlName="emergency_contact" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Gender <span class="manitory">*</span></label>
+                                <select formControlName="gender" class="form-control">
+                                    <option value="" disabled>Select Gender</option>
+                                    <option value="Male"  style="border: solid;">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Designation <span class="manitory">*</span></label>
+                                <input type="text" formControlName="designation" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Team Name <span class="manitory">*</span></label>
+                                <input type="text" formControlName="team_name" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Discount Eligibility Upto <span class="manitory">*</span></label>
+                                <input type="date" formControlName="Discount_eligibility_upto" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Date of Joining <span class="manitory">*</span></label>
+                                <input type="date" formControlName="date_of_joining" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Employee Status <span class="manitory">*</span></label>
+                                <input type="text" formControlName="employee_status" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Date of Exit</label>
+                                <input type="date" formControlName="date_of_exit" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Country <span class="manitory">*</span></label>
+                                <input type="text" formControlName="country" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>State <span class="manitory">*</span></label>
+                                <input type="text" formControlName="state" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>City <span class="manitory">*</span></label>
+                                <input type="text" formControlName="city" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Pin Code <span class="manitory">*</span></label>
+                                <input type="text" formControlName="pin_code" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Landmark</label>
+                                <input type="text" formControlName="landmark" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Aadhaar Number <span class="manitory">*</span></label>
+                                <input type="text" formControlName="adhar_no" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>PAN Number <span class="manitory">*</span></label>
+                                <input type="text" formControlName="pan" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Bank <span class="manitory">*</span></label>
+                                <input type="text" formControlName="bank" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Salary <span class="manitory">*</span></label>
+                                <input type="number" formControlName="salary" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Casual Leaves Taken <span class="manitory">*</span></label>
+                                <input type="number" formControlName="casual_leaves_taken" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Casual Leaves Balance <span class="manitory">*</span></label>
+                                <input type="number" formControlName="casual_leaves_balance" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Sick Leaves Taken <span class="manitory">*</span></label>
+                                <input type="number" formControlName="sick_leaves_taken" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Sick Leaves Balance <span class="manitory">*</span></label>
+                                <input type="number" formControlName="sick_leaves_balance" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Privilege Leaves Taken <span class="manitory">*</span></label>
+                                <input type="number" formControlName="privilege_leaves_taken" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Privilege Leaves Balance <span class="manitory">*</span></label>
+                                <input type="number" formControlName="privilege_leaves_balance" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Total Taken Leaves <span class="manitory">*</span></label>
+                                <input type="number" formControlName="total_taken_leaves" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Total Leaves Balance <span class="manitory">*</span></label>
+                                <input type="number" formControlName="total_leaves_balance" class="form-control">
+                            </div>
+                        </div>
+
                     </form>
+
+                    <div class="d-flex justify-content-end">
+                        <div class="page-btn">
+                            <button class="btn btn-primary me-2" (click)="addEmployee()">Add</button>
+                            <button class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -93,21 +345,25 @@
             </div>
             <div class="modal-body px-5 py-4">
                 <ul style="list-style: initial;">
-                    <li><strong>Menu Item:</strong> Enter the name of the item.</li>
-                    <li><strong>Category/Sub Category/Sub Sub Category:</strong> Specify each as applicable.</li>
-                    <li><strong>Item Type:</strong> Mark as "Vegetarian" or "Non-Vegetarian."</li>
-                    <li><strong>Description:</strong> Provide a brief overview.</li>
-                    <li><strong>Ingredients:</strong> List key ingredients.</li>
-                    <li><strong>Item Category:</strong> Specify the category.</li>
-                    <li><strong>Size Type:</strong> Enter "NA" (base price only) or "AVAILABLE" (provide prices for
-                        Small, Medium, Large, Extra Large).</li>
-                    <li><strong>Estimate Time:</strong> Enter the preparation time.</li>
-                    <li><strong>Spiciness Level:</strong> Indicate the spice level.</li>
-                    <li><strong>Calorie Count:</strong> Record the calories.</li>
-                    <li><strong>Stock Quantity:</strong> Specify the quantity in stock.</li>
-                    <li><strong>In Stock:</strong> Mark if the item is in stock.</li>
-                    <li><strong>Chef's Special:</strong> Indicate if it's a special item.</li>
-                    <li><strong>Upcoming:</strong> Mark if it's an upcoming item.</li>
+                    <li>Fill in the employee's full name.</li>
+                    <li>Enter the date of birth.</li>
+                    <li>Provide the email address.</li>
+                    <li>Enter the phone number.</li>
+                    <li>Add emergency contact information.</li>
+                    <li>Specify the gender.</li>
+                    <li>Input the designation.</li>
+                    <li>Mention the team name.</li>
+                    <li>Include the discount eligibility date.</li>
+                    <li>Enter the date of joining.</li>
+                    <li>Add the date of exit if applicable.</li>
+                    <li>Provide the employee’s address details (Country, State, City, Pin code, Landmark).</li>
+                    <li>Enter identification numbers (Aadhaar No., PAN No.).</li>
+                    <li>Provide the bank name.</li>
+                    <li>Enter the salary details.</li>
+                    <li>Input leave details (Casual leaves taken and balance, Sick leaves taken and balance, Privilege
+                        leaves taken and balance).</li>
+                    <li>Calculate and record the total taken leaves and total leaves balance.</li>
+
                 </ul>
             </div>
             <div class="modal-footer justify-content-evenly">

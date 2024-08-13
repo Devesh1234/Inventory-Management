@@ -7,7 +7,7 @@ import { SharedService } from 'src/app/shared.service';
 @Component({
   selector: 'app-employee-input',
   standalone: true,
-  imports: [AppCommonModule, CommonModule, FormsModule,ReactiveFormsModule],
+  imports: [AppCommonModule, CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './employee-input.component.html',
   styleUrl: './employee-input.component.scss'
 })
@@ -16,20 +16,53 @@ export class EmployeeInputComponent implements OnInit {
 
 
   uploadedFile: File | null = null;
-  addEmployeeForm:any;
+  addEmployeeForm: any;
 
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
 
 
-  constructor(private sharedService: SharedService , private fb:FormBuilder) { }
+  constructor(private sharedService: SharedService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
 
+    this.sharedService.loadScripts();
     this.addEmployeeForm = this.fb.group({
-      'first_name': ['',Validators.required],
-      'last_name': ['', Validators.required],
-    })
+      employee_id: ['', Validators.required],
+      vendor_name: ['', Validators.required],
+      business_branch: ['', Validators.required],
+      first_name: ['', Validators.required],
+      middle_name: [''],
+      last_name: ['', Validators.required],
+      date_of_birth: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone_number: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      emergency_contact: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      gender: ['', Validators.required],
+      designation: ['', Validators.required],
+      team_name: ['', Validators.required],
+      Discount_eligibility_upto: ['', Validators.required],
+      date_of_joining: ['', Validators.required],
+      employee_status: ['', Validators.required],
+      date_of_exit: [''],
+      country: ['', Validators.required],
+      state: ['', Validators.required],
+      city: ['', Validators.required],
+      pin_code: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
+      landmark: [''],
+      adhar_no: ['', [Validators.required, Validators.pattern('^[0-9]{12}$')]],
+      pan: ['', [Validators.required, Validators.pattern('^[A-Z]{5}[0-9]{4}[A-Z]{1}$')]],
+      bank: ['', Validators.required],
+      salary: ['', [Validators.required, Validators.min(0)]],
+      casual_leaves_taken: ['', [Validators.required, Validators.min(0)]],
+      casual_leaves_balance: ['', [Validators.required, Validators.min(0)]],
+      sick_leaves_taken: ['', [Validators.required, Validators.min(0)]],
+      sick_leaves_balance: ['', [Validators.required, Validators.min(0)]],
+      privilege_leaves_taken: ['', [Validators.required, Validators.min(0)]],
+      privilege_leaves_balance: ['', [Validators.required, Validators.min(0)]],
+      total_taken_leaves: ['', [Validators.required, Validators.min(0)]],
+      total_leaves_balance: ['', [Validators.required, Validators.min(0)]]
+    });
 
   }
 
@@ -86,6 +119,13 @@ export class EmployeeInputComponent implements OnInit {
     this.uploadedFile = null;
     this.fileInput.nativeElement.value = '';
 
+  }
+
+
+
+
+  addEmployee(){
+    
   }
 
 
