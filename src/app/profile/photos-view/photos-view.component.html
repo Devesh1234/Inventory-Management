@@ -41,7 +41,7 @@
 
                             <div class="page-btn">
                                 <button class="btn btn-primary me-2" [disabled]="uploadedFiles.length==0"
-                                    (click)="saveUploadFile()">Save</button>
+                                    (click)="saveUploadFile()">&nbsp;Save&nbsp;</button>
                                 <button class="btn btn-secondary" [disabled]="uploadedFiles.length==0"
                                     (click)="onFileCancel()">Cancel</button>
                             </div>
@@ -60,18 +60,18 @@
 
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Single Image Lightbox</div>
+                        <div class="card-header d-flex justify-content-between align-items-start">
+                            <p class="card-title">Images</p>
                             <button class="btn btn-primary" (click)="deletePhotos()"
-                                [disabled]="imagesDeleteDataArray.length==0">Delete</button>
+                                [disabled]="imagesDeleteDataArray.length==0">&nbsp;&nbsp;&nbsp;&nbsp;Delete&nbsp;&nbsp;&nbsp;&nbsp;</button>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4 mb-2 mb-md-0 position-relative"
                                     *ngFor="let item of photosUrls ; let i=index;">
                                     <img [src]="item.photo" class="img-fluid" alt="image" (click)="imageView(item,i)"
-                                        data-toggle="modal" data-target="#exampleModalCenter">
-                                    <input type="checkbox" class="position-absolute top-0 end-0"
+                                    data-toggle="modal" data-target="#exampleModalCenter">
+                                    <input type="checkbox" class="delete-checkbox"
                                         (change)="onImageSelect($event,item.id,i)">
                                 </div>
                             </div>
@@ -124,3 +124,7 @@
         </div>
     </div>
 </div>
+
+
+
+

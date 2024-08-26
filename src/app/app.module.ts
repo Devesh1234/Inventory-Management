@@ -50,7 +50,8 @@ import { LightgalleryModule } from 'lightgallery/angular';
     TrackerModule,
     MatDialogModule,
     HttpClientModule,
-    LightgalleryModule
+    LightgalleryModule,
+    
 
   ],
   providers: [{

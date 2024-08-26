@@ -36,7 +36,7 @@ export class EmployeeOverviewComponent implements OnInit {
 
   getEmployeesList() {
     this.profileService.getEmployeesData().subscribe((res: any) => {
-      this.employeesList = this.employeesListCopy = res.response.dummy1;
+      this.employeesList = this.employeesListCopy = res.response;
       console.log('this.employeesList: ', this.employeesList);
     })
   }

@@ -94,6 +94,13 @@ export class SidebarComponent implements OnInit {
         break;
 
 
+      case 'employeesInput':
+        this.router.navigate(['/profile/employee-input']);
+        this.sharedService.setActiveTile('employees');
+        this.sharedService.setActiveSubTile('employeesInput');
+        break;
+
+
       case 'photos':
         this.router.navigate(['/profile/photos-view']);
         this.sharedService.setActiveTile('Profile');

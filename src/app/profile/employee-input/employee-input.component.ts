@@ -3,6 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AppCommonModule } from 'src/app/app-common/app-common.module';
 import { SharedService } from 'src/app/shared.service';
+import { ProfileService } from '../profile.service';
 
 @Component({
   selector: 'app-employee-input',
@@ -22,7 +23,7 @@ export class EmployeeInputComponent implements OnInit {
 
 
 
-  constructor(private sharedService: SharedService, private fb: FormBuilder) { }
+  constructor(private sharedService: SharedService, private fb: FormBuilder , private profileService:ProfileService) { }
 
   ngOnInit(): void {
 
@@ -98,20 +99,20 @@ export class EmployeeInputComponent implements OnInit {
 
 
   saveUploadFile() {
-    // if (this.uploadedFile != null) {
-    //   this.inventoryService.insertExcelData(this.uploadedFile).subscribe({
-    //     next: (res: any) => {
-    //       console.log('Inventory Menun Excel Entry', res);
-    //       this.sharedService.showSnackBar('Excel Uploaded Sucessfully','success')
-    //       this.onFileCancel();
+    if (this.uploadedFile != null) {
+      this.profileService.insertExcelEmployeeData(this.uploadedFile).subscribe({
+        next: (res: any) => {
+          console.log(' Employee Excel Entry', res);
+          this.sharedService.showSnackBar('Excel Uploaded Sucessfully','success')
+          this.onFileCancel();
 
-    //     },
-    //     error: (err: any) => {
-    //       this.sharedService.showSnackBar('Something went wrong','error')
+        },
+        error: (err: any) => {
+          this.sharedService.showSnackBar('Something went wrong','error')
 
-    //     }
-    //   });
-    // }
+        }
+      });
+    }
   }
 
 
@@ -125,7 +126,7 @@ export class EmployeeInputComponent implements OnInit {
 
 
   addEmployee(){
-    
+    console.log(this.addEmployeeForm);
   }
 
 
