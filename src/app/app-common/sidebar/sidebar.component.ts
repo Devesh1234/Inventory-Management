@@ -89,8 +89,15 @@ export class SidebarComponent implements OnInit {
 
       case 'employeesOverview':
         this.router.navigate(['/profile/employee-overview']);
-        this.sharedService.setActiveTile('Profile');
+        this.sharedService.setActiveTile('employees');
         this.sharedService.setActiveSubTile('employeesOverview');
+        break;
+
+
+      case 'photos':
+        this.router.navigate(['/profile/photos-view']);
+        this.sharedService.setActiveTile('Profile');
+        this.sharedService.setActiveSubTile('photos');
         break;
 
 

@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,18 +8,22 @@ import { Injectable } from '@angular/core';
 export class ProfileService {
   vendor_id: any = '24';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient , private authService: AuthService) { }
 
 
-  serverUrl: any = "http://62.72.30.98:8000/api/"
+  serverUrl: any = "http://127.0.0.1:8000/api/"
 
 
   getEmployeesData(){
+    this.authService.getNewTokens();
+    
     let apiUrl= this.serverUrl+'employees/vendor/'+this.vendor_id;
     return this.httpClient.get(apiUrl);
   }
 
   insertSingleEmployeeData(){
+    this.authService.getNewTokens();
+
     let apiUrl= this.serverUrl+'employees/create/'+this.vendor_id;
     return this.httpClient.post(apiUrl,{});
   }
@@ -28,5 +33,45 @@ export class ProfileService {
     
   }
 
+
+  getPhotosData(){
+    this.authService.getNewTokens();
+
+    let apiUrl= this.serverUrl+'vendors/'+this.vendor_id+'/photos/'
+    console.log('apiUrl: ', apiUrl);
+    return this.httpClient.get(apiUrl);
+  }
+
+  postPhoto(files:File[]){
+
+
+
+    this.authService.getNewTokens();
+    const formData: FormData = new FormData();
+
+    files.forEach((file) => {
+      formData.append('photos', file, file.name);
+    });
+
+
+    console.log('formData: ', formData);
+
+    let apiUrl= this.serverUrl+'vendors/'+this.vendor_id+'/photos/'
+
+
+    return this.httpClient.post(apiUrl, formData, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json'
+      })
+    });
+
+  }
+
+  deletePhoto(obj:any){
+    this.authService.getNewTokens();
+
+    let apiUrl= this.serverUrl+'vendors/'+this.vendor_id+'/photos/delete/'
+    return this.httpClient.post(apiUrl,obj)
+  }
 
 }
