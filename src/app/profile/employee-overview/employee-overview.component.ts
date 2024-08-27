@@ -20,8 +20,14 @@ export class EmployeeOverviewComponent implements OnInit {
   employeesList: any;
   employeesListCopy: any;
 
+  branchWiseEmployeesList: any;
+  branchWiseEmployeesListCopy: any;
 
-  employeeSearchValue:string='';
+
+  employeeSearchValue: string = '';
+
+  selectedBranchValue: string = 'Main';
+  branchList: any;
 
   constructor(private sharedService: SharedService, private profileService: ProfileService) {
 
@@ -34,10 +40,15 @@ export class EmployeeOverviewComponent implements OnInit {
   }
 
 
+
   getEmployeesList() {
     this.profileService.getEmployeesData().subscribe((res: any) => {
       this.employeesList = this.employeesListCopy = res.response;
       console.log('this.employeesList: ', this.employeesList);
+      this.branchList = Object.keys(this.employeesList);
+      console.log('this.branchList: ', this.branchList);
+
+      this.branchWiseEmployeesList =this.branchWiseEmployeesListCopy= this.employeesList[this.selectedBranchValue]
     })
   }
 
@@ -48,7 +59,7 @@ export class EmployeeOverviewComponent implements OnInit {
     console.log(e.target.value);
 
     let val = e.target.value.toString().toLowerCase();
-    this.employeesList = this.employeesListCopy.filter((ele: any) => {
+    this.branchWiseEmployeesList = this.branchWiseEmployeesListCopy.filter((ele: any) => {
       return (
         ele.first_name.toString().toLowerCase().includes(val) ||
         ele.last_name.toString().toLowerCase().includes(val) ||
@@ -62,9 +73,21 @@ export class EmployeeOverviewComponent implements OnInit {
   }
 
 
-  onInputCross(){
-    this.employeeSearchValue='';
-    this.employeesList=this.employeesListCopy;
+  onInputCross() {
+    this.employeeSearchValue = '';
+    this.branchWiseEmployeesList=this.branchWiseEmployeesListCopy;  
+  }
+
+
+
+  selectBranch(br: any) {
+    this.selectedBranchValue = br;
+    this.branchWiseEmployeesList =this.branchWiseEmployeesListCopy= this.employeesList[this.selectedBranchValue];
+
+    console.log('this.branchWiseEmployeesList: ', this.branchWiseEmployeesList);
+
+    this.onInputCross();
+
   }
 
 }

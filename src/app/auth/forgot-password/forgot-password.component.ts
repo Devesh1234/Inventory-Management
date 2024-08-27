@@ -10,17 +10,17 @@ import { Router } from '@angular/router';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  forgotForm:any;
-  constructor( private authService:AuthService , private router: Router) { }
+  forgotForm: any;
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.forgotForm=new FormGroup({
-      'email':new FormControl('',[Validators.required,Validators.email])      
+    this.forgotForm = new FormGroup({
+      'email': new FormControl('', [Validators.required, Validators.email])
     })
   }
 
 
-  forgotPassword(){
+  forgotPassword() {
     this.router.navigate(['/auth/new-password'])
 
     // this.authService.forgotPasswordApi(this.forgotForm.controls.email.value).subscribe((res:any)=>{
@@ -29,5 +29,10 @@ export class ForgotPasswordComponent implements OnInit {
 
     // })
   }
+  onCancel() {
+
+  }
+
+
 
 }

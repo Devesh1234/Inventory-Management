@@ -26,7 +26,7 @@
                         </div>
                         <div class="dash-widgetcontent">
                             <h5><span class="counters" data-count="4385.00">4385</span></h5>
-                            <h6>Total No. of Dues</h6>
+                            <h6>Total Dues</h6>
                         </div>
                     </div>
                 </div>
@@ -68,13 +68,42 @@
 
 
                     <div class="employee_items_header">
-                        <div class="employee_search">
+                        <div class="employee_search col-12 col-sm-4">
                             <img src="assets/img/icons/search-white.svg" alt="img" class="me-2">
 
-                            <input type="search" class="employee_search_input" placeholder="Search here" [(ngModel)]="employeeSearchValue" (input)="onInputChange($event)">
+                            <input type="search" class="employee_search_input" placeholder="Search here"
+                                [(ngModel)]="employeeSearchValue" (input)="onInputChange($event)">
                             <h5 (click)="onInputCross()">&times;</h5>
 
                         </div>
+
+
+                        <div class="col-12 col-sm-4 px-0I ">
+                            <div class="form-group ">
+                                <!-- <label>Category<span class="manitory">*</span></label> -->
+                                <div class="btn-group">
+                                    <button type="button" class="custom-select-btn dropdown-toggle text-left"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <!-- <i class="ion-ios-sunny mr-4"></i> -->
+                                        {{selectedBranchValue}}
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item " *ngFor="let item of branchList"
+                                            (click)="selectBranch(item)">
+                                            {{item}}
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
 
                     </div>
 
@@ -102,7 +131,7 @@
                                 </tr>
                             </thead>
                             <tbody *ngIf="employeesList">
-                                <tr *ngFor="let item of employeesList['Main']; let i=index;">
+                                <tr *ngFor="let item of branchWiseEmployeesList; let i=index;">
                                     <td>{{i+1}}</td>
                                     <td>{{item.first_name}}</td>
                                     <td>{{item.last_name}}</td>

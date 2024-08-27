@@ -14,10 +14,10 @@ export class AppComponent {
   constructor(private router: Router, private sharedService: SharedService) { }
 
   ngOnInit() {
-    this.router.navigate(['/auth/signup']);
+    // this.router.navigate(['/auth/signup']);
     // this.router.navigate(['/auth/forgot-password']);
     // this.router.navigate(['/auth/new-password']);
-    // this.router.navigate(['/auth/signin']);
+    this.router.navigate(['/auth/signin']);
     // this.router.navigate(['/dashboard/Dashboard']);
     // this.router.navigate(['/inventory/Overview']);
     // this.router.navigate(['/inventory/Input']);
@@ -28,7 +28,6 @@ export class AppComponent {
     // this.router.navigate(['/profile/photos-view']);
     // this.router.navigate(['/profile/employee-input']);
     // this.router.navigate(['/profile/employee-overview']);
-
     // this.router.navigate(['/inventory/Inventory']);  
     // this.router.navigate(['/social/Social']);
     // this.router.navigate(['/tracker/Tracker']);        
