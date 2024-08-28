@@ -29,8 +29,8 @@ export class ForgotPasswordComponent implements OnInit {
 
     // })
   }
-  onCancel() {
-
+  navigateToSignin(){
+    this.router.navigate(['/auth/signin'])
   }
 
 
