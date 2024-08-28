@@ -71,8 +71,8 @@
                         <div class="items_search">
                             <img src="assets/img/icons/search-white.svg" alt="img" class="me-2">
 
-                            <input type="search" class="traking_search_input" placeholder="Search here">
-                            <h5>&times;</h5>
+                            <input type="search" class="traking_search_input" placeholder="Search here"  [(ngModel)]="itemSearchValue" (input)="onInputChange($event)">
+                            <h5 >&times;</h5>
 
                         </div>
 
@@ -135,10 +135,10 @@
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <!-- <i class="ion-ios-sunny mr-4"></i> -->
                                         <!-- {{selectedSizeType}} -->
-                                        11
+                                        {{selectedSubSubCategoryValue}}
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item " *ngFor="let item of subSubCategoriesList">
+                                        <a class="dropdown-item " *ngFor="let item of filteredSubSubCategoriesList" (click)="selectSubSubCategory(item)" >
                                             {{item.name}}
                                         </a>
 
@@ -179,7 +179,7 @@
 
 
 
-                                <tr *ngFor="let item of inventoryItemsData.response ; let i=index;">
+                                <tr *ngFor="let item of inventoryItemsData ; let i=index;">
 
                                     <td>{{i+1}}</td>
                                     <td>{{item?.menu_item}}</td>
@@ -202,9 +202,9 @@
                                     <td>{{item?.spiciness}}</td>
                                     <td>{{item?.calories}}</td>
                                     <td>{{item?.in_stock==true?'Yes':'No'}}</td>
-                                    <td>{{getCategoryName(item?.category    )}}</td>
+                                    <td>{{getCategoryName(item?.category)}}</td>
                                     <td>{{getSubCategoryName(item?.sub_category)}}</td>
-                                    <td>{{getSubCategoryName(item?.sub_sub_category)}}</td>
+                                    <td>{{getSubSubCategoryName(item?.sub_sub_category)}}</td>
 
 
                                 </tr>

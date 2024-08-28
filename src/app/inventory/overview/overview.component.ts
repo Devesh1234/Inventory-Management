@@ -11,24 +11,33 @@ import { Router } from '@angular/router';
 export class OverviewComponent implements OnInit {
 
   inventoryItemsData: any;
+  inventoryItemsDataCopy: any;
   categoriesList: any;
   subCategoriesList: any;
   subSubCategoriesList: any;
   deleteditem: any;
 
-  filterActive:boolean=false;
+  itemSearchValue: string = '';
+  filterActive: boolean = false;
 
 
   selectedCategoryValue: string = 'Select';
   selectedCategoryValueId: string = '';
   selectedSubCategoryValue: string = 'Select';
   selectedSubCategoryValueId: string = '';
+  selectedSubSubCategoryValue: string = 'Select';
+  selectedSubSubCategoryValueId: string = '';
+
   filteredSubCategoriesList: any;
+  filteredSubSubCategoriesList: any;
 
 
-  
 
-  constructor(private inventoryService: InventoryService, private sharedService: SharedService , private router:Router) { }
+
+
+
+
+  constructor(private inventoryService: InventoryService, private sharedService: SharedService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -41,7 +50,7 @@ export class OverviewComponent implements OnInit {
 
   getInventoryItemsData() {
     this.inventoryService.getInventoryItemsData().subscribe((res: any) => {
-      this.inventoryItemsData = res
+      this.inventoryItemsData = this.inventoryItemsDataCopy = res.response
       console.log('======', this.inventoryItemsData);
       this.getCategroiesList();
       this.getSubCategoriesList();
@@ -79,15 +88,15 @@ export class OverviewComponent implements OnInit {
 
 
 
-  editItem(item:any) {
+  editItem(item: any) {
     console.log('id----', item);
     // let obj={};
     // this.inventoryService.editMenuItem(obj).subscribe((res:any)=>{
     //   console.log();
     // })
-    this.router.navigate(['/inventory/Input'],{state:{data:item}})
+    this.router.navigate(['/inventory/Input'], { state: { data: item } })
 
-    
+
   }
 
 
@@ -112,7 +121,7 @@ export class OverviewComponent implements OnInit {
   getCategoryName(cat: any) {
     if (this.categoriesList)
       for (let item of this.categoriesList) {
-        if (item.id == cat.id)
+        if (item.id == cat)
           return item.name;
       }
     return 'NA';
@@ -122,7 +131,7 @@ export class OverviewComponent implements OnInit {
 
     if (this.subCategoriesList)
       for (let item of this.subCategoriesList) {
-        if (item.id == subcat.id )
+        if (item.id == subcat)
           return item.name;
       }
     return 'NA';
@@ -133,7 +142,7 @@ export class OverviewComponent implements OnInit {
 
     if (this.subSubCategoriesList)
       for (let item of this.subSubCategoriesList) {
-        if (item.id == subsubcat.id)
+        if (item.id == subsubcat)
           return item.name;
       }
     return 'NA';
@@ -142,10 +151,24 @@ export class OverviewComponent implements OnInit {
   }
 
 
+  onInputChange(e: any) {
+    console.log(e.target.value);
 
-  filterItems(){
+    let val = e.target.value.toString().toLowerCase();
+    console.log('val: ', val);
+    this.inventoryItemsData = this.inventoryItemsDataCopy.filter((ele: any) => {
+      return ele.menu_item.toString().toLowerCase().includes(val)
 
-    this.filterActive=!this.filterActive;
+    })
+  }
+
+
+  filterItems() {
+
+    this.filterActive = !this.filterActive;
+    this.inventoryItemsData = this.inventoryItemsDataCopy;
+    this.selectedCategoryValue = 'Select';
+
 
   }
 
@@ -156,7 +179,14 @@ export class OverviewComponent implements OnInit {
     this.selectedCategoryValueId = item.id;
     this.filterSubCategoriesList();
     this.selectedSubCategoryValue = 'Select'
+
+    this.inventoryItemsData = this.inventoryItemsDataCopy.filter((ele: any) => {
+      if (ele.category == item.id)
+        return ele;
+    })
   }
+
+
 
 
   filterSubCategoriesList() {
@@ -170,6 +200,38 @@ export class OverviewComponent implements OnInit {
 
   }
 
+
+  selectSubCatgeory(item: any) {
+    this.selectedSubCategoryValue = item.name;
+    this.selectedSubCategoryValueId = item.id;
+    this.filterSubSubCategoriesList();
+    this.inventoryItemsData = this.inventoryItemsDataCopy.filter((ele: any) => {
+      if (ele.sub_category.id == item.id)
+        return ele;
+    })
+
+  }
+
+  filterSubSubCategoriesList() {
+    this.filteredSubSubCategoriesList = this.subSubCategoriesList.filter((elem: any) => {
+      console.log('elem: ', elem);
+      return elem.subcategory == this.selectedSubCategoryValueId;
+
+    });
+
+    console.log('this.filteredSubCategoriesList============: ', this.filteredSubSubCategoriesList);
+
+  }
+
+
+  selectSubSubCategory(item: any) {
+    this.selectedSubSubCategoryValue = item.name;
+    this.selectedSubSubCategoryValueId = item.id;
+    this.inventoryItemsData = this.inventoryItemsDataCopy.filter((ele: any) => {
+      if (ele.sub_sub_category.id == item.id)
+        return ele;
+    })
+  }
 
 
 

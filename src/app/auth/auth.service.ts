@@ -67,13 +67,15 @@ export class AuthService {
   signInApi(credentials: any) {
     console.log('credentials: ', credentials);
 
-    let apiUrl = 'http://62.72.30.98:8000/api/login/vendor/';
+    let apiUrl = 'http://127.0.0.1:8000/api/login/vendor/';
     return this.httpClient.post<any>(apiUrl, credentials
     )
   };
 
-  signUpApi() {
+  signUpApi(obj:any) {
     let apiUrl = 'http://127.0.0.1:8000/api/register/vendor/';
+    return this.httpClient.post<any>(apiUrl, obj
+    )
   }
 
   vendor_id:any=68
