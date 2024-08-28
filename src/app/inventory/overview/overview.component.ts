@@ -18,6 +18,14 @@ export class OverviewComponent implements OnInit {
 
   filterActive:boolean=false;
 
+
+  selectedCategoryValue: string = 'Select';
+  selectedCategoryValueId: string = '';
+  selectedSubCategoryValue: string = 'Select';
+  selectedSubCategoryValueId: string = '';
+  filteredSubCategoriesList: any;
+
+
   
 
   constructor(private inventoryService: InventoryService, private sharedService: SharedService , private router:Router) { }
@@ -101,31 +109,31 @@ export class OverviewComponent implements OnInit {
       })
   }
 
-  getCategoryName(id: any) {
+  getCategoryName(cat: any) {
     if (this.categoriesList)
       for (let item of this.categoriesList) {
-        if (item.id == id)
+        if (item.id == cat.id)
           return item.name;
       }
     return 'NA';
 
   }
-  getSubCategoryName(id: any) {
+  getSubCategoryName(subcat: any) {
 
     if (this.subCategoriesList)
       for (let item of this.subCategoriesList) {
-        if (item.id == id)
+        if (item.id == subcat.id )
           return item.name;
       }
     return 'NA';
 
   }
-  getSubSubCategoryName(id: any) {
+  getSubSubCategoryName(subsubcat: any) {
 
 
     if (this.subSubCategoriesList)
       for (let item of this.subSubCategoriesList) {
-        if (item.id == id)
+        if (item.id == subsubcat.id)
           return item.name;
       }
     return 'NA';
@@ -141,6 +149,26 @@ export class OverviewComponent implements OnInit {
 
   }
 
+
+
+  selectCatgeory(item: any) {
+    this.selectedCategoryValue = item.name;
+    this.selectedCategoryValueId = item.id;
+    this.filterSubCategoriesList();
+    this.selectedSubCategoryValue = 'Select'
+  }
+
+
+  filterSubCategoriesList() {
+    this.filteredSubCategoriesList = this.subCategoriesList.filter((elem: any) => {
+      console.log('elem: ', elem);
+      return elem.category == this.selectedCategoryValueId;
+
+    });
+
+    console.log('this.filteredSubCategoriesList: ', this.filteredSubCategoriesList);
+
+  }
 
 
 

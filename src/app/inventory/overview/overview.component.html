@@ -93,10 +93,10 @@
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <!-- <i class="ion-ios-sunny mr-4"></i> -->
                                         <!-- {{selectedSizeType}} -->
-                                        11
+                                        {{selectedCategoryValue}}
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item " *ngFor="let item of categoriesList">
+                                        <a class="dropdown-item " *ngFor="let item of categoriesList" (click)="selectCatgeory(item)">
                                             {{item.name}}
                                         </a>
 
@@ -113,10 +113,10 @@
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <!-- <i class="ion-ios-sunny mr-4"></i> -->
                                         <!-- {{selectedSizeType}} -->
-                                        11
+                                        {{selectedSubCategoryValue}}
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item " *ngFor="let item of subCategoriesList">
+                                        <a class="dropdown-item " *ngFor="let item of filteredSubCategoriesList" (click)="selectSubCatgeory(item)">
                                             {{item.name}}
 
                                         </a>
@@ -202,7 +202,7 @@
                                     <td>{{item?.spiciness}}</td>
                                     <td>{{item?.calories}}</td>
                                     <td>{{item?.in_stock==true?'Yes':'No'}}</td>
-                                    <td>{{getCategoryName(item?.category)}}</td>
+                                    <td>{{getCategoryName(item?.category    )}}</td>
                                     <td>{{getSubCategoryName(item?.sub_category)}}</td>
                                     <td>{{getSubCategoryName(item?.sub_sub_category)}}</td>
 
