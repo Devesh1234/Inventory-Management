@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ export class InventoryService {
 
 
   vendor_id: any = '24';
+  editedData: BehaviorSubject<Object> = new BehaviorSubject<Object>({});
+  // editedData$=this.editedData.asObservable();
 
 
 

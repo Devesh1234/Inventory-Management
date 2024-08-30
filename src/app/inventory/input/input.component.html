@@ -20,7 +20,7 @@
 
 
 
-            <div class="row">
+            <div class="row" *ngIf="isEditedData==false">
                 <div class="col-lg-12">
                     <div class="form-group">
 
@@ -56,9 +56,10 @@
 
 
 
-            <div class="row">
+            <div class="row" *ngIf="isEditedData==false">
                 <h4 class="mb-4 text-center">------------------- Or Add Manually -------------------</h4>
             </div>
+            
 
 
 
@@ -165,7 +166,7 @@
                         </div>
 
 
-                        <div class=" col-sm-4 col-12" *ngIf="selectedSizeType!='Available'">
+                        <div class=" col-sm-4 col-12" *ngIf="selectedSizeType.toLowerCase()!='Available'.toLowerCase()">
                             <div class="form-group">
                                 <label>Price<span class="manitory">*</span></label>
                                 <input type="text" formControlName="price" appNumbersOnly>
@@ -175,7 +176,7 @@
 
 
 
-                        <div class=" col-sm-4 col-12" *ngIf="selectedSizeType=='Available'">
+                        <div class=" col-sm-4 col-12" *ngIf="selectedSizeType.toLowerCase()=='Available'.toLowerCase()">
                             <div class="form-group">
                                 <label>Small Price<span class="manitory">*</span></label>
                                 <input type="text" formControlName="s_price" appNumbersOnly>
@@ -188,7 +189,7 @@
 
 
 
-                        <div class=" col-sm-4 col-12" *ngIf="selectedSizeType=='Available'">
+                        <div class=" col-sm-4 col-12" *ngIf="selectedSizeType.toLowerCase()=='Available'.toLowerCase()">
                             <div class="form-group">
                                 <label>Medium Price<span class="manitory">*</span></label>
                                 <input type="text" formControlName="m_price" appNumbersOnly>
@@ -200,7 +201,7 @@
 
 
 
-                        <div class=" col-sm-4 col-12" *ngIf="selectedSizeType=='Available'">
+                        <div class=" col-sm-4 col-12" *ngIf="selectedSizeType.toLowerCase()=='Available'.toLowerCase()">
                             <div class="form-group">
                                 <label>Large Price<span class="manitory">*</span></label>
                                 <input type="text" formControlName="l_price" appNumbersOnly>
@@ -211,7 +212,7 @@
 
 
 
-                        <div class=" col-sm-4 col-12" *ngIf="selectedSizeType=='Available'">
+                        <div class=" col-sm-4 col-12" *ngIf="selectedSizeType.toLowerCase()=='Available'.toLowerCase()">
                             <div class="form-group">
                                 <label>Extra Large Price<span class="manitory">*</span></label>
                                 <input type="text" formControlName="xl_price">
@@ -383,21 +384,18 @@
                         </div>
 
                     </form>
-                    <div class="d-flex justify-content-end">
+                    <div class="d-flex justify-content-between">
+                        <div class="page-btn"  [ngClass]="isEditedData?'visible':'invisible'">
+                            <button class="btn btn-primary me-2" (click)="addNewItem()">Add New Item</button>
+                        </div>
                         <div class="page-btn">
-                            <button class="btn btn-primary me-2" (click)="addItem()">Add</button>
-                            <button class="btn btn-secondary">Cancel</button>
+                            <button class="btn btn-primary me-2" (click)="addItem()">{{isEditedData?'Update':'Add'}}</button>
+                            <button class="btn btn-secondary" (click)="onCancel()">Cancel</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- <div class="row d-flex justify-content-end">
-                <div class="page-btn">
-                    <button class="btn btn-primary me-2">Submit</button>
-                    <button class="btn btn-secondary">Cancel</button>
-                </div>
-            </div> -->
 
 
         </div>

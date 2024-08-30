@@ -89,12 +89,13 @@ export class OverviewComponent implements OnInit {
 
 
   editItem(item: any) {
+    item.category=this.getCategoryName(item.category);
+    item.sub_category=this.getSubCategoryName(item.sub_category);
+    item.sub_sub_category=this.getSubSubCategoryName(item.sub_sub_category);
     console.log('id----', item);
-    // let obj={};
-    // this.inventoryService.editMenuItem(obj).subscribe((res:any)=>{
-    //   console.log();
-    // })
-    this.router.navigate(['/inventory/Input'], { state: { data: item } })
+
+    this.inventoryService.editedData.next(item);
+    this.router.navigate(['/inventory/Input'])
 
 
   }
@@ -152,10 +153,7 @@ export class OverviewComponent implements OnInit {
 
 
   onInputChange(e: any) {
-    console.log(e.target.value);
-
     let val = e.target.value.toString().toLowerCase();
-    console.log('val: ', val);
     this.inventoryItemsData = this.inventoryItemsDataCopy.filter((ele: any) => {
       return ele.menu_item.toString().toLowerCase().includes(val)
 
@@ -168,6 +166,8 @@ export class OverviewComponent implements OnInit {
     this.filterActive = !this.filterActive;
     this.inventoryItemsData = this.inventoryItemsDataCopy;
     this.selectedCategoryValue = 'Select';
+    this.selectedSubCategoryValue = 'Select';
+    this.selectedSubSubCategoryValue = 'Select';
 
 
   }
@@ -179,6 +179,7 @@ export class OverviewComponent implements OnInit {
     this.selectedCategoryValueId = item.id;
     this.filterSubCategoriesList();
     this.selectedSubCategoryValue = 'Select'
+    this.selectedSubSubCategoryValue = 'Select'
 
     this.inventoryItemsData = this.inventoryItemsDataCopy.filter((ele: any) => {
       if (ele.category == item.id)
@@ -205,8 +206,10 @@ export class OverviewComponent implements OnInit {
     this.selectedSubCategoryValue = item.name;
     this.selectedSubCategoryValueId = item.id;
     this.filterSubSubCategoriesList();
+    this.selectedSubSubCategoryValue = 'Select'
+
     this.inventoryItemsData = this.inventoryItemsDataCopy.filter((ele: any) => {
-      if (ele.sub_category.id == item.id)
+      if (ele.sub_category == item.id)
         return ele;
     })
 
@@ -228,7 +231,7 @@ export class OverviewComponent implements OnInit {
     this.selectedSubSubCategoryValue = item.name;
     this.selectedSubSubCategoryValueId = item.id;
     this.inventoryItemsData = this.inventoryItemsDataCopy.filter((ele: any) => {
-      if (ele.sub_sub_category.id == item.id)
+      if (ele.sub_sub_category == item.id)
         return ele;
     })
   }

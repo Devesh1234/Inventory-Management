@@ -4,6 +4,8 @@ import { SharedService } from 'src/app/shared.service';
 import { InventoryComponent } from '../inventory/inventory.component';
 import { InventoryService } from '../inventory.service';
 import { Router } from '@angular/router';
+import { combineLatest, forkJoin, interval, merge, Observable, take } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-input',
@@ -36,7 +38,7 @@ export class InputComponent implements OnInit {
   filteredSubSubCategoriesList: any;
 
 
-  sizeTypeList: any = ['NA', 'Available'];
+  sizeTypeList: any = ['nan', 'Available'];
   selectedSizeType: any = 'Select'
 
   itemTypeList: any = ['Vegetarian', 'Non-Vegetarian'];
@@ -47,6 +49,7 @@ export class InputComponent implements OnInit {
   selectedStockStatus: any = 'Select'
 
   editedData: any;
+  isEditedData: boolean = false;
 
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
@@ -63,24 +66,67 @@ export class InputComponent implements OnInit {
   // @ViewChild('instockselect') instockselect!: ElementRef<HTMLInputElement>;
 
 
-  constructor(private sharedService: SharedService, private fb: FormBuilder, private inventoryService: InventoryService, private router: Router) {
+  constructor(private sharedService: SharedService, private fb: FormBuilder, private inventoryService: InventoryService, private router: Router, private location: Location) {
 
-    this.editedData = this.router.getCurrentNavigation()?.extras.state?.['data'];
-    console.log('this.editedData: ', this.editedData);
+
+
+
+
+
+    // this.editedData = this.router.getCurrentNavigation()?.extras.state?.['data'];
+
 
   }
 
   ngOnInit(): void {
 
+  
+    
+    this.initializeForm();
 
-    this.getCategoriesList();
-    this.getSubCategoriesList();
-    this.getSubSubCategoriesList();
+    combineLatest([this.inventoryService.getCategories(), this.inventoryService.getSubCategories(), this.inventoryService.getSubSubCategories(), this.inventoryService.editedData.asObservable()]).subscribe((resp: any) => {
+      console.log('devesh-------', resp);
+      this.categoriesList = resp[0].response;
+      this.subCategoriesList = resp[1].response;
+      this.subSubCategoriesList = resp[2].response;
+      this.editedData = resp[3];
+      console.log('this.editedData: ', this.editedData);
+      if (Object.keys(this.editedData).length != 0) {
+        this.isEditedData = true;
+        this.patchEditedValues(this.editedData);
+
+      }
+    })
+
+
+
+
+
+    // if (this.editedData!=null) {
+    //   this.patchEditedValues(this.editedData);
+
+    //   console.log('this.editedData: ', this.editedData);
+
+    // }
 
 
     // this.sharedService.loadScripts();
+
+  }
+
+
+  // getCategoriesList() {
+  //   this.inventoryService.getCategories().subscribe((res: any) => {
+  //     this.categoriesList = res.response;
+  //     console.log('this.categoriesList: ', this.categoriesList);
+  //   })
+
+  // }
+
+  initializeForm(){
+
     this.addItemform = this.fb.group({
-      'vendor': ['24'],
+      'id': [''],
       'menu_item': ['', Validators.required],
       'category': ['', Validators.required],
       'sub_category': ['', Validators.required],
@@ -107,31 +153,22 @@ export class InputComponent implements OnInit {
     })
   }
 
-
-  getCategoriesList() {
-    this.inventoryService.getCategories().subscribe((res: any) => {
-      this.categoriesList = res.response;
-      console.log('this.categoriesList: ', this.categoriesList);
-    })
-
-  }
-
-
   selectCatgeory(item: any) {
     this.selectedCategoryValue = item.name;
     this.selectedCategoryValueId = item.id;
     this.filterSubCategoriesList();
     this.selectedSubCategoryValue = 'Select'
+    this.selectedSubSubCategoryValue = 'Select'
   }
 
 
-  getSubCategoriesList() {
-    this.inventoryService.getSubCategories().subscribe((res: any) => {
-      this.subCategoriesList = res.response;
-      console.log('this.subCategoriesList: ', this.subCategoriesList);
-    })
+  // getSubCategoriesList() {
+  //   this.inventoryService.getSubCategories().subscribe((res: any) => {
+  //     this.subCategoriesList = res.response;
+  //     console.log('this.subCategoriesList: ', this.subCategoriesList);
+  //   })
 
-  }
+  // }
 
 
 
@@ -158,13 +195,13 @@ export class InputComponent implements OnInit {
 
 
 
-  getSubSubCategoriesList() {
-    this.inventoryService.getSubSubCategories().subscribe((res: any) => {
-      this.subSubCategoriesList = res.response;
-      console.log('this.subSubCategoriesList: ', this.subSubCategoriesList);
-    })
+  // getSubSubCategoriesList() {
+  //   this.inventoryService.getSubSubCategories().subscribe((res: any) => {
+  //     this.subSubCategoriesList = res.response;
+  //     console.log('this.subSubCategoriesList: ', this.subSubCategoriesList);
+  //   })
 
-  }
+  // }
 
 
 
@@ -255,12 +292,12 @@ export class InputComponent implements OnInit {
       this.inventoryService.insertExcelData(this.uploadedFile).subscribe({
         next: (res: any) => {
           console.log('Inventory Menun Excel Entry', res);
-          this.sharedService.showSnackBar('Excel Uploaded Sucessfully','success')
+          this.sharedService.showSnackBar('Excel Uploaded Sucessfully', 'success')
           this.onFileCancel();
 
         },
         error: (err: any) => {
-          this.sharedService.showSnackBar('Something went wrong','error')
+          this.sharedService.showSnackBar('Something went wrong', 'error')
 
         }
       });
@@ -288,9 +325,9 @@ export class InputComponent implements OnInit {
   patchSelectedValuesToForm() {
 
     this.addItemform.patchValue({
-      'category': this.selectedCategoryValueId,
-      'sub_category': this.selectedSubCategoryValueId,
-      'sub_sub_category': this.selectedSubSubCategoryValueId,
+      'category': this.selectedCategoryValue,
+      'sub_category': this.selectedSubCategoryValue,
+      'sub_sub_category': this.selectedSubSubCategoryValue,
       'item_type': this.selectedItemType,
       'size_type': this.selectedSizeType,
       'in_stock': this.selectedStockStatus == 'Yes',
@@ -302,56 +339,112 @@ export class InputComponent implements OnInit {
   }
 
 
+  patchEditedValues(data: any) {
+    console.log('data: ', data);
+    this.selectedCategoryValue = data.category
+    this.selectedSubCategoryValue = data.sub_category
+    this.selectedSubSubCategoryValue = data.sub_sub_category
+    this.tags = data.ingredients;
+    this.selectedSizeType = data.size_type.toLowerCase();
+    this.selectedItemType = data.item_type;
+    this.selectedStockStatus = data.in_stock ? 'Yes' : 'No';
+
+    this.addItemform.patchValue({
+      "id": data.id,
+      "menu_item": data.menu_item,
+      "category": data.category,
+      "sub_category": data.sub_category,
+      "sub_sub_category": data.sub_sub_category,
+      "item_type": data.item_type,
+      "description": data.description,
+      "ingredients": data.ingredients,
+      "size_type": data.size_type,
+      "price": data.price,
+      "s_price": data.s_price,
+      "m_price": data.m_price,
+      "l_price": data.l_price,
+      "xl_price": data.xl_price,
+      "estimate_time": data.estimate_time,
+      // "spiciness": "Medium",
+      "calories": data.calories,
+      "stock": data.stock,
+      "in_stock": data.in_stock,
+      // "chef_special": false,
+      // "upcoming": false,
+      // "rating": "4.50",
+      // "likes": []
+    })
+
+
+    console.log('form----', this.addItemform);
+  }
+
   addItem() {
+
     this.patchSelectedValuesToForm();
     let formValue = this.addItemform.value;
-    console.log('====', formValue);
+
     if (formValue.category == 'Select' || formValue.sub_category == 'Select' || formValue.item_type == 'Select' || formValue.in_stock == 'Select' || formValue.size_type == 'Select' || (formValue.size_type == 'Available' && (formValue.s_price == '' || formValue.m_price == '' || formValue.l_price == '')) || (formValue.size_type == 'NA' && formValue.price == '') || formValue.estimate_time == '' || formValue.ingredients.length == 0 || formValue.menu_item == '' || (formValue.in_stock == 'Yes' && formValue.stock == 0)) {
       this.sharedService.showSnackBar('Please Fill All Details', 'error');
     }
     else {
-      console.log('devesh---');
-      this.inventoryService.insertSingleItem(formValue).subscribe((res: any) => {
-        console.log('res----', res);
-      this.sharedService.showSnackBar('Items Add Succesfully', 'success');
-      },
-        (err: any) => {
-          console.log('err----', err);
-        })
+      if (this.isEditedData == true) {
+
+      }
+      else {
+        console.log('devesh---');
+        this.inventoryService.insertSingleItem(formValue).subscribe((res: any) => {
+          console.log('res----', res);
+          this.sharedService.showSnackBar('Items Add Succesfully', 'success');
+        },
+          (err: any) => {
+            console.log('err----', err);
+          })
+      }
     }
 
 
 
+    // if (this.editedData) {
 
-
-
-
-
-
-
-    // this.sharedService.insertInventoryMenuSingleEntryApi(this.addItemform.value).subscribe({
-    //   next: (res: any) => {
-    //     console.log('Res----', res);
-    //   },
-    //   error: (err: any) => {
-    //     console.log('errror----', err);
-    //   }
-    // });
-
-    // else {
-    //   this.sharedService.showSnackBar('Please Fill All Details', 'error');
+    //   console.log('Ress--', this.addItemform.value);
     // }
+    // else {
+    //   this.patchSelectedValuesToForm();
+    //   let formValue = this.addItemform.value;
+    //   console.log('====', formValue);
 
+
+
+    // }
+  }
+
+  addNewItem(){
+    this.ngOnInit();
+    console.log('devesh=========');
+    this.inventoryService.editedData.next({});
+    this.isEditedData=false;
+
+    // this.tags=[]
+
+    window.location.reload();
+    // this.router.navigate(['/inventory/Input'])
+
+    
 
   }
 
 
+  onCancel() {
+    if (Object.keys(this.editedData).length != 0) {
+      this.router.navigate(['/inventory/Overview'], { replaceUrl: true })
+      this.inventoryService.editedData.next({});
+      this.isEditedData = false;
+    }
+  }
 
-
-
-
-
-
+ 
 
 
 }
+
