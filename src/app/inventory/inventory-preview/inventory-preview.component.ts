@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AppCommonModule } from 'src/app/app-common/app-common.module';
 import { InventoryService } from '../inventory.service';
-import { of } from 'rxjs';
+import { combineLatest, of } from 'rxjs';
 
 @Component({
   selector: 'app-inventory-preview',
@@ -152,19 +152,27 @@ export class InventoryPreviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCategroiesList();
-    this.getSubCategoriesList();
-    this.getSubSubCategoriesList();
-    this.getInventoryItemsData();
-    console.log('Devesh', this.obj);
+    // this.getCategroiesList();
+    // this.getSubCategoriesList();
+    // this.getSubSubCategoriesList();
+    // this.getInventoryItemsData();
+
+    combineLatest([this.inventoryService.getCategories(),this.inventoryService.getSubCategories(),this.inventoryService.getSubSubCategories(),this.inventoryService.getInventoryItemsData()]).subscribe((res:any)=>{
+
+      this.categoriesList=res[0].response
+      this.subcategoriesList=res[1].response
+      this.subSubcategoriesList=res[2].response
+      this.obj=res[3].response;
+      console.log('Devesh', res);
+      if(this.obj)
+        this.groupItems();
+
+
+    })
 
 
 
 
-
-
-    // let myData = this.transformMenuData(this.new_obj);
-    // console.log('myData: ', myData);
 
 
 
@@ -199,45 +207,8 @@ export class InventoryPreviewComponent implements OnInit {
 
   }
 
-  getInventoryItemsData() {
-    this.inventoryService.getInventoryItemsData().subscribe((res: any) => {
-      this.obj = res.response;
-      console.log('======', this.obj);
+ 
 
-      this.groupItems();
-      // this.getCategroiesList();
-      // this.getSubCategoriesList();
-      // this.getSubSubCategoriesList();
-    })
-  }
-
-
-  getCategroiesList() {
-    this.inventoryService.getCategories().subscribe((res: any) => {
-      // console.log('this.categoriesList: ', res);
-
-
-      this.categoriesList = res.response;
-      // console.log('this.categoriesList: ', this.categoriesList);
-    })
-
-  }
-
-  getSubCategoriesList() {
-    this.inventoryService.getSubCategories().subscribe((res: any) => {
-      this.subcategoriesList = res.response;
-      // console.log('this.subcategoriesList: ', this.subcategoriesList);
-
-    })
-  }
-
-  getSubSubCategoriesList() {
-    this.inventoryService.getSubSubCategories().subscribe((res: any) => {
-      this.subSubcategoriesList = res.response;
-      console.log('this.subSubcategoriesList: ', this.subSubcategoriesList);
-
-    })
-  }
 
 
   getCategoryName(item: any) {
@@ -266,8 +237,6 @@ export class InventoryPreviewComponent implements OnInit {
     return 'Bhatia'
 
   }
-
-
 
   getSubSubCategoryName(item: any) {
     if (this.subSubcategoriesList)

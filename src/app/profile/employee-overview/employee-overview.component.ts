@@ -48,7 +48,7 @@ export class EmployeeOverviewComponent implements OnInit {
       this.branchList = Object.keys(this.employeesList);
       console.log('this.branchList: ', this.branchList);
 
-      this.branchWiseEmployeesList =this.branchWiseEmployeesListCopy= this.employeesList[this.selectedBranchValue]
+      this.branchWiseEmployeesList = this.branchWiseEmployeesListCopy = this.employeesList[this.selectedBranchValue]
     })
   }
 
@@ -75,19 +75,41 @@ export class EmployeeOverviewComponent implements OnInit {
 
   onInputCross() {
     this.employeeSearchValue = '';
-    this.branchWiseEmployeesList=this.branchWiseEmployeesListCopy;  
+    this.branchWiseEmployeesList = this.branchWiseEmployeesListCopy;
   }
 
 
 
   selectBranch(br: any) {
     this.selectedBranchValue = br;
-    this.branchWiseEmployeesList =this.branchWiseEmployeesListCopy= this.employeesList[this.selectedBranchValue];
+    this.branchWiseEmployeesList = this.branchWiseEmployeesListCopy = this.employeesList[this.selectedBranchValue];
 
     console.log('this.branchWiseEmployeesList: ', this.branchWiseEmployeesList);
 
     this.onInputCross();
 
   }
+
+
+
+  editEmployee(item: any) {
+    
+
+  }
+
+  deletedEmployee: string = '';
+
+  getDeletedEmployee(id: any) {
+    this.deletedEmployee = id;
+    console.log('deleted Employee', id);
+
+  }
+
+  deleteEmployee() {
+    this.profileService.deleteEmployeeData().subscribe((res: any) => {
+
+    })
+  }
+
 
 }

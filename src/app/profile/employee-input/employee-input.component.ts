@@ -46,9 +46,9 @@ export class EmployeeInputComponent implements OnInit {
       date_of_joining: ['', Validators.required],
       employee_status: ['', Validators.required],
       date_of_exit: [''],
-      country: ['', Validators.required],
-      state: ['', Validators.required],
-      city: ['', Validators.required],
+      country: [{ value: 'India', disabled: true }, Validators.required],
+      state: [{ value: 'Haryana', disabled: true }, Validators.required],
+      city: [{ value: 'Gurugram', disabled: true }, Validators.required],
       pin_code: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
       landmark: [''],
       adhar_no: ['', [Validators.required, Validators.pattern('^[0-9]{12}$')]],
@@ -126,7 +126,13 @@ export class EmployeeInputComponent implements OnInit {
 
 
   addEmployee(){
-    console.log(this.addEmployeeForm);
+    console.log(this.addEmployeeForm.getRawValue());
+    if(this.addEmployeeForm.invalid){
+      this.sharedService.showSnackBar('Please fill all details','error')
+    }
+    else{
+      this.profileService.insertSingleEmployeeData().subscribe((res:any)=>{})
+    }
   }
 
 

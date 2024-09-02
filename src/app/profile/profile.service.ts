@@ -50,6 +50,13 @@ export class ProfileService {
   }
 
 
+
+  deleteEmployeeData(){
+    let apiUrl = 'http://62.72.30.98:8000/api/employees/deveshhhhhhhhhh';
+    return this.httpClient.post(apiUrl,{});
+
+  }
+
   getPhotosData() {
     this.authService.getNewTokens();
 

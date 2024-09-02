@@ -144,6 +144,7 @@ export class InventoryService {
 
   editMenuItem(obj: any) {
     this.authService.getNewTokens();
+    console.log('obj------',obj);
 
     let apiUrl = 'http://62.72.30.98:8000/api/vendors/' + this.vendor_id + '/menu-items/edit/'
 

@@ -3,6 +3,7 @@ import { AppCommonModule } from 'src/app/app-common/app-common.module';
 import { SharedService } from 'src/app/shared.service';
 import { InventoryService } from '../inventory.service';
 import { CommonModule } from '@angular/common';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-subcategory',
@@ -25,8 +26,15 @@ export class SubcategoryComponent implements OnInit {
   ngOnInit(): void {
     this.sharedService.loadScripts();
 
-    this.getCategoriesList();
-    this.getSubCategoriesList();
+    // this.getCategoriesList();
+    // this.getSubCategoriesList();
+    
+
+    combineLatest([this.inventoryService.getCategories(),this.inventoryService.getSubCategories()]).subscribe((res:any)=>{
+
+      this.categoryList=res[0].response;
+      this.subCategoriesList=res[1].response;
+    })
 
 
   }

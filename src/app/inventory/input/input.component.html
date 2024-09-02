@@ -326,7 +326,7 @@
                         <div class=" col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Estimate Time<span class="manitory">*</span></label>
-                                <input type="text" formControlName="estimate_time">
+                                <input type="text" formControlName="estimate_time" appNumbersOnly>
                             </div>
                         </div>
 
@@ -364,7 +364,7 @@
 
 
 
-                        <div class=" col-sm-6 col-12" *ngIf="selectedStockStatus=='Yes'">
+                        <div class=" col-sm-4 col-12" *ngIf="selectedStockStatus=='Yes'">
                             <div class="form-group">
                                 <label>Stock (Quantity)<span class="manitory">*</span></label>
                                 <input type="text" formControlName="stock" appNumbersOnly>

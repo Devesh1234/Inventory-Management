@@ -80,8 +80,8 @@ export class InputComponent implements OnInit {
 
   ngOnInit(): void {
 
-  
-    
+
+
     this.initializeForm();
 
     combineLatest([this.inventoryService.getCategories(), this.inventoryService.getSubCategories(), this.inventoryService.getSubSubCategories(), this.inventoryService.editedData.asObservable()]).subscribe((resp: any) => {
@@ -123,7 +123,7 @@ export class InputComponent implements OnInit {
 
   // }
 
-  initializeForm(){
+  initializeForm() {
 
     this.addItemform = this.fb.group({
       'id': [''],
@@ -389,7 +389,9 @@ export class InputComponent implements OnInit {
     }
     else {
       if (this.isEditedData == true) {
-
+        this.inventoryService.editMenuItem(formValue).subscribe((res: any) => {
+          console.log('Ress-----',res);
+        })
       }
       else {
         console.log('devesh---');
@@ -419,18 +421,18 @@ export class InputComponent implements OnInit {
     // }
   }
 
-  addNewItem(){
+  addNewItem() {
     this.ngOnInit();
     console.log('devesh=========');
     this.inventoryService.editedData.next({});
-    this.isEditedData=false;
+    this.isEditedData = false;
 
     // this.tags=[]
 
     window.location.reload();
     // this.router.navigate(['/inventory/Input'])
 
-    
+
 
   }
 
@@ -443,7 +445,7 @@ export class InputComponent implements OnInit {
     }
   }
 
- 
+
 
 
 }

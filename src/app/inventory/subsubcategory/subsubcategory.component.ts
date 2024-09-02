@@ -3,6 +3,7 @@ import { AppCommonModule } from 'src/app/app-common/app-common.module';
 import { SharedService } from 'src/app/shared.service';
 import { InventoryService } from '../inventory.service';
 import { CommonModule } from '@angular/common';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-subsubcategory',
@@ -33,9 +34,16 @@ export class SubsubcategoryComponent implements OnInit {
   }
   ngOnInit(): void {
     this.sharedService.loadScripts();
-    this.getCategoriesList();
-    this.getSubCategoriesList();
-    this.getSubSubCategoriesList();
+    // this.getCategoriesList();
+    // this.getSubCategoriesList();
+    // this.getSubSubCategoriesList();
+
+    combineLatest([this.inventoryService.getCategories(),this.inventoryService.getSubCategories(),this.inventoryService.getSubSubCategories()]).subscribe((res:any)=>{
+
+      this.categoryList=res[0].response;
+      this.subCategoriesList=res[1].response;
+      this.subSubSubCategoriesList=res[2].response;
+    })
   }
 
 
@@ -51,70 +59,70 @@ export class SubsubcategoryComponent implements OnInit {
 
 
 
-  getCategoriesList() {
+  // getCategoriesList() {
 
-    this.inventoryService.getCategories().subscribe({
-      next: (res: any) => {
-        if (res && res.response) {
-          this.categoryList = res.response;
-          console.log(res);
+  //   this.inventoryService.getCategories().subscribe({
+  //     next: (res: any) => {
+  //       if (res && res.response) {
+  //         this.categoryList = res.response;
+  //         console.log(res);
 
-        }
-        else {
+  //       }
+  //       else {
 
-        }
-      },
-      error: (err: any) => {
-        console.log(err);
-      }
-    })
-  }
-
-
-  getSubCategoriesList() {
-
-    this.inventoryService.getSubCategories().subscribe({
-      next: (res: any) => {
-        if (res && res.response) {
-          this.subCategoriesList = res.response;
-          console.log('subcategories', res);
-
-        }
-        else {
-
-        }
-      },
-      error: (err: any) => {
-
-      }
-    })
-  }
+  //       }
+  //     },
+  //     error: (err: any) => {
+  //       console.log(err);
+  //     }
+  //   })
+  // }
 
 
+  // getSubCategoriesList() {
+
+  //   this.inventoryService.getSubCategories().subscribe({
+  //     next: (res: any) => {
+  //       if (res && res.response) {
+  //         this.subCategoriesList = res.response;
+  //         console.log('subcategories', res);
+
+  //       }
+  //       else {
+
+  //       }
+  //     },
+  //     error: (err: any) => {
+
+  //     }
+  //   })
+  // }
 
 
 
 
 
 
-  getSubSubCategoriesList() {
 
-    this.inventoryService.getSubSubCategories().subscribe({
-      next: (res: any) => {
-        if (res && res.response) {
-          this.subSubSubCategoriesList = res.response;
-          console.log('subsubcategories', res);
 
-        }
-        else {
+  // getSubSubCategoriesList() {
 
-        }
-      },
-      error: (err: any) => {
+  //   this.inventoryService.getSubSubCategories().subscribe({
+  //     next: (res: any) => {
+  //       if (res && res.response) {
+  //         this.subSubSubCategoriesList = res.response;
+  //         console.log('subsubcategories', res);
 
-      }
-    })
-  }
+  //       }
+  //       else {
+
+  //       }
+  //     },
+  //     error: (err: any) => {
+
+  //     }
+  //   })
+  // }
 
 
 
