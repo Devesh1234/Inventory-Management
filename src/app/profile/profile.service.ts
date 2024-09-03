@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,9 @@ export class ProfileService {
   // serverUrl: any = "http://127.0.0.1:8000/api/"
 
   serverUrl: any = "http://62.72.30.98:8000/api/"
+
+
+  employeeEditedData: BehaviorSubject<Object> = new BehaviorSubject<Object>({});
 
 
 
@@ -51,9 +55,9 @@ export class ProfileService {
 
 
 
-  deleteEmployeeData(){
-    let apiUrl = 'http://62.72.30.98:8000/api/employees/deveshhhhhhhhhh';
-    return this.httpClient.post(apiUrl,{});
+  deleteEmployeeData(obj:any){
+    let apiUrl = 'http://62.72.30.98:8000/api/employees/delete/';
+    return this.httpClient.post(apiUrl,obj);
 
   }
 

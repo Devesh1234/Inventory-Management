@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { InventoryService } from '../inventory.service';
 import { Router } from '@angular/router';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-overview',
@@ -42,21 +43,32 @@ export class OverviewComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.getInventoryItemsData();
+    // this.getInventoryItemsData();
+
+    combineLatest([this.inventoryService.getCategories(), this.inventoryService.getSubCategories(), this.inventoryService.getSubSubCategories(), this.inventoryService.getInventoryItemsData()]).subscribe((resp: any) => {
+      console.log('devesh-------', resp);
+      this.categoriesList = resp[0].response;
+      this.subCategoriesList = resp[1].response;
+      this.subSubCategoriesList = resp[2].response;
+      this.inventoryItemsData = this.inventoryItemsDataCopy = resp[3].response['Main']
 
 
-
-  }
-
-  getInventoryItemsData() {
-    this.inventoryService.getInventoryItemsData().subscribe((res: any) => {
-      this.inventoryItemsData = this.inventoryItemsDataCopy = res.response
-      console.log('======', this.inventoryItemsData);
-      this.getCategroiesList();
-      this.getSubCategoriesList();
-      this.getSubSubCategoriesList();
     })
+
+
   }
+
+
+
+  // getInventoryItemsData() {
+  //   this.inventoryService.getInventoryItemsData().subscribe((res: any) => {
+  //     this.inventoryItemsData = this.inventoryItemsDataCopy = res
+  //     console.log('======', this.inventoryItemsData);
+  //     this.getCategroiesList();
+  //     this.getSubCategoriesList();
+  //     this.getSubSubCategoriesList();
+  //   })
+  // }
 
 
   getCategroiesList() {
@@ -94,7 +106,7 @@ export class OverviewComponent implements OnInit {
     item.sub_sub_category=this.getSubSubCategoryName(item.sub_sub_category);
     console.log('id----', item);
 
-    this.inventoryService.editedData.next(item);
+    this.inventoryService.itemEditedData.next(item);
     this.router.navigate(['/inventory/Input'])
 
 
@@ -112,7 +124,7 @@ export class OverviewComponent implements OnInit {
     }
     this.inventoryService.deleteMenuItem(obj).subscribe((res: any) => {
       this.sharedService.showSnackBar('Item Delete Succesfully', 'success')
-      this.getInventoryItemsData()
+      this.ngOnInit()
     },
       (err: any) => {
         this.sharedService.showSnackBar('Something Went Wrong', 'Error')

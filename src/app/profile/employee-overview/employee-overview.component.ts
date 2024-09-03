@@ -6,6 +6,7 @@ import { SidebarComponent } from 'src/app/app-common/sidebar/sidebar.component';
 import { SharedService } from 'src/app/shared.service';
 import { ProfileService } from '../profile.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-overview',
@@ -29,7 +30,7 @@ export class EmployeeOverviewComponent implements OnInit {
   selectedBranchValue: string = 'Main';
   branchList: any;
 
-  constructor(private sharedService: SharedService, private profileService: ProfileService) {
+  constructor(private sharedService: SharedService, private profileService: ProfileService , private router:Router) {
 
   }
 
@@ -93,7 +94,8 @@ export class EmployeeOverviewComponent implements OnInit {
 
 
   editEmployee(item: any) {
-    
+    this.profileService.employeeEditedData.next(item)
+    this.router.navigate(['/profile/employee-input']);
 
   }
 
@@ -106,8 +108,11 @@ export class EmployeeOverviewComponent implements OnInit {
   }
 
   deleteEmployee() {
-    this.profileService.deleteEmployeeData().subscribe((res: any) => {
-
+    let obj = { 'employee_ids': [this.deletedEmployee] }
+    // console.log('obj: ', obj);
+    this.profileService.deleteEmployeeData(obj).subscribe((res: any) => {
+      // console.log('Delete Response ----', res);
+      console.log('Employee Delete Successfully');
     })
   }
 

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, from, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class InventoryService {
 
 
   vendor_id: any = '24';
-  editedData: BehaviorSubject<Object> = new BehaviorSubject<Object>({});
+  itemEditedData: BehaviorSubject<Object> = new BehaviorSubject<Object>({});
   // editedData$=this.editedData.asObservable();
 
 
@@ -144,7 +144,7 @@ export class InventoryService {
 
   editMenuItem(obj: any) {
     this.authService.getNewTokens();
-    console.log('obj------',obj);
+    console.log('obj------', obj);
 
     let apiUrl = 'http://62.72.30.98:8000/api/vendors/' + this.vendor_id + '/menu-items/edit/'
 

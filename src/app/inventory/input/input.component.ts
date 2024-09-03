@@ -49,7 +49,7 @@ export class InputComponent implements OnInit {
   selectedStockStatus: any = 'Select'
 
   editedData: any;
-  isEditedData: boolean = false;
+  isItemEditedData: boolean = false;
 
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
@@ -84,7 +84,7 @@ export class InputComponent implements OnInit {
 
     this.initializeForm();
 
-    combineLatest([this.inventoryService.getCategories(), this.inventoryService.getSubCategories(), this.inventoryService.getSubSubCategories(), this.inventoryService.editedData.asObservable()]).subscribe((resp: any) => {
+    combineLatest([this.inventoryService.getCategories(), this.inventoryService.getSubCategories(), this.inventoryService.getSubSubCategories(), this.inventoryService.itemEditedData.asObservable()]).subscribe((resp: any) => {
       console.log('devesh-------', resp);
       this.categoriesList = resp[0].response;
       this.subCategoriesList = resp[1].response;
@@ -92,7 +92,7 @@ export class InputComponent implements OnInit {
       this.editedData = resp[3];
       console.log('this.editedData: ', this.editedData);
       if (Object.keys(this.editedData).length != 0) {
-        this.isEditedData = true;
+        this.isItemEditedData = true;
         this.patchEditedValues(this.editedData);
 
       }
@@ -388,7 +388,7 @@ export class InputComponent implements OnInit {
       this.sharedService.showSnackBar('Please Fill All Details', 'error');
     }
     else {
-      if (this.isEditedData == true) {
+      if (this.isItemEditedData == true) {
         this.inventoryService.editMenuItem(formValue).subscribe((res: any) => {
           console.log('Ress-----',res);
         })
@@ -424,8 +424,8 @@ export class InputComponent implements OnInit {
   addNewItem() {
     this.ngOnInit();
     console.log('devesh=========');
-    this.inventoryService.editedData.next({});
-    this.isEditedData = false;
+    this.inventoryService.itemEditedData.next({});
+    this.isItemEditedData = false;
 
     // this.tags=[]
 
@@ -440,8 +440,8 @@ export class InputComponent implements OnInit {
   onCancel() {
     if (Object.keys(this.editedData).length != 0) {
       this.router.navigate(['/inventory/Overview'], { replaceUrl: true })
-      this.inventoryService.editedData.next({});
-      this.isEditedData = false;
+      this.inventoryService.itemEditedData.next({});
+      this.isItemEditedData = false;
     }
   }
 

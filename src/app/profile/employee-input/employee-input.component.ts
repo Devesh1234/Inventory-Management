@@ -21,13 +21,34 @@ export class EmployeeInputComponent implements OnInit {
 
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
+  editedData: any;
+  isEmployeeEditedData: boolean = false;
 
 
-  constructor(private sharedService: SharedService, private fb: FormBuilder , private profileService:ProfileService) { }
+
+  constructor(private sharedService: SharedService, private fb: FormBuilder, private profileService: ProfileService) { }
 
   ngOnInit(): void {
 
+
+
+
     this.sharedService.loadScripts();
+    this.initializeForm();
+
+    this.profileService.employeeEditedData.asObservable().subscribe((res: any) => {
+      this.editedData = res;
+      if (Object.keys(this.editedData).length != 0) {
+        this.isEmployeeEditedData = true;
+        this.patchEditedValues(this.editedData);
+
+      }
+    })
+
+
+  }
+
+  initializeForm() {
     this.addEmployeeForm = this.fb.group({
       employee_id: ['', Validators.required],
       vendor_name: ['', Validators.required],
@@ -67,6 +88,46 @@ export class EmployeeInputComponent implements OnInit {
 
   }
 
+  patchEditedValues(data: any) {
+    this.addEmployeeForm.patchValue({
+      "employee_id": data.employee_id,
+      "vendor_name": data.vendor_name,
+      "business_branch": data.business_branch,
+      "first_name": data.first_name,
+      "middle_name": data.middle_name,
+      "last_name": data.last_name,
+      "date_of_birth": data.date_of_birth,
+      "email": data.email,
+      "phone_number": data.phone_number,
+      "emergency_contact": data.emergency_contact,
+      "gender": data.gender,
+      "designation": data.designation,
+      "team_name": data.team_name,
+      "Discount_eligibility_upto": data.Discount_eligibility_upto,
+      "date_of_joining": data.date_of_joining,
+      "employee_status": data.employee_status,
+      "date_of_exit": data.date_of_exit,
+      "pin_code": data.pin_code,
+      "landmark": data.landmark,
+      "adhar_no": data.adhar_no,
+      "pan": data.pan,
+      "bank": data.bank,
+      "salary": data.salary,
+      "casual_leaves_taken": data.casual_leaves_taken,
+      "casual_leaves_balance": data.casual_leaves_balance,
+      "sick_leaves_taken": data.sick_leaves_taken,
+      "sick_leaves_balance": data.sick_leaves_balance,
+      "privilege_leaves_taken": data.privilege_leaves_taken,
+      "privilege_leaves_balance": data.privilege_leaves_balance,
+      "total_taken_leaves": data.total_taken_leaves,
+      "total_leaves_balance": data.total_leaves_balance
+    })
+
+
+    console.log('Edited Data', this.addEmployeeForm);
+  }
+
+
 
 
 
@@ -103,12 +164,12 @@ export class EmployeeInputComponent implements OnInit {
       this.profileService.insertExcelEmployeeData(this.uploadedFile).subscribe({
         next: (res: any) => {
           console.log(' Employee Excel Entry', res);
-          this.sharedService.showSnackBar('Excel Uploaded Sucessfully','success')
+          this.sharedService.showSnackBar('Excel Uploaded Sucessfully', 'success')
           this.onFileCancel();
 
         },
         error: (err: any) => {
-          this.sharedService.showSnackBar('Something went wrong','error')
+          this.sharedService.showSnackBar('Something went wrong', 'error')
 
         }
       });
@@ -125,13 +186,13 @@ export class EmployeeInputComponent implements OnInit {
 
 
 
-  addEmployee(){
+  addEmployee() {
     console.log(this.addEmployeeForm.getRawValue());
-    if(this.addEmployeeForm.invalid){
-      this.sharedService.showSnackBar('Please fill all details','error')
+    if (this.addEmployeeForm.invalid) {
+      this.sharedService.showSnackBar('Please fill all details', 'error')
     }
-    else{
-      this.profileService.insertSingleEmployeeData().subscribe((res:any)=>{})
+    else {
+      this.profileService.insertSingleEmployeeData().subscribe((res: any) => { })
     }
   }
 

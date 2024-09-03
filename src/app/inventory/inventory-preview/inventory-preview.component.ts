@@ -162,7 +162,7 @@ export class InventoryPreviewComponent implements OnInit {
       this.categoriesList=res[0].response
       this.subcategoriesList=res[1].response
       this.subSubcategoriesList=res[2].response
-      this.obj=res[3].response;
+      this.obj=res[3].response['Main'];
       console.log('Devesh', res);
       if(this.obj)
         this.groupItems();
