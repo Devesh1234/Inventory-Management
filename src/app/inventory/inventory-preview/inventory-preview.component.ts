@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppCommonModule } from 'src/app/app-common/app-common.module';
 import { InventoryService } from '../inventory.service';
 import { combineLatest, of } from 'rxjs';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-inventory-preview',
@@ -147,7 +148,7 @@ export class InventoryPreviewComponent implements OnInit {
 
 
 
-  constructor(private inventoryService: InventoryService) {
+  constructor(private inventoryService: InventoryService, private sharedService: SharedService) {
 
   }
 
@@ -156,15 +157,16 @@ export class InventoryPreviewComponent implements OnInit {
     // this.getSubCategoriesList();
     // this.getSubSubCategoriesList();
     // this.getInventoryItemsData();
+    this.sharedService.loadScripts();
 
-    combineLatest([this.inventoryService.getCategories(),this.inventoryService.getSubCategories(),this.inventoryService.getSubSubCategories(),this.inventoryService.getInventoryItemsData()]).subscribe((res:any)=>{
+    combineLatest([this.inventoryService.getCategories(), this.inventoryService.getSubCategories(), this.inventoryService.getSubSubCategories(), this.inventoryService.getInventoryItemsData()]).subscribe((res: any) => {
 
-      this.categoriesList=res[0].response
-      this.subcategoriesList=res[1].response
-      this.subSubcategoriesList=res[2].response
-      this.obj=res[3].response['Main'];
+      this.categoriesList = res[0].response
+      this.subcategoriesList = res[1].response
+      this.subSubcategoriesList = res[2].response
+      this.obj = res[3].response['Main'];
       console.log('Devesh', res);
-      if(this.obj)
+      if (this.obj)
         this.groupItems();
 
 
@@ -180,6 +182,7 @@ export class InventoryPreviewComponent implements OnInit {
 
   }
 
+  accordionData: any;
 
   groupItems() {
 
@@ -204,10 +207,12 @@ export class InventoryPreviewComponent implements OnInit {
 
     this.new_obj = groupedItems;
     console.log('this.new_obj: ', this.new_obj);
+    this.accordionData = this.new_obj;
+
 
   }
 
- 
+
 
 
 
@@ -275,11 +280,55 @@ export class InventoryPreviewComponent implements OnInit {
   }
 
   hasKey(obj: any): boolean {
-    // console.log('-----',obj);
+    console.log('dd-----', obj);
     // if()
     return true
   }
 
+  keys(object: any): Array<string> {
+    if (object != null) {
+      console.log('Object.keys(object);: ', Object.keys(object));
 
+      return Object.keys(object);
+    } else
+      return []
+  }
+
+
+
+  // accordionData = [
+  //   {
+  //     subItems: [
+  //       {
+  //         title: 'This is the first sub-item\'s accordion body.',
+  //         content: 'You can add more content here.',
+  //         nestedItems: [
+  //           { title: 'Nested Item 1', content: 'This is the first nested item.' },
+  //           { title: 'Nested Item 2', content: 'This is the second nested item.' }
+  //         ]
+  //       },
+  //       {
+  //         title: 'This is the second sub-item\'s accordion body.',
+  //         content: 'Add your content here.',
+  //         nestedItems: [
+  //           { title: 'Nested Item 1', content: 'This is the first nested item.' },
+  //           { title: 'Nested Item 2', content: 'This is the second nested item.' }
+  //         ]
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     subItems: [
+  //       {
+  //         title: 'This is another sub-item\'s accordion body.',
+  //         content: 'More content goes here.',
+  //         nestedItems: [
+  //           { title: 'Nested Item 1', content: 'This is the first nested item.' },
+  //           { title: 'Nested Item 2', content: 'This is the second nested item.' }
+  //         ]
+  //       }
+  //     ]
+  //   }
+  // ];
 
 }

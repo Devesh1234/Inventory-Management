@@ -51,9 +51,9 @@ export class EmployeeInputComponent implements OnInit {
 
   initializeForm() {
     this.addEmployeeForm = this.fb.group({
-      employee_id: [{value:'',disabled:true}],
+      employee_id: [{ value: '', disabled: true }],
       // vendor_name: [{value:'',disabled:true}],
-      business_branch: [{value:'',disabled:true}],
+      business_branch: [{ value: '', disabled: true }],
       first_name: ['', Validators.required],
       middle_name: [''],
       last_name: ['', Validators.required],
@@ -68,23 +68,23 @@ export class EmployeeInputComponent implements OnInit {
       date_of_joining: ['', Validators.required],
       employee_status: ['', Validators.required],
       date_of_exit: [''],
-      country: [{ value: 'India', disabled: true }, Validators.required],
-      state: [{ value: 'Haryana', disabled: true }, Validators.required],
-      city: [{ value: 'Gurugram', disabled: true }, Validators.required],
-      pin_code: ['', [Validators.required, Validators.pattern('^[0-9]{6}$')]],
+      country: [{ value: 'India', disabled: true }],
+      state: [{ value: 'Haryana', disabled: true }],
+      city: [{ value: 'Gurugram', disabled: true }],
+      pin_code: ['', Validators.pattern('^[0-9]{6}$')],
       landmark: [''],
-      adhar_no: ['', [Validators.required, Validators.pattern('^[0-9]{12}$')]],
-      pan: ['', [Validators.required, Validators.pattern('^[A-Z]{5}[0-9]{4}[A-Z]{1}$')]],
-      bank: ['', Validators.required],
-      salary: ['', [Validators.required, Validators.min(0)]],
-      casual_leaves_taken: ['', [Validators.required, Validators.min(0)]],
-      casual_leaves_balance: ['', [Validators.required, Validators.min(0)]],
-      sick_leaves_taken: ['', [Validators.required, Validators.min(0)]],
-      sick_leaves_balance: ['', [Validators.required, Validators.min(0)]],
-      privilege_leaves_taken: ['', [Validators.required, Validators.min(0)]],
+      adhar_no: ['', [Validators.pattern('^[0-9]{12}$')]],
+      pan: ['', [Validators.pattern('^[A-Z]{5}[0-9]{4}[A-Z]{1}$')]],
+      bank: ['',],
+      salary: ['', [Validators.min(0)]],
+      casual_leaves_taken: ['', [Validators.min(0)]],
+      casual_leaves_balance: ['', [Validators.min(0)]],
+      sick_leaves_taken: ['', [Validators.min(0)]],
+      sick_leaves_balance: ['', [Validators.min(0)]],
+      privilege_leaves_taken: ['', [Validators.min(0)]],
       privilege_leaves_balance: ['', [Validators.required, Validators.min(0)]],
-      total_taken_leaves: ['', [Validators.required, Validators.min(0)]],
-      total_leaves_balance: ['', [Validators.required, Validators.min(0)]]
+      total_taken_leaves: ['', [Validators.min(0)]],
+      total_leaves_balance: ['', [Validators.min(0)]]
     });
 
   }
@@ -204,7 +204,7 @@ export class EmployeeInputComponent implements OnInit {
           console.log('resp-----', res);
         })
       }
-      else{
+      else {
         this.profileService.editEmployeeData(formValue).subscribe((res: any) => {
           console.log('resp222-----', res);
         })

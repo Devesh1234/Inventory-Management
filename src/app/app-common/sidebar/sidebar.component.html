@@ -54,17 +54,17 @@
                             arrow"></span></a>
                     <ul class="ms-3">
                         <li class="subsubmenu">
-                            <a [ngClass]="activeTile=='items'?'submenu active':'submenu' ">
+                            <a [ngClass]="activeTile=='profile'?'submenu active':'submenu' ">
                                 <span class="subsubmenuheading">Registration</span>
                             </a>
                             <ul class="ms-3">
                                 <li>
-                                    <a [ngClass]="activeSubTile=='itemsOverview'?'submenu active':'submenu' "
-                                        (click)="selectTile('itemsOverview')">Overview</a>
+                                    <a [ngClass]="activeSubTile=='profileOverview'?'submenu active':'submenu' "
+                                        (click)="selectTile('profileOverview')">Profile Overview</a>
                                 </li>
                                 <li>
-                                    <a [ngClass]="activeSubTile=='addInput'?'submenu active':'submenu' "
-                                        (click)="selectTile('addInput')">Add Input</a>
+                                    <a [ngClass]="activeSubTile=='branchInput'?'submenu active':'submenu' "
+                                        (click)="selectTile('branchInput')">Add Branch</a>
                                 </li>
                             </ul>
                         </li>

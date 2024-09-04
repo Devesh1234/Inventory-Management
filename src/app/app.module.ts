@@ -24,6 +24,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { customInterceptor } from './auth/custom.interceptor';
 
 import { LightgalleryModule } from 'lightgallery/angular';
+import { NumbersOnlyDirective } from './core/directives/numbers-only.directive';
 
 
 
@@ -35,6 +36,7 @@ import { LightgalleryModule } from 'lightgallery/angular';
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,6 @@ import { LightgalleryModule } from 'lightgallery/angular';
     BrowserAnimationsModule,
     AppCommonModule,
     DashboardModule,
-    InventoryModule,
     TrackerModule,
     MatDialogModule,
     HttpClientModule,

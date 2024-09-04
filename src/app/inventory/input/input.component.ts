@@ -80,6 +80,8 @@ export class InputComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.sharedService.loadScripts();
+
 
 
     this.initializeForm();
@@ -327,7 +329,7 @@ export class InputComponent implements OnInit {
     this.addItemform.patchValue({
       'category': this.selectedCategoryValue,
       'sub_category': this.selectedSubCategoryValue,
-      'sub_sub_category': this.selectedSubSubCategoryValue,
+      'sub_sub_category': this.selectedSubSubCategoryValue=='Select'?'':this.selectedSubSubCategoryValue,
       'item_type': this.selectedItemType,
       'size_type': this.selectedSizeType,
       'in_stock': this.selectedStockStatus == 'Yes',

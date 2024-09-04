@@ -80,7 +80,7 @@
                             </div>
                         </div> -->
 
-                        <div class="col-sm-4 col-12" >
+                        <div class="col-sm-4 col-12" *ngIf="isEmployeeEditedData">
                             <div class="form-group">
                                 <label>Business Branch <span class="manitory">*</span></label>
                                 <input type="text" formControlName="business_branch" class="form-control">
@@ -214,7 +214,7 @@
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Pin Code <span class="manitory">*</span></label>
-                                <input type="text" formControlName="pin_code" class="form-control">
+                                <input type="text" formControlName="pin_code" class="form-control" appNumbersOnly>
                             </div>
                         </div>
 

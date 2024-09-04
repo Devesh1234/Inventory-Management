@@ -1,0 +1,363 @@
+<div class="main-wrapper">
+
+    <app-header></app-header>
+    <app-sidebar></app-sidebar>
+
+
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="page-header ">
+                <div class="page-title">
+                    <h4>Branch Addition</h4>
+                    <h6>Add Branch</h6>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="card">
+                <div class="card-body">
+                    <form class="row" [formGroup]="addBranchForm">
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Business Name <span class="manitory">*</span></label>
+                                <input type="text" formControlName="business_name" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Business Type <span class="manitory">*</span></label>
+                                <input type="text" formControlName="business_type" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Business Branch <span class="manitory">*</span></label>
+                                <input type="text" formControlName="business_branch" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Business Structure <span class="manitory">*</span></label>
+                                <input type="text" formControlName="business_structure" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Registered Email <span class="manitory">*</span></label>
+                                <input type="email" formControlName="registered_email" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Password <span class="manitory">*</span></label>
+                                <input type="password" formControlName="password" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Registered Mobile No <span class="manitory">*</span></label>
+                                <input type="text" formControlName="registered_mobile_no" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Country <span class="manitory">*</span></label>
+                                <input type="text" formControlName="country" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>State <span class="manitory">*</span></label>
+                                <input type="text" formControlName="state" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>City <span class="manitory">*</span></label>
+                                <input type="text" formControlName="city" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Registered Address <span class="manitory">*</span></label>
+                                <input type="text" formControlName="registered_address" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>URL <span class="manitory">*</span></label>
+                                <input type="text" formControlName="url" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Business Registration No <span class="manitory">*</span></label>
+                                <input type="text" formControlName="business_registration_no" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Business Registration Date <span class="manitory">*</span></label>
+                                <input type="date" formControlName="business_registration_date" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>PAN <span class="manitory">*</span></label>
+                                <input type="text" formControlName="pan" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>GST No <span class="manitory">*</span></label>
+                                <input type="text" formControlName="gst_no" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>FSSAI License Number <span class="manitory">*</span></label>
+                                <input type="text" formControlName="fssai_license_number" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>FSSAI Issued On <span class="manitory">*</span></label>
+                                <input type="date" formControlName="fssai_issued_on" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>FSSAI Valid Upto <span class="manitory">*</span></label>
+                                <input type="date" formControlName="fssai_valid_upto" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Vendor Scale <span class="manitory">*</span></label>
+                                <input type="text" formControlName="vendor_scale" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Business Kind Based <span class="manitory">*</span></label>
+                                <input type="text" formControlName="business_kind_based" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Best Known For <span class="manitory">*</span></label>
+                                <input type="text" formControlName="best_known_for" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Any USP <span class="manitory">*</span></label>
+                                <input type="text" formControlName="any_usp" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Description <span class="manitory">*</span></label>
+                                <input type="text" formControlName="description" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Famous Tags <span class="manitory">*</span></label>
+                                <input type="text" formControlName="famous_tags" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Business Spokesperson <span class="manitory">*</span></label>
+                                <input type="text" formControlName="business_spokesperson" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Spokesperson Designation <span class="manitory">*</span></label>
+                                <input type="text" formControlName="spokesperson_designation" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Spokesperson Email <span class="manitory">*</span></label>
+                                <input type="email" formControlName="spokesperson_email" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Spokesperson Contact <span class="manitory">*</span></label>
+                                <input type="text" formControlName="spokesperson_contact" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Operational Address <span class="manitory">*</span></label>
+                                <input type="text" formControlName="operational_address" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Total Staff <span class="manitory">*</span></label>
+                                <input type="number" formControlName="total_staff" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Staff Strength <span class="manitory">*</span></label>
+                                <input type="number" formControlName="staff_strength" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>House Capacity <span class="manitory">*</span></label>
+                                <input type="number" formControlName="house_capacity" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Bank Name <span class="manitory">*</span></label>
+                                <input type="text" formControlName="bank_name" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Bank No <span class="manitory">*</span></label>
+                                <input type="text" formControlName="bank_no" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Bank Code <span class="manitory">*</span></label>
+                                <input type="text" formControlName="bank_code" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Timings <span class="manitory">*</span></label>
+                                <input type="text" formControlName="timings" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Capacity <span class="manitory">*</span></label>
+                                <input type="number" formControlName="capacity" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Occupied <span class="manitory">*</span></label>
+                                <input type="number" formControlName="occupied" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Parking <span class="manitory">*</span></label>
+                                <input type="checkbox" formControlName="parking" class="form-check-input">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Alcohol Serve <span class="manitory">*</span></label>
+                                <input type="checkbox" formControlName="alcohol_serve" class="form-check-input">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Smoke Space <span class="manitory">*</span></label>
+                                <input type="checkbox" formControlName="smoke_space" class="form-check-input">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Target Audience <span class="manitory">*</span></label>
+                                <input type="text" formControlName="target_audience" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Delivery <span class="manitory">*</span></label>
+                                <input type="checkbox" formControlName="delivery" class="form-check-input">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>KYC <span class="manitory">*</span></label>
+                                <input type="checkbox" formControlName="kyc" class="form-check-input">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Subscribed <span class="manitory">*</span></label>
+                                <input type="checkbox" formControlName="subscribed" class="form-check-input">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Outlet Status <span class="manitory">*</span></label>
+                                <input type="checkbox" formControlName="outlet_status" class="form-check-input">
+                            </div>
+                        </div>
+
+
+                    </form>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

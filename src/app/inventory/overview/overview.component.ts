@@ -45,6 +45,7 @@ export class OverviewComponent implements OnInit {
 
     // this.getInventoryItemsData();
 
+
     combineLatest([this.inventoryService.getCategories(), this.inventoryService.getSubCategories(), this.inventoryService.getSubSubCategories(), this.inventoryService.getInventoryItemsData()]).subscribe((resp: any) => {
       console.log('devesh-------', resp);
       this.categoriesList = resp[0].response;

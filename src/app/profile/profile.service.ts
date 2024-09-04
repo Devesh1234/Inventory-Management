@@ -18,6 +18,15 @@ export class ProfileService {
 
 
   employeeEditedData: BehaviorSubject<Object> = new BehaviorSubject<Object>({});
+  branchEditedData: BehaviorSubject<Object> = new BehaviorSubject<Object>({});
+
+
+
+  getVendorDetails(){
+    this.authService.getNewTokens();
+    let apiUrl = this.serverUrl + 'vendors/vendor/' + this.vendor_id;
+    return this.httpClient.get(apiUrl);
+  }
 
 
 
