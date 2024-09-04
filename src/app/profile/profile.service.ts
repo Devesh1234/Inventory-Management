@@ -28,11 +28,11 @@ export class ProfileService {
     return this.httpClient.get(apiUrl);
   }
 
-  insertSingleEmployeeData() {
+  insertSingleEmployeeData(obj:any) {
     this.authService.getNewTokens();
 
-    let apiUrl = this.serverUrl + 'employees/create/' + this.vendor_id;
-    return this.httpClient.post(apiUrl, {});
+    let apiUrl = this.serverUrl + 'employees/create/' + this.vendor_id+'/';
+    return this.httpClient.post(apiUrl, obj);
   }
 
 
@@ -53,6 +53,11 @@ export class ProfileService {
     });
   }
 
+  editEmployeeData(obj:any){
+    let apiUrl = this.serverUrl+'employee/edit/'+ obj.employee_id+'/';
+    return this.httpClient.post(apiUrl,obj);
+
+  }
 
 
   deleteEmployeeData(obj:any){

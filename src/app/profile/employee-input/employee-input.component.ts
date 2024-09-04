@@ -36,6 +36,7 @@ export class EmployeeInputComponent implements OnInit {
     this.sharedService.loadScripts();
     this.initializeForm();
 
+
     this.profileService.employeeEditedData.asObservable().subscribe((res: any) => {
       this.editedData = res;
       if (Object.keys(this.editedData).length != 0) {
@@ -50,9 +51,9 @@ export class EmployeeInputComponent implements OnInit {
 
   initializeForm() {
     this.addEmployeeForm = this.fb.group({
-      employee_id: ['', Validators.required],
-      vendor_name: ['', Validators.required],
-      business_branch: ['', Validators.required],
+      employee_id: [{value:'',disabled:true}],
+      // vendor_name: [{value:'',disabled:true}],
+      business_branch: [{value:'',disabled:true}],
       first_name: ['', Validators.required],
       middle_name: [''],
       last_name: ['', Validators.required],
@@ -70,7 +71,7 @@ export class EmployeeInputComponent implements OnInit {
       country: [{ value: 'India', disabled: true }, Validators.required],
       state: [{ value: 'Haryana', disabled: true }, Validators.required],
       city: [{ value: 'Gurugram', disabled: true }, Validators.required],
-      pin_code: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
+      pin_code: ['', [Validators.required, Validators.pattern('^[0-9]{6}$')]],
       landmark: [''],
       adhar_no: ['', [Validators.required, Validators.pattern('^[0-9]{12}$')]],
       pan: ['', [Validators.required, Validators.pattern('^[A-Z]{5}[0-9]{4}[A-Z]{1}$')]],
@@ -89,9 +90,14 @@ export class EmployeeInputComponent implements OnInit {
   }
 
   patchEditedValues(data: any) {
+
+
+
+
+
     this.addEmployeeForm.patchValue({
       "employee_id": data.employee_id,
-      "vendor_name": data.vendor_name,
+      // "vendor_name": data.vendor_name,
       "business_branch": data.business_branch,
       "first_name": data.first_name,
       "middle_name": data.middle_name,
@@ -188,11 +194,23 @@ export class EmployeeInputComponent implements OnInit {
 
   addEmployee() {
     console.log(this.addEmployeeForm.getRawValue());
+    const formValue = this.addEmployeeForm.getRawValue();
     if (this.addEmployeeForm.invalid) {
       this.sharedService.showSnackBar('Please fill all details', 'error')
     }
     else {
-      this.profileService.insertSingleEmployeeData().subscribe((res: any) => { })
+      if (this.isEmployeeEditedData == false) {
+        this.profileService.insertSingleEmployeeData(formValue).subscribe((res: any) => {
+          console.log('resp-----', res);
+        })
+      }
+      else{
+        this.profileService.editEmployeeData(formValue).subscribe((res: any) => {
+          console.log('resp222-----', res);
+        })
+      }
+
+
     }
   }
 
