@@ -85,19 +85,27 @@
                                 <label>Business Branch <span class="manitory">*</span></label>
                                 <input type="text" formControlName="business_branch" class="form-control">
                             </div>
+
                         </div>
 
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>First Name <span class="manitory">*</span></label>
                                 <input type="text" formControlName="first_name" class="form-control">
+                                <p *ngIf="addEmployeeForm.controls.first_name?.errors?.required==true"
+                                    class="text-danger">First Name Required</p>
                             </div>
+
                         </div>
+
+
+
 
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Middle Name</label>
                                 <input type="text" formControlName="middle_name" class="form-control">
+
                             </div>
                         </div>
 
@@ -105,34 +113,50 @@
                             <div class="form-group">
                                 <label>Last Name <span class="manitory">*</span></label>
                                 <input type="text" formControlName="last_name" class="form-control">
+                                <p *ngIf="addEmployeeForm.controls.last_name?.errors?.required==true"
+                                    class="text-danger">Last Name required </p>
+
                             </div>
                         </div>
 
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Date of Birth <span class="manitory">*</span></label>
-                                <input type="date" formControlName="date_of_birth" class="form-control">
+                                <input type="date" formControlName="date_of_birth" class="form-control" [max]="currentDate">
+                                <p *ngIf="addEmployeeForm.controls.date_of_birth?.errors?.required==true"
+                                    class="text-danger">Date of birth required </p>
                             </div>
+
                         </div>
 
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Email <span class="manitory">*</span></label>
                                 <input type="email" formControlName="email" class="form-control">
+                                <p *ngIf="addEmployeeForm.controls.email?.errors?.required==true" class="text-danger">
+                                    Email required </p>
                             </div>
                         </div>
 
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Phone Number <span class="manitory">*</span></label>
-                                <input type="text" formControlName="phone_number" class="form-control">
+                                <input type="number" formControlName="phone_number" class="form-control">
+                                <p *ngIf="addEmployeeForm.controls.phone_number?.errors?.required==true"
+                                class="text-danger">Phone number required </p>
+                                <p *ngIf="addEmployeeForm.controls.phone_number?.errors?.pattern"
+                                class="text-danger">Enter Valid phone number </p>
                             </div>
                         </div>
 
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Emergency Contact <span class="manitory">*</span></label>
-                                <input type="text" formControlName="emergency_contact" class="form-control">
+                                <input type="number" formControlName="emergency_contact" class="form-control">
+                                <p *ngIf="addEmployeeForm.controls.emergency_contact?.errors?.required==true"
+                                class="text-danger"> Emergency contact required </p>
+                                <p *ngIf="addEmployeeForm.controls.emergency_contact?.errors?.pattern"
+                                class="text-danger">Enter Valid phone number </p>
                             </div>
                         </div>
 
@@ -141,10 +165,14 @@
                                 <label>Gender <span class="manitory">*</span></label>
                                 <select formControlName="gender" class="form-control">
                                     <option value="" disabled>Select Gender</option>
-                                    <option value="Male"  style="border: solid;">Male</option>
+                                    <option value="Male" style="border: solid;">Male</option>
                                     <option value="Female">Female</option>
                                     <option value="Other">Other</option>
                                 </select>
+
+                                <p *ngIf="addEmployeeForm.controls.gender?.errors?.required==true"
+                                class="text-danger"> Gender required </p>
+                                
                             </div>
                         </div>
 
@@ -152,6 +180,10 @@
                             <div class="form-group">
                                 <label>Designation <span class="manitory">*</span></label>
                                 <input type="text" formControlName="designation" class="form-control">
+
+                                <p *ngIf="addEmployeeForm.controls.designation?.errors?.required==true"
+                                class="text-danger"> Designation required </p>
+                                
                             </div>
                         </div>
 
@@ -159,13 +191,19 @@
                             <div class="form-group">
                                 <label>Team Name <span class="manitory">*</span></label>
                                 <input type="text" formControlName="team_name" class="form-control">
+                                <p *ngIf="addEmployeeForm.controls.team_name.errors?.required==true"
+                                class="text-danger"> Team Name required </p>
+                                
                             </div>
                         </div>
 
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Discount Eligibility Upto <span class="manitory">*</span></label>
-                                <input type="date" formControlName="Discount_eligibility_upto" class="form-control">
+                                <input type="date" formControlName="Discount_eligibility_upto" class="form-control"  >
+                                <p *ngIf="addEmployeeForm.controls.Discount_eligibility_upto?.errors?.required==true"
+                                class="text-danger"> Discount_eligibility_upto required </p>
+                                
                             </div>
                         </div>
 
@@ -173,6 +211,8 @@
                             <div class="form-group">
                                 <label>Date of Joining <span class="manitory">*</span></label>
                                 <input type="date" formControlName="date_of_joining" class="form-control">
+                                <p *ngIf="addEmployeeForm.controls.date_of_joining.errors?.required==true"
+                                class="text-danger"> Date of joining required </p>
                             </div>
                         </div>
 
@@ -180,6 +220,8 @@
                             <div class="form-group">
                                 <label>Employee Status <span class="manitory">*</span></label>
                                 <input type="text" formControlName="employee_status" class="form-control">
+                                <p *ngIf="addEmployeeForm.controls.employee_status.errors?.required==true"
+                                class="text-danger"> Employee status required </p>
                             </div>
                         </div>
 
@@ -215,6 +257,8 @@
                             <div class="form-group">
                                 <label>Pin Code <span class="manitory">*</span></label>
                                 <input type="text" formControlName="pin_code" class="form-control" appNumbersOnly>
+                                <p *ngIf="addEmployeeForm.controls.pin_code?.errors?.pattern"
+                                class="text-danger"> Enter Valid Pin code </p>
                             </div>
                         </div>
 
@@ -313,7 +357,8 @@
 
                     <div class="d-flex justify-content-end">
                         <div class="page-btn">
-                            <button class="btn btn-primary me-2" (click)="addEmployee()">{{isEmployeeEditedData?'Update':'Add'}}</button>
+                            <button class="btn btn-primary me-2"
+                                (click)="addEmployee()">{{isEmployeeEditedData?'Update':'Add'}}</button>
                             <button class="btn btn-secondary">Cancel</button>
                         </div>
                     </div>

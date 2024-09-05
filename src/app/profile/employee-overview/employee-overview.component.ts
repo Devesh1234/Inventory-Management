@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 })
 export class EmployeeOverviewComponent implements OnInit {
 
+cardsData:any;
 
   employeesList: any;
   employeesListCopy: any;
@@ -44,6 +45,8 @@ export class EmployeeOverviewComponent implements OnInit {
 
   getEmployeesList() {
     this.profileService.getEmployeesData().subscribe((res: any) => {
+      this.cardsData=res.cards
+      console.log('this.cardsData: ', this.cardsData);
       this.employeesList = this.employeesListCopy = res.response;
       console.log('this.employeesList: ', this.employeesList);
       this.branchList = Object.keys(this.employeesList);

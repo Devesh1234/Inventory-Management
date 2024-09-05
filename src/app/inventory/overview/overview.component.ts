@@ -11,6 +11,7 @@ import { combineLatest } from 'rxjs';
 })
 export class OverviewComponent implements OnInit {
 
+  cardsData: any;
   inventoryItemsData: any;
   inventoryItemsDataCopy: any;
   categoriesList: any;
@@ -51,14 +52,14 @@ export class OverviewComponent implements OnInit {
       this.categoriesList = resp[0].response;
       this.subCategoriesList = resp[1].response;
       this.subSubCategoriesList = resp[2].response;
+      this.cardsData = resp[3]['Cards']
+      console.log('this.cardsData: ', this.cardsData);
       this.inventoryItemsData = this.inventoryItemsDataCopy = resp[3].response['Main']
-
 
     })
 
 
   }
-
 
 
   // getInventoryItemsData() {
@@ -102,9 +103,9 @@ export class OverviewComponent implements OnInit {
 
 
   editItem(item: any) {
-    item.category=this.getCategoryName(item.category);
-    item.sub_category=this.getSubCategoryName(item.sub_category);
-    item.sub_sub_category=this.getSubSubCategoryName(item.sub_sub_category);
+    item.category = this.getCategoryName(item.category);
+    item.sub_category = this.getSubCategoryName(item.sub_category);
+    item.sub_sub_category = this.getSubSubCategoryName(item.sub_sub_category);
     console.log('id----', item);
 
     this.inventoryService.itemEditedData.next(item);
@@ -167,10 +168,20 @@ export class OverviewComponent implements OnInit {
 
   onInputChange(e: any) {
     let val = e.target.value.toString().toLowerCase();
+    this.filterActive = false;
+
     this.inventoryItemsData = this.inventoryItemsDataCopy.filter((ele: any) => {
-      return ele.menu_item.toString().toLowerCase().includes(val)
+      return ele.menu_item.toString().toLowerCase().includes(val) ||
+        ele.menu_item.toString().toLowerCase().includes(val) ||
+        ele.item_type.toString().toLowerCase().includes(val) ||
+        ele.description.toString().toLowerCase().includes(val) ||
+        ele.spiciness.toString().toLowerCase().includes(val)
 
     })
+  }
+  onInputCross() {
+    this.itemSearchValue = '';
+    this.inventoryItemsData = this.inventoryItemsDataCopy;
   }
 
 
@@ -181,6 +192,7 @@ export class OverviewComponent implements OnInit {
     this.selectedCategoryValue = 'Select';
     this.selectedSubCategoryValue = 'Select';
     this.selectedSubSubCategoryValue = 'Select';
+    this.onInputCross();
 
 
   }

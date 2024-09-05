@@ -16,8 +16,8 @@ import { NumbersOnlyDirective } from '../core/directives/numbers-only.directive'
 
 const routes:Routes=[
   {path:'Inventory',component:InventoryComponent},
-  {path:'Overview',component:OverviewComponent},
-  {path:'Input',component:InputComponent},
+  {path:'items-overview',component:OverviewComponent},
+  {path:'items-input',component:InputComponent},
   {path:'Offers',component:OffersComponent},
   {path:'category',component:CategoryComponent},
   {path:'subcategory',component:SubcategoryComponent},

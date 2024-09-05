@@ -24,6 +24,8 @@ export class EmployeeInputComponent implements OnInit {
   editedData: any;
   isEmployeeEditedData: boolean = false;
 
+  currentDate: any;
+
 
 
   constructor(private sharedService: SharedService, private fb: FormBuilder, private profileService: ProfileService) { }
@@ -35,6 +37,7 @@ export class EmployeeInputComponent implements OnInit {
 
     this.sharedService.loadScripts();
     this.initializeForm();
+    this.currentDate = this.getCurrentDate();
 
 
     this.profileService.employeeEditedData.asObservable().subscribe((res: any) => {
@@ -48,6 +51,17 @@ export class EmployeeInputComponent implements OnInit {
 
 
   }
+
+
+  getCurrentDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+
 
   initializeForm() {
     this.addEmployeeForm = this.fb.group({
@@ -82,7 +96,7 @@ export class EmployeeInputComponent implements OnInit {
       sick_leaves_taken: ['', [Validators.min(0)]],
       sick_leaves_balance: ['', [Validators.min(0)]],
       privilege_leaves_taken: ['', [Validators.min(0)]],
-      privilege_leaves_balance: ['', [Validators.required, Validators.min(0)]],
+      privilege_leaves_balance: ['', [Validators.min(0)]],
       total_taken_leaves: ['', [Validators.min(0)]],
       total_leaves_balance: ['', [Validators.min(0)]]
     });
@@ -196,6 +210,10 @@ export class EmployeeInputComponent implements OnInit {
     console.log(this.addEmployeeForm.getRawValue());
     const formValue = this.addEmployeeForm.getRawValue();
     if (this.addEmployeeForm.invalid) {
+      for (let item in this.addEmployeeForm.controls) {
+        console.log(item, this.addEmployeeForm.controls[item].errors);
+
+      }
       this.sharedService.showSnackBar('Please fill all details', 'error')
     }
     else {

@@ -38,7 +38,7 @@ export class InputComponent implements OnInit {
   filteredSubSubCategoriesList: any;
 
 
-  sizeTypeList: any = ['nan', 'Available'];
+  sizeTypeList: any = ['NA', 'Available'];
   selectedSizeType: any = 'Select'
 
   itemTypeList: any = ['Vegetarian', 'Non-Vegetarian'];
@@ -399,7 +399,10 @@ export class InputComponent implements OnInit {
         console.log('devesh---');
         this.inventoryService.insertSingleItem(formValue).subscribe((res: any) => {
           console.log('res----', res);
-          this.sharedService.showSnackBar('Items Add Succesfully', 'success');
+          this.sharedService.showSnackBar(res.message, 'success');
+      this.router.navigate(['/inventory/items-overview'], { replaceUrl: true })
+
+
         },
           (err: any) => {
             console.log('err----', err);
@@ -441,7 +444,8 @@ export class InputComponent implements OnInit {
 
   onCancel() {
     if (Object.keys(this.editedData).length != 0) {
-      this.router.navigate(['/inventory/Overview'], { replaceUrl: true })
+      this.router.navigate(['/inventory/items-overview'], { replaceUrl: true })
+
       this.inventoryService.itemEditedData.next({});
       this.isItemEditedData = false;
     }

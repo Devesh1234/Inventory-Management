@@ -50,14 +50,14 @@ export class SidebarComponent implements OnInit {
         break;
 
       case 'itemsOverview':
-        this.router.navigate(['/inventory/Overview']);
+        this.router.navigate(['/inventory/items-overview']);
         this.sharedService.setActiveTile('items');
         this.sharedService.setActiveSubTile('itemsOverview');
         break;
 
 
       case 'addInput':
-        this.router.navigate(['/inventory/Input']);
+        this.router.navigate(['/inventory/items-input']);
         this.sharedService.setActiveTile('items');
         this.sharedService.setActiveSubTile('addInput');
         break;

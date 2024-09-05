@@ -3,90 +3,121 @@
     <app-header></app-header>
     <app-sidebar></app-sidebar>
 
-
-
-
     <div class="page-wrapper">
-
-
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item" *ngFor="let category of keys(accordionData); let i = index">
-                <h2 class="accordion-header" [id]="'heading' + i">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        [attr.data-bs-target]="'#collapse' + i" aria-expanded="true"
-                        [attr.aria-controls]="'collapse' + i">
-                        {{getCategoryName(category)}}
-                    </button>
-                </h2>
-                <div [id]="'collapse' + i" class="accordion-collapse collapse" [ngClass]="{'show': i === 0}"
-                    [attr.aria-labelledby]="'heading' + i" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-
-                        <!-- Sub Category Accordion -->
-                        <div class="accordion" [id]="'sub-accordionExample' + i">
-                            <div class="accordion-item"
-                                *ngFor="let subCategory of keys(accordionData[category]); let j = index">
-                                <h2 class="accordion-header" [id]="'sub-heading' + i + '-' + j">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        [attr.data-bs-target]="'#sub-collapse' + i + '-' + j" aria-expanded="true"
-                                        [attr.aria-controls]="'sub-collapse' + i + '-' + j">
-                                        {{ getSubCategoryName(subCategory) }}
-                                    </button>
-                                </h2>
-                                <div [id]="'sub-collapse' + i + '-' + j" class="accordion-collapse collapse"
-                                    [ngClass]="{'show': j === 0}" [attr.aria-labelledby]="'sub-heading' + i + '-' + j"
-                                    [attr.data-bs-parent]="'#sub-accordionExample' + i">
-                                    <div class="accordion-body">
-
-                                        <!-- Sub-Sub Category Accordion -->
-                                        <div class="accordion" [id]="'nested-accordionExample' + i + '-' + j">
-                                            <div class="accordion-item"
-                                                *ngFor="let subSubCategory of keys(accordionData[category][subCategory]); let k = index">
-                                                <h2 class="accordion-header"
-                                                    [id]="'nested-heading' + i + '-' + j + '-' + k">
-                                                    <button class="accordion-button " type="button"
-                                                        data-bs-toggle="collapse"
-                                                        [attr.data-bs-target]="'#nested-collapse' + i + '-' + j + '-' + k"
-                                                        aria-expanded="false"
-                                                        [attr.aria-controls]="'nested-collapse' + i + '-' + j + '-' + k">
-                                                        {{ getSubSubCategoryName( subSubCategory) }}
-                                                    </button>
-                                                </h2>
-                                                <div [id]="'nested-collapse' + i + '-' + j + '-' + k"
-                                                    class="accordion-collapse collapse" [ngClass]="{'show': k === 0}"
-                                                    [attr.aria-labelledby]="'nested-heading' + i + '-' + j + '-' + k"
-                                                    [attr.data-bs-parent]="'#nested-accordionExample' + i + '-' + j">
-                                                    <div class="accordion-body">
-
-                                                        <!-- Items List -->
-                                                        <div
-                                                            *ngFor="let item of accordionData[category][subCategory][subSubCategory]">
-                                                            <strong>{{ item.menu_item }}</strong>
-
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End of Sub-Sub Category Accordion -->
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End of Sub Category Accordion -->
-
-                        </div>
-                    </div>
+        <div class="content">
+            <div class="page-header">
+                <div class="page-title">
+                    <h4>Items Preview</h4>
+                    <h6>Preview the Items</h6>
                 </div>
             </div>
 
 
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item" *ngFor="let category of keys(accordionData); let i = index">
+                                    <h2 class="accordion-header" [id]="'heading' + i">
+                                        <button class="accordion-button " [ngClass]="{'collapsed': i != 0}"
+                                            type="button" data-bs-toggle="collapse"
+                                            [attr.data-bs-target]="'#collapse' + i" aria-expanded="false"
+                                            [attr.aria-controls]="'collapse' + i">
+                                            {{getCategoryName(category)}}
+                                        </button>
+                                    </h2>
+                                    <div [id]="'collapse' + i" class="accordion-collapse collapse"
+                                        [ngClass]="{'show': i === 0}" [attr.aria-labelledby]="'heading' + i"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+
+                                            <!-- Sub Category Accordion -->
+                                            <div class="accordion" [id]="'sub-accordionExample' + i">
+                                                <div class="accordion-item"
+                                                    *ngFor="let subCategory of keys(accordionData[category]); let j = index">
+                                                    <h2 class="accordion-header" [id]="'sub-heading' + i + '-' + j">
+                                                        <button class="accordion-button "
+                                                            [ngClass]="{'collapsed': j != 0}" type="button"
+                                                            data-bs-toggle="collapse"
+                                                            [attr.data-bs-target]="'#sub-collapse' + i + '-' + j"
+                                                            aria-expanded="true"
+                                                            [attr.aria-controls]="'sub-collapse' + i + '-' + j">
+                                                            {{ getSubCategoryName(subCategory) }}
+                                                        </button>
+                                                    </h2>
+                                                    <div [id]="'sub-collapse' + i + '-' + j"
+                                                        class="accordion-collapse collapse"
+                                                        [ngClass]="{'show': j === 0}"
+                                                        [attr.aria-labelledby]="'sub-heading' + i + '-' + j"
+                                                        [attr.data-bs-parent]="'#sub-accordionExample' + i">
+                                                        <div class="accordion-body">
+
+                                                            <!-- Sub-Sub Category Accordion -->
+                                                            <div class="accordion"
+                                                                [id]="'nested-accordionExample' + i + '-' + j">
+                                                                <div class="accordion-item"
+                                                                    *ngFor="let subSubCategory of keys(accordionData[category][subCategory]); let k = index">
+                                                                    
+                                                                    <div *ngIf="subSubCategory!='null'">
+                                                                        <h2 class="accordion-header"
+                                                                            [id]="'nested-heading' + i + '-' + j + '-' + k">
+                                                                            <button class="accordion-button  "
+                                                                                [ngClass]="{'collapsed': k != 0}"
+                                                                                type="button" data-bs-toggle="collapse"
+                                                                                [attr.data-bs-target]="'#nested-collapse' + i + '-' + j + '-' + k"
+                                                                                aria-expanded="false"
+                                                                                [attr.aria-controls]="'nested-collapse' + i + '-' + j + '-' + k">
+                                                                                {{ getSubSubCategoryName(
+                                                                                subSubCategory) }}
+                                                                            </button>
+                                                                        </h2>
+                                                                        <div [id]="'nested-collapse' + i + '-' + j + '-' + k"
+                                                                            class="accordion-collapse collapse"
+                                                                            [ngClass]="{'show': k === 0}"
+                                                                            [attr.aria-labelledby]="'nested-heading' + i + '-' + j + '-' + k"
+                                                                            [attr.data-bs-parent]="'#nested-accordionExample' + i + '-' + j">
+                                                                            <div class="accordion-body">
+
+                                                                                <!-- Items List -->
+                                                                                <div
+                                                                                    *ngFor="let item of accordionData[category][subCategory][subSubCategory]">
+                                                                                    <strong>{{ item.menu_item
+                                                                                        }}</strong>
+
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div *ngIf="subSubCategory=='null'" >
+                                                                        <div class="accordion-body " *ngFor="let item of accordionData[category][subCategory][subSubCategory] " >
+                                                                           <strong> {{item.menu_item}} </strong>
+                                                                        </div>
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                                <!-- End of Sub-Sub Category Accordion -->
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- End of Sub Category Accordion -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
 
 
 
-            <!-- 
+
+
+                                <!-- 
 
         <div *ngFor="let item of sample_object | keyvalue">
             <div *ngIf="item.value">
@@ -115,11 +146,16 @@
 
 
 
+                            </div>
+                        </div>
+                    </div>
 
 
 
+                </div>
 
+            </div>
 
         </div>
-
     </div>
+</div>

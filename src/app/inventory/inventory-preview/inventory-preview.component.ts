@@ -228,7 +228,7 @@ export class InventoryPreviewComponent implements OnInit {
       }
 
 
-    return 'Devesh';
+    return 'NA';
   }
 
   getSubCategoryName(item: any) {
@@ -239,7 +239,7 @@ export class InventoryPreviewComponent implements OnInit {
           return elem.name
 
       }
-    return 'Bhatia'
+    return 'NA'
 
   }
 
@@ -251,7 +251,7 @@ export class InventoryPreviewComponent implements OnInit {
           return elem.name
 
       }
-    return 'Sub Sub Category Name Not Found'
+    return 'Sub Sub Category Name Not Found  '+item
   }
 
 
@@ -287,7 +287,7 @@ export class InventoryPreviewComponent implements OnInit {
 
   keys(object: any): Array<string> {
     if (object != null) {
-      console.log('Object.keys(object);: ', Object.keys(object));
+      // console.log('Object.keys(object);: ', Object.keys(object));
 
       return Object.keys(object);
     } else
