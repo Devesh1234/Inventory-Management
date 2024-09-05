@@ -86,6 +86,7 @@ export class BranchInputComponent implements OnInit {
 
 
   patchInitialValues(data: any) {
+    // let branch_name=data
     this.addBranchForm.patchValue({
       'business_name': data.business_name,
       'business_branch': data.business_branch,

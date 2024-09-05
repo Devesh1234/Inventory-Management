@@ -14,7 +14,7 @@ export class AppComponent {
   constructor(private router: Router, private sharedService: SharedService) { }
 
   ngOnInit() {
-    // this.router.navigate(['/auth/signup']);
+    this.router.navigate(['/auth/signup']);
     // this.router.navigate(['/auth/forgot-password']);
     // this.router.navigate(['/auth/new-password']);
     // this.router.navigate(['/auth/signin']);
@@ -25,7 +25,7 @@ export class AppComponent {
     // this.router.navigate(['/inventory/subcategory']);
     // this.router.navigate(['/inventory/subsubcategory']);
     // this.router.navigate(['/inventory/inventoryPreview']);
-    this.router.navigate(['/profile/photos-view']);
+    // this.router.navigate(['/profile/photos-view']);
     // this.router.navigate(['/profile/employee-input']);
     // this.router.navigate(['/profile/branch-input']);
     // this.router.navigate(['/profile/profile-view']);
