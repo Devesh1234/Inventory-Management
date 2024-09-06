@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,9 @@ import { BehaviorSubject } from 'rxjs';
 export class ProfileService {
   vendor_id: any = '24';
 
-  constructor(private httpClient: HttpClient, private authService: AuthService) { }
+  constructor(private httpClient: HttpClient, private authService: AuthService) { 
+    console.log('devessssssssssss');
+  }
 
 
   // serverUrl: any = "http://127.0.0.1:8000/api/"
@@ -113,6 +115,14 @@ export class ProfileService {
 
     let apiUrl = this.serverUrl + 'vendors/' + this.vendor_id + '/photos/delete/'
     return this.httpClient.post(apiUrl, obj)
+  }
+
+
+
+  myProfileUpdate(obj:any) :Observable<any>{
+      this.authService.getNewTokens();
+      let apiUrl=this.serverUrl+'vendor/update-password/'+this.vendor_id +'/';
+      return this.httpClient.post(apiUrl,obj);
   }
 
 }

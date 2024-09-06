@@ -30,53 +30,59 @@
                         </ul>
                     </div>
                     <form [formGroup]="signupForm" class="row">
-                        <div class="form-login col-12 col-md-6">
-                            <label>Business Name</label>
-                            <div class="form-addons">
-                                <input type="text" placeholder="Enter your Business name"
-                                    formControlName="business_name">
-                                <img src="assets/img/icons/users1.svg" alt="img">
+
+                        <!-- Basic Info Form -->
+                        <div formGroupName="basicInfoForm" class="row" *ngIf="activeForm=='basicInfoForm'">
+                            <div class="form-login col-12 col-md-6">
+                                <label>Business Name</label>
+                                <div class="form-addons">
+                                    <input type="text" placeholder="Enter your Business name"
+                                        formControlName="business_name">
+                                    <img src="assets/img/icons/users1.svg" alt="img">
+                                </div>
+                                <p *ngIf="basicInfoForm.controls.business_name?.errors?.required==true"
+                                    class="text-danger">
+                                    Please
+                                    Enter Your Business Name
+                                </p>
                             </div>
-                            <p *ngIf="signupForm.controls.business_name?.errors?.required==true" class="text-danger">
-                                Please
-                                Enter Your Business Name
-                            </p>
-                        </div>
-                       
 
 
 
-                        <div class="form-login col-12 col-md-6">
-                            <label>Mobile</label>
-                            <div class="form-addons">
-                                <input type="text" placeholder="Enter Mobile Number" maxlength="10"
-                                    formControlName="registered_mobile_no">
-                                <span class="fas toggle-password fa-mobile" aria-hidden="true"></span>
+
+                            <div class="form-login col-12 col-md-6">
+                                <label>Mobile</label>
+                                <div class="form-addons">
+                                    <input type="number" placeholder="Enter Mobile Number" maxlength="10"
+                                        formControlName="registered_mobile_no">
+                                    <span class="fas toggle-password fa-mobile" aria-hidden="true"></span>
+                                </div>
+                                <p *ngIf="basicInfoForm.controls.registered_mobile_no?.errors?.required==true"
+                                    class="text-danger">Please
+                                    Enter Your Mobile No</p>
+                                <p *ngIf="basicInfoForm.controls.registered_mobile_no?.errors?.pattern || basicInfoForm.controls.registered_mobile_no?.errors?.minlength"
+                                    class="text-danger">Please Enter
+                                    Valid No</p>
                             </div>
-                            <p *ngIf="signupForm.controls.registered_mobile_no?.errors?.required==true"
-                                class="text-danger">Please
-                                Enter Your Mobile No</p>
-                            <p *ngIf="signupForm.controls.registered_mobile_no?.errors?.pattern || signupForm.controls.registered_mobile_no?.errors?.minlength"
-                                class="text-danger">Please Enter
-                                Valid No</p>
-                        </div>
 
 
 
-                        <div class="form-login col-12 col-md-6">
-                            <label>Email</label>
-                            <div class="form-addons">
-                                <input type="text" placeholder="Enter your email address"
-                                    formControlName="registered_email">
-                                <img src="assets/img/icons/mail.svg" alt="img">
+                            <div class="form-login col-12 col-md-6">
+                                <label>Email</label>
+                                <div class="form-addons">
+                                    <input type="text" placeholder="Enter your email address"
+                                        formControlName="registered_email">
+                                    <img src="assets/img/icons/mail.svg" alt="img">
+                                </div>
+                                <p *ngIf="basicInfoForm.controls.registered_email?.errors?.required==true"
+                                    class="text-danger">
+                                    Please
+                                    Enter Email Id</p>
+                                <p *ngIf="basicInfoForm.controls.registered_email?.errors?.email==true"
+                                    class="text-danger">
+                                    Please Enter
+                                    Valid Email Id</p>
                             </div>
-                            <p *ngIf="signupForm.controls.registered_email?.errors?.required==true" class="text-danger">
-                                Please
-                                Enter Email Id</p>
-                            <p *ngIf="signupForm.controls.registered_email?.errors?.email==true" class="text-danger">
-                                Please Enter
-                                Valid Email Id</p>
-                        </div>
 
 
 
@@ -84,61 +90,64 @@
 
 
 
-                        <div class="form-login col-12 col-md-6">
-                            <label>Password</label>
-                            <div class="pass-group">
-                                <input type="password" class="pass-input" placeholder="Enter your password"
-                                    formControlName="password">
-                                <span class="fas toggle-password fa-eye-slash"></span>
+                            <div class="form-login col-12 col-md-6">
+                                <label>Password</label>
+                                <div class="pass-group">
+                                    <input type="password" class="pass-input" placeholder="Enter your password"
+                                        formControlName="password">
+                                    <span class="fas toggle-password fa-eye-slash"></span>
+                                </div>
+                                <p *ngIf="basicInfoForm.controls.password?.errors?.required==true" class="text-danger">
+                                    Please
+                                    enter Your
+                                    Password</p>
                             </div>
-                            <p *ngIf="signupForm.controls.password?.errors?.required==true" class="text-danger">Please
-                                enter Your
-                                Password</p>
-                        </div>
 
 
 
-                        <div class="form-login col-12 col-md-4">
-                            <label>Business Branch</label>
-                            <div class="form-addons">
-                                <input type="text" placeholder="" formControlName="business_branch">
-                                <span class="fas toggle-password fa-eye-slash"></span>
+                            <div class="form-login col-12 col-md-4">
+                                <label>Business Branch</label>
+                                <div class="form-addons">
+                                    <input type="text" placeholder="" formControlName="business_branch">
+                                    <span class="fas toggle-password fa-eye-slash"></span>
+                                </div>
                             </div>
-                        </div>
 
 
 
-                        <div class="form-login col-12 col-md-4 ">
-                            <label>Business Type</label>
-                            <div class="form-addons">
-                                <input type="text" placeholder="Enter your password" formControlName="business_type">
-                                <span class="fas toggle-password fa-eye-slash"></span>
+                            <div class="form-login col-12 col-md-4 ">
+                                <label>Business Type</label>
+                                <div class="form-addons">
+                                    <input type="text" placeholder="Enter your password"
+                                        formControlName="business_type">
+                                    <span class="fas toggle-password fa-eye-slash"></span>
+                                </div>
+                                <p *ngIf="signupForm.controls.business_type?.errors?.required==true"
+                                    class="text-danger">
+                                    Please Enter Business Name</p>
                             </div>
-                            <p *ngIf="signupForm.controls.business_type?.errors?.required==true" class="text-danger">
-                                Please Enter Business Name</p>
-                        </div>
 
 
 
 
 
 
-                        <div class="form-login col-12 col-md-4  ">
-                            <label>Business Structure</label>
-                            <div class="form-addons">
-                                <input type="text" placeholder="Enter Business Structure"
-                                    formControlName="business_structure">
-                                <span class="fas toggle-password fa-eye-slash"></span>
+                            <div class="form-login col-12 col-md-4  ">
+                                <label>Business Structure</label>
+                                <div class="form-addons">
+                                    <input type="text" placeholder="Enter Business Structure"
+                                        formControlName="business_structure">
+                                    <span class="fas toggle-password fa-eye-slash"></span>
+                                </div>
+                                <p *ngIf="signupForm.controls.business_structure?.errors?.required==true"
+                                    class="text-danger">Please Enter Business Structure</p>
                             </div>
-                            <p *ngIf="signupForm.controls.business_structure?.errors?.required==true"
-                                class="text-danger">Please Enter Business Structure</p>
-                        </div>
 
 
 
 
 
-                        <!-- <div class="form-login col-12 col-md-4 ">
+                            <!-- <div class="form-login col-12 col-md-4 ">
                             <div class="form-addons">
                                 <label>Country</label>
                                 <select #countryselect class="select" formControlName="country">
@@ -149,7 +158,7 @@
 
 
 
-                        <!-- <div class="form-login col-12 col-md-4">
+                            <!-- <div class="form-login col-12 col-md-4">
                             <div class="form-addons ">
                                 <label>State</label>
                                 <select #stateselect class="select" formControlName="state">
@@ -160,7 +169,7 @@
 
  -->
 
-                        <!-- <div class="form-login col-12 col-md-4">
+                            <!-- <div class="form-login col-12 col-md-4">
                             <div class="form-addons">
                                 <label>City</label>
                                 <select #cityselect class="select" formControlName="city">
@@ -169,31 +178,119 @@
                             </div>
                         </div> -->
 
+                        </div>
+
+                        <!-- Kyc Verification Form -->
+                        <div formGroupName="kycForm" class="row" *ngIf="activeForm=='kycForm'">
+
+
+                            <div class="form-login col-12 ">
+                                <label>Email Verification</label>
+                                <div class="form-addons">
+                                    <input type="number" placeholder="Enter Email OTP" formControlName="email_otp" maxlength="6" pattern="\d*" onKeyPress="if(this.value.length==6) return false;">
+
+                                    <img src="assets/img/icons/users1.svg" alt="img">
+                                </div>
+                                <div>
+                                    <p *ngIf="kycForm.controls.email_otp?.errors?.required==true" class="text-danger">
+                                        <span>Enter OTP Recieved on Email</span> <span class="text-success float-end"
+                                            (click)="resendEmailOtp()">Resend</span>
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="form-login col-12 ">
+                                <label>Adhaar Number</label>
+                                <div class="form-addons">
+                                    <input type="number" placeholder="Enter your Adhaar Number"
+                                        formControlName="adhaar_no" (input)="onAdhaarInput()" onKeyPress="if(this.value.length==12) return false;">
+                                    <img src="assets/img/icons/users1.svg" alt="img">
+                                </div>
+                                <p *ngIf="kycForm.controls.adhaar_no?.errors?.required==true" class="text-danger">
+                                    Adhaar Required
+                                </p>
+                            </div>
+
+
+                            <div class="form-login col-12 ">
+                                <label>PAN Number</label>
+                                <div class="form-addons">
+                                    <input type="text" placeholder="Enter your PAN Number" formControlName="pan_no">
+                                    <img src="assets/img/icons/users1.svg" alt="img">
+                                </div>
+                                <p *ngIf="kycForm.controls.pan_no.errors?.required==true" class="text-danger">
+                                    PAN Required
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Account Verification Form -->
+
+                        <div formGroupName="accountForm" class="row" *ngIf="activeForm=='accountForm'">
+                            <div class="form-login col-12 ">
+                                <label>Bank Name</label>
+                                <div class="form-addons">
+                                    <input type="text" placeholder="Enter Bank Name" formControlName="bank_name">
+                                    <img src="assets/img/icons/users1.svg" alt="img">
+                                </div>
+                                <div>
+                                    <p *ngIf="accountForm.controls.bank_name.errors?.required==true"
+                                        class="text-danger">
+                                        Enter Bank Name
+                                    </p>
+                                </div>
+                            </div>
 
 
 
+                            <div class="form-login col-12 ">
+                                <label>Account Number</label>
+                                <div class="form-addons">
+                                    <input type="text" placeholder="Enter Account Number" formControlName="account_no">
+                                    <img src="assets/img/icons/users1.svg" alt="img">
+                                </div>
+                                <div>
+                                    <p *ngIf="accountForm.controls.account_no.errors?.required==true"
+                                        class="text-danger">
+                                        Enter Account Number
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="form-login col-12 ">
+                                <label>IFSC Code</label>
+                                <div class="form-addons">
+                                    <input type="text" placeholder="Enter IFSC Code" formControlName="ifsc_code">
+                                    <img src="assets/img/icons/users1.svg" alt="img">
+                                </div>
+                                <div>
+                                    <p *ngIf="accountForm.controls.ifsc_code.errors?.required==true"
+                                        class="text-danger">
+                                        Enter IFSC
+                                    </p>
+                                </div>
+                            </div>
 
 
 
-
-
-
-
-
-
-
-
-
-                        <div class="form-login col-12 d-flex justify-content-between">
-                            <button class="btn btn-login w-25" (click)="userSignUp()" [disabled]="signupForm.invalid">Prev</button>
-                                <button class="btn btn-login w-25" (click)="userSignUp()">Next</button>
                         </div>
 
 
-
-
-
                     </form>
+
+
+
+                    <div class="form-login col-12 d-flex justify-content-between">
+                        <button class="btn btn-login w-25" (click)="onPrevClick()" 
+                            [ngClass]="show_prev_btn?'visible':'invisible'">Prev</button>
+                        <button class="btn btn-login w-25" (click)="onNextClick()" *ngIf="show_next_btn">Next</button>
+                        <button class="btn btn-login w-25" (click)="onSubmit()" [attr.data-toggle]="accountForm.valid?'modal':''"
+                            data-target="#exampleModalCenter" *ngIf="show_submit_btn">Submit</button>
+
+                    </div>
+
                     <div class="signinform text-center">
                         <h4>Already a user? <a class="hover-a" (click)="navigateToSignin()">Sign In</a></h4>
                     </div>
@@ -203,6 +300,42 @@
             <!-- <div class="login-img">
                 <img src="assets/img/login.jpg" alt="img">
             </div> -->
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center">
+                <h5 class="modal-title text-center" id="exampleModalLongTitle">Are Your Sure </h5>
+
+            </div>
+            <div class="modal-body">
+
+                <ul class="text-center">
+                    <li>1. djlsajdsldfs sfjsld</li>
+                    <li>2. djlsajdsldfs sfjsld</li>
+                    <li>3. djlsajdsldfs sfjsld</li>
+                    <li>4. djlsajdsldfs sfjsld</li>
+                    <li>5. djlsajdsldfs sfjsld</li>
+                </ul>
+
+                <div class="d-flex justify-content-center ">
+                    <input type="checkbox">
+                    <p>I agreed with terms and conditions</p>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="confirm()">Confirm</button>
+            </div>
         </div>
     </div>
 </div>

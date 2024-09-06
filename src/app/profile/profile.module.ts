@@ -9,6 +9,7 @@ import { AppCommonModule } from '../app-common/app-common.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileOverviewComponent } from './profile-overview/profile-overview.component';
 import { BranchInputComponent } from './branch-input/branch-input.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 
 const routes:Routes=[
@@ -16,7 +17,8 @@ const routes:Routes=[
   {path:'employee-input',component:EmployeeInputComponent},
   {path:'profile-view',component:ProfileOverviewComponent},
   {path:'branch-input',component:BranchInputComponent},
-  {path:'photos-view',component:PhotosViewComponent}
+  {path:'photos-view',component:PhotosViewComponent},
+  {path:'my-profile',component:MyProfileComponent}
 ]
 
 @NgModule({
