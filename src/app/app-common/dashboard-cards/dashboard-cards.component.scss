@@ -1,76 +1,84 @@
-
 .dashboard_card {
 
-    display: flex;
-    flex-direction: row;
-    max-width: 300px;
-    align-items: center;
-    border-radius: 15px;
-    // background: linear-gradient(to right, #bc12562e, #bc1256);
-    background-color: #fffafa;
+  display: flex;
+  flex-direction: row;
+  max-width: 300px;
+  align-items: center;
+  border-radius: 12px;
+  // background: linear-gradient(to right, #bc12562e, #bc1256);
+  background-color: #fffafa;
   
-  
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 10px 0px;
-  
-    height: 100px;
-    gap: 25px;
-    padding: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  
-  
-    &:hover {
-      // transform: scale(1.01);
+
+
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 10px 0px;
+
+  height: 100px;
+  gap: 25px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+
+  &:hover {
+    // transform: scale(1.01);
     box-shadow: rgba(100, 100, 111, 0.5) 0px 0px 10px 4px;
-  
-  
+
+
+  }
+
+  .card_img {
+    // background-color: red;
+    background: linear-gradient(to right, #ff5297, #bc1256);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+
+    img {
+      padding: 10px;
+      // width: 25px;
+      // height: 25px;
+      object-fit: contain;
     }
-  
-    .card_img {
-      // background-color: red;
-      background: linear-gradient(to right, #ff5297, #bc1256);
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-  
-      img {
-        padding: 10px;
-        // width: 25px;
-        // height: 25px;
-        object-fit: contain;
-      }
+  }
+
+  .card_info {
+    font-family: "DM Sans", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 500;
+
+    p {
+      color: #397383;
+      margin: 0;
+      font-size: 18px;
     }
-  
-    .card_info {
-      font-family: "DM Sans", system-ui;
-      font-optical-sizing: auto;
+
+    h5 {
+      color: #1B2559;
+      font-size: 20px;
       font-weight: 500;
-  
-      p {
-        color: #397383;
-        margin: 0;
-        font-size: 18px;
-      }
-  
-      h5 {
-        color: #1B2559;
-        font-size: 20px;
-        font-weight: 500;
-      }
-  
     }
-  
+
   }
 
-
-  
-.content{
-
-  ::-webkit-scrollbar {
-    width: 0px !important;
-    height: 0px !important;
-    display: none;
-  }
-  
 }
 
+
+
+.dashboard_card_main {
+
+  overflow-y: hidden !important;
+  gap: 15px;
+  padding: 12px;
+  margin-bottom: 15px;
+
+
+
+}
+
+
+
+::-webkit-scrollbar {
+  width: 0px !important;
+  height: 0px !important;
+  display: none;
+}

@@ -45,6 +45,7 @@ export class OverviewComponent implements OnInit {
 
 
     // this.getInventoryItemsData();
+    this.sharedService.loadScripts();
 
 
     combineLatest([this.inventoryService.getCategories(), this.inventoryService.getSubCategories(), this.inventoryService.getSubSubCategories(), this.inventoryService.getInventoryItemsData()]).subscribe((resp: any) => {

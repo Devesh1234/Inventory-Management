@@ -1,9 +1,9 @@
-<div class="row flex-nowrap  overflow-auto" style="overflow-y: hidden !important; gap: 15px; padding: 10px;">
+<div class="row flex-nowrap   dashboard_card_main " >
 
 
 
 
-    <div class="dashboard_card" *ngFor="let item of cards_data | keyvalue ; let i=index;" >
+    <div class="dashboard_card" *ngFor="let item of cards_data | keyvalue ; let i=index;">
         <div class="card_img">
             <img [src]="'assets/img/dashboard_icon'+(i+1)+'.svg'" alt="">
         </div>

@@ -1884,6 +1884,8 @@ div#global-loader,
   -webkit-transition: all 0.2s ease;
   -ms-transition: all 0.2s ease;
   transition: all 0.2s ease;
+  background-color: #E6E6FA;
+  height: 100vh;
 }
 
 @media (max-width: 991px) {
@@ -1895,6 +1897,8 @@ div#global-loader,
 
 .page-wrapper .content {
   padding: 25px;
+  background-color: #E6E6FA;
+
 }
 
 @media (max-width: 991px) {
@@ -8602,16 +8606,23 @@ span.select2-container.select2-container--default.select2-container--open {
 // my custom styling starts
 
 
-.box-shadow-cstm {
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px !important;
+.table-cstm-box {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 10px 0px !important;
+  background-color: #fffafa !important;
+
+
+  border-radius: 12px  !important;
 }
 
 
 
 
+
 .accordion-button:not(.collapsed) {
-  background-color: #bc1256;
-  color: white;
+  // background-color: ;
+  background: linear-gradient(to left bottom, #ff5297, #bc1256);
+
+  color: #fffafa;
 }
 
 .accordion-button::after {

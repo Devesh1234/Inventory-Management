@@ -30,6 +30,7 @@
     text-align: center;
     min-width: 170px;
     position: relative;
+    align-items: center;
 
     &+.step-wizard-item:after {
         content: "";
@@ -89,6 +90,9 @@
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 10px;
+    min-width: 150px;
+    max-width:150px ;
+
 
 }
 
@@ -128,6 +132,11 @@
 
 
 @media only screen and (max-width:767px) {
+    
+    .progress-label{
+        min-width: 100px;
+        max-width: 100px;
+    }
 
 
 
@@ -135,7 +144,7 @@
         min-width: 100px;
 
         &+.step-wizard-item:after {
-            top: 70px;
+            top: 75%;
         }
     }
 }

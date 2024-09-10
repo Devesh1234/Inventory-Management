@@ -36,13 +36,13 @@ export class SignupComponent implements OnInit {
 
 
     this.basicInfoForm = new FormGroup({
-      business_name: new FormControl('', Validators.required),
+      business_name: new FormControl('Devesh', Validators.required),
       business_type: new FormControl('Restaurant', [Validators.required]),
       business_branch: new FormControl({ value: 'Main', disabled: true }, [Validators.required]),
       business_structure: new FormControl('Sole Proprietorship', [Validators.required]),
       registered_email: new FormControl('devesh@gmail.com', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
-      registered_mobile_no: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"),
+      password: new FormControl('Password', Validators.required),
+      registered_mobile_no: new FormControl('8191919191', [Validators.required, Validators.pattern("^[0-9]*$"),
       Validators.minLength(10), Validators.maxLength(10)]),
       country: new FormControl({ value: 'India', disabled: true }, [Validators.required]),
       state: new FormControl({ value: 'Haryana', disabled: true }, [Validators.required]),
@@ -53,15 +53,15 @@ export class SignupComponent implements OnInit {
 
 
     this.kycForm = new FormGroup({
-      email_otp: new FormControl('', [Validators.required]),
-      adhaar_no: new FormControl('', [Validators.required]),
-      pan_no: new FormControl('', [Validators.required])
+      email_otp: new FormControl('123456', [Validators.required]),
+      adhaar_no: new FormControl('324234231', [Validators.required]),
+      pan_no: new FormControl('asldasldasdhlas', [Validators.required])
     })
 
     this.accountForm = new FormGroup({
-      bank_name: new FormControl('', [Validators.required]),
-      account_no: new FormControl('', [Validators.required]),
-      ifsc_code: new FormControl('', [Validators.required])
+      bank_name: new FormControl('Indian Bank', [Validators.required]),
+      account_no: new FormControl('13912031923012', [Validators.required]),
+      ifsc_code: new FormControl('IONBBS982', [Validators.required])
     })
 
 
@@ -160,6 +160,20 @@ export class SignupComponent implements OnInit {
 
   confirm() {
 
+
+    let finalSignUpForm = { ...this.signupForm.value.basicInfoForm, ...this.signupForm.value.kycForm, ...this.signupForm.value.accountForm }
+
+    if (finalSignUpForm) {
+      this.authService.signUpApi(finalSignUpForm).subscribe({
+        next: (res: any) => {
+          console.log('Ress---', res);
+        },
+        error: (res: any) => { }
+      })
+    }
+
+    console.log('Form', finalSignUpForm);
+
   }
 
   resendEmailOtp() {
@@ -167,26 +181,6 @@ export class SignupComponent implements OnInit {
   }
 
 
-
-  userSignUp() {
-    console.log('Form---', this.signupForm.getRawValue());
-    let obj = this.signupForm.getRawValue();
-    if (this.signupForm.valid)
-      this.authService.signUpApi(obj).subscribe((res: any) => {
-        console.log('Res---', res);
-        this.sharedService.showSnackBar(res.message, 'success')
-        this.router.navigate(['/tracker/Tracker']);
-
-      },
-        (err: any) => {
-          console.log('Err---', err);
-          this.sharedService.showSnackBar(err.error.message, 'error')
-
-
-        })
-
-
-  }
 
   navigateToSignin() {
     this.router.navigate(['/auth/signin'])
