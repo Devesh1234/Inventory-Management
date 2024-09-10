@@ -7,7 +7,8 @@
         <div class="content">
 
 
-            <div class="row  flex-nowrap  overflow-scroll" style="overflow-y: hidden !important;" *ngIf="cardsData">
+            <div class="row  flex-nowrap  overflow-hidden" style="overflow-y: hidden !important;" *ngIf="cardsData">
+                <app-dashboard-cards [cards_data]="cardsData"></app-dashboard-cards>
                 <div class="col-lg-4 col-sm-4 col-7" >
                     <div class="dash-widget box-shadow-cstm">
                         <div class="dash-widgetimg">

@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoaderComponent } from './loader/loader.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { DashboardCardsComponent } from './dashboard-cards/dashboard-cards.component';
 
 
 
@@ -12,16 +13,18 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     HeaderComponent,
     SidebarComponent,
     LoaderComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    DashboardCardsComponent
   ],
   imports: [
     CommonModule
   ],
-  exports:[
+  exports: [
     HeaderComponent,
     SidebarComponent,
     LoaderComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    DashboardCardsComponent
   ]
 })
 export class AppCommonModule { }

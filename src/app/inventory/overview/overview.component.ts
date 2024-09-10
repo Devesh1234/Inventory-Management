@@ -52,8 +52,17 @@ export class OverviewComponent implements OnInit {
       this.categoriesList = resp[0].response;
       this.subCategoriesList = resp[1].response;
       this.subSubCategoriesList = resp[2].response;
-      this.cardsData = resp[3]['Cards']
-      console.log('this.cardsData: ', this.cardsData);
+      let cards_resp = resp[3]['Cards']
+      console.log('this.cardsData: ', cards_resp);
+
+      this.cardsData={
+        'Category Count':cards_resp.category_count,
+        'Chef Count':cards_resp.chef_special_count,
+        'Item Count':cards_resp.item_count,
+        'Sub Category Count':cards_resp.subcategory_count,
+        'Sub Sub Category Count':cards_resp.subsubcategory_count,
+      }
+      
       this.inventoryItemsData = this.inventoryItemsDataCopy = resp[3].response['Main']
 
     })

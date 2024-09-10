@@ -21,6 +21,9 @@ export class TrackerComponent implements OnInit {
 
   dailyStatsData: any;
 
+  cardsData: any;
+
+
   activeButton: any;
   requestedOrdersDataList: any;
   acceptedOrdersDataList: any;
@@ -59,8 +62,20 @@ export class TrackerComponent implements OnInit {
 
 
     this.trackerService.getDailyStats().subscribe((res: any) => {
-      this.dailyStatsData=res;
+      this.dailyStatsData = res;
       console.log('this.dailyStatsData: ', this.dailyStatsData);
+
+      this.cardsData = {
+        'Total Orders': this.dailyStatsData.total_orders,
+        'Total People': this.dailyStatsData.total_people,
+        'Total Reviews': this.dailyStatsData.total_reviews,
+        'Wemesy Cut': this.dailyStatsData.total_wemesy_cut,
+        'Active Orders': this.dailyStatsData.active_orders,
+        'Total Sales': this.dailyStatsData.total_sales
+      }
+
+
+
     }, (err: any) => {
       console.log(err);
     })
