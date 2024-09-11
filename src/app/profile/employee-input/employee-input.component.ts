@@ -218,7 +218,9 @@ export class EmployeeInputComponent implements OnInit {
     }
     else {
       if (this.isEmployeeEditedData == false) {
-        this.profileService.insertSingleEmployeeData(formValue).subscribe((res: any) => {
+        console.log('Devesh----', formValue);
+        let updated_obj = this.deleteExtraKeys(formValue)
+        this.profileService.insertSingleEmployeeData(updated_obj).subscribe((res: any) => {
           console.log('resp-----', res);
         })
       }
@@ -230,6 +232,15 @@ export class EmployeeInputComponent implements OnInit {
 
 
     }
+  }
+
+
+  deleteExtraKeys(obj: any) {
+    for (let item in obj)
+      if (obj[item] == "")
+        delete obj[item];
+    return obj;
+
   }
 
 

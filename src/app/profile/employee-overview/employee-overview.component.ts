@@ -45,12 +45,16 @@ cardsData:any;
 
   getEmployeesList() {
     this.profileService.getEmployeesData().subscribe((res: any) => {
-      this.cardsData=res.cards
-      console.log('this.cardsData: ', this.cardsData);
       this.employeesList = this.employeesListCopy = res.response;
-      console.log('this.employeesList: ', this.employeesList);
       this.branchList = Object.keys(this.employeesList);
-      console.log('this.branchList: ', this.branchList);
+
+      this.cardsData={
+        'Average Salary':res.cards.no_of_branches,
+        'Branches':res.cards.avg_salary,
+        'Employees':res.cards.no_of_employees,
+        'Teams':res.cards.no_of_unique_team_names,
+      }
+
 
       this.branchWiseEmployeesList = this.branchWiseEmployeesListCopy = this.employeesList[this.selectedBranchValue]
     })
@@ -116,6 +120,7 @@ cardsData:any;
     this.profileService.deleteEmployeeData(obj).subscribe((res: any) => {
       // console.log('Delete Response ----', res);
       console.log('Employee Delete Successfully');
+      this.ngOnInit();
     })
   }
 

@@ -120,6 +120,7 @@ export class BranchInputComponent implements OnInit {
   getMainVendorData() {
     this.profileService.getVendorDetails().subscribe({
       next: (res: any) => {
+        console.log('Res---',res);
         this.mainVendorData = res.response['Main'];
         console.log('this.vendorData: ', this.mainVendorData);
         this.patchInitialValues(this.mainVendorData);

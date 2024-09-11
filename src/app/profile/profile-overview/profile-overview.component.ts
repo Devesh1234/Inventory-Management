@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppCommonModule } from 'src/app/app-common/app-common.module';
 import { SharedService } from 'src/app/shared.service';
 import { ProfileService } from '../profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-overview',
@@ -17,7 +18,7 @@ export class ProfileOverviewComponent implements OnInit {
   branches: any;
   vendorData: any;
 
-  constructor(private sharedService: SharedService, private profileService: ProfileService) {
+  constructor(private sharedService: SharedService, private profileService: ProfileService , private router:Router) {
 
   }
   ngOnInit(): void {
@@ -44,6 +45,12 @@ export class ProfileOverviewComponent implements OnInit {
       return Object.keys(obj)
     else
       return [];
+  }
+
+  editBranch(item: any) {
+    console.log('Branch---', item);
+    this.router.navigate(['/profile/branch-input']);
+
   }
 
 

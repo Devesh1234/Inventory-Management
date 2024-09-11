@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ProfileService {
   vendor_id: any = '24';
 
-  constructor(private httpClient: HttpClient, private authService: AuthService) { 
+  constructor(private httpClient: HttpClient, private authService: AuthService) {
     console.log('devessssssssssss');
   }
 
@@ -24,7 +24,7 @@ export class ProfileService {
 
 
 
-  getVendorDetails(){
+  getVendorDetails() {
     this.authService.getNewTokens();
     let apiUrl = this.serverUrl + 'vendors/vendor/' + this.vendor_id;
     return this.httpClient.get(apiUrl);
@@ -39,10 +39,10 @@ export class ProfileService {
     return this.httpClient.get(apiUrl);
   }
 
-  insertSingleEmployeeData(obj:any) {
+  insertSingleEmployeeData(obj: any) {
     this.authService.getNewTokens();
 
-    let apiUrl = this.serverUrl + 'employees/create/' + this.vendor_id+'/';
+    let apiUrl = this.serverUrl + 'employees/create/' + this.vendor_id + '/';
     return this.httpClient.post(apiUrl, obj);
   }
 
@@ -64,16 +64,16 @@ export class ProfileService {
     });
   }
 
-  editEmployeeData(obj:any){
-    let apiUrl = this.serverUrl+'employee/edit/'+ obj.employee_id+'/';
-    return this.httpClient.post(apiUrl,obj);
+  editEmployeeData(obj: any) {
+    let apiUrl = this.serverUrl + 'employee/edit/' + obj.employee_id + '/';
+    return this.httpClient.post(apiUrl, obj);
 
   }
 
 
-  deleteEmployeeData(obj:any){
+  deleteEmployeeData(obj: any) {
     let apiUrl = 'http://62.72.30.98:8000/api/employees/delete/';
-    return this.httpClient.post(apiUrl,obj);
+    return this.httpClient.post(apiUrl, obj);
 
   }
 
@@ -119,10 +119,18 @@ export class ProfileService {
 
 
 
-  myProfileUpdate(obj:any) :Observable<any>{
-      this.authService.getNewTokens();
-      let apiUrl=this.serverUrl+'vendor/update-password/'+this.vendor_id +'/';
-      return this.httpClient.post(apiUrl,obj);
+  deleteBranch(obj:any) :Observable<any> {
+    this.authService.getNewTokens();
+
+    let apiUrl = this.serverUrl + 'vendors/' + this.vendor_id + '/photos/delete/'
+    return this.httpClient.post(apiUrl, obj)
+  }
+
+
+  myProfileUpdate(obj: any): Observable<any> {
+    this.authService.getNewTokens();
+    let apiUrl = this.serverUrl + 'vendor/update-password/' + this.vendor_id + '/';
+    return this.httpClient.post(apiUrl, obj);
   }
 
 }

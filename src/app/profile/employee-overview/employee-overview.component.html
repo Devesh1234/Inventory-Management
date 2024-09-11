@@ -7,7 +7,9 @@
         <div class="content">
 
 
-            <div class="row  flex-nowrap  overflow-scroll" style="overflow-y: hidden !important;" *ngIf="cardsData">
+            <app-dashboard-cards [cards_data]="cardsData" *ngIf="cardsData"></app-dashboard-cards>
+
+            <!-- <div class="row  flex-nowrap  overflow-scroll" style="overflow-y: hidden !important;" *ngIf="cardsData">
                 <div class="col-lg-4 col-sm-4 col-7">
                     <div class="dash-widget dash2 box-shadow-cstm">
                         <div class="dash-widgetimg">
@@ -56,13 +58,13 @@
                 </div>
 
 
-            </div>
+            </div> -->
 
 
 
 
 
-            <div class="card box-shadow-cstm">
+            <div class="card box-shadow-cstm table-cstm-box">
 
                 <div class="card-header pb-0">
                     <h5 class="card-title">Employees Data</h5>
@@ -70,7 +72,7 @@
 
 
                     <div class="employee_items_header">
-                        <div class="employee_search col-12 col-sm-4" [ngClass]="branchWiseEmployeesList&& branchWiseEmployeesList.length==0?'invisible':'visible'">
+                        <div class="employee_search col-12 col-sm-4" >
                             <img src="assets/img/icons/search-white.svg" alt="img" class="me-2">
 
                             <input type="search" class="employee_search_input" placeholder="Search here"
@@ -136,9 +138,9 @@
                             <tbody *ngIf="employeesList">
                                 <tr *ngFor="let item of branchWiseEmployeesList; let i=index;">
                                     <td>{{i+1}}</td>
-                                    <td>{{item.first_name}}</td>
-                                    <td>{{item.last_name}}</td>
-                                    <td>{{item.middle_name}}</td>
+                                    <td>{{item?.first_name}}</td>
+                                    <td>{{item?.last_name}}</td>
+                                    <td>{{item?.middle_name}}</td>
                                     <td *ngIf="selectedBranchValue=='Main'">
                                         <span class="badges bg-lightgreen me-2" (click)="editEmployee(item)">Edit</span>
 
@@ -148,14 +150,14 @@
 
 
                                     </td>
-                                    <td>{{item.phone_number}}</td>
-                                    <td>{{item.email}}</td>
-                                    <td>{{item.designation}}</td>
-                                    <td>{{item.city}}</td>
-                                    <td>{{item.country}}</td>
-                                    <td>{{item.landmark}}</td>
-                                    <td>{{item.gender}}</td>
-                                    <td>{{item.pan}}</td>
+                                    <td>{{item?.phone_number}}</td>
+                                    <td>{{item?.email}}</td>
+                                    <td>{{item?.designation}}</td>
+                                    <td>{{item?.city}}</td>
+                                    <td>{{item?.country}}</td>
+                                    <td>{{item?.landmark}}</td>
+                                    <td>{{item?.gender}}</td>
+                                    <td>{{item?.pan}}</td>
 
                                 </tr>
                             </tbody>
