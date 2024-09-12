@@ -29,26 +29,31 @@ export class MyProfileComponent implements OnInit {
     })
 
 
-    this.profileForm.get('password').valueChanges.subscribe((value:any) => {
+    this.profileForm.get('password').valueChanges.subscribe((value: any) => {
       console.log('Password Changed:', value);
     });
   }
 
 
-  onFileSelected(event:any){
-console.log('e----',event);
+  onFileSelected(event: any) {
+    console.log('e----', event);
   }
 
 
 
-  onUpdate() {
+  // onUpdate() {
 
-  }
+  //   // this.profileService.branchEditedData
+  // }
 
 
   profileUpdate() {
-    this.profileService.myProfileUpdate({}).subscribe((res: any) => {
-
+    let obj = {
+      "old_password": "newtest@123",
+      "new_password": "profile@123"
+    }
+    this.profileService.updatePassword(obj).subscribe((res: any) => {
+console.log('Resssssss----',res);
     })
   }
 

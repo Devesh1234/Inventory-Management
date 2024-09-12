@@ -27,9 +27,9 @@ export class AppComponent {
     // this.router.navigate(['/inventory/inventoryPreview']);
     // this.router.navigate(['/profile/photos-view']);
     // this.router.navigate(['/profile/employee-input']);
-    // this.router.navigate(['/profile/branch-input']);
+    this.router.navigate(['/profile/branch-input']);
     // this.router.navigate(['/profile/my-profile']);
-    this.router.navigate(['/profile/profile-view']);
+    // this.router.navigate(['/profile/profile-view']);
     // this.router.navigate(['/profile/employee-overview']);
     // this.router.navigate(['/inventory/Inventory']);  
     // this.router.navigate(['/social/Social']);

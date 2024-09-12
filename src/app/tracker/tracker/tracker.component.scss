@@ -112,7 +112,9 @@
 tr>th:last-child {
   position: sticky;
   right: 0;
-  background-color: #fafbfe;
+  // background-color: #fafbfe;
+  background-color: #F5F5F5;
+
 }
 
 
@@ -120,7 +122,7 @@ tr>th:last-child {
 tr>td:last-child {
   position: sticky;
   right: 0;
-  background-color: white;
+  background-color: #F5F5F5;
 }
 
 // tr:nth-child(odd) td {

@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit {
   logout()
   {
     this.router.navigate(['/auth/signin']);
-    console.log('this.router.navigate;: ');
   }
   goToMyProfile(){
     this.router.navigate(['/profile/my-profile']);

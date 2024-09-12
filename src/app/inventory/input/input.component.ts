@@ -434,8 +434,10 @@ export class InputComponent implements OnInit {
 
     // this.tags=[]
 
+    this.router.navigate(['/inventory/items-input']);
+
     window.location.reload();
-    // this.router.navigate(['/inventory/Input'])
+
 
 
 

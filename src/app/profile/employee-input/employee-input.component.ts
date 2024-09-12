@@ -222,6 +222,7 @@ export class EmployeeInputComponent implements OnInit {
         let updated_obj = this.deleteExtraKeys(formValue)
         this.profileService.insertSingleEmployeeData(updated_obj).subscribe((res: any) => {
           console.log('resp-----', res);
+          this.sharedService.showSnackBar(res.message,'success')
         })
       }
       else {

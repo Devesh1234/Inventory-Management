@@ -119,7 +119,8 @@ export class OverviewComponent implements OnInit {
     console.log('id----', item);
 
     this.inventoryService.itemEditedData.next(item);
-    this.router.navigate(['/inventory/Input'])
+    this.router.navigate(['/inventory/items-input']);
+
 
 
   }

@@ -117,17 +117,24 @@ export class ProfileService {
     return this.httpClient.post(apiUrl, obj)
   }
 
-
-
-  deleteBranch(obj:any) :Observable<any> {
+  addBranch(obj: any): Observable<any> {
     this.authService.getNewTokens();
 
-    let apiUrl = this.serverUrl + 'vendors/' + this.vendor_id + '/photos/delete/'
+    let apiUrl = this.serverUrl + 'vendors/single/' ;
     return this.httpClient.post(apiUrl, obj)
   }
 
 
-  myProfileUpdate(obj: any): Observable<any> {
+
+  deleteBranch(obj: any): Observable<any> {
+    this.authService.getNewTokens();
+
+    let apiUrl = this.serverUrl + 'delete/vendor/' ;
+    return this.httpClient.post(apiUrl, obj)
+  }
+
+
+  updatePassword(obj: any): Observable<any> {
     this.authService.getNewTokens();
     let apiUrl = this.serverUrl + 'vendor/update-password/' + this.vendor_id + '/';
     return this.httpClient.post(apiUrl, obj);
