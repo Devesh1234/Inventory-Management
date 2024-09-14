@@ -4,6 +4,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angu
 import { AppCommonModule } from 'src/app/app-common/app-common.module';
 import { SharedService } from 'src/app/shared.service';
 import { ProfileService } from '../profile.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-input',
@@ -28,7 +29,7 @@ export class EmployeeInputComponent implements OnInit {
 
 
 
-  constructor(private sharedService: SharedService, private fb: FormBuilder, private profileService: ProfileService) { }
+  constructor(private sharedService: SharedService, private fb: FormBuilder, private profileService: ProfileService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -78,7 +79,7 @@ export class EmployeeInputComponent implements OnInit {
       gender: ['', Validators.required],
       designation: ['', Validators.required],
       team_name: ['', Validators.required],
-      Discount_eligibility_upto: ['', Validators.required],
+      discount_allowed: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
       date_of_joining: ['', Validators.required],
       employee_status: ['', Validators.required],
       date_of_exit: [''],
@@ -123,7 +124,7 @@ export class EmployeeInputComponent implements OnInit {
       "gender": data.gender,
       "designation": data.designation,
       "team_name": data.team_name,
-      "Discount_eligibility_upto": data.Discount_eligibility_upto,
+      "discount_allowed": data.discount_allowed,
       "date_of_joining": data.date_of_joining,
       "employee_status": data.employee_status,
       "date_of_exit": data.date_of_exit,
@@ -169,7 +170,7 @@ export class EmployeeInputComponent implements OnInit {
     const fileUrl = '/assets/samplefile/sample_file.xlsx';
     const link = document.createElement('a');
     link.href = fileUrl;
-    link.setAttribute('download', 'filename.ext');
+    link.setAttribute('download', 'Sample File.xlsx');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -205,15 +206,35 @@ export class EmployeeInputComponent implements OnInit {
 
 
 
+  addNewEmployee(){
+    // this.ngOnInit();
+    // console.log('devesh=========');
+    this.addEmployeeForm.reset();
+    this.profileService.employeeEditedData.next({});
+    this.isEmployeeEditedData = false;
+
+    // this.tags=[]
+
+    // this.router.navigate(['/inventory/items-input']);
+
+    // window.location.reload();
+
+
+
+
+  }
+
 
   addEmployee() {
     console.log(this.addEmployeeForm.getRawValue());
     const formValue = this.addEmployeeForm.getRawValue();
-    if (this.addEmployeeForm.invalid) {
-      for (let item in this.addEmployeeForm.controls) {
-        console.log(item, this.addEmployeeForm.controls[item].errors);
+    console.log('formValue: ', formValue);
 
-      }
+
+    if (this.addEmployeeForm.invalid) {
+      // for (let item in this.addEmployeeForm.controls) {
+      //   console.log(item, this.addEmployeeForm.controls[item].errors);
+      // }
       this.sharedService.showSnackBar('Please fill all details', 'error')
     }
     else {
@@ -222,7 +243,9 @@ export class EmployeeInputComponent implements OnInit {
         let updated_obj = this.deleteExtraKeys(formValue)
         this.profileService.insertSingleEmployeeData(updated_obj).subscribe((res: any) => {
           console.log('resp-----', res);
-          this.sharedService.showSnackBar(res.message,'success')
+          this.sharedService.showSnackBar(res.message, 'success')
+          this.router.navigate(['/profile/employee-overview']);
+
         })
       }
       else {

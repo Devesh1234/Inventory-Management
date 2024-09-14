@@ -120,7 +120,7 @@ export class ProfileService {
   addBranch(obj: any): Observable<any> {
     this.authService.getNewTokens();
 
-    let apiUrl = this.serverUrl + 'vendors/single/' ;
+    let apiUrl = this.serverUrl + 'vendors/single/';
     return this.httpClient.post(apiUrl, obj)
   }
 
@@ -129,7 +129,7 @@ export class ProfileService {
   deleteBranch(obj: any): Observable<any> {
     this.authService.getNewTokens();
 
-    let apiUrl = this.serverUrl + 'delete/vendor/' ;
+    let apiUrl = this.serverUrl + 'delete/vendor/';
     return this.httpClient.post(apiUrl, obj)
   }
 

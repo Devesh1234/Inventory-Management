@@ -46,6 +46,7 @@ cardsData:any;
   getEmployeesList() {
     this.profileService.getEmployeesData().subscribe((res: any) => {
       this.employeesList = this.employeesListCopy = res.response;
+      console.log('this.employeesList: ', this.employeesList);
       this.branchList = Object.keys(this.employeesList);
 
       this.cardsData={
