@@ -20,8 +20,8 @@
             <div class="card">
                 <div class="card-body">
 
-
                     <form class="row" [formGroup]="addBranchForm">
+                        <!-- Business Name -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Business Name</label>
@@ -29,6 +29,7 @@
                             </div>
                         </div>
 
+                        <!-- Business Type -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Business Type</label>
@@ -36,6 +37,7 @@
                             </div>
                         </div>
 
+                        <!-- Business Branch -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Business Branch</label>
@@ -43,6 +45,7 @@
                             </div>
                         </div>
 
+                        <!-- Business Structure -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Business Structure</label>
@@ -50,27 +53,31 @@
                             </div>
                         </div>
 
+                        <!-- Registered Email -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
-                                <label>Registered Email</label>
+                                <label>Registered Email <span class="manitory">*</span></label>
                                 <input type="email" formControlName="registered_email" class="form-control">
                             </div>
                         </div>
 
+                        <!-- Password -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
-                                <label>Password</label>
+                                <label>Password <span class="manitory">*</span></label>
                                 <input type="password" formControlName="password" class="form-control">
                             </div>
                         </div>
 
+                        <!-- Registered Mobile No -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
-                                <label>Registered Mobile No</label>
+                                <label>Registered Mobile No <span class="manitory">*</span></label>
                                 <input type="text" formControlName="registered_mobile_no" class="form-control">
                             </div>
                         </div>
 
+                        <!-- Country -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Country</label>
@@ -78,6 +85,7 @@
                             </div>
                         </div>
 
+                        <!-- State -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>State</label>
@@ -85,6 +93,7 @@
                             </div>
                         </div>
 
+                        <!-- City -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>City</label>
@@ -92,20 +101,15 @@
                             </div>
                         </div>
 
+                        <!-- Registered Address -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
-                                <label>Registered Address</label>
+                                <label>Registered Address <span class="manitory">*</span></label>
                                 <input type="text" formControlName="registered_address" class="form-control">
                             </div>
                         </div>
 
-                        <div class="col-sm-4 col-12">
-                            <div class="form-group">
-                                <label>URL</label>
-                                <input type="text" formControlName="url" class="form-control">
-                            </div>
-                        </div>
-
+                        <!-- Business Registration No -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Business Registration No</label>
@@ -113,6 +117,7 @@
                             </div>
                         </div>
 
+                        <!-- Business Registration Date -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>Business Registration Date</label>
@@ -120,6 +125,7 @@
                             </div>
                         </div>
 
+                        <!-- PAN -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>PAN</label>
@@ -127,6 +133,7 @@
                             </div>
                         </div>
 
+                        <!-- GST No -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>GST No</label>
@@ -134,6 +141,7 @@
                             </div>
                         </div>
 
+                        <!-- FSSAI License Number -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>FSSAI License Number</label>
@@ -141,6 +149,7 @@
                             </div>
                         </div>
 
+                        <!-- FSSAI Issued On -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>FSSAI Issued On</label>
@@ -148,6 +157,7 @@
                             </div>
                         </div>
 
+                        <!-- FSSAI Valid Upto -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label>FSSAI Valid Upto</label>
@@ -155,21 +165,62 @@
                             </div>
                         </div>
 
+                        <!-- Best Known For -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
-                                <label>Vendor Scale</label>
-                                <input type="text" formControlName="vendor_scale" class="form-control">
+                                <label>Best Known For</label>
+                                <input type="text" formControlName="best_known_for" class="form-control">
                             </div>
                         </div>
 
-                        <!-- Add more form fields as necessary -->
-
+                        <!-- Any USP -->
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
-                                <label>Submit</label>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <label>Any USP</label>
+                                <input type="text" formControlName="any_usp" class="form-control">
                             </div>
                         </div>
+
+                        <!-- Total Staff -->
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Total Staff</label>
+                                <input type="text" formControlName="total_staff" class="form-control">
+                            </div>
+                        </div>
+
+                        <!-- Staff Strength -->
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Staff Strength</label>
+                                <input type="text" formControlName="staff_strength" class="form-control">
+                            </div>
+                        </div>
+
+                        <!-- House Capacity -->
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>House Capacity</label>
+                                <input type="text" formControlName="house_capacity" class="form-control">
+                            </div>
+                        </div>
+
+                        <!-- Parking -->
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Parking Available</label>
+                                <input type="checkbox" formControlName="parking" class="form-check-input">
+                            </div>
+                        </div>
+
+                        <!-- Smoke Space -->
+                        <div class="col-sm-4 col-12">
+                            <div class="form-group">
+                                <label>Smoking Area Available</label>
+                                <input type="checkbox" formControlName="smoke_space" class="form-check-input">
+                            </div>
+                        </div>
+
                     </form>
 
 

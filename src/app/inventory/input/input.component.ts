@@ -143,7 +143,7 @@ export class InputComponent implements OnInit {
       'xl_price': ['', Validators.required],
       'estimate_time': ['', Validators.required],
       'calories': [''],
-      'stock': [0],
+      'stock': [{ value: 0, disabled: true }],
       'in_stock': ['', Validators.required],
       'description': [''],
       'spiciness': ['Medium'],
@@ -241,6 +241,15 @@ export class InputComponent implements OnInit {
 
   selectStockStatus(status: any) {
     this.selectedStockStatus = status;
+    console.log('this.selectedStockStatus: ', this.selectedStockStatus);
+    if (this.selectedStockStatus == "Yes") {
+      this.addItemform.get('stock')?.enable();
+    }
+    else {
+      this.addItemform.get('stock')?.disable();
+      this.addItemform.get('stock').patchValue(0);
+
+    }
 
   }
 
@@ -279,6 +288,15 @@ export class InputComponent implements OnInit {
 
 
 
+  itemImageFile: File | null = null;
+
+  onItemImageSelected(event: any) {
+    console.log('event---', event.target.files);
+    this.itemImageFile = event.target.files[0];
+
+
+  }
+
 
 
   onFileSelected(event: any) {
@@ -288,6 +306,8 @@ export class InputComponent implements OnInit {
 
 
   }
+
+
 
   saveUploadFile() {
     if (this.uploadedFile != null) {
@@ -329,7 +349,7 @@ export class InputComponent implements OnInit {
     this.addItemform.patchValue({
       'category': this.selectedCategoryValue,
       'sub_category': this.selectedSubCategoryValue,
-      'sub_sub_category': this.selectedSubSubCategoryValue=='Select'?'':this.selectedSubSubCategoryValue,
+      'sub_sub_category': this.selectedSubSubCategoryValue == 'Select' ? '' : this.selectedSubSubCategoryValue,
       'item_type': this.selectedItemType,
       'size_type': this.selectedSizeType,
       'in_stock': this.selectedStockStatus == 'Yes',
@@ -392,7 +412,7 @@ export class InputComponent implements OnInit {
     else {
       if (this.isItemEditedData == true) {
         this.inventoryService.editMenuItem(formValue).subscribe((res: any) => {
-          console.log('Ress-----',res);
+          console.log('Ress-----', res);
         })
       }
       else {
@@ -400,7 +420,7 @@ export class InputComponent implements OnInit {
         this.inventoryService.insertSingleItem(formValue).subscribe((res: any) => {
           console.log('res----', res);
           this.sharedService.showSnackBar(res.message, 'success');
-      this.router.navigate(['/inventory/items-overview'], { replaceUrl: true })
+          this.router.navigate(['/inventory/items-overview'], { replaceUrl: true })
 
 
         },

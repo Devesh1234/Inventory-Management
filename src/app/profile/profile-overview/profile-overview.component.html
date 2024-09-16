@@ -29,7 +29,12 @@
                         [attr.aria-labelledby]="'heading' + i" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <div class="text-end">
-                                <span class="badges bg-lightgreen me-2" (click)="editBranch(vendorData[item])">Edit</span>
+                                <span class="badges bg-lightgreen me-2"
+                                    (click)="editBranch(vendorData[item])">Edit</span>
+
+                                <img src="assets/img/icons/delete.svg" alt="img" class="align-middle"
+                                    *ngIf="item!='Main'" (click)="getDeletedBranch(vendorData[item])"
+                                    data-toggle="modal" data-target="#exampleModalCenter">
                             </div>
 
                             <form class="row">
@@ -126,6 +131,38 @@
 
             </div>
 
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!-- Delete Confirmation Popup -->
+
+
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Are Your Sure to Delete ?</h5>
+
+            </div>
+            <div class="modal-body">
+
+                <h6>This process is irreversible</h6>
+            </div>
+            <div class="modal-footer justify-content-end">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    (click)="deleteBranch()">Delete</button>
+            </div>
         </div>
     </div>
 </div>

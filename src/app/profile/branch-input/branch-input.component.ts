@@ -135,9 +135,9 @@ export class BranchInputComponent implements OnInit {
     let obj={
       "business_name": "test",
       "business_type": "Restaurant",
-      "business_branch": "Main",
+      "business_branch": "Branch 1",
       "business_structure": "llp",
-      "registered_email": "test@gmail.com",
+      "registered_email": "test21@gmail.com",
       "password": "est@123",
       "registered_mobile_no": "9810912490",
       "country": "India",

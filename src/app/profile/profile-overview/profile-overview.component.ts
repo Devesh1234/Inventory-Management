@@ -18,7 +18,7 @@ export class ProfileOverviewComponent implements OnInit {
   branches: any;
   vendorData: any;
 
-  constructor(private sharedService: SharedService, private profileService: ProfileService , private router:Router) {
+  constructor(private sharedService: SharedService, private profileService: ProfileService, private router: Router) {
 
   }
   ngOnInit(): void {
@@ -51,6 +51,27 @@ export class ProfileOverviewComponent implements OnInit {
     console.log('Branch---', item);
     this.router.navigate(['/profile/branch-input']);
 
+  }
+
+
+
+  deletedBranchObj: any;
+
+  getDeletedBranch(obj: any) {
+    this.deletedBranchObj = obj;
+    console.log('deleted item', this.deletedBranchObj);
+  }
+
+  deleteBranch() {
+    let obj = {
+      "business_name": this.deletedBranchObj['business_name'],
+      "business_branch": this.deletedBranchObj['business_branch']
+    }
+    this.profileService.deleteBranch(obj).subscribe((res: any) => {
+      console.log('ress----', res);
+      this.sharedService.showSnackBar(res.message, 'success');
+      this.ngOnInit();
+    })
   }
 
 

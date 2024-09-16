@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProfileService {
-  vendor_id: any = '24';
+  vendor_id: any = '32';
 
   constructor(private httpClient: HttpClient, private authService: AuthService) {
     console.log('devessssssssssss');
@@ -26,7 +26,8 @@ export class ProfileService {
 
   getVendorDetails() {
     this.authService.getNewTokens();
-    let apiUrl = this.serverUrl + 'vendors/vendor/' + this.vendor_id;
+    let apiUrl = this.serverUrl + 'vendors/vendor/' + this.vendor_id + '/';
+    console.log('apiUrl: ', apiUrl);
     return this.httpClient.get(apiUrl);
   }
 
