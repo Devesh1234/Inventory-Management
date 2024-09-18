@@ -87,7 +87,7 @@ export class BranchInputComponent implements OnInit {
     // let branch_name=data
     this.addBranchForm.patchValue({
       'business_name': data.business_name,
-      'business_branch': data.business_branch,
+      'business_branch': "Branch3",
       'business_type': data.business_type,
       'business_structure': data.business_structure,
       'country': data.country,
@@ -99,6 +99,7 @@ export class BranchInputComponent implements OnInit {
       'vendor_scale': data.vendor_scale
 
     })
+    console.log('Patchform',this.addBranchForm);
 
 
 
@@ -132,61 +133,66 @@ export class BranchInputComponent implements OnInit {
 
 
   addBranch(){
-    let obj={
-      "business_name": "test",
-      "business_type": "Restaurant",
-      "business_branch": "Branch 1",
-      "business_structure": "llp",
-      "registered_email": "test21@gmail.com",
-      "password": "est@123",
-      "registered_mobile_no": "9810912490",
-      "country": "India",
-      "state": "Haryana",
-      "city": "Gurgaon",
-      "registered_address": "B/122 Dwarka Street",
-      "url": "http://example.com",
-      "business_registration_no": "AB123456",
-      "business_registration_date": "2022-01-01",
-      "pan": "ABCDE1234F",
-      "gst_no": "1234567890ABCDE",
-      "fssai_license_number": "FSSAI123456",
-      "fssai_issued_on": "2023-07-24",
-      "fssai_valid_upto": "2029-01-01",
-      "vendor_scale": "medium",
-      "business_kind_based": "Multi-cuisine",
-      "best_known_for": "Best multi-cuisine restaurant",
-      "any_usp": "Great ambiance",
-      "description": "A multi-cuisine restaurant offering a wide variety of dishes.",
-      "famous_tags": "family restaurant, multi-cuisine",
-      "business_spokesperson": "Mr. John Doe",
-      "spokesperson_designation": "Owner",
-      "spokesperson_email": "johndoe@example.com",
-      "spokesperson_contact": "9876543210",
-      "operational_address": "B/123 Dwarka Street",
-      "total_staff": 50,
-      "staff_strength": 30,
-      "house_capacity": 100,
-      "bank_name": "HDFC Bank",
-      "bank_no": "1234567890",
-      "bank_code": "HDFC0001234",
-      "timings": "9 AM - 11 PM",
-      "capacity": 80,
-      "occupied": 20,
-      "parking": true,
-      "alcohol_serve": false,
-      "smoke_space": true,
-      "target_audience": "Families, Couples",
-      "delivery": false,
-      "kyc": false,
-      "subscribed": false,
-      "outlet_status": false
-  }
+  //   let obj={
+  //     "business_name": "test",
+  //     "business_type": "Restaurant",
+  //     "business_branch": "Branch 3",
+  //     "business_structure": "llp",
+  //     "registered_email": "test2@gmail.com",
+  //     "password": "est@123",
+  //     "registered_mobile_no": "9810912490",
+  //     "country": "India",
+  //     "state": "Haryana",
+  //     "city": "Gurgaon",
+  //     "registered_address": "B/122 Dwarka Street",
+  //     "url": "http://example.com",
+  //     "business_registration_no": "AB123456",
+  //     "business_registration_date": "2022-01-01",
+  //     "pan": "ABCDE1234F",
+  //     "gst_no": "1234567890ABCDE",
+  //     "fssai_license_number": "FSSAI123456",
+  //     "fssai_issued_on": "2023-07-24",
+  //     "fssai_valid_upto": "2029-01-01",
+  //     "vendor_scale": "medium",
+  //     "business_kind_based": "Multi-cuisine",
+  //     "best_known_for": "Best multi-cuisine restaurant",
+  //     "any_usp": "Great ambiance",
+  //     "description": "A multi-cuisine restaurant offering a wide variety of dishes.",
+  //     "famous_tags": "family restaurant, multi-cuisine",
+  //     "business_spokesperson": "Mr. John Doe",
+  //     "spokesperson_designation": "Owner",
+  //     "spokesperson_email": "johndoe@example.com",
+  //     "spokesperson_contact": "9876543210",
+  //     "operational_address": "B/123 Dwarka Street",
+  //     "total_staff": 50,
+  //     "staff_strength": 30,
+  //     "house_capacity": 100,
+  //     "bank_name": "HDFC Bank",
+  //     "bank_no": "1234567890",
+  //     "bank_code": "HDFC0001234",
+  //     "timings": "9 AM - 11 PM",
+  //     "capacity": 80,
+  //     "occupied": 20,
+  //     "parking": true,
+  //     "alcohol_serve": false,
+  //     "smoke_space": true,
+  //     "target_audience": "Families, Couples",
+  //     "delivery": false,
+  //     "kyc": false,
+  //     "subscribed": false,
+  //     "outlet_status": false    
+  // }
+
+  let obj=this.addBranchForm.getRawValue();
   console.log('obj----',obj);
 
     this.profileService.addBranch(obj).subscribe((res:any)=>{
 
       console.log('Resssss',res);
 
+    }, (err:any)=>{
+      console.log('Error',err);
+      this.sharedService.showSnackBar(err.error.message, 'error');
     })
   }
 

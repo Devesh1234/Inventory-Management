@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileOverviewComponent } from './profile-overview/profile-overview.component';
 import { BranchInputComponent } from './branch-input/branch-input.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { AuthGuard } from '../auth/auth.guard';
 
 
 const routes:Routes=[
@@ -18,7 +19,7 @@ const routes:Routes=[
   {path:'profile-view',component:ProfileOverviewComponent},
   {path:'branch-input',component:BranchInputComponent},
   {path:'photos-view',component:PhotosViewComponent},
-  {path:'my-profile',component:MyProfileComponent}
+  {path:'my-profile',component:MyProfileComponent , canActivate:[AuthGuard]}
 ]
 
 @NgModule({

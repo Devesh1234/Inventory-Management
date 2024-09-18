@@ -1,5 +1,5 @@
 <div class="main-wrapper">
-    
+
     <app-sidebar></app-sidebar>
     <app-header></app-header>
 
@@ -14,50 +14,101 @@
 
             <div class="card table-cstm-box">
                 <div class="card-body">
-                    
+
+
+
+
+
+
+
+                    <div class="profile-set">
+                        <div class="profile-head">
+                        </div>
+                        <div class="profile-top">
+                            <div class="profile-content">
+                                <div class="profile-contentimg" style="background: white;">
+                                    <img src="assets/img/icons/profile_logo.svg" alt="profile" id="blah"  class="m-auto" style="width: 100px; height: 100px; object-fit: contain;">
+                                    <div class="profileupload">
+                                        <input type="file" id="imgInp" accept=".png,.jpeg ,.jpg" (change)="onImageUpload($event)" #fileInput>
+                                        <a ><img src="assets/img/icons/edit-set.svg"
+                                                alt="img"></a>
+                                    </div>
+                                </div>
+                                <!-- <div class="profile-contentname">
+                                    <h2>William Castillo</h2>
+                                    <h4>Updates Your Photo and Personal Details.</h4>
+                                </div> -->
+                            </div>
+                            <!-- <div class="ms-auto">
+                                <a href="javascript:void(0);" class="btn btn-submit me-2">Save</a>
+                                <a href="javascript:void(0);" class="btn btn-cancel">Cancel</a>
+                            </div> -->
+                        </div>
+                    </div>
+
+
 
                     <form [formGroup]="profileForm">
                         <div class="row">
                             <div class="col-lg-6 col-sm-12">
                                 <div class="form-group">
-                                    <label>First Name</label>
-                                    <input type="text" placeholder="William">
+                                    <label>Business Name</label>
+                                    <input type="text" formControlName="business_name">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-12">
                                 <div class="form-group">
-                                    <label>Last Name</label>
-                                    <input type="text" placeholder="Castilo">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="text" placeholder="william@example.com">
+                                    <label>Business Branch</label>
+                                    <input type="text"  formControlName="business_branch">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-12">
                                 <div class="form-group">
                                     <label>Phone</label>
-                                    <input type="text" placeholder="+1452 876 5432">
+                                    <input type="text"  formControlName="mobile_no">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" formControlName="registered_email" >
                                 </div>
                             </div>
 
+                            <div class=" text-right">
+                                <h6><a class="hover-a" (click)="passwordUpdate=true" *ngIf="!passwordUpdate">Update Password</a></h6>
+                            </div>
 
-                            <div class="col-lg-6 col-sm-12">
+                            <div class="col-lg-6 col-sm-12" *ngIf="passwordUpdate">
+                                <div class="form-group">
+                                    <label>Old Password</label>
+                                    <div class="pass-group">
+                                        <input type="password" class="pass-input" formControlName="old_password">
+                                        <span class="fas toggle-password fa-eye-slash"></span>
+                                    </div>
+                                    <p class="text-danger"
+                                        *ngIf="profileForm.controls?.old_password?.errors?.required==true"> Enter Old
+                                        Password</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-12" *ngIf="passwordUpdate">
                                 <div class="form-group">
                                     <label>New Password</label>
                                     <div class="pass-group">
-                                        <input type="password" class=" pass-input" formControlName="password">
+                                        <input type="password" class=" pass-input" formControlName="new_password">
                                         <span class="fas toggle-password fa-eye-slash"></span>
                                     </div>
+                                    <p class="text-danger"
+                                        *ngIf="profileForm.controls?.new_password.errors?.required==true"> Enter Old
+                                        Password</p>
                                 </div>
                             </div>
 
-                            <div class="d-flex justify-content-end">
+                            <div class="d-flex justify-content-end" *ngIf="passwordUpdate">
                                 <div class="page-btn">
                                     <button class="btn btn-primary me-2" (click)="profileUpdate()">Update</button>
-                                    <button class="btn btn-secondary">Cancel</button>
+                                    <button class="btn btn-secondary" (click)="passwordUpdate=false">Cancel</button>
                                 </div>
                             </div>
                         </div>

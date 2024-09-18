@@ -12,8 +12,7 @@ import { SearchFilterPipe } from '../core/pipes/search-filter.pipe';
 
 
 const routes:Routes=[
-  // canActivate:[AuthGuard]
-  {path:'Tracker',component:TrackerComponent }
+  {path:'Tracker',component:TrackerComponent ,canActivate:[AuthGuard] }
 ]
 
 @NgModule({

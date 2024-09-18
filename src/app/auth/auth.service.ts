@@ -29,7 +29,6 @@ export class AuthService {
   // Example method to logout the user (for demonstration purposes)
   logout(): void {
     this.sharedService.removeLocalStorage("user_login");
-
   }
 
 
@@ -39,14 +38,14 @@ export class AuthService {
 
 
 
-    let access_token = localStorage.getItem('access_token');
+    let access_token = this.sharedService.getLocalStorage('access_token');
     // console.log('access_token: ', access_token);
-    let refresh_token = localStorage.getItem('refresh_token');
+    let refresh_token = this.sharedService.getLocalStorage('refresh_token');
     // console.log('refresh_token: ', refresh_token);
 
-    if (refresh_token == null || access_token==null ) {
+    if (refresh_token == null || access_token == null) {
       this.router.navigate(['/auth/signin']);
-      return ;
+      return;
     }
 
 
@@ -57,8 +56,8 @@ export class AuthService {
     return this.httpClient.post(apiUrl, {
       "refresh_token": refresh_token
     }).subscribe((res: any) => {
-      localStorage.setItem('access_token', res.access_token)
-      localStorage.setItem('refresh_token', res.refresh_token)
+      this.sharedService.setLocalStorage('access_token', res.access_token)
+      this.sharedService.setLocalStorage('refresh_token', res.refresh_token)
     });
   }
 
@@ -72,18 +71,18 @@ export class AuthService {
     )
   };
 
-  signUpApi(obj:any) {
+  signUpApi(obj: any) {
     let apiUrl = 'http://62.72.30.98:8000/api/register/vendor/';
     return this.httpClient.post<any>(apiUrl, obj
     )
   }
 
-  vendor_id:any=68
+  vendor_id: any = 68
 
-  forgotPasswordApi(email:any) {
-    let obj={'email':email, 'vendor_id':this.vendor_id}
+  forgotPasswordApi(email: any) {
+    let obj = { 'email': email, 'vendor_id': this.vendor_id }
     let apiUrl = 'http://127.0.0.1:8000/api/vendor/request-password-reset/';
-    return this.httpClient.post(apiUrl,obj)
+    return this.httpClient.post(apiUrl, obj)
 
   }
 

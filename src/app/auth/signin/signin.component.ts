@@ -48,9 +48,17 @@ export class SigninComponent implements OnInit {
     }).subscribe({
       next: (res: any) => {
         console.log('res11----', res)
-        localStorage.setItem('access_token', res.access_token)
-        localStorage.setItem('refresh_token', res.refresh_token)
-        this.router.navigate(['/inventory/category']);
+        this.sharedService.setLocalStorage('access_token', res.access_token)
+        this.sharedService.setLocalStorage('refresh_token', res.refresh_token)
+
+        let vendor_id=res['vendor']['id'];
+        this.sharedService.setLocalStorage('vendor_id', JSON.stringify(vendor_id))
+        let vendor_details=res['vendor'];
+        this.sharedService.setLocalStorage('vendor_details', JSON.stringify(vendor_details))
+
+        // this.router.navigate(['/inventory/category']);
+        this.router.navigate(['/profile/my-profile']);
+
 
         this.authService.login(this.signinForm.value.registered_email);
 

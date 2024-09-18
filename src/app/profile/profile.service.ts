@@ -1,16 +1,20 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { SharedService } from '../shared.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
-  vendor_id: any = '32';
+  vendor_id: any;
 
-  constructor(private httpClient: HttpClient, private authService: AuthService) {
-    console.log('devessssssssssss');
+  constructor(private httpClient: HttpClient, private authService: AuthService, private sharedService: SharedService) {
+    this.vendor_id = this.sharedService.getLocalStorage('vendor_id')
+    // this.vendor_id = '32';
+    console.log('this.vendor_id: ', this.vendor_id);
+
   }
 
 
@@ -133,6 +137,27 @@ export class ProfileService {
     let apiUrl = this.serverUrl + 'delete/vendor/';
     return this.httpClient.post(apiUrl, obj)
   }
+
+
+
+  updateProfileImage(file: any) {
+    this.authService.getNewTokens();
+
+    const formData = new FormData();
+
+    formData.append('logo', file, file.name);
+    console.log('formData: ', formData);
+
+    let apiUrl = 'http://62.72.30.98:8000/api/vendors/upload-logo/' + this.vendor_id + '/';
+    console.log('apiUrl: ', apiUrl);
+
+    return this.httpClient.post(apiUrl, formData, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json'
+      })
+    });
+  }
+
 
 
   updatePassword(obj: any): Observable<any> {

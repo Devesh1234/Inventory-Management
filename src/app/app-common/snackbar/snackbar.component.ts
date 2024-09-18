@@ -19,7 +19,7 @@ export class SnackbarComponent implements OnInit {
       this.snackAction = res.action;
       let snackBar = document.getElementById('snackbar');
       if (this.snackMessage != '' && this.snackAction != '' && snackBar != null) {
-        console.log('this.snackMessage', this.snackMessage)
+        // console.log('this.snackMessage', this.snackMessage)
         if (this.snackAction == 'success')
           snackBar.className = "snackbar success";
         if (this.snackAction == 'error')
