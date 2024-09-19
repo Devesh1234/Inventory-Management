@@ -23,6 +23,10 @@ export class OverviewComponent implements OnInit {
   filterActive: boolean = false;
 
 
+  branchList:any;
+  selectedBranchValue:string='Main'
+
+
   selectedCategoryValue: string = 'Select';
   selectedCategoryValueId: string = '';
   selectedSubCategoryValue: string = 'Select';
@@ -32,6 +36,10 @@ export class OverviewComponent implements OnInit {
 
   filteredSubCategoriesList: any;
   filteredSubSubCategoriesList: any;
+
+
+
+
 
 
 
@@ -81,6 +89,19 @@ export class OverviewComponent implements OnInit {
   //     this.getSubSubCategoriesList();
   //   })
   // }
+
+
+  selectBranch(br:any){
+
+
+    // this.selectedBranchValue = br;
+    // this.inventoryItemsData = this.inventoryItemsDataCopy = this.employeesList[this.selectedBranchValue];
+
+    // console.log('this.branchWiseEmployeesList: ', this.branchWiseEmployeesList);
+
+    // this.onInputCross();
+
+  }
 
 
   getCategroiesList() {

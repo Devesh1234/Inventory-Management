@@ -25,6 +25,7 @@
       border: none;
       outline: none;
       width: 100%;
+      background: none;
     }
 
     h5 {
@@ -44,7 +45,7 @@
 
 a {
   transition: .3s all ease;
-  color: red;
+  color: #bc1256;
 
   &:hover,
   &:focus {
@@ -87,7 +88,7 @@ button {
   border-radius: 5px;
   font-size: 14px;
   font-weight: 400;
-  background-color: white;
+  background-color: #fffafa !important;
   // -webkit-box-shadow: 0px 10px 20px -6px rgba(0,0,0,0.12);
   // -moz-box-shadow: 0px 10px 20px -6px rgba(0,0,0,0.12);
   // box-shadow: 0px 10px 20px -6px rgba(0,0,0,0.12);
@@ -119,7 +120,7 @@ button {
 
   .dropdown-menu {
     border: none;
-    background: white;
+    background: #fffafa !important;
     -webkit-box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
     -moz-box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
     box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
@@ -144,7 +145,8 @@ button {
     .dropdown-item {
       &:hover {
         border: none;
-        background-color: red;
+        background-color: #bc1256;
+        color: white;
       }
 
       &.dropdown-item-disabled {

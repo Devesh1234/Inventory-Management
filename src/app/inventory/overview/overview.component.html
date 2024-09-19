@@ -19,18 +19,43 @@
 
 
                     <div class="menu_items_header">
-                        <div class="items_search">
-                            <img src="assets/img/icons/search-white.svg" alt="img" class="me-2">
+                        <div class="items_header col-12 col-sm-4 px-0">
+                            <div class="items_search">
+                                <img src="assets/img/icons/search-white.svg" alt="img" class="me-2">
 
-                            <input type="search" class="traking_search_input" placeholder="Search here"
-                                [(ngModel)]="itemSearchValue" (input)="onInputChange($event)">
-                            <h5 (click)=" onInputCross()">&times;</h5>
+                                <input type="search" class="traking_search_input" placeholder="Search here"
+                                    [(ngModel)]="itemSearchValue" (input)="onInputChange($event)">
+                                <h5 (click)=" onInputCross()">&times;</h5>
+
+                            </div>
+
+                            <div class="items_filter" (click)="filterItems()">
+                                <img [src]='filterActive ? "assets/img/icons/closes.svg":"assets/img/icons/filter.svg"'
+                                    alt="">
+                            </div>
 
                         </div>
 
-                        <div class="items_filter" (click)="filterItems()">
-                            <img [src]='filterActive ? "assets/img/icons/closes.svg":"assets/img/icons/filter.svg"'
-                                alt="">
+
+                        <div class="col-12 col-sm-3 px-0 ">
+                            <div class="form-group mb-0">
+                                <!-- <label>Category<span class="manitory">*</span></label> -->
+                                 <!-- <label>Category<span class="manitory">*</span></label> -->
+                                 <div class="btn-group">
+                                    <button type="button" class="custom-select-btn dropdown-toggle text-left"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <!-- <i class="ion-ios-sunny mr-4"></i> -->
+                                        {{selectedBranchValue}}
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item " *ngFor="let item of branchList"
+                                            (click)="selectBranch(item)">
+                                            {{item}}
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -111,7 +136,7 @@
 
                 <div class="card-body" *ngIf="inventoryItemsData && inventoryItemsData.length!=0">
                     <div class="table-responsive">
-                        <table class="table  table-nowrap mb-0 text-center table-striped">
+                        <table class="table  table-nowrap mb-0 text-center ">
                             <thead>
                                 <tr>
                                     <th>S.No</th>
